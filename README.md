@@ -1,4 +1,4 @@
-# ML-Based-Adaptive-Cybersecurity-Incident-Detection
+# Machine Learning Based Adaptive Cybersecurity Incident Detection
 
 
 

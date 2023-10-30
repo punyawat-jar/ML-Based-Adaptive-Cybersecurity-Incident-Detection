@@ -1,0 +1,246 @@
+Code_and_model/cic/classical_ML/compare/evaluation_results_Bot.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_DoS Hulk.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_DoS slowloris.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_FTP-Patator.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_Heartbleed.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_Infiltration.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_PortScan.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_SSH-Patator.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_Web Attack � Brute Force.csv
+Code_and_model/cic/classical_ML/compare/evaluation_results_Web Attack � XSS.csv
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/Bot.csv/Bot.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/DoS Hulk.csv/DoS Hulk.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/DoS slowloris.csv/DoS slowloris.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/FTP-Patator.csv/FTP-Patator.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/Heartbleed.csv/Heartbleed.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/Infiltration.csv/Infiltration.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/PortScan.csv/PortScan.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/SSH-Patator.csv/SSH-Patator.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_Bagging_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � Brute Force.csv/Web Attack � Brute Force.csv_RandomForest_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_AdaBoost_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_DecisionTree_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_ExtraTrees_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_GaussianNB_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_GradientBoosting_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_KNeighbors_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_LDA_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_LogisticRegression_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_Perceptron_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_QDA_model.joblib
+Code_and_model/cic/classical_ML/model/Web Attack � XSS.csv/Web Attack � XSS.csv_RandomForest_model.joblib
+Code_and_model/cic/dataset/BENIGN.csv
+Code_and_model/cic/dataset/CIC_IDS2017.csv
+Code_and_model/cic/dataset/prepro_cicdf.o7883467
+Code_and_model/cic/dataset/prepro_df.o7883380
+Code_and_model/cic/dataset/label_dataset/Bot.csv
+Code_and_model/cic/dataset/label_dataset/DDoS.csv
+Code_and_model/cic/dataset/label_dataset/DoS GoldenEye.csv
+Code_and_model/cic/dataset/label_dataset/DoS Hulk.csv
+Code_and_model/cic/dataset/label_dataset/DoS Slowhttptest.csv
+Code_and_model/cic/dataset/label_dataset/DoS slowloris.csv
+Code_and_model/cic/dataset/label_dataset/FTP-Patator.csv
+Code_and_model/cic/dataset/label_dataset/Heartbleed.csv
+Code_and_model/cic/dataset/label_dataset/Infiltration.csv
+Code_and_model/cic/dataset/label_dataset/PortScan.csv
+Code_and_model/cic/dataset/label_dataset/SSH-Patator.csv
+Code_and_model/cic/dataset/label_dataset/Web Attack � Brute Force.csv
+Code_and_model/cic/dataset/label_dataset/Web Attack � Sql Injection.csv
+Code_and_model/cic/dataset/label_dataset/Web Attack � XSS.csv
+Code_and_model/cic/dataset/Original_dataset/CIC_IDS2017.csv
+Code_and_model/cic/dataset/Original_dataset/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset/Friday-WorkingHours-Morning.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset/Monday-WorkingHours.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset/Tuesday-WorkingHours.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset/Wednesday-workingHours.pcap_ISCX.csv
+Code_and_model/kdd/dataset/all+.csv
+Code_and_model/kdd/dataset/normal_test.csv
+Code_and_model/kdd/dataset/normal_train.csv
+Code_and_model/kdd/dataset/prepro_allkdd.o7992117
+Code_and_model/kdd/dataset/prepro_allkdd.o7992120
+Code_and_model/kdd/dataset/prepro_allkdd.o7992123
+Code_and_model/kdd/dataset/prepro_allkdd.o7992127
+Code_and_model/kdd/dataset/test+.csv
+Code_and_model/kdd/dataset/train+.csv
+Code_and_model/kdd/dataset/.ipynb_checkpoints/prepro_allkdd-checkpoint.o7992117
+Code_and_model/kdd/dataset/.ipynb_checkpoints/prepro_allkdd-checkpoint.o7992120
+Code_and_model/kdd/dataset/.ipynb_checkpoints/prepro_allkdd-checkpoint.o7992123
+Code_and_model/kdd/dataset/.ipynb_checkpoints/train+-checkpoint.csv
+Code_and_model/kdd/dataset/all_dataset/apache2.csv
+Code_and_model/kdd/dataset/all_dataset/back.csv
+Code_and_model/kdd/dataset/all_dataset/buffer_overflow.csv
+Code_and_model/kdd/dataset/all_dataset/ftp_write.csv
+Code_and_model/kdd/dataset/all_dataset/guess_passwd.csv
+Code_and_model/kdd/dataset/all_dataset/httptunnel.csv
+Code_and_model/kdd/dataset/all_dataset/imap.csv
+Code_and_model/kdd/dataset/all_dataset/ipsweep.csv
+Code_and_model/kdd/dataset/all_dataset/land.csv
+Code_and_model/kdd/dataset/all_dataset/loadmodule.csv
+Code_and_model/kdd/dataset/all_dataset/mailbomb.csv
+Code_and_model/kdd/dataset/all_dataset/mscan.csv
+Code_and_model/kdd/dataset/all_dataset/multihop.csv
+Code_and_model/kdd/dataset/all_dataset/named.csv
+Code_and_model/kdd/dataset/all_dataset/neptune.csv
+Code_and_model/kdd/dataset/all_dataset/nmap.csv
+Code_and_model/kdd/dataset/all_dataset/normal.csv
+Code_and_model/kdd/dataset/all_dataset/perl.csv
+Code_and_model/kdd/dataset/all_dataset/phf.csv
+Code_and_model/kdd/dataset/all_dataset/pod.csv
+Code_and_model/kdd/dataset/all_dataset/portsweep.csv
+Code_and_model/kdd/dataset/all_dataset/processtable.csv
+Code_and_model/kdd/dataset/all_dataset/ps.csv
+Code_and_model/kdd/dataset/all_dataset/rootkit.csv
+Code_and_model/kdd/dataset/all_dataset/saint.csv
+Code_and_model/kdd/dataset/all_dataset/satan.csv
+Code_and_model/kdd/dataset/all_dataset/sendmail.csv
+Code_and_model/kdd/dataset/all_dataset/smurf.csv
+Code_and_model/kdd/dataset/all_dataset/snmpgetattack.csv
+Code_and_model/kdd/dataset/all_dataset/snmpguess.csv
+Code_and_model/kdd/dataset/all_dataset/spy.csv
+Code_and_model/kdd/dataset/all_dataset/sqlattack.csv
+Code_and_model/kdd/dataset/all_dataset/teardrop.csv
+Code_and_model/kdd/dataset/all_dataset/udpstorm.csv
+Code_and_model/kdd/dataset/all_dataset/warezclient.csv
+Code_and_model/kdd/dataset/all_dataset/warezmaster.csv
+Code_and_model/kdd/dataset/all_dataset/worm.csv
+Code_and_model/kdd/dataset/all_dataset/xlock.csv
+Code_and_model/kdd/dataset/all_dataset/xsnoop.csv
+Code_and_model/kdd/dataset/all_dataset/xterm.csv
+Code_and_model/kdd/dataset/split_dataset/prepro_tekdd.o7883484
+Code_and_model/kdd/dataset/split_dataset/prepro_trkdd.o7883483
+Code_and_model/kdd/dataset/split_dataset/.ipynb_checkpoints/prepro_trkdd-checkpoint.o7883483
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/apache2.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/back.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/guess_passwd.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/httptunnel.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/ipsweep.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/mailbomb.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/mscan.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/neptune.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/nmap.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/pod.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/portsweep.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/processtable.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/saint.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/satan.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/smurf.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/snmpgetattack.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/snmpguess.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/warezmaster.csv
+Code_and_model/kdd/dataset/split_dataset/test_label_dataset/.ipynb_checkpoints/apache2-checkpoint.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/back.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/buffer_overflow.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/ftp_write.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/guess_passwd.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/imap.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/ipsweep.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/land.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/loadmodule.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/multihop.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/neptune.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/nmap.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/perl.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/phf.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/pod.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/portsweep.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/rootkit.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/satan.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/smurf.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/spy.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/teardrop.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/warezclient.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/warezmaster.csv
+Code_and_model/kdd/dataset/split_dataset/train_label_dataset/.ipynb_checkpoints/ipsweep-checkpoint.csv

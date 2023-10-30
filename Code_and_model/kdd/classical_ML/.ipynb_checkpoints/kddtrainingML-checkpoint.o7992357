@@ -1,0 +1,1673 @@
+/var/spool/pbs/mom_priv/jobs/7992357.spcc-adm1.SC: line 14: ${/home/s2316002/capstone_project}: bad substitution
+13:4: not a valid test operator: (
+13:4: not a valid test operator: 
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/snmpgetattack.csv ==
+0    77054
+1      178
+Name: label, dtype: int64
+== Training: snmpgetattack.csv with model: LogisticRegression ==
+== Done Training: snmpgetattack.csv with model: LogisticRegression, acc: 0.9977125593439793, loss: 0.0022874406560207164, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_LogisticRegression_model.joblib ==
+== Training: snmpgetattack.csv with model: ExtraTrees ==
+== Done Training: snmpgetattack.csv with model: ExtraTrees, acc: 0.9980146741476047, loss: 0.001985325852395339, f1: 0.5490196078431372 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_ExtraTrees_model.joblib ==
+== Training: snmpgetattack.csv with model: Bagging ==
+== Done Training: snmpgetattack.csv with model: Bagging, acc: 0.9980578334052654, loss: 0.0019421665947345706, f1: 0.5544554455445545 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_Bagging_model.joblib ==
+== Training: snmpgetattack.csv with model: LDA ==
+== Done Training: snmpgetattack.csv with model: LDA, acc: 0.9856711264566249, loss: 0.014328873543375054, f1: 0.23148148148148148 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_LDA_model.joblib ==
+== Training: snmpgetattack.csv with model: QDA ==
+== Done Training: snmpgetattack.csv with model: QDA, acc: 0.9969788519637462, loss: 0.0030211480362537764, f1: 0.5930232558139534 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_QDA_model.joblib ==
+== Training: snmpgetattack.csv with model: DecisionTree ==
+== Done Training: snmpgetattack.csv with model: DecisionTree, acc: 0.9980578334052654, loss: 0.0019421665947345706, f1: 0.5794392523364486 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_DecisionTree_model.joblib ==
+== Training: snmpgetattack.csv with model: RandomForest ==
+== Done Training: snmpgetattack.csv with model: RandomForest, acc: 0.9979715148899438, loss: 0.002028485110056107, f1: 0.5154639175257733 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_RandomForest_model.joblib ==
+== Training: snmpgetattack.csv with model: GradientBoosting ==
+== Done Training: snmpgetattack.csv with model: GradientBoosting, acc: 0.9977988778593008, loss: 0.00220112214069918, f1: 0.07272727272727272 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_GradientBoosting_model.joblib ==
+== Training: snmpgetattack.csv with model: KNeighbors ==
+== Done Training: snmpgetattack.csv with model: KNeighbors, acc: 0.9973672852826931, loss: 0.0026327147173068623, f1: 0.4299065420560748 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_KNeighbors_model.joblib ==
+== Training: snmpgetattack.csv with model: GaussianNB ==
+== Done Training: snmpgetattack.csv with model: GaussianNB, acc: 0.9681916271040139, loss: 0.03180837289598619, f1: 0.12366230677764566 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_GaussianNB_model.joblib ==
+== Training: snmpgetattack.csv with model: Perceptron ==
+== Done Training: snmpgetattack.csv with model: Perceptron, acc: 0.9848511005610704, loss: 0.01514889943892965, f1: 0.2182628062360802 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_Perceptron_model.joblib ==
+== Training: snmpgetattack.csv with model: AdaBoost ==
+== Done Training: snmpgetattack.csv with model: AdaBoost, acc: 0.9981873111782478, loss: 0.0018126888217522659, f1: 0.611111111111111 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpgetattack.csv/snmpgetattack.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/snmpguess.csv ==
+0    77054
+1      331
+Name: label, dtype: int64
+== Training: snmpguess.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: snmpguess.csv with model: LogisticRegression, acc: 0.9953480358373535, loss: 0.004651964162646451, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_LogisticRegression_model.joblib ==
+== Training: snmpguess.csv with model: ExtraTrees ==
+== Done Training: snmpguess.csv with model: ExtraTrees, acc: 0.9997415575465196, loss: 0.00025844245348035836, f1: 0.9702970297029703 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_ExtraTrees_model.joblib ==
+== Training: snmpguess.csv with model: Bagging ==
+== Done Training: snmpguess.csv with model: Bagging, acc: 0.9998277050310131, loss: 0.00017229496898690558, f1: 0.98 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_Bagging_model.joblib ==
+== Training: snmpguess.csv with model: LDA ==
+== Done Training: snmpguess.csv with model: LDA, acc: 0.9888439007580979, loss: 0.011156099241902136, f1: 0.4307692307692308 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_LDA_model.joblib ==
+== Training: snmpguess.csv with model: QDA ==
+== Done Training: snmpguess.csv with model: QDA, acc: 0.9971140592694693, loss: 0.0028859407305306685, f1: 0.7452471482889733 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_QDA_model.joblib ==
+== Training: snmpguess.csv with model: DecisionTree ==
+== Done Training: snmpguess.csv with model: DecisionTree, acc: 0.9997846312887664, loss: 0.00021536871123363198, f1: 0.9751243781094527 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_DecisionTree_model.joblib ==
+== Training: snmpguess.csv with model: RandomForest ==
+== Done Training: snmpguess.csv with model: RandomForest, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_RandomForest_model.joblib ==
+== Training: snmpguess.csv with model: GradientBoosting ==
+== Done Training: snmpguess.csv with model: GradientBoosting, acc: 0.9952188146106133, loss: 0.00478118538938663, f1: 0.0 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_GradientBoosting_model.joblib ==
+== Training: snmpguess.csv with model: KNeighbors ==
+== Done Training: snmpguess.csv with model: KNeighbors, acc: 0.9984062715368711, loss: 0.0015937284631288766, f1: 0.8398268398268399 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_KNeighbors_model.joblib ==
+== Training: snmpguess.csv with model: GaussianNB ==
+== Done Training: snmpguess.csv with model: GaussianNB, acc: 0.989145416953825, loss: 0.010854583046175051, f1: 0.4375 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_GaussianNB_model.joblib ==
+== Training: snmpguess.csv with model: Perceptron ==
+== Done Training: snmpguess.csv with model: Perceptron, acc: 0.9957356995175741, loss: 0.004264300482425913, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_Perceptron_model.joblib ==
+== Training: snmpguess.csv with model: AdaBoost ==
+== Done Training: snmpguess.csv with model: AdaBoost, acc: 0.9991385251550655, loss: 0.0008614748449345279, f1: 0.9029126213592232 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/snmpguess.csv/snmpguess.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/xsnoop.csv ==
+0    77054
+1        4
+Name: label, dtype: int64
+== Training: xsnoop.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: xsnoop.csv with model: LogisticRegression, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_LogisticRegression_model.joblib ==
+== Training: xsnoop.csv with model: ExtraTrees ==
+== Done Training: xsnoop.csv with model: ExtraTrees, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_ExtraTrees_model.joblib ==
+== Training: xsnoop.csv with model: Bagging ==
+== Done Training: xsnoop.csv with model: Bagging, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_Bagging_model.joblib ==
+== Training: xsnoop.csv with model: LDA ==
+== Done Training: xsnoop.csv with model: LDA, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_LDA_model.joblib ==
+== Training: xsnoop.csv with model: QDA ==
+== Done Training: xsnoop.csv with model: QDA, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_QDA_model.joblib ==
+== Training: xsnoop.csv with model: DecisionTree ==
+== Done Training: xsnoop.csv with model: DecisionTree, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.6666666666666666 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_DecisionTree_model.joblib ==
+== Training: xsnoop.csv with model: RandomForest ==
+== Done Training: xsnoop.csv with model: RandomForest, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_RandomForest_model.joblib ==
+== Training: xsnoop.csv with model: GradientBoosting ==
+== Done Training: xsnoop.csv with model: GradientBoosting, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.6666666666666666 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_GradientBoosting_model.joblib ==
+== Training: xsnoop.csv with model: KNeighbors ==
+== Done Training: xsnoop.csv with model: KNeighbors, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_KNeighbors_model.joblib ==
+== Training: xsnoop.csv with model: GaussianNB ==
+== Done Training: xsnoop.csv with model: GaussianNB, acc: 0.9983562591919716, loss: 0.001643740808028376, f1: 0.0 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_GaussianNB_model.joblib ==
+== Training: xsnoop.csv with model: Perceptron ==
+== Done Training: xsnoop.csv with model: Perceptron, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_Perceptron_model.joblib ==
+== Training: xsnoop.csv with model: AdaBoost ==
+== Done Training: xsnoop.csv with model: AdaBoost, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xsnoop.csv/xsnoop.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/xlock.csv ==
+0    77054
+1        9
+Name: label, dtype: int64
+== Training: xlock.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: xlock.csv with model: LogisticRegression, acc: 0.9998702366019292, loss: 0.0001297633980708508, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_LogisticRegression_model.joblib ==
+== Training: xlock.csv with model: ExtraTrees ==
+== Done Training: xlock.csv with model: ExtraTrees, acc: 0.9999134910679528, loss: 8.650893204723387e-05, f1: 0.5 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_ExtraTrees_model.joblib ==
+== Training: xlock.csv with model: Bagging ==
+== Done Training: xlock.csv with model: Bagging, acc: 0.9998269821359055, loss: 0.00017301786409446775, f1: 0.3333333333333333 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_Bagging_model.joblib ==
+== Training: xlock.csv with model: LDA ==
+== Done Training: xlock.csv with model: LDA, acc: 0.9996972187378347, loss: 0.00030278126216531855, f1: 0.2222222222222222 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_LDA_model.joblib ==
+== Training: xlock.csv with model: QDA ==
+== Done Training: xlock.csv with model: QDA, acc: 0.9998702366019292, loss: 0.0001297633980708508, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_QDA_model.joblib ==
+== Training: xlock.csv with model: DecisionTree ==
+== Done Training: xlock.csv with model: DecisionTree, acc: 0.9996539642718111, loss: 0.0003460357281889355, f1: 0.3333333333333333 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_DecisionTree_model.joblib ==
+== Training: xlock.csv with model: RandomForest ==
+== Done Training: xlock.csv with model: RandomForest, acc: 0.9998702366019292, loss: 0.0001297633980708508, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_RandomForest_model.joblib ==
+== Training: xlock.csv with model: GradientBoosting ==
+== Done Training: xlock.csv with model: GradientBoosting, acc: 0.9997404732038583, loss: 0.0002595267961417016, f1: 0.4 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_GradientBoosting_model.joblib ==
+== Training: xlock.csv with model: KNeighbors ==
+== Done Training: xlock.csv with model: KNeighbors, acc: 0.9998702366019292, loss: 0.0001297633980708508, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_KNeighbors_model.joblib ==
+== Training: xlock.csv with model: GaussianNB ==
+== Done Training: xlock.csv with model: GaussianNB, acc: 0.979108092910593, loss: 0.02089190708940698, f1: 0.008213552361396304 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_GaussianNB_model.joblib ==
+== Training: xlock.csv with model: Perceptron ==
+== Done Training: xlock.csv with model: Perceptron, acc: 0.9998702366019292, loss: 0.0001297633980708508, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_Perceptron_model.joblib ==
+== Training: xlock.csv with model: AdaBoost ==
+== Done Training: xlock.csv with model: AdaBoost, acc: 0.9999567455339764, loss: 4.3254466023616936e-05, f1: 0.8 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xlock.csv/xlock.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/ftp_write.csv ==
+0    77054
+1       11
+Name: label, dtype: int64
+== Training: ftp_write.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: ftp_write.csv with model: LogisticRegression, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_LogisticRegression_model.joblib ==
+== Training: ftp_write.csv with model: ExtraTrees ==
+== Done Training: ftp_write.csv with model: ExtraTrees, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_ExtraTrees_model.joblib ==
+== Training: ftp_write.csv with model: Bagging ==
+== Done Training: ftp_write.csv with model: Bagging, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_Bagging_model.joblib ==
+== Training: ftp_write.csv with model: LDA ==
+== Done Training: ftp_write.csv with model: LDA, acc: 0.9998269896193772, loss: 0.00017301038062283736, f1: 0.3333333333333333 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_LDA_model.joblib ==
+== Training: ftp_write.csv with model: QDA ==
+== Done Training: ftp_write.csv with model: QDA, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_QDA_model.joblib ==
+== Training: ftp_write.csv with model: DecisionTree ==
+== Done Training: ftp_write.csv with model: DecisionTree, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.5 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_DecisionTree_model.joblib ==
+== Training: ftp_write.csv with model: RandomForest ==
+== Done Training: ftp_write.csv with model: RandomForest, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_RandomForest_model.joblib ==
+== Training: ftp_write.csv with model: GradientBoosting ==
+== Done Training: ftp_write.csv with model: GradientBoosting, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_GradientBoosting_model.joblib ==
+== Training: ftp_write.csv with model: KNeighbors ==
+== Done Training: ftp_write.csv with model: KNeighbors, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_KNeighbors_model.joblib ==
+== Training: ftp_write.csv with model: GaussianNB ==
+== Done Training: ftp_write.csv with model: GaussianNB, acc: 0.8482698961937716, loss: 0.15173010380622837, f1: 0.0017074558907228228 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_GaussianNB_model.joblib ==
+== Training: ftp_write.csv with model: Perceptron ==
+== Done Training: ftp_write.csv with model: Perceptron, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_Perceptron_model.joblib ==
+== Training: ftp_write.csv with model: AdaBoost ==
+== Done Training: ftp_write.csv with model: AdaBoost, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ftp_write.csv/ftp_write.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/sendmail.csv ==
+0    77054
+1       14
+Name: label, dtype: int64
+== Training: sendmail.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: sendmail.csv with model: LogisticRegression, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_LogisticRegression_model.joblib ==
+== Training: sendmail.csv with model: ExtraTrees ==
+== Done Training: sendmail.csv with model: ExtraTrees, acc: 0.9999567492755503, loss: 4.325072444963453e-05, f1: 0.8571428571428571 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_ExtraTrees_model.joblib ==
+== Training: sendmail.csv with model: Bagging ==
+== Done Training: sendmail.csv with model: Bagging, acc: 0.9999134985511007, loss: 8.650144889926907e-05, f1: 0.75 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_Bagging_model.joblib ==
+== Training: sendmail.csv with model: LDA ==
+== Done Training: sendmail.csv with model: LDA, acc: 0.9978807145019679, loss: 0.002119285498032092, f1: 0.0 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_LDA_model.joblib ==
+== Training: sendmail.csv with model: QDA ==
+== Done Training: sendmail.csv with model: QDA, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_QDA_model.joblib ==
+== Training: sendmail.csv with model: DecisionTree ==
+== Done Training: sendmail.csv with model: DecisionTree, acc: 0.9999134985511007, loss: 8.650144889926907e-05, f1: 0.8 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_DecisionTree_model.joblib ==
+== Training: sendmail.csv with model: RandomForest ==
+== Done Training: sendmail.csv with model: RandomForest, acc: 0.9999134985511007, loss: 8.650144889926907e-05, f1: 0.6666666666666666 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_RandomForest_model.joblib ==
+== Training: sendmail.csv with model: GradientBoosting ==
+== Done Training: sendmail.csv with model: GradientBoosting, acc: 0.9978374637775183, loss: 0.0021625362224817267, f1: 0.10714285714285714 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_GradientBoosting_model.joblib ==
+== Training: sendmail.csv with model: KNeighbors ==
+== Done Training: sendmail.csv with model: KNeighbors, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_KNeighbors_model.joblib ==
+== Training: sendmail.csv with model: GaussianNB ==
+== Done Training: sendmail.csv with model: GaussianNB, acc: 0.8984040482678085, loss: 0.10159595173219152, f1: 0.002547770700636943 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_GaussianNB_model.joblib ==
+== Training: sendmail.csv with model: Perceptron ==
+== Done Training: sendmail.csv with model: Perceptron, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_Perceptron_model.joblib ==
+== Training: sendmail.csv with model: AdaBoost ==
+== Done Training: sendmail.csv with model: AdaBoost, acc: 0.9999567492755503, loss: 4.325072444963453e-05, f1: 0.8571428571428571 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sendmail.csv/sendmail.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/ipsweep.csv ==
+0    77054
+1     3740
+Name: label, dtype: int64
+== Training: ipsweep.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: ipsweep.csv with model: LogisticRegression, acc: 0.9976896736664054, loss: 0.0023103263335946204, f1: 0.9754816112084063 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_LogisticRegression_model.joblib ==
+== Training: ipsweep.csv with model: ExtraTrees ==
+== Done Training: ipsweep.csv with model: ExtraTrees, acc: 0.9998762325178432, loss: 0.00012376748215685467, f1: 0.9986636971046771 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_ExtraTrees_model.joblib ==
+== Training: ipsweep.csv with model: Bagging ==
+== Done Training: ipsweep.csv with model: Bagging, acc: 0.9998349766904575, loss: 0.00016502330954247288, f1: 0.9982190560997329 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_Bagging_model.joblib ==
+== Training: ipsweep.csv with model: LDA ==
+== Done Training: ipsweep.csv with model: LDA, acc: 0.9923676719336606, loss: 0.0076323280663393705, f1: 0.9201553733275788 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_LDA_model.joblib ==
+== Training: ipsweep.csv with model: QDA ==
+== Done Training: ipsweep.csv with model: QDA, acc: 0.9962457197079088, loss: 0.003754280292091258, f1: 0.9605548331166016 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_QDA_model.joblib ==
+== Training: ipsweep.csv with model: DecisionTree ==
+== Done Training: ipsweep.csv with model: DecisionTree, acc: 0.9997937208630719, loss: 0.0002062791369280911, f1: 0.997774810858923 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_DecisionTree_model.joblib ==
+== Training: ipsweep.csv with model: RandomForest ==
+== Done Training: ipsweep.csv with model: RandomForest, acc: 0.9999587441726144, loss: 4.125582738561822e-05, f1: 0.9995545657015591 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_RandomForest_model.joblib ==
+== Training: ipsweep.csv with model: GradientBoosting ==
+== Done Training: ipsweep.csv with model: GradientBoosting, acc: 0.9999587441726144, loss: 4.125582738561822e-05, f1: 0.9995545657015591 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_GradientBoosting_model.joblib ==
+== Training: ipsweep.csv with model: KNeighbors ==
+== Done Training: ipsweep.csv with model: KNeighbors, acc: 0.9991748834522877, loss: 0.0008251165477123644, f1: 0.9911190053285969 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_KNeighbors_model.joblib ==
+== Training: ipsweep.csv with model: GaussianNB ==
+== Done Training: ipsweep.csv with model: GaussianNB, acc: 0.6931804117331573, loss: 0.3068195882668427, f1: 0.2311588958957924 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_GaussianNB_model.joblib ==
+== Training: ipsweep.csv with model: Perceptron ==
+== Done Training: ipsweep.csv with model: Perceptron, acc: 0.9978959528033334, loss: 0.002104047196666529, f1: 0.9774635439681838 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_Perceptron_model.joblib ==
+== Training: ipsweep.csv with model: AdaBoost ==
+== Done Training: ipsweep.csv with model: AdaBoost, acc: 0.9989273484879739, loss: 0.0010726515120260737, f1: 0.9884135472370766 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ipsweep.csv/ipsweep.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/loadmodule.csv ==
+0    77054
+1       11
+Name: label, dtype: int64
+== Training: loadmodule.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: loadmodule.csv with model: LogisticRegression, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_LogisticRegression_model.joblib ==
+== Training: loadmodule.csv with model: ExtraTrees ==
+== Done Training: loadmodule.csv with model: ExtraTrees, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_ExtraTrees_model.joblib ==
+== Training: loadmodule.csv with model: Bagging ==
+== Done Training: loadmodule.csv with model: Bagging, acc: 0.9999567474048443, loss: 4.325259515570934e-05, f1: 0.8 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_Bagging_model.joblib ==
+== Training: loadmodule.csv with model: LDA ==
+== Done Training: loadmodule.csv with model: LDA, acc: 0.9993512110726643, loss: 0.0006487889273356401, f1: 0.21052631578947367 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_LDA_model.joblib ==
+== Training: loadmodule.csv with model: QDA ==
+== Done Training: loadmodule.csv with model: QDA, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_QDA_model.joblib ==
+== Training: loadmodule.csv with model: DecisionTree ==
+== Done Training: loadmodule.csv with model: DecisionTree, acc: 0.9998269896193772, loss: 0.00017301038062283736, f1: 0.5 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_DecisionTree_model.joblib ==
+== Training: loadmodule.csv with model: RandomForest ==
+== Done Training: loadmodule.csv with model: RandomForest, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_RandomForest_model.joblib ==
+== Training: loadmodule.csv with model: GradientBoosting ==
+== Done Training: loadmodule.csv with model: GradientBoosting, acc: 0.9998269896193772, loss: 0.00017301038062283736, f1: 0.5 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_GradientBoosting_model.joblib ==
+== Training: loadmodule.csv with model: KNeighbors ==
+== Done Training: loadmodule.csv with model: KNeighbors, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_KNeighbors_model.joblib ==
+== Training: loadmodule.csv with model: GaussianNB ==
+== Done Training: loadmodule.csv with model: GaussianNB, acc: 0.9719290657439447, loss: 0.028070934256055363, f1: 0.003072196620583717 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_GaussianNB_model.joblib ==
+== Training: loadmodule.csv with model: Perceptron ==
+== Done Training: loadmodule.csv with model: Perceptron, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_Perceptron_model.joblib ==
+== Training: loadmodule.csv with model: AdaBoost ==
+== Done Training: loadmodule.csv with model: AdaBoost, acc: 0.9998702422145329, loss: 0.00012975778546712804, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/loadmodule.csv/loadmodule.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/imap.csv ==
+0    77054
+1       12
+Name: label, dtype: int64
+== Training: imap.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: imap.csv with model: LogisticRegression, acc: 0.9998269896193772, loss: 0.00017301038062283736, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_LogisticRegression_model.joblib ==
+== Training: imap.csv with model: ExtraTrees ==
+== Done Training: imap.csv with model: ExtraTrees, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_ExtraTrees_model.joblib ==
+== Training: imap.csv with model: Bagging ==
+== Done Training: imap.csv with model: Bagging, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_Bagging_model.joblib ==
+== Training: imap.csv with model: LDA ==
+== Done Training: imap.csv with model: LDA, acc: 0.9975778546712802, loss: 0.002422145328719723, f1: 0.06666666666666667 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_LDA_model.joblib ==
+== Training: imap.csv with model: QDA ==
+== Done Training: imap.csv with model: QDA, acc: 0.9998269896193772, loss: 0.00017301038062283736, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_QDA_model.joblib ==
+== Training: imap.csv with model: DecisionTree ==
+== Done Training: imap.csv with model: DecisionTree, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_DecisionTree_model.joblib ==
+== Training: imap.csv with model: RandomForest ==
+== Done Training: imap.csv with model: RandomForest, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_RandomForest_model.joblib ==
+== Training: imap.csv with model: GradientBoosting ==
+== Done Training: imap.csv with model: GradientBoosting, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_GradientBoosting_model.joblib ==
+== Training: imap.csv with model: KNeighbors ==
+== Done Training: imap.csv with model: KNeighbors, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_KNeighbors_model.joblib ==
+== Training: imap.csv with model: GaussianNB ==
+== Done Training: imap.csv with model: GaussianNB, acc: 0.9999567474048443, loss: 4.325259515570934e-05, f1: 0.8571428571428571 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_GaussianNB_model.joblib ==
+== Training: imap.csv with model: Perceptron ==
+== Done Training: imap.csv with model: Perceptron, acc: 0.9998269896193772, loss: 0.00017301038062283736, f1: 0.3333333333333333 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_Perceptron_model.joblib ==
+== Training: imap.csv with model: AdaBoost ==
+== Done Training: imap.csv with model: AdaBoost, acc: 0.9999134948096886, loss: 8.650519031141868e-05, f1: 0.6666666666666666 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/imap.csv/imap.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/spy.csv ==
+0    77054
+1        2
+Name: label, dtype: int64
+== Training: spy.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: spy.csv with model: LogisticRegression, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_LogisticRegression_model.joblib ==
+== Training: spy.csv with model: ExtraTrees ==
+== Done Training: spy.csv with model: ExtraTrees, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_ExtraTrees_model.joblib ==
+== Training: spy.csv with model: Bagging ==
+== Done Training: spy.csv with model: Bagging, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_Bagging_model.joblib ==
+== Training: spy.csv with model: LDA ==
+== Done Training: spy.csv with model: LDA, acc: 0.9993943850845698, loss: 0.0006056149154302029, f1: 0.0 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_LDA_model.joblib ==
+== Training: spy.csv with model: QDA ==
+Error : y has only 1 sample in class 1, covariance is ill defined.
+== Training: spy.csv with model: DecisionTree ==
+== Done Training: spy.csv with model: DecisionTree, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_DecisionTree_model.joblib ==
+== Training: spy.csv with model: RandomForest ==
+== Done Training: spy.csv with model: RandomForest, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_RandomForest_model.joblib ==
+== Training: spy.csv with model: GradientBoosting ==
+== Done Training: spy.csv with model: GradientBoosting, acc: 0.99991348358351, loss: 8.651641649002898e-05, f1: 0.0 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_GradientBoosting_model.joblib ==
+== Training: spy.csv with model: KNeighbors ==
+== Done Training: spy.csv with model: KNeighbors, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_KNeighbors_model.joblib ==
+== Training: spy.csv with model: GaussianNB ==
+== Done Training: spy.csv with model: GaussianNB, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_GaussianNB_model.joblib ==
+== Training: spy.csv with model: Perceptron ==
+== Done Training: spy.csv with model: Perceptron, acc: 0.99991348358351, loss: 8.651641649002898e-05, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_Perceptron_model.joblib ==
+== Training: spy.csv with model: AdaBoost ==
+== Done Training: spy.csv with model: AdaBoost, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/spy.csv/spy.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/land.csv ==
+0    77054
+1       25
+Name: label, dtype: int64
+== Training: land.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: land.csv with model: LogisticRegression, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.4615384615384615 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_LogisticRegression_model.joblib ==
+== Training: land.csv with model: ExtraTrees ==
+== Done Training: land.csv with model: ExtraTrees, acc: 0.9998702646600934, loss: 0.00012973533990659055, f1: 0.823529411764706 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_ExtraTrees_model.joblib ==
+== Training: land.csv with model: Bagging ==
+== Done Training: land.csv with model: Bagging, acc: 0.9999135097733957, loss: 8.64902266043937e-05, f1: 0.888888888888889 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_Bagging_model.joblib ==
+== Training: land.csv with model: LDA ==
+== Done Training: land.csv with model: LDA, acc: 0.9999135097733957, loss: 8.64902266043937e-05, f1: 0.888888888888889 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_LDA_model.joblib ==
+== Training: land.csv with model: QDA ==
+== Done Training: land.csv with model: QDA, acc: 0.999783774433489, loss: 0.00021622556651098427, f1: 0.6666666666666666 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_QDA_model.joblib ==
+== Training: land.csv with model: DecisionTree ==
+== Done Training: land.csv with model: DecisionTree, acc: 0.999783774433489, loss: 0.00021622556651098427, f1: 0.6666666666666666 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_DecisionTree_model.joblib ==
+== Training: land.csv with model: RandomForest ==
+== Done Training: land.csv with model: RandomForest, acc: 0.9998702646600934, loss: 0.00012973533990659055, f1: 0.823529411764706 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_RandomForest_model.joblib ==
+== Training: land.csv with model: GradientBoosting ==
+== Done Training: land.csv with model: GradientBoosting, acc: 0.9999135097733957, loss: 8.64902266043937e-05, f1: 0.888888888888889 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_GradientBoosting_model.joblib ==
+== Training: land.csv with model: KNeighbors ==
+== Done Training: land.csv with model: KNeighbors, acc: 0.9998270195467912, loss: 0.0001729804532087874, f1: 0.75 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_KNeighbors_model.joblib ==
+== Training: land.csv with model: GaussianNB ==
+== Done Training: land.csv with model: GaussianNB, acc: 0.9998702646600934, loss: 0.00012973533990659055, f1: 0.823529411764706 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_GaussianNB_model.joblib ==
+== Training: land.csv with model: Perceptron ==
+== Done Training: land.csv with model: Perceptron, acc: 0.9998702646600934, loss: 0.00012973533990659055, f1: 0.8421052631578948 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_Perceptron_model.joblib ==
+== Training: land.csv with model: AdaBoost ==
+== Done Training: land.csv with model: AdaBoost, acc: 0.9998702646600934, loss: 0.00012973533990659055, f1: 0.823529411764706 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/land.csv/land.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/ps.csv ==
+0    77054
+1       15
+Name: label, dtype: int64
+== Training: ps.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: ps.csv with model: LogisticRegression, acc: 0.9997837463777518, loss: 0.00021625362224817266, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_LogisticRegression_model.joblib ==
+== Training: ps.csv with model: ExtraTrees ==
+== Done Training: ps.csv with model: ExtraTrees, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.33333333333333337 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_ExtraTrees_model.joblib ==
+== Training: ps.csv with model: Bagging ==
+== Done Training: ps.csv with model: Bagging, acc: 0.9997837463777518, loss: 0.00021625362224817266, f1: 0.28571428571428575 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_Bagging_model.joblib ==
+== Training: ps.csv with model: LDA ==
+== Done Training: ps.csv with model: LDA, acc: 0.9992214869599065, loss: 0.0007785130400934215, f1: 0.1 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_LDA_model.joblib ==
+== Training: ps.csv with model: QDA ==
+== Done Training: ps.csv with model: QDA, acc: 0.9997837463777518, loss: 0.00021625362224817266, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_QDA_model.joblib ==
+== Training: ps.csv with model: DecisionTree ==
+== Done Training: ps.csv with model: DecisionTree, acc: 0.9996539942044029, loss: 0.00034600579559707626, f1: 0.20000000000000004 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_DecisionTree_model.joblib ==
+== Training: ps.csv with model: RandomForest ==
+== Done Training: ps.csv with model: RandomForest, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.33333333333333337 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_RandomForest_model.joblib ==
+== Training: ps.csv with model: GradientBoosting ==
+== Done Training: ps.csv with model: GradientBoosting, acc: 0.9997404956533021, loss: 0.0002595043466978072, f1: 0.25 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_GradientBoosting_model.joblib ==
+== Training: ps.csv with model: KNeighbors ==
+== Done Training: ps.csv with model: KNeighbors, acc: 0.9997837463777518, loss: 0.00021625362224817266, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_KNeighbors_model.joblib ==
+== Training: ps.csv with model: GaussianNB ==
+== Done Training: ps.csv with model: GaussianNB, acc: 0.8890618917866874, loss: 0.11093810821331257, f1: 0.003109211037699184 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_GaussianNB_model.joblib ==
+== Training: ps.csv with model: Perceptron ==
+== Done Training: ps.csv with model: Perceptron, acc: 0.9997404956533021, loss: 0.0002595043466978072, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_Perceptron_model.joblib ==
+== Training: ps.csv with model: AdaBoost ==
+== Done Training: ps.csv with model: AdaBoost, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.5 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/ps.csv/ps.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/smurf.csv ==
+0    77054
+1     3311
+Name: label, dtype: int64
+== Training: smurf.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: smurf.csv with model: LogisticRegression, acc: 0.9992534218166735, loss: 0.0007465781833264206, f1: 0.990990990990991 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_LogisticRegression_model.joblib ==
+== Training: smurf.csv with model: ExtraTrees ==
+== Done Training: smurf.csv with model: ExtraTrees, acc: 0.9999170468685192, loss: 8.295313148071339e-05, f1: 0.998991935483871 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_ExtraTrees_model.joblib ==
+== Training: smurf.csv with model: Bagging ==
+== Done Training: smurf.csv with model: Bagging, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_Bagging_model.joblib ==
+== Training: smurf.csv with model: LDA ==
+== Done Training: smurf.csv with model: LDA, acc: 0.9958938199917047, loss: 0.004106180008295313, f1: 0.9518248175182481 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_LDA_model.joblib ==
+== Training: smurf.csv with model: QDA ==
+== Done Training: smurf.csv with model: QDA, acc: 0.9961012028204065, loss: 0.0038987971795935296, f1: 0.9547206165703276 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_QDA_model.joblib ==
+== Training: smurf.csv with model: DecisionTree ==
+== Done Training: smurf.csv with model: DecisionTree, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_DecisionTree_model.joblib ==
+== Training: smurf.csv with model: RandomForest ==
+== Done Training: smurf.csv with model: RandomForest, acc: 0.9999585234342596, loss: 4.1476565740356696e-05, f1: 0.9994967287367891 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_RandomForest_model.joblib ==
+== Training: smurf.csv with model: GradientBoosting ==
+== Done Training: smurf.csv with model: GradientBoosting, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_GradientBoosting_model.joblib ==
+== Training: smurf.csv with model: KNeighbors ==
+== Done Training: smurf.csv with model: KNeighbors, acc: 0.9994608046453753, loss: 0.0005391953546246371, f1: 0.9934771700953337 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_KNeighbors_model.joblib ==
+== Training: smurf.csv with model: GaussianNB ==
+== Done Training: smurf.csv with model: GaussianNB, acc: 0.9959767731231854, loss: 0.0040232268768146, f1: 0.9533429533429533 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_GaussianNB_model.joblib ==
+== Training: smurf.csv with model: Perceptron ==
+== Done Training: smurf.csv with model: Perceptron, acc: 0.9984653670676068, loss: 0.0015346329323931978, f1: 0.9810353664787289 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_Perceptron_model.joblib ==
+== Training: smurf.csv with model: AdaBoost ==
+== Done Training: smurf.csv with model: AdaBoost, acc: 0.9996267109083368, loss: 0.0003732890916632103, f1: 0.9954705586311021 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/smurf.csv/smurf.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/named.csv ==
+0    77054
+1       17
+Name: label, dtype: int64
+== Training: named.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: named.csv with model: LogisticRegression, acc: 0.9997837557304732, loss: 0.00021624426952685755, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_LogisticRegression_model.joblib ==
+== Training: named.csv with model: ExtraTrees ==
+== Done Training: named.csv with model: ExtraTrees, acc: 0.9998270045843786, loss: 0.00017299541562148602, f1: 0.33333333333333337 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_ExtraTrees_model.joblib ==
+== Training: named.csv with model: Bagging ==
+== Done Training: named.csv with model: Bagging, acc: 0.9998270045843786, loss: 0.00017299541562148602, f1: 0.5 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_Bagging_model.joblib ==
+== Training: named.csv with model: LDA ==
+== Done Training: named.csv with model: LDA, acc: 0.9996972580226624, loss: 0.00030274197733760053, f1: 0.22222222222222224 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_LDA_model.joblib ==
+== Training: named.csv with model: QDA ==
+== Done Training: named.csv with model: QDA, acc: 0.9997837557304732, loss: 0.00021624426952685755, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_QDA_model.joblib ==
+== Training: named.csv with model: DecisionTree ==
+== Done Training: named.csv with model: DecisionTree, acc: 0.9997837557304732, loss: 0.00021624426952685755, f1: 0.5454545454545454 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_DecisionTree_model.joblib ==
+== Training: named.csv with model: RandomForest ==
+== Done Training: named.csv with model: RandomForest, acc: 0.9997837557304732, loss: 0.00021624426952685755, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_RandomForest_model.joblib ==
+== Training: named.csv with model: GradientBoosting ==
+== Done Training: named.csv with model: GradientBoosting, acc: 0.9998270045843786, loss: 0.00017299541562148602, f1: 0.6666666666666666 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_GradientBoosting_model.joblib ==
+== Training: named.csv with model: KNeighbors ==
+== Done Training: named.csv with model: KNeighbors, acc: 0.9998270045843786, loss: 0.00017299541562148602, f1: 0.33333333333333337 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_KNeighbors_model.joblib ==
+== Training: named.csv with model: GaussianNB ==
+== Done Training: named.csv with model: GaussianNB, acc: 0.9598218147219099, loss: 0.04017818527809013, f1: 0.010649627263045792 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_GaussianNB_model.joblib ==
+== Training: named.csv with model: Perceptron ==
+== Done Training: named.csv with model: Perceptron, acc: 0.9997837557304732, loss: 0.00021624426952685755, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_Perceptron_model.joblib ==
+== Training: named.csv with model: AdaBoost ==
+== Done Training: named.csv with model: AdaBoost, acc: 0.9997837557304732, loss: 0.00021624426952685755, f1: 0.28571428571428575 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/named.csv/named.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/rootkit.csv ==
+0    77054
+1       23
+Name: label, dtype: int64
+== Training: rootkit.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: rootkit.csv with model: LogisticRegression, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_LogisticRegression_model.joblib ==
+== Training: rootkit.csv with model: ExtraTrees ==
+== Done Training: rootkit.csv with model: ExtraTrees, acc: 0.9998702646600934, loss: 0.00012973533990659055, f1: 0.7272727272727273 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_ExtraTrees_model.joblib ==
+== Training: rootkit.csv with model: Bagging ==
+== Done Training: rootkit.csv with model: Bagging, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_Bagging_model.joblib ==
+== Training: rootkit.csv with model: LDA ==
+== Done Training: rootkit.csv with model: LDA, acc: 0.9988756270541429, loss: 0.001124372945857118, f1: 0.07142857142857142 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_LDA_model.joblib ==
+== Training: rootkit.csv with model: QDA ==
+== Done Training: rootkit.csv with model: QDA, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_QDA_model.joblib ==
+== Training: rootkit.csv with model: DecisionTree ==
+== Done Training: rootkit.csv with model: DecisionTree, acc: 0.999783774433489, loss: 0.00021622556651098427, f1: 0.4444444444444445 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_DecisionTree_model.joblib ==
+== Training: rootkit.csv with model: RandomForest ==
+== Done Training: rootkit.csv with model: RandomForest, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_RandomForest_model.joblib ==
+== Training: rootkit.csv with model: GradientBoosting ==
+== Done Training: rootkit.csv with model: GradientBoosting, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.0 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_GradientBoosting_model.joblib ==
+== Training: rootkit.csv with model: KNeighbors ==
+== Done Training: rootkit.csv with model: KNeighbors, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_KNeighbors_model.joblib ==
+== Training: rootkit.csv with model: GaussianNB ==
+== Done Training: rootkit.csv with model: GaussianNB, acc: 0.7680764573603183, loss: 0.2319235426396817, f1: 0.0026036823507532077 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_GaussianNB_model.joblib ==
+== Training: rootkit.csv with model: Perceptron ==
+== Done Training: rootkit.csv with model: Perceptron, acc: 0.9997405293201869, loss: 0.0002594706798131811, f1: 0.25 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_Perceptron_model.joblib ==
+== Training: rootkit.csv with model: AdaBoost ==
+== Done Training: rootkit.csv with model: AdaBoost, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.2 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/rootkit.csv/rootkit.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/perl.csv ==
+0    77054
+1        5
+Name: label, dtype: int64
+== Training: perl.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: perl.csv with model: LogisticRegression, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_LogisticRegression_model.joblib ==
+== Training: perl.csv with model: ExtraTrees ==
+== Done Training: perl.csv with model: ExtraTrees, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_ExtraTrees_model.joblib ==
+== Training: perl.csv with model: Bagging ==
+== Done Training: perl.csv with model: Bagging, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.8 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_Bagging_model.joblib ==
+== Training: perl.csv with model: LDA ==
+== Done Training: perl.csv with model: LDA, acc: 0.9994376676183061, loss: 0.0005623323816939181, f1: 0.23529411764705882 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_LDA_model.joblib ==
+== Training: perl.csv with model: QDA ==
+== Done Training: perl.csv with model: QDA, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_QDA_model.joblib ==
+== Training: perl.csv with model: DecisionTree ==
+== Done Training: perl.csv with model: DecisionTree, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.5 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_DecisionTree_model.joblib ==
+== Training: perl.csv with model: RandomForest ==
+== Done Training: perl.csv with model: RandomForest, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.6666666666666666 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_RandomForest_model.joblib ==
+== Training: perl.csv with model: GradientBoosting ==
+== Done Training: perl.csv with model: GradientBoosting, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.8 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_GradientBoosting_model.joblib ==
+== Training: perl.csv with model: KNeighbors ==
+== Done Training: perl.csv with model: KNeighbors, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_KNeighbors_model.joblib ==
+== Training: perl.csv with model: GaussianNB ==
+== Done Training: perl.csv with model: GaussianNB, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_GaussianNB_model.joblib ==
+== Training: perl.csv with model: Perceptron ==
+== Done Training: perl.csv with model: Perceptron, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_Perceptron_model.joblib ==
+== Training: perl.csv with model: AdaBoost ==
+== Done Training: perl.csv with model: AdaBoost, acc: 0.9998702309888399, loss: 0.00012976901116013495, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/perl.csv/perl.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/apache2.csv ==
+0    77054
+1      737
+Name: label, dtype: int64
+== Training: apache2.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: apache2.csv with model: LogisticRegression, acc: 0.998585997086297, loss: 0.0014140029137029737, f1: 0.9290322580645162 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_LogisticRegression_model.joblib ==
+== Training: apache2.csv with model: ExtraTrees ==
+== Done Training: apache2.csv with model: ExtraTrees, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_ExtraTrees_model.joblib ==
+== Training: apache2.csv with model: Bagging ==
+== Done Training: apache2.csv with model: Bagging, acc: 0.9998286057074299, loss: 0.0001713942925700574, f1: 0.9909502262443439 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_Bagging_model.joblib ==
+== Training: apache2.csv with model: LDA ==
+== Done Training: apache2.csv with model: LDA, acc: 0.9904447681892193, loss: 0.0095552318107807, f1: 0.6521060842433697 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_LDA_model.joblib ==
+== Training: apache2.csv with model: QDA ==
+== Done Training: apache2.csv with model: QDA, acc: 0.9976861770503043, loss: 0.0023138229496957752, f1: 0.8902439024390245 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_QDA_model.joblib ==
+== Training: apache2.csv with model: DecisionTree ==
+== Done Training: apache2.csv with model: DecisionTree, acc: 0.9998286057074299, loss: 0.0001713942925700574, f1: 0.990990990990991 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_DecisionTree_model.joblib ==
+== Training: apache2.csv with model: RandomForest ==
+== Done Training: apache2.csv with model: RandomForest, acc: 0.9999571514268575, loss: 4.284857314251435e-05, f1: 0.9977324263038548 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_RandomForest_model.joblib ==
+== Training: apache2.csv with model: GradientBoosting ==
+== Done Training: apache2.csv with model: GradientBoosting, acc: 0.9999571514268575, loss: 4.284857314251435e-05, f1: 0.9977324263038548 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_GradientBoosting_model.joblib ==
+== Training: apache2.csv with model: KNeighbors ==
+== Done Training: apache2.csv with model: KNeighbors, acc: 0.9998714542805724, loss: 0.00012854571942754308, f1: 0.9931972789115646 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_KNeighbors_model.joblib ==
+== Training: apache2.csv with model: GaussianNB ==
+== Done Training: apache2.csv with model: GaussianNB, acc: 0.9889450681292313, loss: 0.011054931870768704, f1: 0.6314285714285715 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_GaussianNB_model.joblib ==
+== Training: apache2.csv with model: Perceptron ==
+== Done Training: apache2.csv with model: Perceptron, acc: 0.9993572714028622, loss: 0.0006427285971377153, f1: 0.9653579676674364 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_Perceptron_model.joblib ==
+== Training: apache2.csv with model: AdaBoost ==
+== Done Training: apache2.csv with model: AdaBoost, acc: 0.9999571514268575, loss: 4.284857314251435e-05, f1: 0.9977324263038548 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/apache2.csv/apache2.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/nmap.csv ==
+0    77054
+1     1566
+Name: label, dtype: int64
+== Training: nmap.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: nmap.csv with model: LogisticRegression, acc: 0.9958873908250657, loss: 0.004112609174934283, f1: 0.8906426155580609 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_LogisticRegression_model.joblib ==
+== Training: nmap.csv with model: ExtraTrees ==
+== Done Training: nmap.csv with model: ExtraTrees, acc: 0.9997880098363436, loss: 0.00021199016365640633, f1: 0.9946977730646872 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_ExtraTrees_model.joblib ==
+== Training: nmap.csv with model: Bagging ==
+== Done Training: nmap.csv with model: Bagging, acc: 0.9994488255744933, loss: 0.0005511744255066565, f1: 0.9861259338313768 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_Bagging_model.joblib ==
+== Training: nmap.csv with model: LDA ==
+== Done Training: nmap.csv with model: LDA, acc: 0.9895700839481049, loss: 0.010429916051895192, f1: 0.763915547024952 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_LDA_model.joblib ==
+== Training: nmap.csv with model: QDA ==
+== Done Training: nmap.csv with model: QDA, acc: 0.982065632154668, loss: 0.017934367845331978, f1: 0.68828297715549 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_QDA_model.joblib ==
+== Training: nmap.csv with model: DecisionTree ==
+== Done Training: nmap.csv with model: DecisionTree, acc: 0.9994488255744933, loss: 0.0005511744255066565, f1: 0.9861554845580406 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_DecisionTree_model.joblib ==
+== Training: nmap.csv with model: RandomForest ==
+== Done Training: nmap.csv with model: RandomForest, acc: 0.9995760196726872, loss: 0.00042398032731281267, f1: 0.9893162393162392 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_RandomForest_model.joblib ==
+== Training: nmap.csv with model: GradientBoosting ==
+== Done Training: nmap.csv with model: GradientBoosting, acc: 0.9995760196726872, loss: 0.00042398032731281267, f1: 0.9893162393162392 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_GradientBoosting_model.joblib ==
+== Training: nmap.csv with model: KNeighbors ==
+== Done Training: nmap.csv with model: KNeighbors, acc: 0.999406427541762, loss: 0.0005935724582379377, f1: 0.9852631578947368 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_KNeighbors_model.joblib ==
+== Training: nmap.csv with model: GaussianNB ==
+== Done Training: nmap.csv with model: GaussianNB, acc: 0.8347324684134656, loss: 0.16526753158653437, f1: 0.19429516329061597 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_GaussianNB_model.joblib ==
+== Training: nmap.csv with model: Perceptron ==
+== Done Training: nmap.csv with model: Perceptron, acc: 0.9974137200033918, loss: 0.0025862799966081575, f1: 0.9350372736954208 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_Perceptron_model.joblib ==
+== Training: nmap.csv with model: AdaBoost ==
+== Done Training: nmap.csv with model: AdaBoost, acc: 0.9996608157381498, loss: 0.00033918426185025017, f1: 0.9914346895074946 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/nmap.csv/nmap.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/udpstorm.csv ==
+0    77054
+1        2
+Name: label, dtype: int64
+== Training: udpstorm.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: udpstorm.csv with model: LogisticRegression, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_LogisticRegression_model.joblib ==
+== Training: udpstorm.csv with model: ExtraTrees ==
+== Done Training: udpstorm.csv with model: ExtraTrees, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_ExtraTrees_model.joblib ==
+== Training: udpstorm.csv with model: Bagging ==
+== Done Training: udpstorm.csv with model: Bagging, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_Bagging_model.joblib ==
+== Training: udpstorm.csv with model: LDA ==
+== Done Training: udpstorm.csv with model: LDA, acc: 0.994073625470433, loss: 0.005926374529566986, f1: 0.0 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_LDA_model.joblib ==
+== Training: udpstorm.csv with model: QDA ==
+Error : y has only 1 sample in class 1, covariance is ill defined.
+== Training: udpstorm.csv with model: DecisionTree ==
+== Done Training: udpstorm.csv with model: DecisionTree, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_DecisionTree_model.joblib ==
+== Training: udpstorm.csv with model: RandomForest ==
+== Done Training: udpstorm.csv with model: RandomForest, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_RandomForest_model.joblib ==
+== Training: udpstorm.csv with model: GradientBoosting ==
+== Done Training: udpstorm.csv with model: GradientBoosting, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_GradientBoosting_model.joblib ==
+== Training: udpstorm.csv with model: KNeighbors ==
+== Done Training: udpstorm.csv with model: KNeighbors, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_KNeighbors_model.joblib ==
+== Training: udpstorm.csv with model: GaussianNB ==
+== Done Training: udpstorm.csv with model: GaussianNB, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_GaussianNB_model.joblib ==
+== Training: udpstorm.csv with model: Perceptron ==
+== Done Training: udpstorm.csv with model: Perceptron, acc: 0.9997404507505299, loss: 0.0002595492494700869, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_Perceptron_model.joblib ==
+== Training: udpstorm.csv with model: AdaBoost ==
+== Done Training: udpstorm.csv with model: AdaBoost, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/udpstorm.csv/udpstorm.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/satan.csv ==
+0    77054
+1     4368
+Name: label, dtype: int64
+== Training: satan.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: satan.csv with model: LogisticRegression, acc: 0.9894379170589921, loss: 0.0105620829410079, f1: 0.8993759750390016 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_LogisticRegression_model.joblib ==
+== Training: satan.csv with model: ExtraTrees ==
+== Done Training: satan.csv with model: ExtraTrees, acc: 0.998771850820813, loss: 0.0012281491791869652, f1: 0.988540870893812 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_ExtraTrees_model.joblib ==
+== Training: satan.csv with model: Bagging ==
+== Done Training: satan.csv with model: Bagging, acc: 0.9986490359028943, loss: 0.0013509640971056617, f1: 0.9873804971319312 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_Bagging_model.joblib ==
+== Training: satan.csv with model: LDA ==
+== Done Training: satan.csv with model: LDA, acc: 0.9812093175584394, loss: 0.01879068244156057, f1: 0.82633371169126 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_LDA_model.joblib ==
+== Training: satan.csv with model: QDA ==
+== Done Training: satan.csv with model: QDA, acc: 0.370696360584599, loss: 0.629303639415401, f1: 0.14552529182879378 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_QDA_model.joblib ==
+== Training: satan.csv with model: DecisionTree ==
+== Done Training: satan.csv with model: DecisionTree, acc: 0.9982805911491383, loss: 0.0017194088508617512, f1: 0.9840304182509506 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_DecisionTree_model.joblib ==
+== Training: satan.csv with model: RandomForest ==
+== Done Training: satan.csv with model: RandomForest, acc: 0.9991402955745691, loss: 0.0008597044254308756, f1: 0.9919755445166221 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_RandomForest_model.joblib ==
+== Training: satan.csv with model: GradientBoosting ==
+== Done Training: satan.csv with model: GradientBoosting, acc: 0.997953084701355, loss: 0.002046915298644942, f1: 0.9807840122982322 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_GradientBoosting_model.joblib ==
+== Training: satan.csv with model: KNeighbors ==
+== Done Training: satan.csv with model: KNeighbors, acc: 0.9966021206042494, loss: 0.0033978793957506036, f1: 0.968524838832006 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_KNeighbors_model.joblib ==
+== Training: satan.csv with model: GaussianNB ==
+== Done Training: satan.csv with model: GaussianNB, acc: 0.7903958734187579, loss: 0.20960412658124206, f1: 0.3376455368693402 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_GaussianNB_model.joblib ==
+== Training: satan.csv with model: Perceptron ==
+== Done Training: satan.csv with model: Perceptron, acc: 0.9890285339992632, loss: 0.010971466000736889, f1: 0.896923076923077 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_Perceptron_model.joblib ==
+== Training: satan.csv with model: AdaBoost ==
+== Done Training: satan.csv with model: AdaBoost, acc: 0.9965611822982765, loss: 0.0034388177017235025, f1: 0.9679878048780487 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/satan.csv/satan.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/teardrop.csv ==
+0    77054
+1      904
+Name: label, dtype: int64
+== Training: teardrop.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: teardrop.csv with model: LogisticRegression, acc: 0.9991876175816659, loss: 0.0008123824183341885, f1: 0.9657657657657658 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_LogisticRegression_model.joblib ==
+== Training: teardrop.csv with model: ExtraTrees ==
+== Done Training: teardrop.csv with model: ExtraTrees, acc: 0.99978621515307, loss: 0.0002137848469300496, f1: 0.990791896869245 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_ExtraTrees_model.joblib ==
+== Training: teardrop.csv with model: Bagging ==
+== Done Training: teardrop.csv with model: Bagging, acc: 0.99978621515307, loss: 0.0002137848469300496, f1: 0.990791896869245 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_Bagging_model.joblib ==
+== Training: teardrop.csv with model: LDA ==
+== Done Training: teardrop.csv with model: LDA, acc: 0.9991876175816659, loss: 0.0008123824183341885, f1: 0.9657657657657658 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_LDA_model.joblib ==
+== Training: teardrop.csv with model: QDA ==
+== Done Training: teardrop.csv with model: QDA, acc: 0.9993158884898239, loss: 0.0006841115101761587, f1: 0.971326164874552 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_QDA_model.joblib ==
+== Training: teardrop.csv with model: DecisionTree ==
+== Done Training: teardrop.csv with model: DecisionTree, acc: 0.9997007012142979, loss: 0.0002992987857020694, f1: 0.9871559633027522 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_DecisionTree_model.joblib ==
+== Training: teardrop.csv with model: RandomForest ==
+== Done Training: teardrop.csv with model: RandomForest, acc: 0.99978621515307, loss: 0.0002137848469300496, f1: 0.990791896869245 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_RandomForest_model.joblib ==
+== Training: teardrop.csv with model: GradientBoosting ==
+== Done Training: teardrop.csv with model: GradientBoosting, acc: 0.9997434581836839, loss: 0.0002565418163160595, f1: 0.988970588235294 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_GradientBoosting_model.joblib ==
+== Training: teardrop.csv with model: KNeighbors ==
+== Done Training: teardrop.csv with model: KNeighbors, acc: 0.9995296733367539, loss: 0.0004703266632461091, f1: 0.979890310786106 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_KNeighbors_model.joblib ==
+== Training: teardrop.csv with model: GaussianNB ==
+== Done Training: teardrop.csv with model: GaussianNB, acc: 0.9793056268171711, loss: 0.020694373182828803, f1: 0.5282651072124755 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_GaussianNB_model.joblib ==
+== Training: teardrop.csv with model: Perceptron ==
+== Done Training: teardrop.csv with model: Perceptron, acc: 0.9928595861125363, loss: 0.007140413887463656, f1: 0.5593667546174143 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_Perceptron_model.joblib ==
+== Training: teardrop.csv with model: AdaBoost ==
+== Done Training: teardrop.csv with model: AdaBoost, acc: 0.9997007012142979, loss: 0.0002992987857020694, f1: 0.9871559633027522 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/teardrop.csv/teardrop.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/guess_passwd.csv ==
+0    77054
+1     1284
+Name: label, dtype: int64
+== Training: guess_passwd.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: guess_passwd.csv with model: LogisticRegression, acc: 0.9886818143136754, loss: 0.011318185686324568, f1: 0.48249027237354086 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_LogisticRegression_model.joblib ==
+== Training: guess_passwd.csv with model: ExtraTrees ==
+== Done Training: guess_passwd.csv with model: ExtraTrees, acc: 0.9997872521487533, loss: 0.00021274785124670241, f1: 0.9934640522875817 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_ExtraTrees_model.joblib ==
+== Training: guess_passwd.csv with model: Bagging ==
+== Done Training: guess_passwd.csv with model: Bagging, acc: 0.999744702578504, loss: 0.0002552974214960429, f1: 0.9922279792746115 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_Bagging_model.joblib ==
+== Training: guess_passwd.csv with model: LDA ==
+== Done Training: guess_passwd.csv with model: LDA, acc: 0.9890647604459195, loss: 0.010935239554080503, f1: 0.5318761384335156 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_LDA_model.joblib ==
+== Training: guess_passwd.csv with model: QDA ==
+== Done Training: guess_passwd.csv with model: QDA, acc: 0.999744702578504, loss: 0.0002552974214960429, f1: 0.992248062015504 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_QDA_model.joblib ==
+== Training: guess_passwd.csv with model: DecisionTree ==
+== Done Training: guess_passwd.csv with model: DecisionTree, acc: 0.9997021530082546, loss: 0.00029784699174538335, f1: 0.9909443725743855 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_DecisionTree_model.joblib ==
+== Training: guess_passwd.csv with model: RandomForest ==
+== Done Training: guess_passwd.csv with model: RandomForest, acc: 0.9998298017190026, loss: 0.00017019828099736192, f1: 0.9947780678851175 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_RandomForest_model.joblib ==
+== Training: guess_passwd.csv with model: GradientBoosting ==
+== Done Training: guess_passwd.csv with model: GradientBoosting, acc: 0.9999574504297507, loss: 4.254957024934048e-05, f1: 0.9986996098829649 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_GradientBoosting_model.joblib ==
+== Training: guess_passwd.csv with model: KNeighbors ==
+== Done Training: guess_passwd.csv with model: KNeighbors, acc: 0.9993192068760105, loss: 0.0006807931239894477, f1: 0.9789473684210527 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_KNeighbors_model.joblib ==
+== Training: guess_passwd.csv with model: GaussianNB ==
+== Done Training: guess_passwd.csv with model: GaussianNB, acc: 0.7638924346864097, loss: 0.23610756531359034, f1: 0.12157669779958842 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_GaussianNB_model.joblib ==
+== Training: guess_passwd.csv with model: Perceptron ==
+== Done Training: guess_passwd.csv with model: Perceptron, acc: 0.988001021189686, loss: 0.011998978810314016, f1: 0.5017667844522969 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_Perceptron_model.joblib ==
+== Training: guess_passwd.csv with model: AdaBoost ==
+== Done Training: guess_passwd.csv with model: AdaBoost, acc: 0.999872351289252, loss: 0.00012764871074802145, f1: 0.9960988296488947 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/guess_passwd.csv/guess_passwd.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/mscan.csv ==
+0    77054
+1      996
+Name: label, dtype: int64
+== Training: mscan.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: mscan.csv with model: LogisticRegression, acc: 0.99837710869101, loss: 0.0016228913089899636, f1: 0.934931506849315 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_LogisticRegression_model.joblib ==
+== Training: mscan.csv with model: ExtraTrees ==
+== Done Training: mscan.csv with model: ExtraTrees, acc: 0.9999145846679479, loss: 8.541533205210335e-05, f1: 0.9966555183946488 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_ExtraTrees_model.joblib ==
+== Training: mscan.csv with model: Bagging ==
+== Done Training: mscan.csv with model: Bagging, acc: 0.9995302156737135, loss: 0.00046978432628656846, f1: 0.9813242784380305 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_Bagging_model.joblib ==
+== Training: mscan.csv with model: LDA ==
+== Done Training: mscan.csv with model: LDA, acc: 0.99004911381593, loss: 0.009950886184070041, f1: 0.7054361567635905 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_LDA_model.joblib ==
+== Training: mscan.csv with model: QDA ==
+== Done Training: mscan.csv with model: QDA, acc: 0.9611360239162929, loss: 0.03886397608370702, f1: 0.39414114513981363 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_QDA_model.joblib ==
+== Training: mscan.csv with model: DecisionTree ==
+== Done Training: mscan.csv with model: DecisionTree, acc: 0.9995729233397395, loss: 0.00042707666026051675, f1: 0.9829931972789115 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_DecisionTree_model.joblib ==
+== Training: mscan.csv with model: RandomForest ==
+== Done Training: mscan.csv with model: RandomForest, acc: 0.9998718770019218, loss: 0.00012812299807815503, f1: 0.9949748743718593 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_RandomForest_model.joblib ==
+== Training: mscan.csv with model: GradientBoosting ==
+== Done Training: mscan.csv with model: GradientBoosting, acc: 0.9997437540038437, loss: 0.00025624599615631005, f1: 0.9899665551839465 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_GradientBoosting_model.joblib ==
+== Training: mscan.csv with model: KNeighbors ==
+== Done Training: mscan.csv with model: KNeighbors, acc: 0.9996583386717915, loss: 0.0003416613282084134, f1: 0.9867549668874172 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_KNeighbors_model.joblib ==
+== Training: mscan.csv with model: GaussianNB ==
+== Done Training: mscan.csv with model: GaussianNB, acc: 0.6335682254964766, loss: 0.3664317745035234, f1: 0.06515580736543909 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_GaussianNB_model.joblib ==
+== Training: mscan.csv with model: Perceptron ==
+== Done Training: mscan.csv with model: Perceptron, acc: 0.9922272047832585, loss: 0.007772795216741405, f1: 0.7630208333333334 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_Perceptron_model.joblib ==
+== Training: mscan.csv with model: AdaBoost ==
+== Done Training: mscan.csv with model: AdaBoost, acc: 0.9998291693358958, loss: 0.0001708306641042067, f1: 0.9932885906040269 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mscan.csv/mscan.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/saint.csv ==
+0    77054
+1      319
+Name: label, dtype: int64
+== Training: saint.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: saint.csv with model: LogisticRegression, acc: 0.999138376701706, loss: 0.0008616232982939859, f1: 0.8913043478260869 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_LogisticRegression_model.joblib ==
+== Training: saint.csv with model: ExtraTrees ==
+== Done Training: saint.csv with model: ExtraTrees, acc: 0.9996984318455971, loss: 0.00030156815440289503, f1: 0.9621621621621621 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_ExtraTrees_model.joblib ==
+== Training: saint.csv with model: Bagging ==
+== Done Training: saint.csv with model: Bagging, acc: 0.9996122695157678, loss: 0.0003877304842322936, f1: 0.9518716577540107 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_Bagging_model.joblib ==
+== Training: saint.csv with model: LDA ==
+== Done Training: saint.csv with model: LDA, acc: 0.9979321040840944, loss: 0.002067895915905566, f1: 0.7241379310344829 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_LDA_model.joblib ==
+== Training: saint.csv with model: QDA ==
+== Done Training: saint.csv with model: QDA, acc: 0.9884973289677753, loss: 0.011502671032224712, f1: 0.4079822616407982 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_QDA_model.joblib ==
+== Training: saint.csv with model: DecisionTree ==
+== Done Training: saint.csv with model: DecisionTree, acc: 0.9996553506806825, loss: 0.0003446493193175943, f1: 0.9587628865979382 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_DecisionTree_model.joblib ==
+== Training: saint.csv with model: RandomForest ==
+== Done Training: saint.csv with model: RandomForest, acc: 0.9996553506806825, loss: 0.0003446493193175943, f1: 0.9565217391304348 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_RandomForest_model.joblib ==
+== Training: saint.csv with model: GradientBoosting ==
+== Done Training: saint.csv with model: GradientBoosting, acc: 0.9994830260210236, loss: 0.0005169739789763915, f1: 0.9361702127659574 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_GradientBoosting_model.joblib ==
+== Training: saint.csv with model: KNeighbors ==
+== Done Training: saint.csv with model: KNeighbors, acc: 0.9994830260210236, loss: 0.0005169739789763915, f1: 0.9347826086956522 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_KNeighbors_model.joblib ==
+== Training: saint.csv with model: GaussianNB ==
+== Done Training: saint.csv with model: GaussianNB, acc: 0.7414268481819748, loss: 0.25857315181802515, f1: 0.030997739748143363 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_GaussianNB_model.joblib ==
+== Training: saint.csv with model: Perceptron ==
+== Done Training: saint.csv with model: Perceptron, acc: 0.9980613475788386, loss: 0.0019386524211614682, f1: 0.697986577181208 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_Perceptron_model.joblib ==
+== Training: saint.csv with model: AdaBoost ==
+== Done Training: saint.csv with model: AdaBoost, acc: 0.9996122695157678, loss: 0.0003877304842322936, f1: 0.9518716577540107 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/saint.csv/saint.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/processtable.csv ==
+0    77054
+1      685
+Name: label, dtype: int64
+== Training: processtable.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: processtable.csv with model: LogisticRegression, acc: 0.9993568304605094, loss: 0.0006431695394906097, f1: 0.9625935162094763 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_LogisticRegression_model.joblib ==
+== Training: processtable.csv with model: ExtraTrees ==
+== Done Training: processtable.csv with model: ExtraTrees, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_ExtraTrees_model.joblib ==
+== Training: processtable.csv with model: Bagging ==
+== Done Training: processtable.csv with model: Bagging, acc: 0.9999142440614013, loss: 8.575593859874797e-05, f1: 0.9951690821256038 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_Bagging_model.joblib ==
+== Training: processtable.csv with model: LDA ==
+== Done Training: processtable.csv with model: LDA, acc: 0.9947688877454763, loss: 0.005231112254523626, f1: 0.7626459143968872 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_LDA_model.joblib ==
+== Training: processtable.csv with model: QDA ==
+== Done Training: processtable.csv with model: QDA, acc: 0.9999142440614013, loss: 8.575593859874797e-05, f1: 0.9951219512195122 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_QDA_model.joblib ==
+== Training: processtable.csv with model: DecisionTree ==
+== Done Training: processtable.csv with model: DecisionTree, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_DecisionTree_model.joblib ==
+== Training: processtable.csv with model: RandomForest ==
+== Done Training: processtable.csv with model: RandomForest, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_RandomForest_model.joblib ==
+== Training: processtable.csv with model: GradientBoosting ==
+== Done Training: processtable.csv with model: GradientBoosting, acc: 0.9999571220307006, loss: 4.2877969299373983e-05, f1: 0.9975786924939467 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_GradientBoosting_model.joblib ==
+== Training: processtable.csv with model: KNeighbors ==
+== Done Training: processtable.csv with model: KNeighbors, acc: 0.9998284881228025, loss: 0.00017151187719749593, f1: 0.9902439024390244 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_KNeighbors_model.joblib ==
+== Training: processtable.csv with model: GaussianNB ==
+== Done Training: processtable.csv with model: GaussianNB, acc: 0.9999571220307006, loss: 4.2877969299373983e-05, f1: 0.9975669099756691 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_GaussianNB_model.joblib ==
+== Training: processtable.csv with model: Perceptron ==
+== Done Training: processtable.csv with model: Perceptron, acc: 0.9999142440614013, loss: 8.575593859874797e-05, f1: 0.9951456310679612 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_Perceptron_model.joblib ==
+== Training: processtable.csv with model: AdaBoost ==
+== Done Training: processtable.csv with model: AdaBoost, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/processtable.csv/processtable.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/mailbomb.csv ==
+0    77054
+1      293
+Name: label, dtype: int64
+== Training: mailbomb.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: mailbomb.csv with model: LogisticRegression, acc: 0.9967248437836673, loss: 0.003275156216332687, f1: 0.4328358208955224 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_LogisticRegression_model.joblib ==
+== Training: mailbomb.csv with model: ExtraTrees ==
+== Done Training: mailbomb.csv with model: ExtraTrees, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_ExtraTrees_model.joblib ==
+== Training: mailbomb.csv with model: Bagging ==
+== Done Training: mailbomb.csv with model: Bagging, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_Bagging_model.joblib ==
+== Training: mailbomb.csv with model: LDA ==
+== Done Training: mailbomb.csv with model: LDA, acc: 0.9898297780650722, loss: 0.010170221934927818, f1: 0.30177514792899407 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_LDA_model.joblib ==
+== Training: mailbomb.csv with model: QDA ==
+== Done Training: mailbomb.csv with model: QDA, acc: 0.9999138116785176, loss: 8.618832148243914e-05, f1: 0.9885057471264368 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_QDA_model.joblib ==
+== Training: mailbomb.csv with model: DecisionTree ==
+== Done Training: mailbomb.csv with model: DecisionTree, acc: 0.9998707175177763, loss: 0.0001292824822236587, f1: 0.9832402234636871 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_DecisionTree_model.joblib ==
+== Training: mailbomb.csv with model: RandomForest ==
+== Done Training: mailbomb.csv with model: RandomForest, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_RandomForest_model.joblib ==
+== Training: mailbomb.csv with model: GradientBoosting ==
+== Done Training: mailbomb.csv with model: GradientBoosting, acc: 0.9996552467140702, loss: 0.00034475328592975654, f1: 0.9565217391304348 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_GradientBoosting_model.joblib ==
+== Training: mailbomb.csv with model: KNeighbors ==
+== Done Training: mailbomb.csv with model: KNeighbors, acc: 0.9998276233570351, loss: 0.00017237664296487827, f1: 0.9775280898876404 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_KNeighbors_model.joblib ==
+== Training: mailbomb.csv with model: GaussianNB ==
+== Done Training: mailbomb.csv with model: GaussianNB, acc: 0.9987502693385046, loss: 0.0012497306614953673, f1: 0.8585365853658536 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_GaussianNB_model.joblib ==
+== Training: mailbomb.csv with model: Perceptron ==
+== Done Training: mailbomb.csv with model: Perceptron, acc: 0.9985778926955398, loss: 0.0014221073044602456, f1: 0.8341708542713568 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_Perceptron_model.joblib ==
+== Training: mailbomb.csv with model: AdaBoost ==
+== Done Training: mailbomb.csv with model: AdaBoost, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/mailbomb.csv/mailbomb.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/back.csv ==
+0    77054
+1     1315
+Name: label, dtype: int64
+== Training: back.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: back.csv with model: LogisticRegression, acc: 0.9851558844796053, loss: 0.01484411552039471, f1: 0.2804123711340206 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_LogisticRegression_model.joblib ==
+== Training: back.csv with model: ExtraTrees ==
+== Done Training: back.csv with model: ExtraTrees, acc: 0.9999149334354132, loss: 8.506656458678916e-05, f1: 0.9974619289340101 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_ExtraTrees_model.joblib ==
+== Training: back.csv with model: Bagging ==
+== Done Training: back.csv with model: Bagging, acc: 0.9999149334354132, loss: 8.506656458678916e-05, f1: 0.9974619289340101 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_Bagging_model.joblib ==
+== Training: back.csv with model: LDA ==
+== Done Training: back.csv with model: LDA, acc: 0.9807749564033856, loss: 0.019225043596614352, f1: 0.4731934731934732 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_LDA_model.joblib ==
+== Training: back.csv with model: QDA ==
+== Done Training: back.csv with model: QDA, acc: 0.8100888945599932, loss: 0.1899111054400068, f1: 0.14903754526396035 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_QDA_model.joblib ==
+== Training: back.csv with model: DecisionTree ==
+== Done Training: back.csv with model: DecisionTree, acc: 0.999787333588533, loss: 0.0002126664114669729, f1: 0.9936628643852978 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_DecisionTree_model.joblib ==
+== Training: back.csv with model: RandomForest ==
+== Done Training: back.csv with model: RandomForest, acc: 0.9999149334354132, loss: 8.506656458678916e-05, f1: 0.9974619289340101 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_RandomForest_model.joblib ==
+== Training: back.csv with model: GradientBoosting ==
+== Done Training: back.csv with model: GradientBoosting, acc: 0.9999574667177066, loss: 4.253328229339458e-05, f1: 0.9987325728770595 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_GradientBoosting_model.joblib ==
+== Training: back.csv with model: KNeighbors ==
+== Done Training: back.csv with model: KNeighbors, acc: 0.9969376036748756, loss: 0.00306239632512441, f1: 0.9090909090909091 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_KNeighbors_model.joblib ==
+== Training: back.csv with model: GaussianNB ==
+== Done Training: back.csv with model: GaussianNB, acc: 0.858576836374463, loss: 0.14142316362553697, f1: 0.19080068143100512 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_GaussianNB_model.joblib ==
+== Training: back.csv with model: Perceptron ==
+== Done Training: back.csv with model: Perceptron, acc: 0.9950661392539663, loss: 0.004933860746033771, f1: 0.8663594470046083 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_Perceptron_model.joblib ==
+== Training: back.csv with model: AdaBoost ==
+== Done Training: back.csv with model: AdaBoost, acc: 0.9999574667177066, loss: 4.253328229339458e-05, f1: 0.9987325728770595 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/back.csv/back.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/portsweep.csv ==
+0    77054
+1     3088
+Name: label, dtype: int64
+== Training: portsweep.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: portsweep.csv with model: LogisticRegression, acc: 0.9978788004824689, loss: 0.0021211995175310903, f1: 0.9726541554959787 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_LogisticRegression_model.joblib ==
+== Training: portsweep.csv with model: ExtraTrees ==
+== Done Training: portsweep.csv with model: ExtraTrees, acc: 0.9997920392629871, loss: 0.00020796073701285196, f1: 0.9973016729627631 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_ExtraTrees_model.joblib ==
+== Training: portsweep.csv with model: Bagging ==
+== Done Training: portsweep.csv with model: Bagging, acc: 0.9993761177889614, loss: 0.000623882211038556, f1: 0.9918962722852511 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_Bagging_model.joblib ==
+== Training: portsweep.csv with model: LDA ==
+== Done Training: portsweep.csv with model: LDA, acc: 0.994676205132471, loss: 0.00532379486752901, f1: 0.9334027055150884 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_LDA_model.joblib ==
+== Training: portsweep.csv with model: QDA ==
+== Done Training: portsweep.csv with model: QDA, acc: 0.9930957035311733, loss: 0.006904296468826686, f1: 0.917412935323383 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_QDA_model.joblib ==
+== Training: portsweep.csv with model: DecisionTree ==
+== Done Training: portsweep.csv with model: DecisionTree, acc: 0.9993761177889614, loss: 0.000623882211038556, f1: 0.9919050188882893 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_DecisionTree_model.joblib ==
+== Training: portsweep.csv with model: RandomForest ==
+== Done Training: portsweep.csv with model: RandomForest, acc: 0.999708854968182, loss: 0.00029114503181799277, f1: 0.9962182603997839 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_RandomForest_model.joblib ==
+== Training: portsweep.csv with model: GradientBoosting ==
+== Done Training: portsweep.csv with model: GradientBoosting, acc: 0.9992097491993511, loss: 0.0007902508006488375, f1: 0.9897574123989218 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_GradientBoosting_model.joblib ==
+== Training: portsweep.csv with model: KNeighbors ==
+== Done Training: portsweep.csv with model: KNeighbors, acc: 0.999126564904546, loss: 0.0008734350954539783, f1: 0.9886792452830189 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_KNeighbors_model.joblib ==
+== Training: portsweep.csv with model: GaussianNB ==
+== Done Training: portsweep.csv with model: GaussianNB, acc: 0.978122530466248, loss: 0.02187746953375203, f1: 0.7780590717299578 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_GaussianNB_model.joblib ==
+== Training: portsweep.csv with model: Perceptron ==
+== Done Training: portsweep.csv with model: Perceptron, acc: 0.9982531298090921, loss: 0.0017468701909079565, f1: 0.9776119402985075 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_Perceptron_model.joblib ==
+== Training: portsweep.csv with model: AdaBoost ==
+== Done Training: portsweep.csv with model: AdaBoost, acc: 0.9993345256415589, loss: 0.0006654743584411263, f1: 0.9913700107874865 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/portsweep.csv/portsweep.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/phf.csv ==
+0    77054
+1        6
+Name: label, dtype: int64
+== Training: phf.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: phf.csv with model: LogisticRegression, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_LogisticRegression_model.joblib ==
+== Training: phf.csv with model: ExtraTrees ==
+== Done Training: phf.csv with model: ExtraTrees, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.6666666666666666 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_ExtraTrees_model.joblib ==
+== Training: phf.csv with model: Bagging ==
+== Done Training: phf.csv with model: Bagging, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.6666666666666666 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_Bagging_model.joblib ==
+== Training: phf.csv with model: LDA ==
+== Done Training: phf.csv with model: LDA, acc: 0.9987888225625055, loss: 0.001211177437494593, f1: 0.125 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_LDA_model.joblib ==
+== Training: phf.csv with model: QDA ==
+== Done Training: phf.csv with model: QDA, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_QDA_model.joblib ==
+== Training: phf.csv with model: DecisionTree ==
+== Done Training: phf.csv with model: DecisionTree, acc: 0.9998702309888399, loss: 0.00012976901116013495, f1: 0.5714285714285715 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_DecisionTree_model.joblib ==
+== Training: phf.csv with model: RandomForest ==
+== Done Training: phf.csv with model: RandomForest, acc: 0.9999567436629466, loss: 4.325633705337832e-05, f1: 0.6666666666666666 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_RandomForest_model.joblib ==
+== Training: phf.csv with model: GradientBoosting ==
+== Done Training: phf.csv with model: GradientBoosting, acc: 0.9998269746517865, loss: 0.00017302534821351327, f1: 0.5 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_GradientBoosting_model.joblib ==
+== Training: phf.csv with model: KNeighbors ==
+== Done Training: phf.csv with model: KNeighbors, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_KNeighbors_model.joblib ==
+== Training: phf.csv with model: GaussianNB ==
+== Done Training: phf.csv with model: GaussianNB, acc: 0.9873691495804136, loss: 0.012630850419586469, f1: 0.006802721088435374 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_GaussianNB_model.joblib ==
+== Training: phf.csv with model: Perceptron ==
+== Done Training: phf.csv with model: Perceptron, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_Perceptron_model.joblib ==
+== Training: phf.csv with model: AdaBoost ==
+== Done Training: phf.csv with model: AdaBoost, acc: 0.9999134873258932, loss: 8.651267410675664e-05, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/phf.csv/phf.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/pod.csv ==
+0    77054
+1      242
+Name: label, dtype: int64
+== Training: pod.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: pod.csv with model: LogisticRegression, acc: 0.9996981327353487, loss: 0.0003018672646513433, f1: 0.9523809523809523 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_LogisticRegression_model.joblib ==
+== Training: pod.csv with model: ExtraTrees ==
+== Done Training: pod.csv with model: ExtraTrees, acc: 0.9998706283151494, loss: 0.0001293716848505757, f1: 0.9793103448275863 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_ExtraTrees_model.joblib ==
+== Training: pod.csv with model: Bagging ==
+== Done Training: pod.csv with model: Bagging, acc: 0.9999568761050498, loss: 4.31238949501919e-05, f1: 0.993103448275862 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_Bagging_model.joblib ==
+== Training: pod.csv with model: LDA ==
+== Done Training: pod.csv with model: LDA, acc: 0.9990081504161455, loss: 0.0009918495838544138, f1: 0.8588957055214723 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_LDA_model.joblib ==
+== Training: pod.csv with model: QDA ==
+== Done Training: pod.csv with model: QDA, acc: 0.9997412566302989, loss: 0.0002587433697011514, f1: 0.9600000000000001 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_QDA_model.joblib ==
+== Training: pod.csv with model: DecisionTree ==
+== Done Training: pod.csv with model: DecisionTree, acc: 0.9998706283151494, loss: 0.0001293716848505757, f1: 0.979591836734694 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_DecisionTree_model.joblib ==
+== Training: pod.csv with model: RandomForest ==
+== Done Training: pod.csv with model: RandomForest, acc: 0.9998706283151494, loss: 0.0001293716848505757, f1: 0.9793103448275863 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_RandomForest_model.joblib ==
+== Training: pod.csv with model: GradientBoosting ==
+== Done Training: pod.csv with model: GradientBoosting, acc: 0.9999137522100996, loss: 8.62477899003838e-05, f1: 0.9861111111111112 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_GradientBoosting_model.joblib ==
+== Training: pod.csv with model: KNeighbors ==
+== Done Training: pod.csv with model: KNeighbors, acc: 0.9997412566302989, loss: 0.0002587433697011514, f1: 0.9600000000000001 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_KNeighbors_model.joblib ==
+== Training: pod.csv with model: GaussianNB ==
+== Done Training: pod.csv with model: GaussianNB, acc: 0.9919358316443141, loss: 0.008064168355685885, f1: 0.4384384384384385 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_GaussianNB_model.joblib ==
+== Training: pod.csv with model: Perceptron ==
+== Done Training: pod.csv with model: Perceptron, acc: 0.9996550088403985, loss: 0.0003449911596015352, f1: 0.9459459459459458 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_Perceptron_model.joblib ==
+== Training: pod.csv with model: AdaBoost ==
+== Done Training: pod.csv with model: AdaBoost, acc: 0.9999137522100996, loss: 8.62477899003838e-05, f1: 0.9861111111111112 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/pod.csv/pod.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/xterm.csv ==
+0    77054
+1       13
+Name: label, dtype: int64
+== Training: xterm.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: xterm.csv with model: LogisticRegression, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_LogisticRegression_model.joblib ==
+== Training: xterm.csv with model: ExtraTrees ==
+== Done Training: xterm.csv with model: ExtraTrees, acc: 0.9999134985511007, loss: 8.650144889926907e-05, f1: 0.6666666666666666 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_ExtraTrees_model.joblib ==
+== Training: xterm.csv with model: Bagging ==
+== Done Training: xterm.csv with model: Bagging, acc: 0.9998702478266511, loss: 0.0001297521733489036, f1: 0.4 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_Bagging_model.joblib ==
+== Training: xterm.csv with model: LDA ==
+== Done Training: xterm.csv with model: LDA, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.5 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_LDA_model.joblib ==
+== Training: xterm.csv with model: QDA ==
+== Done Training: xterm.csv with model: QDA, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_QDA_model.joblib ==
+== Training: xterm.csv with model: DecisionTree ==
+== Done Training: xterm.csv with model: DecisionTree, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.6666666666666666 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_DecisionTree_model.joblib ==
+== Training: xterm.csv with model: RandomForest ==
+== Done Training: xterm.csv with model: RandomForest, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_RandomForest_model.joblib ==
+== Training: xterm.csv with model: GradientBoosting ==
+== Done Training: xterm.csv with model: GradientBoosting, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.6666666666666666 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_GradientBoosting_model.joblib ==
+== Training: xterm.csv with model: KNeighbors ==
+== Done Training: xterm.csv with model: KNeighbors, acc: 0.9998269971022015, loss: 0.00017300289779853813, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_KNeighbors_model.joblib ==
+== Training: xterm.csv with model: GaussianNB ==
+== Done Training: xterm.csv with model: GaussianNB, acc: 0.8464599282037975, loss: 0.15354007179620258, f1: 0.0022484541877459247 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_GaussianNB_model.joblib ==
+== Training: xterm.csv with model: Perceptron ==
+== Done Training: xterm.csv with model: Perceptron, acc: 0.9999134985511007, loss: 8.650144889926907e-05, f1: 0.6666666666666666 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_Perceptron_model.joblib ==
+== Training: xterm.csv with model: AdaBoost ==
+== Done Training: xterm.csv with model: AdaBoost, acc: 0.9998702478266511, loss: 0.0001297521733489036, f1: 0.6666666666666665 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/xterm.csv/xterm.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/httptunnel.csv ==
+0    77054
+1      133
+Name: label, dtype: int64
+== Training: httptunnel.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: httptunnel.csv with model: LogisticRegression, acc: 0.9991795137539405, loss: 0.0008204862460595068, f1: 0.7466666666666666 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_LogisticRegression_model.joblib ==
+== Training: httptunnel.csv with model: ExtraTrees ==
+== Done Training: httptunnel.csv with model: ExtraTrees, acc: 0.9998704495400959, loss: 0.00012955045990413266, f1: 0.961038961038961 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_ExtraTrees_model.joblib ==
+== Training: httptunnel.csv with model: Bagging ==
+== Done Training: httptunnel.csv with model: Bagging, acc: 0.9998704495400959, loss: 0.00012955045990413266, f1: 0.961038961038961 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_Bagging_model.joblib ==
+== Training: httptunnel.csv with model: LDA ==
+== Done Training: httptunnel.csv with model: LDA, acc: 0.9955521008766248, loss: 0.0044478991233752214, f1: 0.3905325443786982 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_LDA_model.joblib ==
+== Training: httptunnel.csv with model: QDA ==
+== Done Training: httptunnel.csv with model: QDA, acc: 0.9998704495400959, loss: 0.00012955045990413266, f1: 0.961038961038961 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_QDA_model.joblib ==
+== Training: httptunnel.csv with model: DecisionTree ==
+== Done Training: httptunnel.csv with model: DecisionTree, acc: 0.9997408990801917, loss: 0.0002591009198082653, f1: 0.9230769230769231 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_DecisionTree_model.joblib ==
+== Training: httptunnel.csv with model: RandomForest ==
+== Done Training: httptunnel.csv with model: RandomForest, acc: 0.9998272660534612, loss: 0.00017273394653884354, f1: 0.9473684210526316 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_RandomForest_model.joblib ==
+== Training: httptunnel.csv with model: GradientBoosting ==
+== Done Training: httptunnel.csv with model: GradientBoosting, acc: 0.9995681651336529, loss: 0.0004318348663471089, f1: 0.8780487804878048 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_GradientBoosting_model.joblib ==
+== Training: httptunnel.csv with model: KNeighbors ==
+== Done Training: httptunnel.csv with model: KNeighbors, acc: 0.9996545321069223, loss: 0.00034546789307768707, f1: 0.9024390243902439 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_KNeighbors_model.joblib ==
+== Training: httptunnel.csv with model: GaussianNB ==
+== Done Training: httptunnel.csv with model: GaussianNB, acc: 0.9923133393790214, loss: 0.007686660620978538, f1: 0.2992125984251969 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_GaussianNB_model.joblib ==
+== Training: httptunnel.csv with model: Perceptron ==
+== Done Training: httptunnel.csv with model: Perceptron, acc: 0.9981431100747075, loss: 0.001856889925292568, f1: 0.6324786324786325 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_Perceptron_model.joblib ==
+== Training: httptunnel.csv with model: AdaBoost ==
+== Done Training: httptunnel.csv with model: AdaBoost, acc: 0.9999136330267305, loss: 8.636697326942177e-05, f1: 0.9743589743589743 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/httptunnel.csv/httptunnel.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/buffer_overflow.csv ==
+0    77054
+1       50
+Name: label, dtype: int64
+== Training: buffer_overflow.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: buffer_overflow.csv with model: LogisticRegression, acc: 0.9993947777969912, loss: 0.0006052222030088189, f1: 0.3 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_LogisticRegression_model.joblib ==
+== Training: buffer_overflow.csv with model: ExtraTrees ==
+== Done Training: buffer_overflow.csv with model: ExtraTrees, acc: 0.9997406190558533, loss: 0.0002593809441466367, f1: 0.7692307692307692 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_ExtraTrees_model.joblib ==
+== Training: buffer_overflow.csv with model: Bagging ==
+== Done Training: buffer_overflow.csv with model: Bagging, acc: 0.9997406190558533, loss: 0.0002593809441466367, f1: 0.7857142857142856 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_Bagging_model.joblib ==
+== Training: buffer_overflow.csv with model: LDA ==
+== Done Training: buffer_overflow.csv with model: LDA, acc: 0.998486944492478, loss: 0.0015130555075220473, f1: 0.36363636363636365 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_LDA_model.joblib ==
+== Training: buffer_overflow.csv with model: QDA ==
+== Done Training: buffer_overflow.csv with model: QDA, acc: 0.877658654677503, loss: 0.12234134532249698, f1: 0.006320224719101123 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_QDA_model.joblib ==
+== Training: buffer_overflow.csv with model: DecisionTree ==
+== Done Training: buffer_overflow.csv with model: DecisionTree, acc: 0.9995244682690645, loss: 0.0004755317309355006, f1: 0.5925925925925926 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_DecisionTree_model.joblib ==
+== Training: buffer_overflow.csv with model: RandomForest ==
+== Done Training: buffer_overflow.csv with model: RandomForest, acc: 0.9996541587411378, loss: 0.0003458412588621823, f1: 0.6363636363636364 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_RandomForest_model.joblib ==
+== Training: buffer_overflow.csv with model: GradientBoosting ==
+== Done Training: buffer_overflow.csv with model: GradientBoosting, acc: 0.9995244682690645, loss: 0.0004755317309355006, f1: 0.47619047619047616 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_GradientBoosting_model.joblib ==
+== Training: buffer_overflow.csv with model: KNeighbors ==
+== Done Training: buffer_overflow.csv with model: KNeighbors, acc: 0.9995244682690645, loss: 0.0004755317309355006, f1: 0.56 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_KNeighbors_model.joblib ==
+== Training: buffer_overflow.csv with model: GaussianNB ==
+== Done Training: buffer_overflow.csv with model: GaussianNB, acc: 0.7078073664188138, loss: 0.29219263358118625, f1: 0.0035382574082264487 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_GaussianNB_model.joblib ==
+== Training: buffer_overflow.csv with model: Perceptron ==
+== Done Training: buffer_overflow.csv with model: Perceptron, acc: 0.9993515476396334, loss: 0.0006484523603665917, f1: 0.11764705882352941 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_Perceptron_model.joblib ==
+== Training: buffer_overflow.csv with model: AdaBoost ==
+== Done Training: buffer_overflow.csv with model: AdaBoost, acc: 0.9996541587411378, loss: 0.0003458412588621823, f1: 0.7142857142857142 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/buffer_overflow.csv/buffer_overflow.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/worm.csv ==
+0    77054
+1        2
+Name: label, dtype: int64
+== Training: worm.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: worm.csv with model: LogisticRegression, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_LogisticRegression_model.joblib ==
+== Training: worm.csv with model: ExtraTrees ==
+== Done Training: worm.csv with model: ExtraTrees, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_ExtraTrees_model.joblib ==
+== Training: worm.csv with model: Bagging ==
+== Done Training: worm.csv with model: Bagging, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_Bagging_model.joblib ==
+== Training: worm.csv with model: LDA ==
+== Done Training: worm.csv with model: LDA, acc: 0.9995241597093049, loss: 0.0004758402906951594, f1: 0.0 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_LDA_model.joblib ==
+== Training: worm.csv with model: QDA ==
+Error : y has only 1 sample in class 1, covariance is ill defined.
+== Training: worm.csv with model: DecisionTree ==
+== Done Training: worm.csv with model: DecisionTree, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_DecisionTree_model.joblib ==
+== Training: worm.csv with model: RandomForest ==
+== Done Training: worm.csv with model: RandomForest, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_RandomForest_model.joblib ==
+== Training: worm.csv with model: GradientBoosting ==
+== Done Training: worm.csv with model: GradientBoosting, acc: 0.99991348358351, loss: 8.651641649002898e-05, f1: 0.5 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_GradientBoosting_model.joblib ==
+== Training: worm.csv with model: KNeighbors ==
+== Done Training: worm.csv with model: KNeighbors, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_KNeighbors_model.joblib ==
+== Training: worm.csv with model: GaussianNB ==
+== Done Training: worm.csv with model: GaussianNB, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_GaussianNB_model.joblib ==
+== Training: worm.csv with model: Perceptron ==
+== Done Training: worm.csv with model: Perceptron, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_Perceptron_model.joblib ==
+== Training: worm.csv with model: AdaBoost ==
+== Done Training: worm.csv with model: AdaBoost, acc: 0.99991348358351, loss: 8.651641649002898e-05, f1: 0.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/worm.csv/worm.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/multihop.csv ==
+0    77054
+1       25
+Name: label, dtype: int64
+== Training: multihop.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: multihop.csv with model: LogisticRegression, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_LogisticRegression_model.joblib ==
+== Training: multihop.csv with model: ExtraTrees ==
+== Done Training: multihop.csv with model: ExtraTrees, acc: 0.9996107939802802, loss: 0.0003892060197197717, f1: 0.3076923076923077 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_ExtraTrees_model.joblib ==
+== Training: multihop.csv with model: Bagging ==
+== Done Training: multihop.csv with model: Bagging, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_Bagging_model.joblib ==
+== Training: multihop.csv with model: LDA ==
+== Done Training: multihop.csv with model: LDA, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.0 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_LDA_model.joblib ==
+== Training: multihop.csv with model: QDA ==
+== Done Training: multihop.csv with model: QDA, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.0 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_QDA_model.joblib ==
+== Training: multihop.csv with model: DecisionTree ==
+== Done Training: multihop.csv with model: DecisionTree, acc: 0.9996107939802802, loss: 0.0003892060197197717, f1: 0.47058823529411764 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_DecisionTree_model.joblib ==
+== Training: multihop.csv with model: RandomForest ==
+== Done Training: multihop.csv with model: RandomForest, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_RandomForest_model.joblib ==
+== Training: multihop.csv with model: GradientBoosting ==
+== Done Training: multihop.csv with model: GradientBoosting, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.0 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_GradientBoosting_model.joblib ==
+== Training: multihop.csv with model: KNeighbors ==
+== Done Training: multihop.csv with model: KNeighbors, acc: 0.9996107939802802, loss: 0.0003892060197197717, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_KNeighbors_model.joblib ==
+== Training: multihop.csv with model: GaussianNB ==
+== Done Training: multihop.csv with model: GaussianNB, acc: 0.8928386092371562, loss: 0.1071613907628438, f1: 0.003218020917135961 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_GaussianNB_model.joblib ==
+== Training: multihop.csv with model: Perceptron ==
+== Done Training: multihop.csv with model: Perceptron, acc: 0.9996540390935824, loss: 0.0003459609064175748, f1: 0.0 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_Perceptron_model.joblib ==
+== Training: multihop.csv with model: AdaBoost ==
+== Done Training: multihop.csv with model: AdaBoost, acc: 0.9996972842068846, loss: 0.00030271579311537796, f1: 0.36363636363636365 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/multihop.csv/multihop.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/warezmaster.csv ==
+0    77054
+1      964
+Name: label, dtype: int64
+== Training: warezmaster.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: warezmaster.csv with model: LogisticRegression, acc: 0.9907288729385627, loss: 0.009271127061437238, f1: 0.49417249417249415 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_LogisticRegression_model.joblib ==
+== Training: warezmaster.csv with model: ExtraTrees ==
+== Done Training: warezmaster.csv with model: ExtraTrees, acc: 0.9994873109459113, loss: 0.0005126890540886952, f1: 0.9788732394366197 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_ExtraTrees_model.joblib ==
+== Training: warezmaster.csv with model: Bagging ==
+== Done Training: warezmaster.csv with model: Bagging, acc: 0.9996154832094335, loss: 0.00038451679056652143, f1: 0.9842381786339756 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_Bagging_model.joblib ==
+== Training: warezmaster.csv with model: LDA ==
+== Done Training: warezmaster.csv with model: LDA, acc: 0.9880372554045971, loss: 0.011962744595402888, f1: 0.5155709342560554 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_LDA_model.joblib ==
+== Training: warezmaster.csv with model: QDA ==
+== Done Training: warezmaster.csv with model: QDA, acc: 0.9753909254037426, loss: 0.02460907459625737, f1: 0.49738219895287955 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_QDA_model.joblib ==
+== Training: warezmaster.csv with model: DecisionTree ==
+== Done Training: warezmaster.csv with model: DecisionTree, acc: 0.9994445868580706, loss: 0.0005554131419294198, f1: 0.9775474956822108 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_DecisionTree_model.joblib ==
+== Training: warezmaster.csv with model: RandomForest ==
+== Done Training: warezmaster.csv with model: RandomForest, acc: 0.9993591386823891, loss: 0.000640861317610869, f1: 0.9734513274336284 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_RandomForest_model.joblib ==
+== Training: warezmaster.csv with model: GradientBoosting ==
+== Done Training: warezmaster.csv with model: GradientBoosting, acc: 0.9994018627702299, loss: 0.0005981372297701444, f1: 0.9754385964912281 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_GradientBoosting_model.joblib ==
+== Training: warezmaster.csv with model: KNeighbors ==
+== Done Training: warezmaster.csv with model: KNeighbors, acc: 0.9976501751687602, loss: 0.002349824831239853, f1: 0.9033391915641475 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_KNeighbors_model.joblib ==
+== Training: warezmaster.csv with model: GaussianNB ==
+== Done Training: warezmaster.csv with model: GaussianNB, acc: 0.8447406647868068, loss: 0.1552593352131932, f1: 0.1359961959106039 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_GaussianNB_model.joblib ==
+== Training: warezmaster.csv with model: Perceptron ==
+== Done Training: warezmaster.csv with model: Perceptron, acc: 0.987738186789712, loss: 0.01226181321028796, f1: 0.11692307692307692 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_Perceptron_model.joblib ==
+== Training: warezmaster.csv with model: AdaBoost ==
+== Done Training: warezmaster.csv with model: AdaBoost, acc: 0.9991455182431855, loss: 0.000854481756814492, f1: 0.9647887323943662 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezmaster.csv/warezmaster.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/neptune.csv ==
+0    77054
+1    45871
+Name: label, dtype: int64
+== Training: neptune.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: neptune.csv with model: LogisticRegression, acc: 0.9993763219263517, loss: 0.0006236780736482456, f1: 0.9991646387970798 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_LogisticRegression_model.joblib ==
+== Training: neptune.csv with model: ExtraTrees ==
+== Done Training: neptune.csv with model: ExtraTrees, acc: 0.9999728835620153, loss: 2.711643798470633e-05, f1: 0.9999636641110425 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_ExtraTrees_model.joblib ==
+== Training: neptune.csv with model: Bagging ==
+== Done Training: neptune.csv with model: Bagging, acc: 0.9997017191821682, loss: 0.00029828081783176964, f1: 0.9996003923420641 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_Bagging_model.joblib ==
+== Training: neptune.csv with model: LDA ==
+== Done Training: neptune.csv with model: LDA, acc: 0.9970171918216824, loss: 0.002982808178317696, f1: 0.9960002908879354 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_LDA_model.joblib ==
+== Training: neptune.csv with model: QDA ==
+== Done Training: neptune.csv with model: QDA, acc: 0.9929768425619611, loss: 0.007023157438038939, f1: 0.9906717089861335 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_QDA_model.joblib ==
+== Training: neptune.csv with model: DecisionTree ==
+== Done Training: neptune.csv with model: DecisionTree, acc: 0.9996474863061988, loss: 0.0003525136938011823, f1: 0.9995278050197958 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_DecisionTree_model.joblib ==
+== Training: neptune.csv with model: RandomForest ==
+== Done Training: neptune.csv with model: RandomForest, acc: 0.9998915342480612, loss: 0.00010846575193882532, f1: 0.9998546617251654 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_RandomForest_model.joblib ==
+== Training: neptune.csv with model: GradientBoosting ==
+== Done Training: neptune.csv with model: GradientBoosting, acc: 0.9996203698682141, loss: 0.0003796301317858886, f1: 0.9994914638576099 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_GradientBoosting_model.joblib ==
+== Training: neptune.csv with model: KNeighbors ==
+== Done Training: neptune.csv with model: KNeighbors, acc: 0.9998915342480612, loss: 0.00010846575193882532, f1: 0.9998546617251654 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_KNeighbors_model.joblib ==
+== Training: neptune.csv with model: GaussianNB ==
+== Done Training: neptune.csv with model: GaussianNB, acc: 0.9884755138564998, loss: 0.01152448614350019, f1: 0.984774119585856 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_GaussianNB_model.joblib ==
+== Training: neptune.csv with model: Perceptron ==
+== Done Training: neptune.csv with model: Perceptron, acc: 0.9994576712403058, loss: 0.0005423287596941266, f1: 0.9992728330424665 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_Perceptron_model.joblib ==
+== Training: neptune.csv with model: AdaBoost ==
+== Done Training: neptune.csv with model: AdaBoost, acc: 0.999810184934107, loss: 0.0001898150658929443, f1: 0.9997456857402361 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/neptune.csv/neptune.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/sqlattack.csv ==
+0    77054
+1        2
+Name: label, dtype: int64
+== Training: sqlattack.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: sqlattack.csv with model: LogisticRegression, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_LogisticRegression_model.joblib ==
+== Training: sqlattack.csv with model: ExtraTrees ==
+== Done Training: sqlattack.csv with model: ExtraTrees, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_ExtraTrees_model.joblib ==
+== Training: sqlattack.csv with model: Bagging ==
+== Done Training: sqlattack.csv with model: Bagging, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_Bagging_model.joblib ==
+== Training: sqlattack.csv with model: LDA ==
+== Done Training: sqlattack.csv with model: LDA, acc: 0.99991348358351, loss: 8.651641649002898e-05, f1: 0.5 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_LDA_model.joblib ==
+== Training: sqlattack.csv with model: QDA ==
+Error : y has only 1 sample in class 1, covariance is ill defined.
+== Training: sqlattack.csv with model: DecisionTree ==
+== Done Training: sqlattack.csv with model: DecisionTree, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_DecisionTree_model.joblib ==
+== Training: sqlattack.csv with model: RandomForest ==
+== Done Training: sqlattack.csv with model: RandomForest, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_RandomForest_model.joblib ==
+== Training: sqlattack.csv with model: GradientBoosting ==
+== Done Training: sqlattack.csv with model: GradientBoosting, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_GradientBoosting_model.joblib ==
+== Training: sqlattack.csv with model: KNeighbors ==
+== Done Training: sqlattack.csv with model: KNeighbors, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_KNeighbors_model.joblib ==
+== Training: sqlattack.csv with model: GaussianNB ==
+== Done Training: sqlattack.csv with model: GaussianNB, acc: 0.999956741791755, loss: 4.325820824501449e-05, f1: 0.0 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_GaussianNB_model.joblib ==
+== Training: sqlattack.csv with model: Perceptron ==
+== Done Training: sqlattack.csv with model: Perceptron, acc: 0.9996539343340399, loss: 0.00034606566596011594, f1: 0.19999999999999998 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_Perceptron_model.joblib ==
+== Training: sqlattack.csv with model: AdaBoost ==
+== Done Training: sqlattack.csv with model: AdaBoost, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/sqlattack.csv/sqlattack.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/warezclient.csv ==
+0    77054
+1      890
+Name: label, dtype: int64
+== Training: warezclient.csv with model: LogisticRegression ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: warezclient.csv with model: LogisticRegression, acc: 0.9926873075607253, loss: 0.007312692439274718, f1: 0.6384778012684988 ==
+== Model LogisticRegression saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_LogisticRegression_model.joblib ==
+== Training: warezclient.csv with model: ExtraTrees ==
+== Done Training: warezclient.csv with model: ExtraTrees, acc: 0.9994868286007527, loss: 0.0005131713992473486, f1: 0.9774436090225566 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_ExtraTrees_model.joblib ==
+== Training: warezclient.csv with model: Bagging ==
+/usr/local/lib/python3.8/dist-packages/sklearn/discriminant_analysis.py:926: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+== Done Training: warezclient.csv with model: Bagging, acc: 0.9995295928840232, loss: 0.00047040711597673624, f1: 0.9792060491493384 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_Bagging_model.joblib ==
+== Training: warezclient.csv with model: LDA ==
+== Done Training: warezclient.csv with model: LDA, acc: 0.9875555935682518, loss: 0.012444406431748205, f1: 0.6235446313065978 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_LDA_model.joblib ==
+== Training: warezclient.csv with model: QDA ==
+== Done Training: warezclient.csv with model: QDA, acc: 0.8752138214163531, loss: 0.12478617858364693, f1: 0.1537122969837587 ==
+== Model QDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_QDA_model.joblib ==
+== Training: warezclient.csv with model: DecisionTree ==
+== Done Training: warezclient.csv with model: DecisionTree, acc: 0.9996578857338351, loss: 0.00034211426616489907, f1: 0.9851851851851853 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_DecisionTree_model.joblib ==
+== Training: warezclient.csv with model: RandomForest ==
+== Done Training: warezclient.csv with model: RandomForest, acc: 0.9998289428669176, loss: 0.00017105713308244953, f1: 0.9924528301886792 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_RandomForest_model.joblib ==
+== Training: warezclient.csv with model: GradientBoosting ==
+== Done Training: warezclient.csv with model: GradientBoosting, acc: 0.9993157714676703, loss: 0.0006842285323297981, f1: 0.9696969696969696 ==
+== Model GradientBoosting saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_GradientBoosting_model.joblib ==
+== Training: warezclient.csv with model: KNeighbors ==
+== Done Training: warezclient.csv with model: KNeighbors, acc: 0.9980328429695519, loss: 0.00196715703044817, f1: 0.9148148148148149 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_KNeighbors_model.joblib ==
+== Training: warezclient.csv with model: GaussianNB ==
+== Done Training: warezclient.csv with model: GaussianNB, acc: 0.7611187136503592, loss: 0.2388812863496408, f1: 0.08635917566241413 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_GaussianNB_model.joblib ==
+== Training: warezclient.csv with model: Perceptron ==
+== Done Training: warezclient.csv with model: Perceptron, acc: 0.977933629832364, loss: 0.02206637016763599, f1: 0.5019305019305019 ==
+== Model Perceptron saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_Perceptron_model.joblib ==
+== Training: warezclient.csv with model: AdaBoost ==
+== Done Training: warezclient.csv with model: AdaBoost, acc: 0.9992302429011289, loss: 0.000769757098871023, f1: 0.9659090909090908 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/warezclient.csv/warezclient.csv_AdaBoost_model.joblib ==
+== reading training data: /home/s2316002/capstone_project/kdd/dataset/all_dataset/normal.csv ==
+0    77054
+Name: label, dtype: int64
+== Training: normal.csv with model: LogisticRegression ==
+Error : This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+== Training: normal.csv with model: ExtraTrees ==
+== Done Training: normal.csv with model: ExtraTrees, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model ExtraTrees saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_ExtraTrees_model.joblib ==
+== Training: normal.csv with model: Bagging ==
+== Done Training: normal.csv with model: Bagging, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model Bagging saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_Bagging_model.joblib ==
+== Training: normal.csv with model: LDA ==
+== Done Training: normal.csv with model: LDA, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model LDA saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_LDA_model.joblib ==
+== Training: normal.csv with model: QDA ==
+Error : The number of classes has to be greater than one; got 1 class
+== Training: normal.csv with model: DecisionTree ==
+== Done Training: normal.csv with model: DecisionTree, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model DecisionTree saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_DecisionTree_model.joblib ==
+== Training: normal.csv with model: RandomForest ==
+== Done Training: normal.csv with model: RandomForest, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model RandomForest saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_RandomForest_model.joblib ==
+== Training: normal.csv with model: GradientBoosting ==
+Error : y contains 1 class after sample_weight trimmed classes with zero weights, while a minimum of 2 classes are required.
+== Training: normal.csv with model: KNeighbors ==
+== Done Training: normal.csv with model: KNeighbors, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model KNeighbors saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_KNeighbors_model.joblib ==
+== Training: normal.csv with model: GaussianNB ==
+== Done Training: normal.csv with model: GaussianNB, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model GaussianNB saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_GaussianNB_model.joblib ==
+== Training: normal.csv with model: Perceptron ==
+Error : The number of classes has to be greater than one; got 1 class
+== Training: normal.csv with model: AdaBoost ==
+== Done Training: normal.csv with model: AdaBoost, acc: 1.0, loss: 0.0, f1: 1.0 ==
+== Model AdaBoost saved as /home/s2316002/capstone_project/kdd/classical_ML/model/normal.csv/normal.csv_AdaBoost_model.joblib ==
+== @everyone All training and evaluation is done ==

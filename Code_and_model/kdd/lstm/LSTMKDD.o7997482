@@ -1,0 +1,2 @@
+/var/spool/pbs/mom_priv/jobs/7997482.spcc-adm1.SC: line 14: ${/home/s2316002/capstone_project}: bad substitution
+FATAL:   could not open image /home/s2316002/capstone_project/runcode.sif: failed to retrieve path for /home/s2316002/capstone_project/runcode.sif: lstat /home/s2316002/capstone_project: no such file or directory

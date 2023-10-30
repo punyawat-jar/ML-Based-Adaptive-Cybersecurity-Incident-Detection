@@ -244,3 +244,33 @@ Code_and_model/kdd/dataset/split_dataset/train_label_dataset/teardrop.csv
 Code_and_model/kdd/dataset/split_dataset/train_label_dataset/warezclient.csv
 Code_and_model/kdd/dataset/split_dataset/train_label_dataset/warezmaster.csv
 Code_and_model/kdd/dataset/split_dataset/train_label_dataset/.ipynb_checkpoints/ipsweep-checkpoint.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/CIC_IDS2017.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Friday-WorkingHours-Morning.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Monday-WorkingHours.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Tuesday-WorkingHours.pcap_ISCX.csv
+Code_and_model/cic/dataset/Original_dataset-notuse/Wednesday-workingHours.pcap_ISCX.csv
+Code_and_model/cic/dataset/train_dataset/Bot.csv
+Code_and_model/cic/dataset/train_dataset/DDoS.csv
+Code_and_model/cic/dataset/train_dataset/DoS GoldenEye.csv
+Code_and_model/cic/dataset/train_dataset/DoS Hulk.csv
+Code_and_model/cic/dataset/train_dataset/DoS Slowhttptest.csv
+Code_and_model/cic/dataset/train_dataset/DoS slowloris.csv
+Code_and_model/cic/dataset/train_dataset/FTP-Patator.csv
+Code_and_model/cic/dataset/train_dataset/Heartbleed.csv
+Code_and_model/cic/dataset/train_dataset/Infiltration.csv
+Code_and_model/cic/dataset/train_dataset/PortScan.csv
+Code_and_model/cic/dataset/train_dataset/SSH-Patator.csv
+Code_and_model/cic/dataset/train_dataset/Web Attack � Brute Force.csv
+Code_and_model/cic/dataset/train_dataset/Web Attack � Sql Injection.csv
+Code_and_model/cic/dataset/train_dataset/Web Attack � XSS.csv
+Code_and_model/kdd/lstm/results/ftp_write.csv.csv
+Code_and_model/kdd/lstm/results/snmpgetattack.csv.csv
+Code_and_model/kdd/lstm/results/snmpguess.csv.csv
+Code_and_model/kdd/lstm/results/xlock.csv.csv
+Code_and_model/kdd/lstm/results/xsnoop.csv.csv
+Code_and_model/kdd/lstm/results/snmpgetattack.csv.csv
+Code_and_model/kdd/lstm/results/snmpgetattack.csv.csv

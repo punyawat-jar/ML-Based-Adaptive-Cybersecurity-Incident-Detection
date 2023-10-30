@@ -79,8 +79,8 @@ def send_discord_message(content):
 
 def create_LSTM(n_input, n_features):
     model = Sequential()
-    model.add(LSTM(1,return_sequences=False, input_shape =(n_input, n_features)))
-    model.add(Dropout(0.2))
+    model.add(LSTM(10,return_sequences=False, input_shape =(n_input, n_features)))
+    model.add(Dropout(0.3))
     # model.add(LSTM(256,return_sequences=True))
     # model.add(Dropout(0.2))
     # model.add(LSTM(256,return_sequences=False))

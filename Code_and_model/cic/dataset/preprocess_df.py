@@ -3,7 +3,8 @@ import requests, json
 import os
 import pandas as pd 
 
-os.chdir('/home/s2316002/capstone_project/cic/dataset')
+os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\cic\\dataset")
+
 
 directory = 'label_dataset'
 if not os.path.exists(directory):
@@ -39,14 +40,14 @@ def create_df(labels):
         print(f'Starting {label} {i+1}/{len(labels)}')
         
         combined_df = df[df['label'].isin(['BENIGN', label])]
-        filename = f"./label_dataset/{label}.csv"
+        filename = f".\\label_dataset\\{label}.csv"
         combined_df.to_csv(filename, index=False)
         saved_files.append(filename)
         
         send_discord_message(f'Done {label}')
         print(f'Done {label}')
 
-df = pd.read_csv('CIC_IDS2017.csv')
+df = pd.read_csv('.\\Original_dataset-notuse\\CIC_IDS2017.csv')
 labels = df.label.value_counts().index.tolist()
 
 create_df(labels)

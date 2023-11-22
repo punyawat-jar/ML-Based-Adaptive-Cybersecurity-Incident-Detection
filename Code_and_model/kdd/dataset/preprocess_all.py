@@ -3,7 +3,7 @@ import requests, json
 import os
 import pandas as pd 
 
-os.chdir('/home/s2316002/capstone_project/kdd/dataset')
+os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\kdd\\dataset")
 
 directory = 'all_dataset'
 if not os.path.exists(directory):

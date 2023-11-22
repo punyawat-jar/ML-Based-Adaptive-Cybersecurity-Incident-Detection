@@ -21,7 +21,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from joblib import dump
-os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\kdd\\dataset")
+os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\kdd")
 botnum = 1
 bot = ['https://discord.com/api/webhooks/1162767976034996274/B6CjtQF1SzNRalG_csFx8-qJ5ODBoy5SBUelbGyl-v-QhYhwdsTfE59F-K-rXj3HyUh-',
       'https://discord.com/api/webhooks/1162767979658887299/0TICfekiC9wjPmp-GqE5zrwU57q2RJHG2peel_KOYagUDYCjovYUfyNJmDR9jbD-WXoE']
@@ -66,7 +66,7 @@ models = {
     'AdaBoost': AdaBoostClassifier()  # AdaBoost does not support n_jobs
 }
 
-dataset_paths = glob.glob('/home/s2316002/capstone_project/kdd/dataset/all_dataset/*.csv')
+dataset_paths = glob.glob('.\\dataset\\mix_dataset\\*.csv')
 
 # Lists to store metrics
 f1_scores = []
@@ -77,8 +77,9 @@ FPRs = []
 FNRs = []
 TPRs = []
 TNRs = []
+backslash = "\\"
 
-datasets = {train_path.split('/')[-1]: (train_path, train_path) for train_path in dataset_paths}
+datasets = {train_path.split(backslash)[-1]: (train_path, train_path) for train_path in dataset_paths}
 
 for dataset_name, (train_path, _) in datasets.items():
     print(f"== reading training data: {train_path} ==")
@@ -95,7 +96,7 @@ for dataset_name, (train_path, _) in datasets.items():
     
     for name, model in models.items():
         try:
-            print(f"== Training: {train_path.split('/')[-1]} with model: {name} ==")
+            print(f"== Training: {train_path.split(backslash)[-1]} with model: {name} ==")
             model.fit(X_train, y_train)
             y_pred = model.predict(X_test)
     
@@ -109,7 +110,7 @@ for dataset_name, (train_path, _) in datasets.items():
             else:
                 TN, FP, FN, TP = conf_matrix.ravel()
             
-            conf_matrix_path = f"/home/s2316002/capstone_project/kdd/classical_ML/confusion_martix/{train_path.split('/')[-1]}"
+            conf_matrix_path = f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}"
             if not os.path.exists(conf_matrix_path):
                 os.makedirs(conf_matrix_path)
                 
@@ -118,16 +119,16 @@ for dataset_name, (train_path, _) in datasets.items():
             plt.xlabel('Predicted')
             plt.ylabel('Actual')
             plt.title('Confusion Matrix')
-            plt.savefig(f"/home/s2316002/capstone_project/kdd/classical_ML/confusion_martix/{train_path.split('/')[-1]}/{train_path.split('/')[-1]}_{name}_confusion_matrix.png")
+            plt.savefig(f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_confusion_matrix.png")
             plt.close()
     
             loss = np.mean(np.abs(y_pred - y_test))
-            print(f"== Done Training: {train_path.split('/')[-1]} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==")
-            models_save_path = f"/home/s2316002/capstone_project/kdd/classical_ML/model/{train_path.split('/')[-1]}"
+            print(f"== Done Training: {train_path.split(backslash)[-1]} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==")
+            models_save_path = f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}"
             if not os.path.exists(models_save_path):
                 os.makedirs(models_save_path)
     
-            model_filename = os.path.join(models_save_path, f"/home/s2316002/capstone_project/kdd/classical_ML/model/{train_path.split('/')[-1]}/{train_path.split('/')[-1]}_{name}_model.joblib")
+            model_filename = os.path.join(models_save_path, f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_model.joblib")
             dump(model, model_filename)
             print(f"== Model {name} saved as {model_filename} ==")
             
@@ -136,8 +137,8 @@ for dataset_name, (train_path, _) in datasets.items():
             print(f'Error : {error}')
 
     result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-    result_filename = f"/home/s2316002/capstone_project/kdd/classical_ML/compare/evaluation_results_{train_path.split('/')[-1]}"
+    result_filename = f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\model\\compare\\evaluation_results_{train_path.split(backslash)[-1]}"
     result_df.to_csv(result_filename)
     
-send_discord_message('== @everyone All training and evaluation in KDD is done ==')
+# send_discord_message('== @everyone All training and evaluation in KDD is done ==')
 print('== @everyone All training and evaluation is done ==')

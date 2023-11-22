@@ -110,7 +110,7 @@ for dataset_name, (train_path, _) in datasets.items():
             else:
                 TN, FP, FN, TP = conf_matrix.ravel()
             
-            conf_matrix_path = f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}"
+            conf_matrix_path = f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}"
             if not os.path.exists(conf_matrix_path):
                 os.makedirs(conf_matrix_path)
                 
@@ -119,16 +119,16 @@ for dataset_name, (train_path, _) in datasets.items():
             plt.xlabel('Predicted')
             plt.ylabel('Actual')
             plt.title('Confusion Matrix')
-            plt.savefig(f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_confusion_matrix.png")
+            plt.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_confusion_matrix.png")
             plt.close()
     
             loss = np.mean(np.abs(y_pred - y_test))
             print(f"== Done Training: {train_path.split(backslash)[-1]} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==")
-            models_save_path = f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}"
+            models_save_path = f".\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}"
             if not os.path.exists(models_save_path):
                 os.makedirs(models_save_path)
     
-            model_filename = os.path.join(models_save_path, f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_model.joblib")
+            model_filename = f".\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_model.joblib"
             dump(model, model_filename)
             print(f"== Model {name} saved as {model_filename} ==")
             
@@ -137,7 +137,7 @@ for dataset_name, (train_path, _) in datasets.items():
             print(f'Error : {error}')
 
     result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-    result_filename = f".\\Code_and_model\\kdd\\classical_ML\\mix_training\\model\\compare\\evaluation_results_{train_path.split(backslash)[-1]}"
+    result_filename = f".\\classical_ML\\mix_training\\compare\\evaluation_results_{train_path.split(backslash)[-1]}"
     result_df.to_csv(result_filename)
     
 # send_discord_message('== @everyone All training and evaluation in KDD is done ==')

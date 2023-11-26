@@ -64,7 +64,7 @@ models = {
     'AdaBoost': AdaBoostClassifier()  # AdaBoost does not support n_jobs
 }
 
-dataset_paths = glob.glob('.\\dataset\\mix_dataset\\*.csv')
+dataset_paths = glob.glob('.\\dataset\\label_dataset\\*.csv')
 
 # Lists to store metrics
 f1_scores = []
@@ -88,7 +88,7 @@ for dataset_path in dataset_paths:
 
     del df
     gc.collect()
-    
+
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
     # Train and evaluate models on the current dataset
@@ -111,7 +111,7 @@ for dataset_path in dataset_paths:
         # Extract metrics from confusion matrix
         TN, FP, FN, TP = conf_matrix.ravel()
         
-        conf_matrix_path = f'.\\classical_ML\\confusion_martix\\{dataset_name}'
+        conf_matrix_path = f'.\\classical_ML\\label_training\\confusion_martix\\{dataset_name}'
 
         if not os.path.exists(conf_matrix_path):
             os.makedirs(conf_matrix_path)
@@ -122,19 +122,19 @@ for dataset_path in dataset_paths:
         plt.xlabel('Predicted')
         plt.ylabel('Actual')
         plt.title('Confusion Matrix')
-        plt.savefig(f'.\\classical_ML\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
+        plt.savefig(f'.\\classical_ML\\label_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
         plt.close()
 
         # Here I assume binary classification for loss (0 or 1). Adjust if needed.
         loss = np.mean(np.abs(y_pred - y_test))
         send_discord_message(f'== CIC Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
         print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
-        models_save_path = f".\\classical_ML\\model\\{dataset_name}"
+        models_save_path = f".\\classical_ML\\label_training\\model\\{dataset_name}"
         if not os.path.exists(models_save_path):
             os.makedirs(models_save_path)
 
         # Save the trained model
-        model_filename = os.path.join(models_save_path, f".\\classical_ML\\model\\{dataset_name}/{dataset_name}_{name}_model.joblib")
+        model_filename = os.path.join(models_save_path, f".\\classical_ML\\label_training\\model\\{dataset_name}/{dataset_name}_{name}_model.joblib")
         dump(model, model_filename)
         print(f"== CIC Model {name} saved as {model_filename} ==")
         
@@ -142,7 +142,7 @@ for dataset_path in dataset_paths:
 
     # Convert results to DataFrame and save with dataset name
     result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-    result_filename = f".\\classical_ML\\compare\\evaluation_results_{dataset_name}"
+    result_filename = f".\\classical_ML\\label_training\\compare\\evaluation_results_{dataset_name}"
     result_df.to_csv(result_filename)
     
 # send_discord_message('== @everyone All training and evaluation is done ==')

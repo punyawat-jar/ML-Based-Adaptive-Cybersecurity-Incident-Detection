@@ -48,6 +48,7 @@ def create_df(labels):
         print(f'Done {label}')
 
 df = pd.read_csv('.\\Original_dataset-notuse\\CIC_IDS2017.csv')
+df = df.drop(['timestamp'], axis =1)
 labels = df.label.value_counts().index.tolist()
 
 create_df(labels)

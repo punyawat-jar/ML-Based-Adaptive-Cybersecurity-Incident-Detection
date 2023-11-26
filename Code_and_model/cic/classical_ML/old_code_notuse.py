@@ -4,7 +4,7 @@ os.environ['OPENBLAS_NUM_THREADS'] = '1'
 import glob
 import requests
 import json
-import gc
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,7 +13,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
-from tqdm import tqdm
 from sklearn.linear_model import LogisticRegression, Perceptron
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
@@ -22,7 +21,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from joblib import dump
-os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\cic")
+os.chdir('/home/s2316002/capstone_project/cic/classical_ML')
 botnum = 0
 bot = ['https://discord.com/api/webhooks/1162767976034996274/B6CjtQF1SzNRalG_csFx8-qJ5ODBoy5SBUelbGyl-v-QhYhwdsTfE59F-K-rXj3HyUh-',
       'https://discord.com/api/webhooks/1162767979658887299/0TICfekiC9wjPmp-GqE5zrwU57q2RJHG2peel_KOYagUDYCjovYUfyNJmDR9jbD-WXoE']
@@ -32,8 +31,7 @@ def preprocess(df):
     df.loc[df['label'] != 0, "label"] = 1
 
     scaler = MinMaxScaler()
-    for col in df.columns:
-        df[col] = scaler.fit_transform(df[col].values.reshape(-1, 1)).ravel()
+    df[df.columns] = scaler.fit_transform(df[df.columns])
 
     return df
 
@@ -66,7 +64,7 @@ models = {
     'AdaBoost': AdaBoostClassifier()  # AdaBoost does not support n_jobs
 }
 
-dataset_paths = glob.glob('.\\dataset\\label_dataset\\*.csv')
+dataset_paths = glob.glob('/home/s2316002/capstone_project/cic/dataset/label_dataset/*.csv')
 
 # Lists to store metrics
 f1_scores = []
@@ -77,85 +75,70 @@ FPRs = []
 FNRs = []
 TPRs = []
 TNRs = []
-backslash = "\\"
+
 for dataset_path in dataset_paths:
     # Load and preprocess dataset
     print(f'== reading {dataset_path} ==')
-    df = pd.read_csv(dataset_path, low_memory=True)
-    print(f'== Preprocessing {dataset_path} ==')
-    
+    df = pd.read_csv(dataset_path)
     df = preprocess(df)
-    
-    print(f'== Done {dataset_path} ==')
+    print(f'== Done reading {dataset_path} ==')
     # Splitting data
     X = df.drop('label', axis=1)
     y = df['label']
-
-
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-    del df
-    del X
-    del y
-    gc.collect()
     # Train and evaluate models on the current dataset
     results = {}
-    dataset_name = dataset_path.split(backslash)[-1]  # Name of the dataset
+    dataset_name = dataset_path.split('/')[-1]  # Name of the dataset
     
-    for name, model in tqdm(models.items(), desc="Training Models"):
+    for name, model in models.items():
+        send_discord_message(f'== CIC Training: {dataset_name} with model: {name} ==')
+        print(f'== CIC Training: {dataset_name} with model: {name} ==')
+        
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
 
-        try:
-            send_discord_message(f'== CIC Training: {dataset_name} with model: {name} ==')
-            print(f'== CIC Training: {dataset_name} with model: {name} ==')
+        accuracy = accuracy_score(y_test, y_pred)
+        f1 = f1_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred)
+        recall = recall_score(y_test, y_pred)
+        conf_matrix = confusion_matrix(y_test, y_pred)
+
+        # Extract metrics from confusion matrix
+        TN, FP, FN, TP = conf_matrix.ravel()
+        
+        conf_matrix_path = f'/home/s2316002/capstone_project/cic/classical_ML/confusion_martix/{dataset_name}'
+        if not os.path.exists(conf_matrix_path):
+            os.makedirs(conf_matrix_path)
             
-            model.fit(X_train, y_train)
-            y_pred = model.predict(X_test)
+        # Plot and save confusion matrix
+        plt.figure()
+        sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
+        plt.xlabel('Predicted')
+        plt.ylabel('Actual')
+        plt.title('Confusion Matrix')
+        plt.savefig(f'/home/s2316002/capstone_project/cic/classical_ML/confusion_martix/{dataset_name}/{dataset_name}_{name}_confusion_matrix.png')
+        plt.close()
 
-            accuracy = accuracy_score(y_test, y_pred)
-            f1 = f1_score(y_test, y_pred)
-            precision = precision_score(y_test, y_pred)
-            recall = recall_score(y_test, y_pred)
-            conf_matrix = confusion_matrix(y_test, y_pred)
+        # Here I assume binary classification for loss (0 or 1). Adjust if needed.
+        loss = np.mean(np.abs(y_pred - y_test))
+        send_discord_message(f'== CIC Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
+        print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
+        models_save_path = f"/home/s2316002/capstone_project/cic/classical_ML/model/{dataset_name}"
+        if not os.path.exists(models_save_path):
+            os.makedirs(models_save_path)
 
-            # Extract metrics from confusion matrix
-            TN, FP, FN, TP = conf_matrix.ravel()
-            
-            conf_matrix_path = f'.\\classical_ML\\label_training\\confusion_martix\\{dataset_name}'
-
-            if not os.path.exists(conf_matrix_path):
-                os.makedirs(conf_matrix_path)
-                
-            # Plot and save confusion matrix
-            plt.figure()
-            sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
-            plt.xlabel('Predicted')
-            plt.ylabel('Actual')
-            plt.title('Confusion Matrix')
-            plt.savefig(f'.\\classical_ML\\label_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
-            plt.close()
-
-            # Here I assume binary classification for loss (0 or 1). Adjust if needed.
-            loss = np.mean(np.abs(y_pred - y_test))
-            send_discord_message(f'== CIC Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
-            print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
-            models_save_path = f".\\classical_ML\\label_training\\model\\{dataset_name}"
-            if not os.path.exists(models_save_path):
-                os.makedirs(models_save_path)
-
-            # Save the trained model
-            model_filename =  f".\\classical_ML\\label_training\\model\\{dataset_name}\\{dataset_name}_{name}_model.joblib"
-            dump(model, model_filename)
-            print(f"== CIC Model {name} saved as {model_filename} ==")
-            
-            results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
-
-        except Exception as E:
-            print(f'Error : {E}')
+        # Save the trained model
+        model_filename = os.path.join(models_save_path, f"/home/s2316002/capstone_project/cic/classical_ML/model/{dataset_name}/{dataset_name}_{name}_model.joblib")
+        dump(model, model_filename)
+        print(f"== CIC Model {name} saved as {model_filename} ==")
+        
+        results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
 
     # Convert results to DataFrame and save with dataset name
     result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-    result_filename = f".\\classical_ML\\label_training\\compare\\evaluation_results_{dataset_name}"
+    result_filename = f"/home/s2316002/capstone_project/cic/classical_ML/compare/evaluation_results_{dataset_name}"
     result_df.to_csv(result_filename)
-    gc.collect()
+    
 # send_discord_message('== @everyone All training and evaluation is done ==')
 print('== @everyone All training and evaluation is done ==')

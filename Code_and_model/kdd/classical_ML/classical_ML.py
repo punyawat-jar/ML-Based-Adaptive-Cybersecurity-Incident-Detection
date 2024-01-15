@@ -51,19 +51,17 @@ def send_discord_message(content):
 
 models = {
     'LogisticRegression': LogisticRegression(max_iter=10000, n_jobs=-1),
-    # 'LinearSVM': SVC(kernel="linear", probability=True),  # SVC does not support n_jobs
-    # 'RBFSVM': SVC(kernel="rbf", probability=True),  # SVC does not support n_jobs
     'ExtraTrees': ExtraTreesClassifier(n_jobs=-1),
     'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
     'LDA': LinearDiscriminantAnalysis(),
     'QDA': QuadraticDiscriminantAnalysis(),
-    'DecisionTree': DecisionTreeClassifier(),  # Single decision tree does not support n_jobs
+    'DecisionTree': DecisionTreeClassifier(),  
     'RandomForest': RandomForestClassifier(n_jobs=-1),
-    'GradientBoosting': GradientBoostingClassifier(),  # GradientBoosting does not support n_jobs
+    'GradientBoosting': GradientBoostingClassifier(),
     'KNeighbors': KNeighborsClassifier(n_jobs=-1),
-    'GaussianNB': GaussianNB(),  # GaussianNB does not support n_jobs
+    'GaussianNB': GaussianNB(), 
     'Perceptron': Perceptron(n_jobs=-1),
-    'AdaBoost': AdaBoostClassifier()  # AdaBoost does not support n_jobs
+    'AdaBoost': AdaBoostClassifier()
 }
 
 dataset_paths = glob.glob('/home/s2316002/capstone_project/kdd/dataset/all_dataset/*.csv')

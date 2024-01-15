@@ -2,7 +2,9 @@ import numpy as np
 import requests, json
 import os
 import pandas as pd 
-
+import glob
+import gc
+from sklearn.preprocessing import MinMaxScaler
 os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\cic\\dataset")
 
 
@@ -30,6 +32,16 @@ def send_discord_message(content):
     if response.status_code != 204:
         raise ValueError(f'Request to discord returned an error {response.status_code}, the response is:\n{response.text}')
 
+def preprocess(df):
+    df.drop(['timestamp'], axis =1, inplace=True)
+    df.loc[df['label'] == "BENIGN", "label"] = 0
+    df.loc[df['label'] != 0, "label"] = 1
+
+    scaler = MinMaxScaler()
+    for col in df.columns:
+        df[col] = scaler.fit_transform(df[col].values.reshape(-1, 1)).ravel()
+
+    return df
 
 def create_df(labels):
     saved_files = []
@@ -41,6 +53,7 @@ def create_df(labels):
         
         combined_df = df[df['label'].isin(['BENIGN', label])]
         filename = f".\\label_dataset\\{label}.csv"
+        combined_df = preprocess(combined_df)
         combined_df.to_csv(filename, index=False)
         saved_files.append(filename)
         
@@ -48,7 +61,7 @@ def create_df(labels):
         print(f'Done {label}')
 
 df = pd.read_csv('.\\Original_dataset-notuse\\CIC_IDS2017.csv')
-df = df.drop(['timestamp'], axis =1)
+# df = df.drop(['timestamp'], axis =1)
 labels = df.label.value_counts().index.tolist()
 
 create_df(labels)

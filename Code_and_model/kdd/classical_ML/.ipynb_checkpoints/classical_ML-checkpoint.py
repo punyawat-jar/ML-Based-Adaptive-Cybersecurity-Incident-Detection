@@ -21,7 +21,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from joblib import dump
-os.chdir('/home/s2316002/capstone_project/kdd/classical_ML')
+os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\kdd\\dataset")
 botnum = 1
 bot = ['https://discord.com/api/webhooks/1162767976034996274/B6CjtQF1SzNRalG_csFx8-qJ5ODBoy5SBUelbGyl-v-QhYhwdsTfE59F-K-rXj3HyUh-',
       'https://discord.com/api/webhooks/1162767979658887299/0TICfekiC9wjPmp-GqE5zrwU57q2RJHG2peel_KOYagUDYCjovYUfyNJmDR9jbD-WXoE']
@@ -51,19 +51,17 @@ def send_discord_message(content):
 
 models = {
     'LogisticRegression': LogisticRegression(max_iter=10000, n_jobs=-1),
-    # 'LinearSVM': SVC(kernel="linear", probability=True),  # SVC does not support n_jobs
-    # 'RBFSVM': SVC(kernel="rbf", probability=True),  # SVC does not support n_jobs
     'ExtraTrees': ExtraTreesClassifier(n_jobs=-1),
     'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
     'LDA': LinearDiscriminantAnalysis(),
     'QDA': QuadraticDiscriminantAnalysis(),
-    'DecisionTree': DecisionTreeClassifier(),  # Single decision tree does not support n_jobs
+    'DecisionTree': DecisionTreeClassifier(),  
     'RandomForest': RandomForestClassifier(n_jobs=-1),
-    'GradientBoosting': GradientBoostingClassifier(),  # GradientBoosting does not support n_jobs
+    'GradientBoosting': GradientBoostingClassifier(),
     'KNeighbors': KNeighborsClassifier(n_jobs=-1),
-    'GaussianNB': GaussianNB(),  # GaussianNB does not support n_jobs
+    'GaussianNB': GaussianNB(), 
     'Perceptron': Perceptron(n_jobs=-1),
-    'AdaBoost': AdaBoostClassifier()  # AdaBoost does not support n_jobs
+    'AdaBoost': AdaBoostClassifier()
 }
 
 dataset_paths = glob.glob('/home/s2316002/capstone_project/kdd/dataset/all_dataset/*.csv')

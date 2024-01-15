@@ -11,20 +11,23 @@ import glob
 import shutil
 import requests, json
 
+import gc
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
-from keras.preprocessing.sequence import TimeseriesGenerator
 from keras.losses import BinaryCrossentropy
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, log_loss
+from keras.utils import to_categorical
+
 
 from tensorflow.keras.callbacks import Callback, ModelCheckpoint, EarlyStopping
+from tensorflow.keras.models import Sequential, save_model, load_model
+from tensorflow.keras.layers import LSTM, Dense, Dropout
+from tensorflow.keras.optimizers import RMSprop
 
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, LabelEncoder
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, log_loss
 
-botnum = 0
-bot = ['https://discord.com/api/webhooks/1162767976034996274/B6CjtQF1SzNRalG_csFx8-qJ5ODBoy5SBUelbGyl-v-QhYhwdsTfE59F-K-rXj3HyUh-',
-      'https://discord.com/api/webhooks/1162767979658887299/0TICfekiC9wjPmp-GqE5zrwU57q2RJHG2peel_KOYagUDYCjovYUfyNJmDR9jbD-WXoE']
+
 
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if len(gpus) > 1:
@@ -33,6 +36,68 @@ if len(gpus) > 1:
 else:
     strategy = tf.distribute.OneDeviceStrategy("GPU:0")
     print('Single device: GPU:0')
+
+
+def create_directory(directory_path):
+    if not os.path.exists(directory_path):
+        os.makedirs(directory_path)
+        print(f"Directory '{directory_path}' created successfully.")
+    else:
+        print(f"Directory '{directory_path}' already exists.")
+
+
+
+# Create input sequences using sliding windows
+
+def data_generator(df, indices, window_size, sliding_window):
+    for idx in indices:
+        if idx + window_size > len(df):
+            continue
+        sequence = df.iloc[idx:idx + window_size, :-1].values
+        label = df.iloc[idx + window_size - 1, -1]
+        yield sequence, label
+
+
+
+def create_LSTM(window_size, n_features):
+    # Build the LSTM model
+    model = Sequential()
+    model.add(LSTM(units=512, activation='tanh', input_shape=(window_size, n_features), return_sequences=True))
+    model.add(Dropout(0.2))
+    model.add(LSTM(units=512, activation='tanh', return_sequences=True))
+    model.add(Dropout(0.2))
+    model.add(LSTM(units=256, activation='tanh', return_sequences=True))
+    model.add(Dropout(0.2))
+    model.add(LSTM(units=128, activation='tanh', return_sequences=True))
+    model.add(Dropout(0.2))
+    model.add(LSTM(units=64, activation='tanh'))
+    model.add(Dropout(0.2))
+    model.add(Dense(units=1, activation='sigmoid'))
+
+    # Compile the model
+    optimizer = RMSprop(learning_rate=0.0001)
+    model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+    return model
+    
+def process_chunk(df_chunk):
+    df_chunk['label'] = label_encoder.transform(df_chunk['label'])
+    return df_chunk
+
+botnum = 0
+bot = ['https://discord.com/api/webhooks/1162767976034996274/B6CjtQF1SzNRalG_csFx8-qJ5ODBoy5SBUelbGyl-v-QhYhwdsTfE59F-K-rXj3HyUh-',
+      'https://discord.com/api/webhooks/1162767979658887299/0TICfekiC9wjPmp-GqE5zrwU57q2RJHG2peel_KOYagUDYCjovYUfyNJmDR9jbD-WXoE']
+
+def send_discord_message(content):
+    webhook_url = bot[botnum]
+
+    data = {
+        'content': content
+    }
+
+    response = requests.post(webhook_url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
+
+    if response.status_code != 204:
+        raise ValueError(f'Request to discord returned an error {response.status_code}, the response is:\n{response.text}')
 
 class DiscordNotificationCallback(Callback):
     def __init__(self, webhook_url, interval=1):
@@ -52,143 +117,131 @@ class DiscordNotificationCallback(Callback):
                 headers = {"Content-Type": "application/json"}
                 response = requests.post(self.webhook_url, data=json.dumps(payload), headers=headers)
 
-def processlabel(df):
-    df.loc[df['label'] == 'BENIGN', 'label'] = 0
-    df.loc[df['label'] != 0, 'label'] = 1
-    df['label'] = df['label'].astype('int')
-    return df
-    
-def preprocess(df):
-    scaler = MinMaxScaler()
-    df[df.columns] = scaler.fit_transform(df[df.columns])
 
-    return df
+os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\cic")
 
-def send_discord_message(content):
-    webhook_url = bot[botnum]
+df_list = glob.glob('.\\dataset\\mix_dataset\\*.csv')
+# dataset = {}
 
-    data = {
-        'content': content
-    }
-
-    response = requests.post(webhook_url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
-
-    if response.status_code != 204:
-        raise ValueError(f'Request to discord returned an error {response.status_code}, the response is:\n{response.text}')
-
-def create_LSTM(n_input, n_features):
-    model = Sequential()
-    model.add(LSTM(10,return_sequences=False, input_shape =(n_input, n_features)))
-    model.add(Dropout(0.3))
-    # model.add(LSTM(256,return_sequences=True))
-    # model.add(Dropout(0.2))
-    # model.add(LSTM(256,return_sequences=False))
-    model.add(Dense(1, activation='sigmoid'))
-    model.compile(optimizer ='adam', loss = 'BinaryCrossentropy', metrics=['accuracy'])
-    return model
-
-os.chdir('/home/s2316002/ML-Based-Adaptive-Cybersecurity-Incident-Detection/Code_and_model/cic/')
-df_list = glob.glob('/home/s2316002/ML-Based-Adaptive-Cybersecurity-Incident-Detection/Code_and_model/cic/dataset/label_dataset/*.csv')
-dataset = {}
-
-model_path = './lstm/model'
-csv_path = './lstm/results'
-if not os.path.exists(model_path):
-
-   # Create a new directory because it does not exist
-   os.makedirs(model_path)
-   print(f"The {model_path} directory is created!")
-
-if not os.path.exists(csv_path):
-
-   # Create a new directory because it does not exist
-   os.makedirs(csv_path)
-   print(f"The {csv_path} directory is created!")
+model_path = '.\\lstm\\model'
+csv_path = '.\\lstm\\results'
 
 
+create_directory(model_path)
+create_directory(csv_path)
+
+label_encoder = LabelEncoder()
 
 
+sliding_window = 1
+window_size = 128
+batch_size = 1024
 #Training and evaluation
 print('Starting')
 print(df_list)
+
+
 for train_path in df_list:
-
-   #Loading Dataset & Preprocess
-   dir = train_path.split('/')
-   file_name = dir[-1]
-   print(f'Reading Dataset: {file_name}')
-   df = pd.read_csv(f'./dataset/train_dataset/{file_name}')
-   print('Preprocessing')
-   df = processlabel(df)
     
-   X = df.drop(['label'], axis =1)
-   X = preprocess(X)
-   y = df['label']
+    dir = train_path.split('\\')
+    file_name = dir[-1]
+    print(f'Reading Dataset: {file_name}')
 
-   print('Creating Callbacks & Setting variable')
-   #Creating callbacks
-   save_model_path = f'./lstm/model/{file_name}.ckpt'
-
-   discord_callback = DiscordNotificationCallback(bot[botnum], interval=1)
-   earlyStopping = EarlyStopping(monitor='val_loss', patience=1, verbose=0, mode='min')
-   best_model = ModelCheckpoint(save_model_path, save_best_only=True, monitor='val_loss', mode='min')
-   if isinstance(X, (pd.DataFrame, pd.Series)):
-      X = X.values
-
-   if isinstance(y, (pd.DataFrame, pd.Series)):
-      y = y.values
-
-   #Setting parameter
-   window_size = 128
-   n_features = df.shape[-1] -1
-   train_size = int(len(X) * 0.7)
+    df = pd.read_csv(f'.\\dataset\\mix_dataset\\{file_name}')
+    print('Preprocessing')
+    print('Label Encoder')
+    df['label'] = label_encoder.fit_transform(df['label'])
+    df['label'] = df['label'].replace(2, 0)
+    indices = np.arange(len(df) - window_size + 1)
+    train_indices, test_indices = train_test_split(indices, test_size=0.15, random_state=42)
+    train_indices, val_indices = train_test_split(train_indices, test_size=0.17647, random_state=42)        ## 70 / 30 train and val+test
     
-   X_train, X_test = X[:train_size], X[train_size:]
-   y_train, y_test = y[:train_size], y[train_size:]
-   
-   train_generator = TimeseriesGenerator(X_train, y_train, length = window_size, batch_size = 8)
-   test_generator = TimeseriesGenerator(X_test, y_test, length = window_size, batch_size=len(X_test)-window_size)
-    
-   model = create_LSTM(window_size, n_features)
-   print('Model Summary')
-   #Summary of Model
-   model.summary()
-   try:
-      print('Training model')
-      model.fit(train_generator, 
-               epochs=10,
-               callbacks= [discord_callback, best_model, earlyStopping],
-               validation_data=test_generator)  
-      
-      evaluation_model = create_LSTM(window_size, n_features)
-      evaluation_model.load_weights(save_model_path)
+    steps_per_epoch = len(train_indices) // batch_size
+    validation_steps=len(val_indices) // batch_size
 
-      # Evaluate the model using the test generator sequences
-      X_test_sequences, y_test_sequences = test_generator[0]
-      y_pred_prob_test = evaluation_model.predict(test_generator)
-      y_pred_test = (y_pred_prob_test > 0.5).astype(int)
+    print('Creating Dataset')
+    # Training dataset
+    train_dataset = tf.data.Dataset.from_generator(
+        lambda: data_generator(df, train_indices, window_size, sliding_window),
+        output_types=(tf.float32, tf.float32),
+        output_shapes=((window_size, df.shape[1] - 1), ())
+    ).batch(batch_size).prefetch(tf.data.AUTOTUNE)
 
-      accuracy_test = accuracy_score(y_test_sequences, y_pred_test)
-      f1_test = f1_score(y_test_sequences, y_pred_test)
-      precision_test = precision_score(y_test_sequences, y_pred_test)
-      recall_test = recall_score(y_test_sequences, y_pred_test)
-      loss_test = log_loss(y_test_sequences, y_pred_prob_test)
+    # Validation dataset
+    val_dataset = tf.data.Dataset.from_generator(
+        lambda: data_generator(df, val_indices, window_size, sliding_window),
+        output_types=(tf.float32, tf.float32),
+        output_shapes=((window_size, df.shape[1] - 1), ())
+    ).batch(batch_size).prefetch(tf.data.AUTOTUNE)
 
-      # Save results
-      results = {
-         "accuracy_test": accuracy_test,
-         "f1_test": f1_test,
-         "precision_test": precision_test,
-         "recall_test": recall_test,
-         "loss_test": loss_test
-      }
+    # Testing dataset
+    test_dataset = tf.data.Dataset.from_generator(
+        lambda: data_generator(df, test_indices, window_size, sliding_window),
+        output_types=(tf.float32, tf.float32),
+        output_shapes=((window_size, df.shape[1] - 1), ())
+    ).batch(batch_size).prefetch(tf.data.AUTOTUNE)
 
 
-      results_df = pd.DataFrame([results], columns=results.keys())
-      results_df.to_csv(f"./lstm/results/{file_name}.csv", index=False)
-      shutil.move(f'/home/s2316002/ML-Based-Adaptive-Cybersecurity-Incident-Detection/Code_and_model/cic/dataset/train_dataset/{file_name}', 
-      f'/home/s2316002/ML-Based-Adaptive-Cybersecurity-Incident-Detection/Code_and_model/cic/dataset/done_training/{file_name}')
-      print(results_df)
-   except Exception as error:
-    print(f'Error : {error}')
-   
+    print('Creating Callbacks & Setting variable')
+    #Creating callbacks
+    save_model_path = f'.\\lstm\\model\\{file_name}.ckpt'
+
+    discord_callback = DiscordNotificationCallback(bot[botnum], interval=1)
+    earlyStopping = EarlyStopping(monitor='val_loss', patience=1, verbose=0, mode='min')
+    best_model = ModelCheckpoint(save_model_path, save_best_only=True, monitor='val_loss', mode='min')
+
+
+
+    #Setting parameter
+
+    n_features = df.shape[-1] -1
+
+
+    model = create_LSTM(window_size, n_features)
+    print('Model Summary')
+    #Summary of Model
+    model.summary()
+    try:
+        print('Training model')
+        history = model.fit(
+            train_dataset,
+            epochs=10,
+            steps_per_epoch=steps_per_epoch,
+            callbacks=[discord_callback, best_model, earlyStopping],
+            validation_data=val_dataset,
+            validation_steps=validation_steps
+        )
+
+        model.load_weights(save_model_path)
+
+        y_pred_prob = model.predict(test_dataset)
+        y_pred_test = (y_pred_prob > 0.5).astype(int)
+        y_test_true = np.concatenate([y for _, y in test_dataset], axis=0)
+
+        accuracy_test = accuracy_score(y_test_true, y_pred_test)
+        f1_test = f1_score(y_test_true, y_pred_test)
+        precision_test = precision_score(y_test_true, y_pred_test)
+        recall_test = recall_score(y_test_true, y_pred_test)
+
+        # loss_test = log_loss(y_test_true, y_pred_prob)
+
+        # Save results
+        results = {
+            "accuracy_test": accuracy_test,
+            "f1_test": f1_test,
+            "precision_test": precision_test,
+            "recall_test": recall_test,
+            
+        }
+
+
+        results_df = pd.DataFrame([results], columns=results.keys())
+        results_df.to_csv(f".\\lstm\\results\\{file_name}.csv", index=False)
+        shutil.move(f'.\\dataset\\mix_dataset\\{file_name}',
+        f'.\\dataset\\mix_done\\{file_name}')
+        print(results_df)
+    except Exception as error:
+        print(f'Error : {error}')
+        
+    del df
+    gc.collect()

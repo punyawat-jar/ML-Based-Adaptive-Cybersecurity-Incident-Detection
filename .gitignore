@@ -567,3 +567,17 @@ Code_and_model/kdd/dataset/train_label_dataset/warezclient.csv
 Code_and_model/kdd/dataset/train_label_dataset/warezmaster.csv
 *.joblib
 Code_and_model/cic/dataset/Bot.csv
+Code_and_model/cic/dataset/label_dataset/Web Attack ÃÂÃÂ Brute Force.csv
+Code_and_model/cic/dataset/label_dataset/Web Attack ÃÂÃÂ Sql Injection.csv
+Code_and_model/cic/dataset/label_dataset/Web Attack ÃÂÃÂ XSS.csv
+Code_and_model/cic/dataset/mix_dataset/Bot.csv
+Code_and_model/cic/dataset/mix_dataset/DoS GoldenEye.csv
+Code_and_model/cic/dataset/mix_dataset/DoS Slowhttptest.csv
+Code_and_model/cic/dataset/mix_dataset/DoS slowloris.csv
+Code_and_model/cic/dataset/mix_dataset/FTP-Patator.csv
+Code_and_model/cic/dataset/mix_dataset/Heartbleed.csv
+Code_and_model/cic/dataset/mix_dataset/Infiltration.csv
+Code_and_model/cic/dataset/mix_dataset/SSH-Patator.csv
+Code_and_model/cic/dataset/mix_dataset/Web Attack ÃÂÃÂ XSS.csv
+Code_and_model/cic/dataset/mix_dataset/Web Attack- Sql Injection.csv
+Code_and_model/cic/dataset/mix_dataset/Web Attack-Brute Force.csv

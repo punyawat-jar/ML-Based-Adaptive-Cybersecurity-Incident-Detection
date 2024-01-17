@@ -4,9 +4,9 @@ import numpy as np
 import argparse
 import glob
 import joblib
+import concurrent.futures
 
 from collections import Counter
-
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
@@ -18,6 +18,15 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 
+class ModelObject:
+    def __init__(self, attack_type, model_name, model, weight):
+        self.attack_type = attack_type
+        self.model_name = model_name
+        self.model = model
+        self.weight = weight
+
+
+
 def check_file(path):
     if os.path.isfile(path):
         print(f'{path} exist')
@@ -25,27 +34,62 @@ def check_file(path):
         raise Exception(f'Error: {path} not exist')
     
 def read_model(models_loc, df, weight_data):
-    models_dict = {}
+    models = []
 
     for file in models_loc:
-        for i, row in df.iterrows():
+        for _, row in df.iterrows():
             if '.' in row['attack']:
                 attack_type = row['attack'].split('.')[0]
             else:
                 attack_type = row['attack']
-            
+
             if attack_type in file and row['model'] in file:
                 model_name = row['model']
+                print(file)
                 model = joblib.load(file)
                 weight = weight_data.get(attack_type, 0)
 
-                if attack_type not in models_dict:
-                    models_dict[attack_type] = {}
-                models_dict[attack_type][model_name] = model
-                models_dict[attack_type]['weight'] = weight
+                model_object = ModelObject(attack_type, model_name, model, weight)
+                models.append(model_object)
                 break
-    return models_dict
 
+    return models
+
+def printModel(models):
+    for model in models:
+        #Handling the key if more than 1 (Let's expert choose)
+        print(f"Attack: {model.attack_type}, Model_name: {model.model_name}, model: {model.model} with weight :{model.weight}")
+
+def predictionModel(models, X_test, y_test):
+    # Function to make predictions with a single model
+    def make_prediction(model, X_test):
+        y_pred = model.model.predict(X_test)
+        print(f'-- Evaluation for {model.model_name} for {model.attack_type}. The prediction is {y_pred} --')
+        return y_pred
+
+    futures = []
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+
+        for model in models:
+            future = executor.submit(make_prediction, model, X_test)
+            futures.append(future)
+
+    predictions = [future.result() for future in futures]
+    
+    # Integrate predictions
+    final_prediction = integrate_predictions(predictions)
+    
+    return final_prediction
+
+def integrate_predictions(predictions):
+    # Implement linear integration: w1x1 + w2x2 + ...
+    total_weight = sum(weight for _, weight in predictions)
+    weighted_sum = sum(pred * weight for pred, weight in predictions)
+
+    # Normalize by total weight
+    final_pred = weighted_sum / total_weight
+    return final_pred
 
 
 def main():
@@ -113,11 +157,11 @@ def main():
     X = df.drop('label', axis=1)
     y = df['label']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
-    
+
     label_counts = Counter(y_train)
     total_labels = len(y_train)
     label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
-    print(label_percentages)
+    # print(label_percentages)
     lowest_percent_attack = min(label_percentages, key=label_percentages.get)
     treshold = label_percentages[lowest_percent_attack]
 
@@ -135,22 +179,12 @@ def main():
     models = read_model(models_loc, model_df, label_percentages)
     # print(models)
 
+    printModel(models)
 
-    for attack in models:
-        #Handling the key if more than 1 (Let's expert choose)
-        model_key = list(models[attack].keys())
-        model_key = model_key[0]
-        # print(model_key)
+    predict = predictionModel(models, X_test[:3], y_test[:3])
 
-        model = models[attack][model_key]
-        weight = models[attack]['weight']
-        print(f"Attack: {attack}, Model_name: {model_key}, model: {model} with weight :{models[attack]['weight']}")
-
-    # for attack in models:
-    #     model_key = list(models[attack].keys())
-    #     model = models[attack][model_key]
-    #     print('-- Starting Evaluation --')
-    #     y_pred = model.predict(X_test)
+    for i in predict:
+        print(i)
 
         
 

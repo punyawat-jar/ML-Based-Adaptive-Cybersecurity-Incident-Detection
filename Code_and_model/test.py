@@ -60,12 +60,12 @@ def printModel(models):
         #Handling the key if more than 1 (Let's expert choose)
         print(f"Attack: {model.attack_type}, Model_name: {model.model_name}, model: {model.model} with weight :{model.weight}")
 
-def predictionModel(models, X_test, y_test):
+def predictionModel(models, X_test, y_test, treshold):
     # Function to make predictions with a single model
     def make_prediction(model, X_test):
         y_pred = model.model.predict(X_test)
         print(f'-- Evaluation for {model.model_name} for {model.attack_type}. The prediction is {y_pred} --')
-        return y_pred
+        return y_pred, model.weight
 
     futures = []
 
@@ -78,17 +78,20 @@ def predictionModel(models, X_test, y_test):
     predictions = [future.result() for future in futures]
     
     # Integrate predictions
-    final_prediction = integrate_predictions(predictions)
+    final_prediction = integrate_predictions(predictions, treshold)
     
     return final_prediction
 
-def integrate_predictions(predictions):
-    # Implement linear integration: w1x1 + w2x2 + ...
+def integrate_predictions(predictions, treshold):
+    # linear integration: w1x1 + w2x2 + ...
     total_weight = sum(weight for _, weight in predictions)
     weighted_sum = sum(pred * weight for pred, weight in predictions)
 
     # Normalize by total weight
     final_pred = weighted_sum / total_weight
+
+    # if final_pred * treshold:
+
     return final_pred
 
 
@@ -181,7 +184,7 @@ def main():
 
     printModel(models)
 
-    predict = predictionModel(models, X_test[:3], y_test[:3])
+    predict = predictionModel(models, X_test[:3], y_test[:3], treshold)
 
     for i in predict:
         print(i)

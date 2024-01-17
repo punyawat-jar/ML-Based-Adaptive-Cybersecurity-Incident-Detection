@@ -5,6 +5,8 @@ import argparse
 import glob
 import joblib
 
+from collections import Counter
+
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
@@ -22,15 +24,25 @@ def check_file(path):
     else:
         raise Exception(f'Error: {path} not exist')
     
-def read_model(models_loc, df):
+def read_model(models_loc, df, weight_data):
     models_dict = {}
 
     for file in models_loc:
         for i, row in df.iterrows():
             if '.' in row['attack']:
-                row['attack'] = row['attack'].split('.')[0]
-            if row['attack'] in file and row['model'] in file:
-                models_dict[row['attack']] = {row['model']: joblib.load(file)}
+                attack_type = row['attack'].split('.')[0]
+            else:
+                attack_type = row['attack']
+            
+            if attack_type in file and row['model'] in file:
+                model_name = row['model']
+                model = joblib.load(file)
+                weight = weight_data.get(attack_type, 0)
+
+                if attack_type not in models_dict:
+                    models_dict[attack_type] = {}
+                models_dict[attack_type][model_name] = model
+                models_dict[attack_type]['weight'] = weight
                 break
     return models_dict
 
@@ -56,6 +68,12 @@ def main():
                         dest='model_loc',
                         type=str,
                         help='The trained models loaction.')
+    
+    parser.add_argument('--network',
+                        dest='net_file_loc',
+                        type=str,
+                        required=True,
+                        help='The netowrk file location (.csv)')
 
     parser.add_argument('--sequence',
                         dest='sequence',
@@ -77,15 +95,32 @@ def main():
 
     model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
 
-    sequence_model = arg.sequence
+    net_file_loc = arg.net_file_loc
 
+    sequence_model = arg.sequence
+    
     debug_model = arg.debug
     
     models_loc = []
     os.chdir('./Code_and_model')
     
     check_file(chooese_csv)
+    check_file(net_file_loc)
     print('-- Reading Dataset --')
+
+    df = pd.read_csv(net_file_loc)
+    
+    X = df.drop('label', axis=1)
+    y = df['label']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+    
+    label_counts = Counter(y_train)
+    total_labels = len(y_train)
+    label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
+    print(label_percentages)
+    lowest_percent_attack = min(label_percentages, key=label_percentages.get)
+    treshold = label_percentages[lowest_percent_attack]
+
     model_df = pd.read_csv(chooese_csv)[['attack', 'model']]
     model_df = model_df[model_df['attack'] != 'normal.csv']
     
@@ -97,23 +132,27 @@ def main():
                 models_loc.append(file)
                 break
 
-    models = read_model(models_loc, model_df)
-    
+    models = read_model(models_loc, model_df, label_percentages)
+    # print(models)
 
 
     for attack in models:
         #Handling the key if more than 1 (Let's expert choose)
         model_key = list(models[attack].keys())
-        if len(model_key) != 1:
-            print('Please choose the model by number :')
-        else:
-            model_key = model_key[0]
-        
+        model_key = model_key[0]
+        # print(model_key)
+
         model = models[attack][model_key]
+        weight = models[attack]['weight']
+        print(f"Attack: {attack}, Model_name: {model_key}, model: {model} with weight :{models[attack]['weight']}")
 
-        print(f"Attack: {attack}, Model_name: {model_key}, model: {model}")
+    # for attack in models:
+    #     model_key = list(models[attack].keys())
+    #     model = models[attack][model_key]
+    #     print('-- Starting Evaluation --')
+    #     y_pred = model.predict(X_test)
 
-        model.prediction()
+        
 
 if __name__ == '__main__':
     main()

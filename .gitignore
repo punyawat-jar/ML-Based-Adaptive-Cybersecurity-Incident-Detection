@@ -581,3 +581,5 @@ Code_and_model/cic/dataset/mix_dataset/SSH-Patator.csv
 Code_and_model/cic/dataset/mix_dataset/Web Attack ÃÂÃÂ XSS.csv
 Code_and_model/cic/dataset/mix_dataset/Web Attack- Sql Injection.csv
 Code_and_model/cic/dataset/mix_dataset/Web Attack-Brute Force.csv
+Code_and_model/cic/dataset/real_CIC.csv
+Code_and_model/cic/dataset/real_CIC_withnum_attack.csv

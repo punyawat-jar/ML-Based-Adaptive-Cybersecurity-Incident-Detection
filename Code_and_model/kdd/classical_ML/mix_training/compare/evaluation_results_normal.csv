@@ -1,9 +1,7 @@
 ,accuracy,loss,f1,precision,recall,confusion_matrix
 ExtraTrees,1.0,0.0,1.0,1.0,1.0,[[44556]]
 Bagging,1.0,0.0,1.0,1.0,1.0,[[44556]]
-LDA,1.0,0.0,1.0,1.0,1.0,[[44556]]
 DecisionTree,1.0,0.0,1.0,1.0,1.0,[[44556]]
 RandomForest,1.0,0.0,1.0,1.0,1.0,[[44556]]
-KNeighbors,1.0,0.0,1.0,1.0,1.0,[[44556]]
 GaussianNB,1.0,0.0,1.0,1.0,1.0,[[44556]]
 AdaBoost,1.0,0.0,1.0,1.0,1.0,[[44556]]

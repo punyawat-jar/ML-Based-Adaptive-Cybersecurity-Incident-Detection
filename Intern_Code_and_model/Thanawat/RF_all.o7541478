@@ -1,0 +1,2137 @@
+/var/spool/pbs/mom_priv/jobs/7541478.spcc-adm1.SC: line 18: ${/home/s2316001/codepaper}: bad substitution
+13:4: not a valid test operator: (
+13:4: not a valid test operator: 
+/home/s2316001/rf_test_all.py:99: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  plt.figure(figsize=(10, 8))
+------------------ round 1 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9995627761413843
+Ensemble Model precesion: 0.9704610951008645
+Ensemble Model recall: 0.9998762835580849
+Ensemble Model fbeta_score: 0.984949119493023
+------------------ round 1 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9993473902523332
+Ensemble Model precesion: 0.9461077844311377
+Ensemble Model recall: 0.9995133819951338
+Ensemble Model fbeta_score: 0.972077614765736
+------------------ round 1 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9932811677394154
+Ensemble Model precesion: 0.4544983595233984
+Ensemble Model recall: 0.9977255496588324
+Ensemble Model fbeta_score: 0.6245106181041642
+------------------ round 1 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.8849100867021087
+Ensemble Model precesion: 0.018791129369698352
+Ensemble Model recall: 0.9801587301587301
+Ensemble Model fbeta_score: 0.0368753032508491
+------------------ round 1 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9986136249855586
+Ensemble Model precesion: 0.8301886792452831
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9072164948453608
+------------------ round 1 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9978798396908323
+Ensemble Model precesion: 0.7882037533512064
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.881559220389805
+------------------ round 1 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9842215988779803
+Ensemble Model precesion: 0.04533333333333334
+Ensemble Model recall: 0.8947368421052632
+Ensemble Model fbeta_score: 0.08629441624365482
+------------------ round 1 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9964288494802368
+Ensemble Model precesion: 0.3581352269218895
+Ensemble Model recall: 0.9739714525608733
+Ensemble Model fbeta_score: 0.5237020316027088
+------------------ round 1 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9977030050155449
+Ensemble Model precesion: 0.9748593762378852
+Ensemble Model recall: 0.9998104111369915
+Ensemble Model fbeta_score: 0.987177258687775
+------------------ round 1 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9985417565344195
+Ensemble Model precesion: 0.9828189774297559
+Ensemble Model recall: 0.9995783753396421
+Ensemble Model fbeta_score: 0.991127833519138
+------------------ round 1 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9820521187823411
+Ensemble Model precesion: 0.813625304136253
+Ensemble Model recall: 0.998805256869773
+Ensemble Model fbeta_score: 0.8967551622418878
+------------------ round 1 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9755127121898763
+Ensemble Model precesion: 0.2095
+Ensemble Model recall: 0.9699074074074074
+Ensemble Model fbeta_score: 0.3445723684210526
+------------------ round 1 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.6876866737656806
+Ensemble Model precesion: 0.06184995903717864
+Ensemble Model recall: 0.9984884746189696
+Ensemble Model fbeta_score: 0.116484453065303
+------------------ round 2 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9931106264869152
+Ensemble Model precesion: 0.6776092182707453
+Ensemble Model recall: 0.9996331172801761
+Ensemble Model fbeta_score: 0.8077075098814229
+------------------ round 2 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9969968890425164
+Ensemble Model precesion: 0.7902882569162314
+Ensemble Model recall: 0.9995106435037925
+Ensemble Model fbeta_score: 0.8826707000864304
+------------------ round 2 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9929107297522205
+Ensemble Model precesion: 0.44604913678618857
+Ensemble Model recall: 0.9990704591931586
+Ensemble Model fbeta_score: 0.6167441326676996
+------------------ round 2 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9951341563492346
+Ensemble Model precesion: 0.3093112244897959
+Ensemble Model recall: 0.9837728194726166
+Ensemble Model fbeta_score: 0.4706453178068899
+------------------ round 2 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9986136249855586
+Ensemble Model precesion: 0.8454545454545455
+Ensemble Model recall: 0.9893617021276596
+Ensemble Model fbeta_score: 0.911764705882353
+------------------ round 2 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9993380090173907
+Ensemble Model precesion: 0.9252049180327869
+Ensemble Model recall: 0.9988938053097345
+Ensemble Model fbeta_score: 0.9606382978723405
+------------------ round 2 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9928997194950911
+Ensemble Model precesion: 0.047337278106508875
+Ensemble Model recall: 0.8888888888888888
+Ensemble Model fbeta_score: 0.0898876404494382
+------------------ round 2 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9971413870957915
+Ensemble Model precesion: 0.4110993283845882
+Ensemble Model recall: 0.9806070826306914
+Ensemble Model fbeta_score: 0.5793275217932752
+------------------ round 2 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9980574943353565
+Ensemble Model precesion: 0.9787279077151021
+Ensemble Model recall: 0.9998108056974513
+Ensemble Model fbeta_score: 0.9891570292131826
+------------------ round 2 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9978317217579851
+Ensemble Model precesion: 0.9746869896570496
+Ensemble Model recall: 0.9995347971715668
+Ensemble Model fbeta_score: 0.9869545245751032
+------------------ round 2 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9964104237564683
+Ensemble Model precesion: 0.9550561797752809
+Ensemble Model recall: 0.9993811881188119
+Ensemble Model fbeta_score: 0.9767160568491079
+------------------ round 2 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.993624702358092
+Ensemble Model precesion: 0.5074812967581047
+Ensemble Model recall: 0.9531615925058547
+Ensemble Model fbeta_score: 0.6623270951993491
+------------------ round 2 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.7628652312806794
+Ensemble Model precesion: 0.08111318001107141
+Ensemble Model recall: 0.9990083054419239
+Ensemble Model fbeta_score: 0.15004375267636053
+------------------ round 3 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9996459725841169
+Ensemble Model precesion: 0.9760096443640748
+Ensemble Model recall: 0.9998764974681981
+Ensemble Model fbeta_score: 0.9877989263055149
+------------------ round 3 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.999076391289319
+Ensemble Model precesion: 0.9253932584269663
+Ensemble Model recall: 0.9995145631067961
+Ensemble Model fbeta_score: 0.9610268378063009
+------------------ round 3 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9896956676799755
+Ensemble Model precesion: 0.35374059023382853
+Ensemble Model recall: 0.998683468121121
+Ensemble Model fbeta_score: 0.5224321133412043
+------------------ round 3 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9942912191815035
+Ensemble Model precesion: 0.2740740740740741
+Ensemble Model recall: 0.9876796714579056
+Ensemble Model fbeta_score: 0.42908117752007136
+------------------ round 3 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9986521354026264
+Ensemble Model precesion: 0.8138297872340425
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.8973607038123167
+------------------ round 3 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9989801760538181
+Ensemble Model precesion: 0.8899707887049659
+Ensemble Model recall: 0.9989071038251366
+Ensemble Model fbeta_score: 0.9412976313079299
+------------------ round 3 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9807152875175316
+Ensemble Model precesion: 0.030837004405286344
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.05982905982905983
+------------------ round 3 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9962274433608758
+Ensemble Model precesion: 0.36205395996518713
+Ensemble Model recall: 0.9765258215962441
+Ensemble Model fbeta_score: 0.5282539682539682
+------------------ round 3 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9982898285517195
+Ensemble Model precesion: 0.9812231475096802
+Ensemble Model recall: 0.9998378553669873
+Ensemble Model fbeta_score: 0.9904430464462589
+------------------ round 3 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9957207043850373
+Ensemble Model precesion: 0.9506227758007118
+Ensemble Model recall: 0.9994855245311257
+Ensemble Model fbeta_score: 0.9744419871867948
+------------------ round 3 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9865274346184327
+Ensemble Model precesion: 0.853001017293998
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9206697776557782
+------------------ round 3 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9763269068284814
+Ensemble Model precesion: 0.20956838273530942
+Ensemble Model recall: 0.9504716981132075
+Ensemble Model fbeta_score: 0.3434171282488283
+------------------ round 3 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.6975820065968885
+Ensemble Model precesion: 0.06384723618090453
+Ensemble Model recall: 0.9992449981124952
+Ensemble Model fbeta_score: 0.12002539260289297
+------------------ round 4 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9961658830859862
+Ensemble Model precesion: 0.7902991577112983
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.8828682673588579
+------------------ round 4 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9987556170065676
+Ensemble Model precesion: 0.9030789245446661
+Ensemble Model recall: 0.9992802303262955
+Ensemble Model fbeta_score: 0.94874715261959
+------------------ round 4 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9924277805139005
+Ensemble Model precesion: 0.42918901609158594
+Ensemble Model recall: 0.9992544268406337
+Ensemble Model fbeta_score: 0.6004704301075269
+------------------ round 4 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9963115923930496
+Ensemble Model precesion: 0.3878469617404351
+Ensemble Model recall: 0.9791666666666666
+Ensemble Model fbeta_score: 0.5556152606125738
+------------------ round 4 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9999229791658644
+Ensemble Model precesion: 1.0
+Ensemble Model recall: 0.9887640449438202
+Ensemble Model fbeta_score: 0.9943502824858756
+------------------ round 4 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.999320117369212
+Ensemble Model precesion: 0.9226804123711341
+Ensemble Model recall: 0.9988839285714286
+Ensemble Model fbeta_score: 0.9592711682743837
+------------------ round 4 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9877717391304348
+Ensemble Model precesion: 0.03146853146853147
+Ensemble Model recall: 0.8181818181818182
+Ensemble Model fbeta_score: 0.060606060606060615
+------------------ round 4 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9960734269166585
+Ensemble Model precesion: 0.3423475258918297
+Ensemble Model recall: 0.9722222222222222
+Ensemble Model fbeta_score: 0.5063829787234042
+------------------ round 4 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9979137824489464
+Ensemble Model precesion: 0.9771754636233951
+Ensemble Model recall: 0.9998107954699029
+Ensemble Model fbeta_score: 0.9883635489171821
+------------------ round 4 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9979958695826446
+Ensemble Model precesion: 0.9763586831047698
+Ensemble Model recall: 0.9993855751961433
+Ensemble Model fbeta_score: 0.987737942309938
+------------------ round 4 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.991888490047084
+Ensemble Model precesion: 0.9004576659038902
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9476219145093318
+------------------ round 4 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9858053613948844
+Ensemble Model precesion: 0.323943661971831
+Ensemble Model recall: 0.9732739420935412
+Ensemble Model fbeta_score: 0.4860956618464961
+------------------ round 4 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9769134872607329
+Ensemble Model precesion: 0.4761342852085669
+Ensemble Model recall: 0.9987623762376238
+Ensemble Model fbeta_score: 0.6448519717128132
+------------------ round 5 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9994654186020165
+Ensemble Model precesion: 0.9650139017608897
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9821954958141729
+------------------ round 5 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9989961977186311
+Ensemble Model precesion: 0.9193439676477196
+Ensemble Model recall: 0.9990234375
+Ensemble Model fbeta_score: 0.9575289575289575
+------------------ round 5 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9923163306896727
+Ensemble Model precesion: 0.4255640292341913
+Ensemble Model recall: 0.9985088536812675
+Ensemble Model fbeta_score: 0.5967804823706344
+------------------ round 5 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9848628108609555
+Ensemble Model precesion: 0.1262587141750581
+Ensemble Model recall: 0.9799599198396793
+Ensemble Model fbeta_score: 0.22369624885635864
+------------------ round 5 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9988061770708977
+Ensemble Model precesion: 0.8502415458937198
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9190600522193212
+------------------ round 5 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9994453589064625
+Ensemble Model precesion: 0.9364754098360656
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9671957671957672
+------------------ round 5 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.997633239831697
+Ensemble Model precesion: 0.2
+Ensemble Model recall: 0.8666666666666667
+Ensemble Model fbeta_score: 0.325
+------------------ round 5 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9956976944923043
+Ensemble Model precesion: 0.3139344262295082
+Ensemble Model recall: 0.9737288135593221
+Ensemble Model fbeta_score: 0.474793388429752
+------------------ round 5 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9973844436673357
+Ensemble Model precesion: 0.9715139285620692
+Ensemble Model recall: 0.9998651455079969
+Ensemble Model fbeta_score: 0.9854856717528843
+------------------ round 5 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9969728087219756
+Ensemble Model precesion: 0.9641913439635535
+Ensemble Model recall: 0.9996693590288602
+Ensemble Model fbeta_score: 0.9816098884534218
+------------------ round 5 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9974360169689058
+Ensemble Model precesion: 0.9680473372781065
+Ensemble Model recall: 0.9993891264508247
+Ensemble Model fbeta_score: 0.9834685903216112
+------------------ round 5 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9959904754589446
+Ensemble Model precesion: 0.6177847113884556
+Ensemble Model recall: 0.9611650485436893
+Ensemble Model fbeta_score: 0.7521367521367521
+------------------ round 5 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.6975456457938343
+Ensemble Model precesion: 0.06447233112667909
+Ensemble Model recall: 0.9991284860557769
+Ensemble Model fbeta_score: 0.12112841876471653
+------------------ round 6 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9987538234960915
+Ensemble Model precesion: 0.9217459254297834
+Ensemble Model recall: 0.999636803874092
+Ensemble Model fbeta_score: 0.959112556626786
+------------------ round 6 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9991925337020394
+Ensemble Model precesion: 0.9348218313035633
+Ensemble Model recall: 0.9992767598842816
+Ensemble Model fbeta_score: 0.9659752971335352
+------------------ round 6 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.996249978771462
+Ensemble Model precesion: 0.601762911063397
+Ensemble Model recall: 0.9983127109111362
+Ensemble Model fbeta_score: 0.7508989635479094
+------------------ round 6 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9965122917186998
+Ensemble Model precesion: 0.3900709219858156
+Ensemble Model recall: 0.9840954274353877
+Ensemble Model fbeta_score: 0.5586907449209932
+------------------ round 6 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.998112989563677
+Ensemble Model precesion: 0.8025210084033614
+Ensemble Model recall: 0.9896373056994818
+Ensemble Model fbeta_score: 0.8863109048723897
+------------------ round 6 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9990517426465326
+Ensemble Model precesion: 0.8970873786407767
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9457523029682702
+------------------ round 6 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9931188639551192
+Ensemble Model precesion: 0.07272727272727272
+Ensemble Model recall: 0.75
+Ensemble Model fbeta_score: 0.13259668508287292
+------------------ round 6 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9960649644746685
+Ensemble Model precesion: 0.33659942363112394
+Ensemble Model recall: 0.980688497061293
+Ensemble Model fbeta_score: 0.5011800042909247
+------------------ round 6 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9973173781203444
+Ensemble Model precesion: 0.9705758278844125
+Ensemble Model recall: 0.9998913515862669
+Ensemble Model fbeta_score: 0.9850155196403725
+------------------ round 6 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9983203478406927
+Ensemble Model precesion: 0.9804135920561173
+Ensemble Model recall: 0.9995356180923192
+Ensemble Model fbeta_score: 0.9898822663723327
+------------------ round 6 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9926809938930586
+Ensemble Model precesion: 0.913878222709819
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9550014330753798
+------------------ round 6 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9945617943006375
+Ensemble Model precesion: 0.5318559556786704
+Ensemble Model recall: 0.96
+Ensemble Model fbeta_score: 0.6844919786096257
+------------------ round 6 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.7062878217281771
+Ensemble Model precesion: 0.06618770386886329
+Ensemble Model recall: 0.9990028667580706
+Ensemble Model fbeta_score: 0.12415000232345608
+------------------ round 7 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.999706157244817
+Ensemble Model precesion: 0.9803874955426126
+Ensemble Model recall: 0.9998787731846285
+Ensemble Model fbeta_score: 0.9900372104189172
+------------------ round 7 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9994497061873487
+Ensemble Model precesion: 0.9554950045413261
+Ensemble Model recall: 0.9992875801472334
+Ensemble Model fbeta_score: 0.9769007544979686
+------------------ round 7 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9974090569434302
+Ensemble Model precesion: 0.6872671206475652
+Ensemble Model recall: 0.9986930545182973
+Ensemble Model fbeta_score: 0.8142172159220641
+------------------ round 7 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9976986477325436
+Ensemble Model precesion: 0.49147442326980945
+Ensemble Model recall: 0.9819639278557114
+Ensemble Model fbeta_score: 0.6550802139037434
+------------------ round 7 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9998459583317287
+Ensemble Model precesion: 0.9882352941176471
+Ensemble Model recall: 0.9882352941176471
+Ensemble Model fbeta_score: 0.9882352941176471
+------------------ round 7 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9986491805625134
+Ensemble Model precesion: 0.8590102707749766
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9241587142139628
+------------------ round 7 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9741409537166901
+Ensemble Model precesion: 0.013422818791946308
+Ensemble Model recall: 0.8
+Ensemble Model fbeta_score: 0.026402640264026403
+------------------ round 7 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9964254645034408
+Ensemble Model precesion: 0.3619047619047619
+Ensemble Model recall: 0.9711459192085737
+Ensemble Model fbeta_score: 0.5273052820053715
+------------------ round 7 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9981245598823478
+Ensemble Model precesion: 0.979413715346863
+Ensemble Model recall: 0.9998104316741592
+Ensemble Model fbeta_score: 0.9895069752482546
+------------------ round 7 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9987669826194175
+Ensemble Model precesion: 0.9853790277519091
+Ensemble Model recall: 0.9995748901799631
+Ensemble Model fbeta_score: 0.9924261964499261
+------------------ round 7 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9835905086009976
+Ensemble Model precesion: 0.8174726989079563
+Ensemble Model recall: 0.9993642720915448
+Ensemble Model fbeta_score: 0.8993135011441646
+------------------ round 7 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9760503878946155
+Ensemble Model precesion: 0.2224469160768453
+Ensemble Model recall: 0.9544468546637744
+Ensemble Model fbeta_score: 0.36080360803608036
+------------------ round 7 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9143677116068878
+Ensemble Model precesion: 0.19506239163878783
+Ensemble Model recall: 0.9989994997498749
+Ensemble Model fbeta_score: 0.32639385457740006
+------------------ round 8 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9973076215022091
+Ensemble Model precesion: 0.8439359737328135
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9153636414222914
+------------------ round 8 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9984265468371932
+Ensemble Model precesion: 0.8797360578969774
+Ensemble Model recall: 0.9990331157843848
+Ensemble Model fbeta_score: 0.9355970571590265
+------------------ round 8 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9966480138579896
+Ensemble Model precesion: 0.6305036984853821
+Ensemble Model recall: 0.9979557703029177
+Ensemble Model fbeta_score: 0.7727730608720679
+------------------ round 8 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9986664644806793
+Ensemble Model precesion: 0.6253229974160207
+Ensemble Model recall: 0.9817444219066938
+Ensemble Model fbeta_score: 0.7640094711917916
+------------------ round 8 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.998960218739169
+Ensemble Model precesion: 0.8686868686868687
+Ensemble Model recall: 0.9942196531791907
+Ensemble Model fbeta_score: 0.9272237196765498
+------------------ round 8 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9982287268303156
+Ensemble Model precesion: 0.8282476024411508
+Ensemble Model recall: 0.9989484752891693
+Ensemble Model fbeta_score: 0.9056244041944709
+------------------ round 8 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9888236325385694
+Ensemble Model precesion: 0.05204460966542751
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.09893992932862192
+------------------ round 8 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9960988142426284
+Ensemble Model precesion: 0.3492382868640414
+Ensemble Model recall: 0.9673566878980892
+Ensemble Model fbeta_score: 0.5131995776135164
+------------------ round 8 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.997453904412434
+Ensemble Model precesion: 0.9722368144568186
+Ensemble Model recall: 0.9998379298236136
+Ensemble Model fbeta_score: 0.9858442198340723
+------------------ round 8 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9994426608744117
+Ensemble Model precesion: 0.9935404780989203
+Ensemble Model recall: 0.9995730752810588
+Ensemble Model fbeta_score: 0.9965476471979192
+------------------ round 8 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9896042142557456
+Ensemble Model precesion: 0.8818229994700583
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9372007885102788
+------------------ round 8 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.983531761271987
+Ensemble Model precesion: 0.27884615384615385
+Ensemble Model recall: 0.9485981308411215
+Ensemble Model fbeta_score: 0.43099787685774954
+------------------ round 8 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9529023712437992
+Ensemble Model precesion: 0.3073953755016243
+Ensemble Model recall: 0.9985102420856611
+Ensemble Model fbeta_score: 0.4700759789596728
+------------------ round 9 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9996990766964994
+Ensemble Model precesion: 0.9798281212699929
+Ensemble Model recall: 0.999878197320341
+Ensemble Model fbeta_score: 0.9897516276826622
+------------------ round 9 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9992782578638092
+Ensemble Model precesion: 0.9418474614180273
+Ensemble Model recall: 0.9997625830959165
+Ensemble Model fbeta_score: 0.9699412645399056
+------------------ round 9 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9954411714756382
+Ensemble Model precesion: 0.5511208883301907
+Ensemble Model recall: 0.9981028267880857
+Ensemble Model fbeta_score: 0.7101302557872714
+------------------ round 9 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9733515895386592
+Ensemble Model precesion: 0.07847983933261239
+Ensemble Model recall: 0.9806949806949807
+Ensemble Model fbeta_score: 0.14532970962666286
+------------------ round 9 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9986136249855586
+Ensemble Model precesion: 0.8607594936708861
+Ensemble Model recall: 0.9855072463768116
+Ensemble Model fbeta_score: 0.918918918918919
+------------------ round 9 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9994990338509984
+Ensemble Model precesion: 0.9443872296601442
+Ensemble Model recall: 0.9978237214363439
+Ensemble Model fbeta_score: 0.9703703703703704
+------------------ round 9 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9776910939691444
+Ensemble Model precesion: 0.019267822736030827
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.03780718336483932
+------------------ round 9 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.997226011515691
+Ensemble Model precesion: 0.4326315789473684
+Ensemble Model recall: 0.9824701195219123
+Ensemble Model fbeta_score: 0.6007308160779538
+------------------ round 9 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.998050308741036
+Ensemble Model precesion: 0.9786696454692944
+Ensemble Model recall: 0.9996739927735064
+Ensemble Model fbeta_score: 0.9890603160950435
+------------------ round 9 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9982020087112868
+Ensemble Model precesion: 0.9790245019464163
+Ensemble Model recall: 0.9993922393641889
+Ensemble Model fbeta_score: 0.9891035280508966
+------------------ round 9 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.981958883035756
+Ensemble Model precesion: 0.8098280098280098
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.8949226174314417
+------------------ round 9 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9882325831477072
+Ensemble Model precesion: 0.382013201320132
+Ensemble Model recall: 0.9645833333333333
+Ensemble Model fbeta_score: 0.5472813238770685
+------------------ round 9 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.6944653663350908
+Ensemble Model precesion: 0.06402024204521042
+Ensemble Model recall: 0.9991307587234571
+Ensemble Model fbeta_score: 0.12033021266413427
+------------------ round 10 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9991043106378158
+Ensemble Model precesion: 0.9412652350551364
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9697440803635494
+------------------ round 10 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9984376080193571
+Ensemble Model precesion: 0.8819095477386935
+Ensemble Model recall: 0.9997626394493235
+Ensemble Model fbeta_score: 0.9371453999332516
+------------------ round 10 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9924766061511812
+Ensemble Model precesion: 0.4336318567087798
+Ensemble Model recall: 0.9990788504053059
+Ensemble Model fbeta_score: 0.6047730567636891
+------------------ round 10 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9970965497555928
+Ensemble Model precesion: 0.4469565217391304
+Ensemble Model recall: 0.9716446124763705
+Ensemble Model fbeta_score: 0.6122692078618225
+------------------ round 10 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9986521354026264
+Ensemble Model precesion: 0.8530805687203792
+Ensemble Model recall: 0.9782608695652174
+Ensemble Model fbeta_score: 0.9113924050632911
+------------------ round 10 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9993111715451227
+Ensemble Model precesion: 0.9227642276422764
+Ensemble Model recall: 0.9988998899889989
+Ensemble Model fbeta_score: 0.95932382461701
+------------------ round 10 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9917163394109397
+Ensemble Model precesion: 0.04591836734693878
+Ensemble Model recall: 0.8181818181818182
+Ensemble Model fbeta_score: 0.08695652173913043
+------------------ round 10 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9962612931288356
+Ensemble Model precesion: 0.35271317829457366
+Ensemble Model recall: 0.9688779688779688
+Ensemble Model fbeta_score: 0.5171584699453552
+------------------ round 10 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.99772935219472
+Ensemble Model precesion: 0.9752669742913646
+Ensemble Model recall: 0.999729707814147
+Ensemble Model fbeta_score: 0.987346840714343
+------------------ round 10 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9985761130558599
+Ensemble Model precesion: 0.9832430680923946
+Ensemble Model recall: 0.9994824016563147
+Ensemble Model fbeta_score: 0.9912962314782406
+------------------ round 10 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9878327350706261
+Ensemble Model precesion: 0.8621236133122029
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9259574468085107
+------------------ round 10 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9952838159612873
+Ensemble Model precesion: 0.5858156028368794
+Ensemble Model recall: 0.9649532710280374
+Ensemble Model fbeta_score: 0.7290379523389231
+------------------ round 10 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.8229202919253045
+Ensemble Model precesion: 0.10508421176995682
+Ensemble Model recall: 0.9988769653107062
+Ensemble Model fbeta_score: 0.1901628440094547
+------------------ round 11 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9980227568822929
+Ensemble Model precesion: 0.8786265348256004
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9353924460639713
+------------------ round 11 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9990957483581058
+Ensemble Model precesion: 0.9274646305861217
+Ensemble Model recall: 0.9990324141267537
+Ensemble Model fbeta_score: 0.9619191801560498
+------------------ round 11 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.995083470611212
+Ensemble Model precesion: 0.5370982276960048
+Ensemble Model recall: 0.998324958123953
+Ensemble Model fbeta_score: 0.6984374999999999
+------------------ round 11 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9923065258500732
+Ensemble Model precesion: 0.23149394347240915
+Ensemble Model recall: 0.9772727272727273
+Ensemble Model fbeta_score: 0.3743199129488574
+------------------ round 11 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9982285208148804
+Ensemble Model precesion: 0.8148148148148148
+Ensemble Model recall: 0.967032967032967
+Ensemble Model fbeta_score: 0.8844221105527638
+------------------ round 11 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9996421670364274
+Ensemble Model precesion: 0.9568965517241379
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9779735682819383
+------------------ round 11 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9916286816269285
+Ensemble Model precesion: 0.03553299492385787
+Ensemble Model recall: 0.875
+Ensemble Model fbeta_score: 0.06829268292682927
+------------------ round 11 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9958686358205014
+Ensemble Model precesion: 0.3369086908690869
+Ensemble Model recall: 0.9760956175298805
+Ensemble Model fbeta_score: 0.5009200572480066
+------------------ round 11 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9978083937322456
+Ensemble Model precesion: 0.9759355454256334
+Ensemble Model recall: 0.999809942711303
+Ensemble Model fbeta_score: 0.9877284980486299
+------------------ round 11 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9983394347970483
+Ensemble Model precesion: 0.9805798687089715
+Ensemble Model recall: 0.999581764951903
+Ensemble Model fbeta_score: 0.989989644459786
+------------------ round 11 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9912358398209874
+Ensemble Model precesion: 0.8960751796572692
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9451895043731778
+------------------ round 11 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9931945617943007
+Ensemble Model precesion: 0.5092165898617511
+Ensemble Model recall: 0.9629629629629629
+Ensemble Model fbeta_score: 0.6661642803315749
+------------------ round 11 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.6876581045632808
+Ensemble Model precesion: 0.06323710408649727
+Ensemble Model recall: 0.999384463868029
+Ensemble Model fbeta_score: 0.11894766917954241
+------------------ round 12 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9963570578905631
+Ensemble Model precesion: 0.8001942690626518
+Ensemble Model recall: 0.9998786260468503
+Ensemble Model fbeta_score: 0.8889608287471673
+------------------ round 12 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9974891116488075
+Ensemble Model precesion: 0.8214778325123153
+Ensemble Model recall: 0.9995204986813714
+Ensemble Model fbeta_score: 0.901795370971231
+------------------ round 12 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9949836964828558
+Ensemble Model precesion: 0.5281337605126152
+Ensemble Model recall: 0.9975416036308623
+Ensemble Model fbeta_score: 0.6906258182770358
+------------------ round 12 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9949468369786277
+Ensemble Model precesion: 0.31495098039215685
+Ensemble Model recall: 0.9716446124763705
+Ensemble Model fbeta_score: 0.4757056918093475
+------------------ round 12 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9968036353833712
+Ensemble Model precesion: 0.6772908366533864
+Ensemble Model recall: 0.9883720930232558
+Ensemble Model fbeta_score: 0.8037825059101654
+------------------ round 12 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9973162527732055
+Ensemble Model precesion: 0.7598078462770216
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.8635122838944495
+------------------ round 12 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.968180224403927
+Ensemble Model precesion: 0.004120879120879121
+Ensemble Model recall: 0.75
+Ensemble Model fbeta_score: 0.00819672131147541
+------------------ round 12 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9962629856172336
+Ensemble Model precesion: 0.3624121779859485
+Ensemble Model recall: 0.9763406940063092
+Ensemble Model fbeta_score: 0.5286080273270709
+------------------ round 12 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9976551010534082
+Ensemble Model precesion: 0.9743873517786561
+Ensemble Model recall: 0.9998107340813843
+Ensemble Model fbeta_score: 0.9869353439647695
+------------------ round 12 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9969460869830775
+Ensemble Model precesion: 0.9641839641839642
+Ensemble Model recall: 0.9996249238126494
+Ensemble Model fbeta_score: 0.9815846415910869
+------------------ round 12 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9855950771525803
+Ensemble Model precesion: 0.84033177812338
+Ensemble Model recall: 0.9993834771886559
+Ensemble Model fbeta_score: 0.9129822585187272
+------------------ round 12 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9727014363622398
+Ensemble Model precesion: 0.19008264462809918
+Ensemble Model recall: 0.9695550351288056
+Ensemble Model fbeta_score: 0.31785028790786946
+------------------ round 12 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9425421395735397
+Ensemble Model precesion: 0.2635960968461718
+Ensemble Model recall: 0.9986121625031542
+Ensemble Model fbeta_score: 0.4170948278133481
+------------------ round 13 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9996866857369434
+Ensemble Model precesion: 0.9790953112082201
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.989437250104434
+------------------ round 13 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9990183200829589
+Ensemble Model precesion: 0.921123595505618
+Ensemble Model recall: 0.9990251035827443
+Ensemble Model fbeta_score: 0.958494095638957
+------------------ round 13 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9933437919263625
+Ensemble Model precesion: 0.4569593891010066
+Ensemble Model recall: 0.99753741238871
+Ensemble Model fbeta_score: 0.6267928346128667
+------------------ round 13 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9650381774717237
+Ensemble Model precesion: 0.06229036895064686
+Ensemble Model recall: 0.9792843691148776
+Ensemble Model fbeta_score: 0.1171303074670571
+------------------ round 13 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9988446874879655
+Ensemble Model precesion: 0.8585365853658536
+Ensemble Model recall: 0.9943502824858758
+Ensemble Model fbeta_score: 0.9214659685863874
+------------------ round 13 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9996063837400702
+Ensemble Model precesion: 0.9548254620123203
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.976890756302521
+------------------ round 13 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9960553997194951
+Ensemble Model precesion: 0.13725490196078433
+Ensemble Model recall: 0.875
+Ensemble Model fbeta_score: 0.23728813559322037
+------------------ round 13 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9965439386913003
+Ensemble Model precesion: 0.370138017565872
+Ensemble Model recall: 0.9719934102141681
+Ensemble Model fbeta_score: 0.5361199454793276
+------------------ round 13 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9981006079012795
+Ensemble Model precesion: 0.9793795281441575
+Ensemble Model recall: 0.999566630552546
+Ensemble Model fbeta_score: 0.9893701156820954
+------------------ round 13 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9983776087097599
+Ensemble Model precesion: 0.9807692307692307
+Ensemble Model recall: 0.9995759717314487
+Ensemble Model fbeta_score: 0.9900833002776676
+------------------ round 13 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.988205678056967
+Ensemble Model precesion: 0.8634146341463415
+Ensemble Model recall: 0.9993726474278545
+Ensemble Model fbeta_score: 0.9264321023553359
+------------------ round 13 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9928258698824795
+Ensemble Model precesion: 0.4733178654292343
+Ensemble Model recall: 0.9691211401425178
+Ensemble Model fbeta_score: 0.6360093530787216
+------------------ round 13 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.7371945043243384
+Ensemble Model precesion: 0.07239387549280278
+Ensemble Model recall: 0.9982300884955753
+Ensemble Model fbeta_score: 0.13499743545905282
+------------------ round 14 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9969571343604848
+Ensemble Model precesion: 0.8281859070464768
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9060193537805478
+------------------ round 14 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9988579329415831
+Ensemble Model precesion: 0.9102085620197585
+Ensemble Model recall: 0.9990361445783132
+Ensemble Model fbeta_score: 0.9525560022975302
+------------------ round 14 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.99541994293769
+Ensemble Model precesion: 0.5523304203079484
+Ensemble Model recall: 0.9977447848148844
+Ensemble Model fbeta_score: 0.7110426572021697
+------------------ round 14 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9954017554501017
+Ensemble Model precesion: 0.3211920529801324
+Ensemble Model recall: 0.9877800407331976
+Ensemble Model fbeta_score: 0.4847576211894053
+------------------ round 14 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.995571302037201
+Ensemble Model precesion: 0.5935251798561151
+Ensemble Model recall: 0.9880239520958084
+Ensemble Model fbeta_score: 0.7415730337078652
+------------------ round 14 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9969226365132756
+Ensemble Model precesion: 0.7309803921568627
+Ensemble Model recall: 0.9989281886387996
+Ensemble Model fbeta_score: 0.8442028985507247
+------------------ round 14 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9754996493688639
+Ensemble Model precesion: 0.022887323943661973
+Ensemble Model recall: 0.7647058823529411
+Ensemble Model fbeta_score: 0.04444444444444444
+------------------ round 14 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.996374689851501
+Ensemble Model precesion: 0.34651019147621986
+Ensemble Model recall: 0.9773519163763066
+Ensemble Model fbeta_score: 0.5116279069767441
+------------------ round 14 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9978874352697712
+Ensemble Model precesion: 0.9767386408795867
+Ensemble Model recall: 0.9998915136557186
+Ensemble Model fbeta_score: 0.9881794789321325
+------------------ round 14 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9986753652289099
+Ensemble Model precesion: 0.9842435510109226
+Ensemble Model recall: 0.9996223564954683
+Ensemble Model fbeta_score: 0.9918733459799995
+------------------ round 14 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9862477273786769
+Ensemble Model precesion: 0.848531684698609
+Ensemble Model recall: 0.9993932038834952
+Ensemble Model fbeta_score: 0.9178044023404848
+------------------ round 14 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9746985175512712
+Ensemble Model precesion: 0.20537897310513448
+Ensemble Model recall: 0.9502262443438914
+Ensemble Model fbeta_score: 0.33775633293124246
+------------------ round 14 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9488169753006259
+Ensemble Model precesion: 0.28701726446849324
+Ensemble Model recall: 0.99899218946838
+Ensemble Model fbeta_score: 0.4459189698315854
+------------------ round 15 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9997769627279937
+Ensemble Model precesion: 0.9846715328467154
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9922765722692167
+------------------ round 15 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9993556861389561
+Ensemble Model precesion: 0.9476678043230944
+Ensemble Model recall: 0.9992802303262955
+Ensemble Model fbeta_score: 0.9727899100782436
+------------------ round 15 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9934435660547187
+Ensemble Model precesion: 0.46471660446141827
+Ensemble Model recall: 0.9981357196122297
+Ensemble Model fbeta_score: 0.6341723423156648
+------------------ round 15 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9959280336818068
+Ensemble Model precesion: 0.33915574963609896
+Ensemble Model recall: 0.9893842887473461
+Ensemble Model fbeta_score: 0.5051490514905148
+------------------ round 15 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9984980937343552
+Ensemble Model precesion: 0.8173076923076923
+Ensemble Model recall: 0.9941520467836257
+Ensemble Model fbeta_score: 0.8970976253298152
+------------------ round 15 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9991680383596937
+Ensemble Model precesion: 0.9118217054263565
+Ensemble Model recall: 0.9978791092258749
+Ensemble Model fbeta_score: 0.9529113924050633
+------------------ round 15 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9928120617110799
+Ensemble Model precesion: 0.041176470588235294
+Ensemble Model recall: 0.875
+Ensemble Model fbeta_score: 0.07865168539325842
+------------------ round 15 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.99616482129015
+Ensemble Model precesion: 0.3444541995902839
+Ensemble Model recall: 0.9783873649210307
+Ensemble Model fbeta_score: 0.5095238095238095
+------------------ round 15 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9978610880905959
+Ensemble Model precesion: 0.9765106877691759
+Ensemble Model recall: 0.9998917807477951
+Ensemble Model fbeta_score: 0.9880629336042455
+------------------ round 15 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9985570260995041
+Ensemble Model precesion: 0.9829712812960235
+Ensemble Model recall: 0.9996255733408219
+Ensemble Model fbeta_score: 0.9912284772822203
+------------------ round 15 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9918418721737914
+Ensemble Model precesion: 0.9050736497545008
+Ensemble Model recall: 0.9993975903614458
+Ensemble Model fbeta_score: 0.9498997995991983
+------------------ round 15 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9952991781242799
+Ensemble Model precesion: 0.5881523272214386
+Ensemble Model recall: 0.9675174013921114
+Ensemble Model fbeta_score: 0.7315789473684211
+------------------ round 15 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9328649715606576
+Ensemble Model precesion: 0.23776656933014778
+Ensemble Model recall: 0.9991323748140803
+Ensemble Model fbeta_score: 0.3841223702080008
+------------------ round 16 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9998159057437408
+Ensemble Model precesion: 0.9875806066395988
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9937515020427782
+------------------ round 16 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9992367784306948
+Ensemble Model precesion: 0.9385310734463277
+Ensemble Model recall: 0.9990377676208805
+Ensemble Model fbeta_score: 0.9678396644138896
+------------------ round 16 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9944338773499991
+Ensemble Model precesion: 0.5114803061414971
+Ensemble Model recall: 0.9981785063752276
+Ensemble Model fbeta_score: 0.6763762034065662
+------------------ round 16 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9964186320333964
+Ensemble Model precesion: 0.38269680436477005
+Ensemble Model recall: 0.9780876494023905
+Ensemble Model fbeta_score: 0.5501400560224089
+------------------ round 16 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9985751145684908
+Ensemble Model precesion: 0.8292682926829268
+Ensemble Model recall: 0.9883720930232558
+Ensemble Model fbeta_score: 0.9018567639257294
+------------------ round 16 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9994364130823732
+Ensemble Model precesion: 0.9389002036659878
+Ensemble Model recall: 0.9967567567567568
+Ensemble Model fbeta_score: 0.9669638175144205
+------------------ round 16 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9927244039270687
+Ensemble Model precesion: 0.04046242774566474
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.07777777777777778
+------------------ round 16 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9960531170558826
+Ensemble Model precesion: 0.34031563845050217
+Ensemble Model recall: 0.9729286300246104
+Ensemble Model fbeta_score: 0.5042517006802721
+------------------ round 16 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9972359413847119
+Ensemble Model precesion: 0.9701414898044112
+Ensemble Model recall: 0.9998391679622581
+Ensemble Model fbeta_score: 0.9847664809779023
+------------------ round 16 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9990876434861944
+Ensemble Model precesion: 0.9890146002535092
+Ensemble Model recall: 0.9997627182991647
+Ensemble Model fbeta_score: 0.9943596157930757
+------------------ round 16 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9969232203626871
+Ensemble Model precesion: 0.9622418879056047
+Ensemble Model recall: 0.9987752602571953
+Ensemble Model fbeta_score: 0.9801682692307692
+------------------ round 16 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9904447346186342
+Ensemble Model precesion: 0.42911153119092627
+Ensemble Model recall: 0.961864406779661
+Ensemble Model fbeta_score: 0.5934640522875817
+------------------ round 16 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.6992701867386957
+Ensemble Model precesion: 0.06598849638192657
+Ensemble Model recall: 0.9989009647087557
+Ensemble Model fbeta_score: 0.12379871358304954
+------------------ round 17 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9971217571088705
+Ensemble Model precesion: 0.8375400641025641
+Ensemble Model recall: 0.9995218742529285
+Ensemble Model fbeta_score: 0.9113896457765668
+------------------ round 17 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9977711717939854
+Ensemble Model precesion: 0.8432442971339442
+Ensemble Model recall: 0.9995377859949156
+Ensemble Model fbeta_score: 0.9147631133671742
+------------------ round 17 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.995101514868468
+Ensemble Model precesion: 0.5430016863406408
+Ensemble Model recall: 0.9985406785844583
+Ensemble Model fbeta_score: 0.7034633425432114
+------------------ round 17 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9967977307596246
+Ensemble Model precesion: 0.42660178426601786
+Ensemble Model recall: 0.9795158286778398
+Ensemble Model fbeta_score: 0.5943502824858757
+------------------ round 17 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9988061770708977
+Ensemble Model precesion: 0.8676470588235294
+Ensemble Model recall: 0.9779005524861878
+Ensemble Model fbeta_score: 0.9194805194805195
+------------------ round 17 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9994900880269091
+Ensemble Model precesion: 0.941544885177453
+Ensemble Model recall: 0.9988925802879292
+Ensemble Model fbeta_score: 0.969371305749597
+------------------ round 17 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9939077840112202
+Ensemble Model precesion: 0.09868421052631579
+Ensemble Model recall: 0.8823529411764706
+Ensemble Model fbeta_score: 0.17751479289940827
+------------------ round 17 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9966387180415879
+Ensemble Model precesion: 0.383816120906801
+Ensemble Model recall: 0.9767628205128205
+Ensemble Model fbeta_score: 0.5510849909584087
+------------------ round 17 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9981006079012795
+Ensemble Model precesion: 0.9791092258748675
+Ensemble Model recall: 0.9998646343774535
+Ensemble Model fbeta_score: 0.9893780891276103
+------------------ round 17 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9986639130550964
+Ensemble Model precesion: 0.9841772151898734
+Ensemble Model recall: 0.9995273655354948
+Ensemble Model fbeta_score: 0.9917928996857854
+------------------ round 17 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9908628968346465
+Ensemble Model precesion: 0.8905027932960894
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.942080378250591
+------------------ round 17 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9942084645518089
+Ensemble Model precesion: 0.5437262357414449
+Ensemble Model recall: 0.9618834080717489
+Ensemble Model fbeta_score: 0.6947368421052632
+------------------ round 17 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9477027764070333
+Ensemble Model precesion: 0.2873029927395077
+Ensemble Model recall: 0.9984
+Ensemble Model fbeta_score: 0.44620462046204623
+------------------ round 18 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9966261187266342
+Ensemble Model precesion: 0.8110736257193888
+Ensemble Model recall: 0.9997553816046967
+Ensemble Model fbeta_score: 0.8955845294182098
+------------------ round 18 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9985316280677498
+Ensemble Model precesion: 0.8855226141527808
+Ensemble Model recall: 0.9995114802149487
+Ensemble Model fbeta_score: 0.9390705679862307
+------------------ round 18 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.991938462714196
+Ensemble Model precesion: 0.4094659816285225
+Ensemble Model recall: 0.9982918959954451
+Ensemble Model fbeta_score: 0.5807341981783052
+------------------ round 18 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9950717165590324
+Ensemble Model precesion: 0.31965174129353235
+Ensemble Model recall: 0.979047619047619
+Ensemble Model fbeta_score: 0.48195030473511485
+------------------ round 18 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9981900103978126
+Ensemble Model precesion: 0.7828282828282829
+Ensemble Model recall: 0.9748427672955975
+Ensemble Model fbeta_score: 0.8683473389355743
+------------------ round 18 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9993380090173907
+Ensemble Model precesion: 0.9272183449651047
+Ensemble Model recall: 0.9989258861439313
+Ensemble Model fbeta_score: 0.9617373319544985
+------------------ round 18 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9911903927068724
+Ensemble Model precesion: 0.05660377358490566
+Ensemble Model recall: 0.9230769230769231
+Ensemble Model fbeta_score: 0.10666666666666666
+------------------ round 18 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9956079926072107
+Ensemble Model precesion: 0.31860527016236356
+Ensemble Model recall: 0.9715909090909091
+Ensemble Model fbeta_score: 0.4798556825015033
+------------------ round 18 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9967928297349474
+Ensemble Model precesion: 0.9652205843781146
+Ensemble Model recall: 0.9996468638796078
+Ensemble Model fbeta_score: 0.9821321341357638
+------------------ round 18 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9971904000244313
+Ensemble Model precesion: 0.9670992505940413
+Ensemble Model recall: 0.9992445703493862
+Ensemble Model fbeta_score: 0.9829091584618243
+------------------ round 18 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.993986294345252
+Ensemble Model precesion: 0.9272829763246899
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.962269669494004
+------------------ round 18 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9947768645825332
+Ensemble Model precesion: 0.562082777036048
+Ensemble Model recall: 0.9722863741339491
+Ensemble Model fbeta_score: 0.7123519458544838
+------------------ round 18 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9209879749629899
+Ensemble Model precesion: 0.20558501606541105
+Ensemble Model recall: 0.9986042380408577
+Ensemble Model fbeta_score: 0.3409730947532602
+------------------ round 19 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9997539509459612
+Ensemble Model precesion: 0.9833089668615984
+Ensemble Model recall: 0.9997522606218259
+Ensemble Model fbeta_score: 0.9914624408820097
+------------------ round 19 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.998799861735223
+Ensemble Model precesion: 0.9049714034315882
+Ensemble Model recall: 0.999514091350826
+Ensemble Model fbeta_score: 0.9498960978988685
+------------------ round 19 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9926676629927144
+Ensemble Model precesion: 0.43647942521227956
+Ensemble Model recall: 0.9988789237668162
+Ensemble Model fbeta_score: 0.6075
+------------------ round 19 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.99578085417633
+Ensemble Model precesion: 0.35314443676572216
+Ensemble Model recall: 0.980806142034549
+Ensemble Model fbeta_score: 0.519308943089431
+------------------ round 19 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9980744791466092
+Ensemble Model precesion: 0.7983539094650206
+Ensemble Model recall: 0.9948717948717949
+Ensemble Model fbeta_score: 0.8858447488584476
+------------------ round 19 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9992306591283189
+Ensemble Model precesion: 0.918918918918919
+Ensemble Model recall: 0.9979035639412998
+Ensemble Model fbeta_score: 0.95678391959799
+------------------ round 19 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9932503506311361
+Ensemble Model precesion: 0.031446540880503145
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.06097560975609756
+------------------ round 19 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9958077062381737
+Ensemble Model precesion: 0.3261826182618262
+Ensemble Model recall: 0.9777411376751854
+Ensemble Model fbeta_score: 0.4891730253660549
+------------------ round 19 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9978682736849165
+Ensemble Model precesion: 0.9766392354658879
+Ensemble Model recall: 0.9997282608695652
+Ensemble Model fbeta_score: 0.9880488787431181
+------------------ round 19 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9964154695963873
+Ensemble Model precesion: 0.9578952118777924
+Ensemble Model recall: 0.999717407686511
+Ensemble Model fbeta_score: 0.9783595676522782
+------------------ round 19 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9933802619924479
+Ensemble Model precesion: 0.9220994475138121
+Ensemble Model recall: 0.9994011976047904
+Ensemble Model fbeta_score: 0.9591954022988505
+------------------ round 19 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9947922267455258
+Ensemble Model precesion: 0.5397489539748954
+Ensemble Model recall: 0.9772727272727273
+Ensemble Model fbeta_score: 0.6954177897574124
+------------------ round 19 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.954743786198478
+Ensemble Model precesion: 0.3124950666982398
+Ensemble Model recall: 0.9993689259119021
+Ensemble Model fbeta_score: 0.47611316556928535
+------------------ round 20 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9986263736263736
+Ensemble Model precesion: 0.913533415151177
+Ensemble Model recall: 0.9998778849676395
+Ensemble Model fbeta_score: 0.9547574626865672
+------------------ round 20 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9987003110957483
+Ensemble Model precesion: 0.9004264392324094
+Ensemble Model recall: 0.9992901088499764
+Ensemble Model fbeta_score: 0.9472857783759533
+------------------ round 20 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9941409235263149
+Ensemble Model precesion: 0.4955622655320706
+Ensemble Model recall: 0.9987092015489581
+Ensemble Model fbeta_score: 0.6624266144814089
+------------------ round 20 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9941128197809256
+Ensemble Model precesion: 0.27805417357656165
+Ensemble Model recall: 0.9729206963249516
+Ensemble Model fbeta_score: 0.43250214961306965
+------------------ round 20 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9985751145684908
+Ensemble Model precesion: 0.8491379310344828
+Ensemble Model recall: 0.9899497487437185
+Ensemble Model fbeta_score: 0.91415313225058
+------------------ round 20 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9990785801188006
+Ensemble Model precesion: 0.9014634146341464
+Ensemble Model recall: 0.9978401727861771
+Ensemble Model fbeta_score: 0.9472065607380831
+------------------ round 20 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9822054698457223
+Ensemble Model precesion: 0.021791767554479417
+Ensemble Model recall: 0.8181818181818182
+Ensemble Model fbeta_score: 0.04245283018867924
+------------------ round 20 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9965574785984842
+Ensemble Model precesion: 0.38117283950617287
+Ensemble Model recall: 0.9770569620253164
+Ensemble Model fbeta_score: 0.5484014209591475
+------------------ round 20 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9977341425909337
+Ensemble Model precesion: 0.9754182314783203
+Ensemble Model recall: 0.999730828241501
+Ensemble Model fbeta_score: 0.9874248949859096
+------------------ round 20 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9979004348008658
+Ensemble Model precesion: 0.975268916061414
+Ensemble Model recall: 0.9994347088750707
+Ensemble Model fbeta_score: 0.9872039458377926
+------------------ round 20 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.98256491538856
+Ensemble Model precesion: 0.8146123260437376
+Ensemble Model recall: 0.999390243902439
+Ensemble Model fbeta_score: 0.8975903614457831
+------------------ round 20 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9772793609340195
+Ensemble Model precesion: 0.21543408360128619
+Ensemble Model recall: 0.9640287769784173
+Ensemble Model fbeta_score: 0.35216819973718794
+------------------ round 20 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.7755265823442329
+Ensemble Model precesion: 0.08387308789076993
+Ensemble Model recall: 0.998989898989899
+Ensemble Model fbeta_score: 0.15475340576804592
+------------------ round 21 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9996990766964994
+Ensemble Model precesion: 0.9798040152963671
+Ensemble Model recall: 0.9998780487804878
+Ensemble Model fbeta_score: 0.9897392563978754
+------------------ round 21 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9990625648116143
+Ensemble Model precesion: 0.926023199824907
+Ensemble Model recall: 0.9997637051039697
+Ensemble Model fbeta_score: 0.9614816498125213
+------------------ round 21 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9922632593448024
+Ensemble Model precesion: 0.42174223775113157
+Ensemble Model recall: 0.9986837156825874
+Ensemble Model fbeta_score: 0.5930433811624142
+------------------ round 21 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9943982588218504
+Ensemble Model precesion: 0.31101272827891535
+Ensemble Model recall: 0.9808027923211169
+Ensemble Model fbeta_score: 0.47226890756302525
+------------------ round 21 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9980744791466092
+Ensemble Model precesion: 0.7880184331797235
+Ensemble Model recall: 0.9771428571428571
+Ensemble Model fbeta_score: 0.8724489795918368
+------------------ round 21 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9989891218779073
+Ensemble Model precesion: 0.8926174496644296
+Ensemble Model recall: 0.9989270386266095
+Ensemble Model fbeta_score: 0.9427848101265823
+------------------ round 21 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9807591164095372
+Ensemble Model precesion: 0.037527593818984545
+Ensemble Model recall: 0.85
+Ensemble Model fbeta_score: 0.07188160676532769
+------------------ round 21 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9958635583553075
+Ensemble Model precesion: 0.32842046718576196
+Ensemble Model recall: 0.9760330578512396
+Ensemble Model fbeta_score: 0.4914689970869746
+------------------ round 21 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9971952230168958
+Ensemble Model precesion: 0.9692781551097773
+Ensemble Model recall: 0.999891372240176
+Ensemble Model fbeta_score: 0.9843468031921293
+------------------ round 21 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9971293217640929
+Ensemble Model precesion: 0.9664331847539344
+Ensemble Model recall: 0.9993415483021353
+Ensemble Model fbeta_score: 0.9826119126896041
+------------------ round 21 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9904899538483054
+Ensemble Model precesion: 0.8888888888888888
+Ensemble Model recall: 0.9993846153846154
+Ensemble Model fbeta_score: 0.9409038238702202
+------------------ round 21 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9825639450034565
+Ensemble Model precesion: 0.27028795811518325
+Ensemble Model recall: 0.953810623556582
+Ensemble Model fbeta_score: 0.4212136664966854
+------------------ round 21 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9487650312962627
+Ensemble Model precesion: 0.29082017906583724
+Ensemble Model recall: 0.9995056846267919
+Ensemble Model fbeta_score: 0.450547308024399
+------------------ round 22 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9997415599864053
+Ensemble Model precesion: 0.9825216972034716
+Ensemble Model recall: 0.9998773307163886
+Ensemble Model fbeta_score: 0.9911235408560312
+------------------ round 22 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9990874524714829
+Ensemble Model precesion: 0.9265103697024346
+Ensemble Model recall: 0.9990277102576568
+Ensemble Model fbeta_score: 0.9614035087719298
+------------------ round 22 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9923216378241597
+Ensemble Model precesion: 0.42741679873217114
+Ensemble Model recall: 0.9985190670122177
+Ensemble Model fbeta_score: 0.598601709022306
+------------------ round 22 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9946301780426018
+Ensemble Model precesion: 0.3039673278879813
+Ensemble Model recall: 0.9793233082706767
+Ensemble Model fbeta_score: 0.4639358860195904
+------------------ round 22 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9981900103978126
+Ensemble Model precesion: 0.7815533980582524
+Ensemble Model recall: 0.9877300613496932
+Ensemble Model fbeta_score: 0.8726287262872628
+------------------ round 22 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9995258713232663
+Ensemble Model precesion: 0.9467213114754098
+Ensemble Model recall: 0.9989189189189189
+Ensemble Model fbeta_score: 0.9721199368753288
+------------------ round 22 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9901823281907434
+Ensemble Model precesion: 0.04741379310344827
+Ensemble Model recall: 0.7857142857142857
+Ensemble Model fbeta_score: 0.08943089430894308
+------------------ round 22 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9952271827176624
+Ensemble Model precesion: 0.29770607511973785
+Ensemble Model recall: 0.9720164609053498
+Ensemble Model fbeta_score: 0.4558085681204168
+------------------ round 22 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.997686238628797
+Ensemble Model precesion: 0.9748751642575558
+Ensemble Model recall: 0.9997304872789996
+Ensemble Model fbeta_score: 0.9871463927402402
+------------------ round 22 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9978469913230696
+Ensemble Model precesion: 0.9751694028832598
+Ensemble Model recall: 0.9991612692791575
+Ensemble Model fbeta_score: 0.9870195627157651
+------------------ round 22 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9898373036222088
+Ensemble Model precesion: 0.8770538243626063
+Ensemble Model recall: 0.9993544222078761
+Ensemble Model fbeta_score: 0.9342184671092336
+------------------ round 22 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.988785621015439
+Ensemble Model precesion: 0.3663716814159292
+Ensemble Model recall: 0.9672897196261683
+Ensemble Model fbeta_score: 0.5314505776636713
+------------------ round 22 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9345401657013739
+Ensemble Model precesion: 0.24408976359054363
+Ensemble Model recall: 0.9990176817288802
+Ensemble Model fbeta_score: 0.3923232712894204
+------------------ round 23 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9451717741021864
+Ensemble Model precesion: 0.21008874834234417
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.3472286617492097
+------------------ round 23 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9972457656412029
+Ensemble Model precesion: 0.8081081081081081
+Ensemble Model recall: 0.9995224450811844
+Ensemble Model fbeta_score: 0.8936806148590948
+------------------ round 23 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.996398578537099
+Ensemble Model precesion: 0.6112132352941176
+Ensemble Model recall: 0.9983111277913305
+Ensemble Model fbeta_score: 0.7582127841516426
+------------------ round 23 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9957719342063011
+Ensemble Model precesion: 0.34567039106145253
+Ensemble Model recall: 0.9782608695652174
+Ensemble Model fbeta_score: 0.5108359133126935
+------------------ round 23 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9984595833172873
+Ensemble Model precesion: 0.8398268398268398
+Ensemble Model recall: 0.9847715736040609
+Ensemble Model fbeta_score: 0.9065420560747663
+------------------ round 23 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.997727760681314
+Ensemble Model precesion: 0.7868576242628476
+Ensemble Model recall: 0.9989304812834224
+Ensemble Model fbeta_score: 0.8803016022620169
+------------------ round 23 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9840024544179523
+Ensemble Model precesion: 0.034574468085106384
+Ensemble Model recall: 0.8666666666666667
+Ensemble Model fbeta_score: 0.06649616368286446
+------------------ round 23 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9963526875023272
+Ensemble Model precesion: 0.3672922252010724
+Ensemble Model recall: 0.9754746835443038
+Ensemble Model fbeta_score: 0.5336507249513093
+------------------ round 23 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9971185766774769
+Ensemble Model precesion: 0.9688054714419965
+Ensemble Model recall: 0.9997844885644245
+Ensemble Model fbeta_score: 0.9840512269816648
+------------------ round 23 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9982630869716254
+Ensemble Model precesion: 0.9789757663147123
+Ensemble Model recall: 0.9998574821852731
+Ensemble Model fbeta_score: 0.9893064466849986
+------------------ round 23 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.988951564029649
+Ensemble Model precesion: 0.8715995647442872
+Ensemble Model recall: 0.9993761696818465
+Ensemble Model fbeta_score: 0.9311246730601569
+------------------ round 23 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9786619556033489
+Ensemble Model precesion: 0.22804054054054054
+Ensemble Model recall: 0.9574468085106383
+Ensemble Model fbeta_score: 0.3683492496589359
+------------------ round 23 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.8947302807573436
+Ensemble Model precesion: 0.1669099356536398
+Ensemble Model recall: 0.9990156269226037
+Ensemble Model fbeta_score: 0.2860313545886912
+------------------ round 24 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9997079273818964
+Ensemble Model precesion: 0.9803571428571428
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9900811541929667
+------------------ round 24 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9992754925682682
+Ensemble Model precesion: 0.9419311276164753
+Ensemble Model recall: 0.9990451181666269
+Ensemble Model fbeta_score: 0.9696478220574606
+------------------ round 24 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9934647945926668
+Ensemble Model precesion: 0.4685338865836791
+Ensemble Model recall: 0.9983422361392522
+Ensemble Model fbeta_score: 0.6377596046361123
+------------------ round 24 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9935419416990758
+Ensemble Model precesion: 0.2650356778797146
+Ensemble Model recall: 0.9885931558935361
+Ensemble Model fbeta_score: 0.4180064308681672
+------------------ round 24 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9984595833172873
+Ensemble Model precesion: 0.8516949152542372
+Ensemble Model recall: 0.9757281553398058
+Ensemble Model fbeta_score: 0.9095022624434389
+------------------ round 24 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9991412008874258
+Ensemble Model precesion: 0.9051896207584831
+Ensemble Model recall: 0.998898678414097
+Ensemble Model fbeta_score: 0.9497382198952881
+------------------ round 24 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9975017531556802
+Ensemble Model precesion: 0.09836065573770492
+Ensemble Model recall: 0.75
+Ensemble Model fbeta_score: 0.17391304347826086
+------------------ round 24 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9960260372415147
+Ensemble Model precesion: 0.33948863636363635
+Ensemble Model recall: 0.9811165845648604
+Ensemble Model fbeta_score: 0.5044322498944702
+------------------ round 24 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9978203697227798
+Ensemble Model precesion: 0.9761854583772392
+Ensemble Model recall: 0.9998381091144568
+Ensemble Model fbeta_score: 0.987870224734078
+------------------ round 24 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9972629304585832
+Ensemble Model precesion: 0.9676876166203977
+Ensemble Model recall: 0.9996708979783733
+Ensemble Model fbeta_score: 0.9834192817334596
+------------------ round 24 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9902568644818424
+Ensemble Model precesion: 0.8887096774193548
+Ensemble Model recall: 0.9987915407854985
+Ensemble Model fbeta_score: 0.9405405405405406
+------------------ round 24 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9961594592518627
+Ensemble Model precesion: 0.6324655436447167
+Ensemble Model recall: 0.9763593380614657
+Ensemble Model fbeta_score: 0.7676579925650557
+------------------ round 24 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.6944679635353089
+Ensemble Model precesion: 0.06404615078575691
+Ensemble Model recall: 0.9983874968990325
+Ensemble Model fbeta_score: 0.1203705780748783
+------------------ round 25 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9950630876855103
+Ensemble Model precesion: 0.7476009415172913
+Ensemble Model recall: 0.9998789199660976
+Ensemble Model fbeta_score: 0.8555296555296555
+------------------ round 25 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9969139301762876
+Ensemble Model precesion: 0.7917833800186741
+Ensemble Model recall: 0.9997642065550578
+Ensemble Model fbeta_score: 0.8837015423092957
+------------------ round 25 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9964760627006097
+Ensemble Model precesion: 0.6178608515057114
+Ensemble Model recall: 0.9985082975946299
+Ensemble Model fbeta_score: 0.7633642195295796
+------------------ round 25 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.996356192243194
+Ensemble Model precesion: 0.3917995444191344
+Ensemble Model recall: 0.9699248120300752
+Ensemble Model fbeta_score: 0.5581395348837209
+------------------ round 25 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9983055416490161
+Ensemble Model precesion: 0.8194444444444444
+Ensemble Model recall: 0.9725274725274725
+Ensemble Model fbeta_score: 0.8894472361809045
+------------------ round 25 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.99804086452444
+Ensemble Model precesion: 0.8253839935327405
+Ensemble Model recall: 0.9970703125
+Ensemble Model fbeta_score: 0.903140203449801
+------------------ round 25 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9814165497896213
+Ensemble Model precesion: 0.029953917050691243
+Ensemble Model recall: 0.8125
+Ensemble Model fbeta_score: 0.057777777777777775
+------------------ round 25 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9956215325143947
+Ensemble Model precesion: 0.30808763862591293
+Ensemble Model recall: 0.9751712328767124
+Ensemble Model fbeta_score: 0.46824254881808847
+------------------ round 25 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9976263586761261
+Ensemble Model precesion: 0.9739650925656169
+Ensemble Model recall: 0.9997825023109129
+Ensemble Model fbeta_score: 0.9867049464038959
+------------------ round 25 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9978698956706965
+Ensemble Model precesion: 0.9745978769758494
+Ensemble Model recall: 0.9995246018540528
+Ensemble Model fbeta_score: 0.98690386781825
+------------------ round 25 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9846627196867279
+Ensemble Model precesion: 0.8344237544036236
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9097393689986283
+------------------ round 25 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9762500960135188
+Ensemble Model precesion: 0.2074688796680498
+Ensemble Model recall: 0.9569377990430622
+Ensemble Model fbeta_score: 0.3410059676044331
+------------------ round 25 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.7404358101966081
+Ensemble Model precesion: 0.07361434279198688
+Ensemble Model recall: 0.9989935840986287
+Ensemble Model fbeta_score: 0.1371242078361624
+------------------ round 26 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9997132377931347
+Ensemble Model precesion: 0.9807531380753138
+Ensemble Model recall: 0.9998781230956734
+Ensemble Model fbeta_score: 0.9902232951116474
+------------------ round 26 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9993363290701693
+Ensemble Model precesion: 0.9458533241946538
+Ensemble Model recall: 0.999275887038378
+Ensemble Model fbeta_score: 0.971830985915493
+------------------ round 26 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9945453271742268
+Ensemble Model precesion: 0.5072936660268714
+Ensemble Model recall: 0.9990549990549991
+Ensemble Model fbeta_score: 0.6729043345426771
+------------------ round 26 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9965256716737432
+Ensemble Model precesion: 0.4191343963553531
+Ensemble Model recall: 0.9752650176678446
+Ensemble Model fbeta_score: 0.5862984599044079
+------------------ round 26 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9986136249855586
+Ensemble Model precesion: 0.8418604651162791
+Ensemble Model recall: 0.9890710382513661
+Ensemble Model fbeta_score: 0.9095477386934674
+------------------ round 26 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9992664424246762
+Ensemble Model precesion: 0.9223205506391348
+Ensemble Model recall: 0.9968119022316685
+Ensemble Model fbeta_score: 0.958120531154239
+------------------ round 26 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9903576437587658
+Ensemble Model precesion: 0.0603448275862069
+Ensemble Model recall: 0.875
+Ensemble Model fbeta_score: 0.11290322580645162
+------------------ round 26 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9960818893586485
+Ensemble Model precesion: 0.35830527497194165
+Ensemble Model recall: 0.978544061302682
+Ensemble Model fbeta_score: 0.5245430273156706
+------------------ round 26 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9978036033360319
+Ensemble Model precesion: 0.9758844994447089
+Ensemble Model recall: 0.9998645390263066
+Ensemble Model fbeta_score: 0.9877289940986766
+------------------ round 26 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9978737130619677
+Ensemble Model precesion: 0.9749495320242246
+Ensemble Model recall: 0.9994826207610178
+Ensemble Model fbeta_score: 0.9870636597998003
+------------------ round 26 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9865274346184327
+Ensemble Model precesion: 0.8445287107258939
+Ensemble Model recall: 0.9987187700192185
+Ensemble Model fbeta_score: 0.9151746404461403
+------------------ round 26 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9803671556955219
+Ensemble Model precesion: 0.2538552787663108
+Ensemble Model recall: 0.9553571428571429
+Ensemble Model fbeta_score: 0.401124648547329
+------------------ round 26 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.7432200088304808
+Ensemble Model precesion: 0.07517727842535596
+Ensemble Model recall: 0.9987571464081532
+Ensemble Model fbeta_score: 0.13982947624847747
+------------------ round 27 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9965517729692988
+Ensemble Model precesion: 0.8083661417322835
+Ensemble Model recall: 0.9998782566350134
+Ensemble Model fbeta_score: 0.8939806247959072
+------------------ round 27 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9970134808157621
+Ensemble Model precesion: 0.7944996180290298
+Ensemble Model recall: 0.9990393852065321
+Ensemble Model fbeta_score: 0.8851063829787233
+------------------ round 27 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9964420970398926
+Ensemble Model precesion: 0.613384188626907
+Ensemble Model recall: 0.9986827248776816
+Ensemble Model fbeta_score: 0.7599885436059001
+------------------ round 27 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.995642594640882
+Ensemble Model precesion: 0.3434547908232119
+Ensemble Model recall: 0.9922027290448343
+Ensemble Model fbeta_score: 0.5102756892230577
+------------------ round 27 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9978049062271345
+Ensemble Model precesion: 0.7795918367346939
+Ensemble Model recall: 0.9845360824742269
+Ensemble Model fbeta_score: 0.8701594533029613
+------------------ round 27 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9990517426465326
+Ensemble Model precesion: 0.8956262425447317
+Ensemble Model recall: 0.9988913525498891
+Ensemble Model fbeta_score: 0.9444444444444445
+------------------ round 27 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9869828190743338
+Ensemble Model precesion: 0.026402640264026403
+Ensemble Model recall: 0.8
+Ensemble Model fbeta_score: 0.051118210862619806
+------------------ round 27 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9958703283088994
+Ensemble Model precesion: 0.3393541324575807
+Ensemble Model recall: 0.9794628751974723
+Ensemble Model fbeta_score: 0.5040650406504065
+------------------ round 27 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9977652801663226
+Ensemble Model precesion: 0.9758505984965556
+Ensemble Model recall: 0.9997048406139315
+Ensemble Model fbeta_score: 0.9876337031293491
+------------------ round 27 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9987097217503502
+Ensemble Model precesion: 0.98496482596901
+Ensemble Model recall: 0.9994867727336351
+Ensemble Model fbeta_score: 0.9921726645361493
+------------------ round 27 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9898373036222088
+Ensemble Model precesion: 0.8836833602584814
+Ensemble Model recall: 0.9987827145465612
+Ensemble Model fbeta_score: 0.9377142857142857
+------------------ round 27 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9911206697903064
+Ensemble Model precesion: 0.4195876288659794
+Ensemble Model recall: 0.9644549763033176
+Ensemble Model fbeta_score: 0.5847701149425287
+------------------ round 27 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9371841155234657
+Ensemble Model precesion: 0.24895930413171793
+Ensemble Model recall: 0.998753738783649
+Ensemble Model fbeta_score: 0.39856766300293434
+------------------ round 28 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9970421009402968
+Ensemble Model precesion: 0.8288611224907825
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9064232513860111
+------------------ round 28 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9976052540615278
+Ensemble Model precesion: 0.8321324245374878
+Ensemble Model recall: 0.9990647650222119
+Ensemble Model fbeta_score: 0.9079898002549937
+------------------ round 28 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9938023283460421
+Ensemble Model precesion: 0.4773338111449561
+Ensemble Model recall: 0.9990624414025877
+Ensemble Model fbeta_score: 0.6460139436192786
+------------------ round 28 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9949602169336711
+Ensemble Model precesion: 0.310919185687847
+Ensemble Model recall: 0.9748549323017408
+Ensemble Model fbeta_score: 0.47146866230121603
+------------------ round 28 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9976123541417954
+Ensemble Model precesion: 0.7457627118644068
+Ensemble Model recall: 0.9887640449438202
+Ensemble Model fbeta_score: 0.8502415458937198
+------------------ round 28 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.996394832892006
+Ensemble Model precesion: 0.6979714500375658
+Ensemble Model recall: 0.9989247311827957
+Ensemble Model fbeta_score: 0.8217602830605927
+------------------ round 28 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9714673913043478
+Ensemble Model precesion: 0.015128593040847202
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.02980625931445604
+------------------ round 28 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9961935935929159
+Ensemble Model precesion: 0.3432968333826576
+Ensemble Model recall: 0.9747899159663865
+Ensemble Model fbeta_score: 0.5077697526811118
+------------------ round 28 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9977101906098653
+Ensemble Model precesion: 0.9748099488782348
+Ensemble Model recall: 0.9998641562746217
+Ensemble Model fbeta_score: 0.9871781115879827
+------------------ round 28 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9963963826400315
+Ensemble Model precesion: 0.9580937836866691
+Ensemble Model recall: 0.9994845843875926
+Ensemble Model fbeta_score: 0.9783516029904142
+------------------ round 28 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9855018414059951
+Ensemble Model precesion: 0.8396907216494846
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9128607453068086
+------------------ round 28 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9718565173976496
+Ensemble Model precesion: 0.18471910112359552
+Ensemble Model recall: 0.958041958041958
+Ensemble Model fbeta_score: 0.3097211755840241
+------------------ round 28 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9184842739526791
+Ensemble Model precesion: 0.20474995564342383
+Ensemble Model recall: 0.9986401285696626
+Ensemble Model fbeta_score: 0.33982583820621765
+------------------ round 29 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9993538999660133
+Ensemble Model precesion: 0.9575984114005374
+Ensemble Model recall: 0.9997560975609756
+Ensemble Model fbeta_score: 0.9782232563689517
+------------------ round 29 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9977960594538541
+Ensemble Model precesion: 0.8415071770334929
+Ensemble Model recall: 0.9995264030310206
+Ensemble Model fbeta_score: 0.9137352527329797
+------------------ round 29 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9905724062972335
+Ensemble Model precesion: 0.37335689045936393
+Ensemble Model recall: 0.9971687429218573
+Ensemble Model fbeta_score: 0.5432949403537639
+------------------ round 29 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9956648945659543
+Ensemble Model precesion: 0.3581395348837209
+Ensemble Model recall: 0.9889908256880734
+Ensemble Model fbeta_score: 0.5258536585365853
+------------------ round 29 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9984980937343552
+Ensemble Model precesion: 0.8173076923076923
+Ensemble Model recall: 0.9941520467836257
+Ensemble Model fbeta_score: 0.8970976253298152
+------------------ round 29 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9988191512202104
+Ensemble Model precesion: 0.8748815165876778
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9332659251769464
+------------------ round 29 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9941269284712483
+Ensemble Model precesion: 0.10738255033557047
+Ensemble Model recall: 0.9411764705882353
+Ensemble Model fbeta_score: 0.19277108433734938
+------------------ round 29 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9964559292946047
+Ensemble Model precesion: 0.370595382746051
+Ensemble Model recall: 0.9822866344605475
+Ensemble Model fbeta_score: 0.5381561535068372
+------------------ round 29 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9982898285517195
+Ensemble Model precesion: 0.9813076699362822
+Ensemble Model recall: 0.9998114376532069
+Ensemble Model fbeta_score: 0.9904731406612761
+------------------ round 29 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9957130696024951
+Ensemble Model precesion: 0.9502169342935098
+Ensemble Model recall: 0.9995295003293497
+Ensemble Model fbeta_score: 0.9742496159225883
+------------------ round 29 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.9978089599552469
+Ensemble Model precesion: 0.9732246798603027
+Ensemble Model recall: 0.9994022713687986
+Ensemble Model fbeta_score: 0.9861397817752876
+------------------ round 29 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9867885398264076
+Ensemble Model precesion: 0.3335974643423138
+Ensemble Model recall: 0.9568181818181818
+Ensemble Model fbeta_score: 0.49471210340775557
+------------------ round 29 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.7569591979845727
+Ensemble Model precesion: 0.07864471533507947
+Ensemble Model recall: 0.999124343257443
+Ensemble Model fbeta_score: 0.14581203446765006
+------------------ round 30 Test file 1 -----------------------
+Ensemble Model Accuracy: 0.9996672142290699
+Ensemble Model precesion: 0.9774661392784371
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9886046793550735
+------------------ round 30 Test file 2 -----------------------
+Ensemble Model Accuracy: 0.9989270653301071
+Ensemble Model precesion: 0.9154371283858181
+Ensemble Model recall: 0.9990386926219659
+Ensemble Model fbeta_score: 0.9554125488393475
+------------------ round 30 Test file 3 -----------------------
+Ensemble Model Accuracy: 0.9935603230134334
+Ensemble Model precesion: 0.46923751095530236
+Ensemble Model recall: 0.9979496738117428
+Ensemble Model fbeta_score: 0.6383308494783905
+------------------ round 30 Test file 4 -----------------------
+Ensemble Model Accuracy: 0.9953482356299282
+Ensemble Model precesion: 0.3318269851517108
+Ensemble Model recall: 0.9846743295019157
+Ensemble Model fbeta_score: 0.4963785610816031
+------------------ round 30 Test file 5 -----------------------
+Ensemble Model Accuracy: 0.9980744791466092
+Ensemble Model precesion: 0.7836538461538461
+Ensemble Model recall: 0.9702380952380952
+Ensemble Model fbeta_score: 0.8670212765957447
+------------------ round 30 Test file 6 -----------------------
+Ensemble Model Accuracy: 0.9996242753882487
+Ensemble Model precesion: 0.958120531154239
+Ensemble Model recall: 0.9989350372736954
+Ensemble Model fbeta_score: 0.9781021897810218
+------------------ round 30 Test file 7 -----------------------
+Ensemble Model Accuracy: 0.9952664796633941
+Ensemble Model precesion: 0.1092436974789916
+Ensemble Model recall: 0.8666666666666667
+Ensemble Model fbeta_score: 0.19402985074626863
+------------------ round 30 Test file 8 -----------------------
+Ensemble Model Accuracy: 0.9964559292946047
+Ensemble Model precesion: 0.36705378973105135
+Ensemble Model recall: 0.9812091503267973
+Ensemble Model fbeta_score: 0.5342526690391458
+------------------ round 30 Test file 9 -----------------------
+Ensemble Model Accuracy: 0.9974443236200066
+Ensemble Model precesion: 0.9722448550477042
+Ensemble Model recall: 0.9997027187719583
+Ensemble Model fbeta_score: 0.9857826220202801
+------------------ round 30 Test file 10 -----------------------
+Ensemble Model Accuracy: 0.9968201130711295
+Ensemble Model precesion: 0.9627273137493796
+Ensemble Model recall: 0.9996720082466498
+Ensemble Model fbeta_score: 0.9808518952715906
+------------------ round 30 Test file 11 -----------------------
+Ensemble Model Accuracy: 0.996550277376346
+Ensemble Model precesion: 0.9573487031700288
+Ensemble Model recall: 1.0
+Ensemble Model fbeta_score: 0.9782096584216725
+------------------ round 30 Test file 12 -----------------------
+Ensemble Model Accuracy: 0.9944849834856748
+Ensemble Model precesion: 0.5348837209302325
+Ensemble Model recall: 0.9536585365853658
+Ensemble Model fbeta_score: 0.6853637160385626
+------------------ round 30 Test file 13 -----------------------
+Ensemble Model Accuracy: 0.9384437576292757
+Ensemble Model precesion: 0.24708461758444283
+Ensemble Model recall: 0.9992289899768697
+Ensemble Model fbeta_score: 0.39619901663567114
+-----------------test1---------------
+Test
+Accuracy: 0.9612108923198242 0.08433842669468777 [0.99956278 0.99934739 0.99328117 0.88491009 0.99861362 0.99787984
+ 0.9842216  0.99642885 0.99770301 0.99854176 0.98205212 0.97551271
+ 0.68768667]
+precision =  0.573413306009068 0.3758252447027985 [0.9704611  0.94610778 0.45449836 0.01879113 0.83018868 0.78820375
+ 0.04533333 0.35813523 0.97485938 0.98281898 0.8136253  0.2095
+ 0.06184996]
+recall =  0.9855824742622847 0.028235497624120323 [0.99987628 0.99951338 0.99772555 0.98015873 1.         1.
+ 0.89473684 0.97397145 0.99981041 0.99957838 0.99880526 0.96990741
+ 0.99848847]
+fbeta_score =  0.6425616842023429 0.3631213066288332 [0.98494912 0.97207761 0.62451062 0.0368753  0.90721649 0.88155922
+ 0.08629442 0.52370203 0.98717726 0.99112783 0.89675516 0.34457237
+ 0.11648445]
+-----------------test2---------------
+Test
+Accuracy: 0.9780719012087153 0.0621631385362592 [0.99311063 0.99699689 0.99291073 0.99513416 0.99861362 0.99933801
+ 0.99289972 0.99714139 0.99805749 0.99783172 0.99641042 0.9936247
+ 0.76286523]
+precision =  0.611493804642923 0.32147918557994903 [0.67760922 0.79028826 0.44604914 0.30931122 0.84545455 0.92520492
+ 0.04733728 0.41109933 0.97872791 0.97468699 0.95505618 0.5074813
+ 0.08111318]
+recall =  0.9838950159494099 0.030286274088234262 [0.99963312 0.99951064 0.99907046 0.98377282 0.9893617  0.99889381
+ 0.88888889 0.98060708 0.99981081 0.9995348  0.99938119 0.95316159
+ 0.99900831]
+fbeta_score =  0.6988141757656117 0.29748425394991374 [0.80770751 0.8826707  0.61674413 0.47064532 0.91176471 0.9606383
+ 0.08988764 0.57932752 0.98915703 0.98695452 0.97671606 0.6623271
+ 0.15004375]
+-----------------test3---------------
+Test
+Accuracy: 0.9701331672346405 0.07900933829295188 [0.99964597 0.99907639 0.98969567 0.99429122 0.99865214 0.99898018
+ 0.98071529 0.99622744 0.99828983 0.9957207  0.98652743 0.97632691
+ 0.69758201]
+precision =  0.5910901282253099 0.3611571204296337 [0.97600964 0.92539326 0.35374059 0.27407407 0.81382979 0.88997079
+ 0.030837   0.36205396 0.98122315 0.95062278 0.85300102 0.20956838
+ 0.06384724]
+recall =  0.993094400130709 0.01397796286061079 [0.9998765  0.99951456 0.99868347 0.98767967 1.         0.9989071
+ 1.         0.97652582 0.99983786 0.99948552 1.         0.9504717
+ 0.999245  ]
+fbeta_score =  0.6673905961782247 0.33402564126375006 [0.98779893 0.96102684 0.52243211 0.42908118 0.8973607  0.94129763
+ 0.05982906 0.52825397 0.99044305 0.97444199 0.92066978 0.34341713
+ 0.12002539]
+-----------------test4---------------
+Test
+Accuracy: 0.993635855870459 0.006413437144146491 [0.99616588 0.99875562 0.99242778 0.99631159 0.99992298 0.99932012
+ 0.98777174 0.99607343 0.99791378 0.99799587 0.99188849 0.98580536
+ 0.97691349]
+precision =  0.6508446376639949 0.31477903066377694 [0.79029916 0.90307892 0.42918902 0.38784696 1.         0.92268041
+ 0.03146853 0.34234753 0.97717546 0.97635868 0.90045767 0.32394366
+ 0.47613429]
+recall =  0.9789989251346228 0.047535161490749454 [1.         0.99928023 0.99925443 0.97916667 0.98876404 0.99888393
+ 0.81818182 0.97222222 0.9998108  0.99938558 1.         0.97327394
+ 0.99876238]
+fbeta_score =  0.7356140492372334 0.2753760760309705 [0.88286827 0.94874715 0.60047043 0.55561526 0.99435028 0.95927117
+ 0.06060606 0.50638298 0.98836355 0.98773794 0.94762191 0.48609566
+ 0.64485197]
+-----------------test5---------------
+Test
+Accuracy: 0.9732732783679717 0.07968518497013068 [0.99946542 0.9989962  0.99231633 0.98486281 0.99880618 0.99944536
+ 0.99763324 0.99569769 0.99738444 0.99697281 0.99743602 0.99599048
+ 0.69754565]
+precision =  0.6402185882381549 0.3486169907303936 [0.9650139  0.91934397 0.42556403 0.12625871 0.85024155 0.93647541
+ 0.2        0.31393443 0.97151393 0.96419134 0.96804734 0.61778471
+ 0.06447233]
+recall =  0.982854219756468 0.03569145291355367 [1.         0.99902344 0.99850885 0.97995992 1.         1.
+ 0.86666667 0.97372881 0.99986515 0.99966936 0.99938913 0.96116505
+ 0.99912849]
+fbeta_score =  0.7130830549111038 0.3126739420370809 [0.9821955  0.95752896 0.59678048 0.22369625 0.91906005 0.96719577
+ 0.325      0.47479339 0.98548567 0.98160989 0.98346859 0.75213675
+ 0.12112842]
+-----------------test6---------------
+Test
+Accuracy: 0.9743250403239384 0.07740308249962596 [0.99875382 0.99919253 0.99624998 0.99651229 0.99811299 0.99905174
+ 0.99311886 0.99606496 0.99731738 0.99832035 0.99268099 0.99456179
+ 0.70628782]
+precision =  0.6477113827217674 0.32545096056383255 [0.92174593 0.93482183 0.60176291 0.39007092 0.80252101 0.89708738
+ 0.07272727 0.33659942 0.97057583 0.98041359 0.91387822 0.53185596
+ 0.0661877 ]
+recall =  0.9738521031771021 0.06560355059685608 [0.9996368  0.99927676 0.99831271 0.98409543 0.98963731 1.
+ 0.75       0.9806885  0.99989135 0.99953562 1.         0.96
+ 0.99900287]
+fbeta_score =  0.7260814353434497 0.3000403733884485 [0.95911256 0.9659753  0.75089896 0.55869074 0.8863109  0.9457523
+ 0.13259669 0.50118    0.98501552 0.98988227 0.95500143 0.68449198
+ 0.12415   ]
+-----------------test7---------------
+Test
+Accuracy: 0.9872480981405213 0.022807814337639835 [0.99970616 0.99944971 0.99740906 0.99769865 0.99984596 0.99864918
+ 0.97414095 0.99642546 0.99812456 0.99876698 0.98359051 0.97605039
+ 0.91436771]
+precision =  0.6566901491779237 0.34121363462624965 [0.9803875  0.955495   0.68726712 0.49147442 0.98823529 0.85901027
+ 0.01342282 0.36190476 0.97941372 0.98537903 0.8174727  0.22244692
+ 0.19506239]
+recall =  0.9762615767224161 0.05265967787798576 [0.99987877 0.99928758 0.99869305 0.98196393 0.98823529 1.
+ 0.8        0.97114592 0.99981043 0.99957489 0.99936427 0.95444685
+ 0.9989995 ]
+fbeta_score =  0.7285216508307328 0.30957243953432895 [0.99003721 0.97690075 0.81421722 0.65508021 0.98823529 0.92415871
+ 0.02640264 0.52730528 0.98950698 0.9924262  0.8993135  0.36080361
+ 0.32639385]
+-----------------test8---------------
+Test
+Accuracy: 0.9920073039297791 0.012218716458421918 [0.99730762 0.99842655 0.99664801 0.99866646 0.99896022 0.99822873
+ 0.98882363 0.99609881 0.9974539  0.99944266 0.98960421 0.98353176
+ 0.95290237]
+precision =  0.6547352243509429 0.2973502768854016 [0.84393597 0.87973606 0.6305037  0.625323   0.86868687 0.8282476
+ 0.05204461 0.34923829 0.97223681 0.99354048 0.881823   0.27884615
+ 0.30739538]
+recall =  0.9912136540301463 0.015390970109457237 [1.         0.99903312 0.99795577 0.98174442 0.99421965 0.99894848
+ 1.         0.96735669 0.99983793 0.99957308 1.         0.94859813
+ 0.99851024]
+fbeta_score =  0.7425690286783098 0.2673144893963926 [0.91536364 0.93559706 0.77277306 0.76400947 0.92722372 0.9056244
+ 0.09893993 0.51319958 0.98584422 0.99654765 0.93720079 0.43099788
+ 0.47007598]
+-----------------test9---------------
+Test
+Accuracy: 0.9693622315282211 0.07983576447710679 [0.99969908 0.99927826 0.99544117 0.97335159 0.99861362 0.99949903
+ 0.97769109 0.99722601 0.99805031 0.99820201 0.98195888 0.98823258
+ 0.69446537]
+precision =  0.6170675412287936 0.3668415463517506 [0.97982812 0.94184746 0.55112089 0.07847984 0.86075949 0.94438723
+ 0.01926782 0.43263158 0.97866965 0.9790245  0.80982801 0.3820132
+ 0.06402024]
+recall =  0.9928476922637598 0.010702181586601614 [0.9998782  0.99976258 0.99810283 0.98069498 0.98550725 0.99782372
+ 1.         0.98247012 0.99967399 0.99939224 1.         0.96458333
+ 0.99913076]
+fbeta_score =  0.6833598572682439 0.350256756983051 [0.98975163 0.96994126 0.71013026 0.14532971 0.91891892 0.97037037
+ 0.03780718 0.60073082 0.98906032 0.98910353 0.89492262 0.54728132
+ 0.12033021]
+-----------------test10---------------
+Test
+Accuracy: 0.9827229478660976 0.046249656240936195 [0.99910431 0.99843761 0.99247661 0.99709655 0.99865214 0.99931117
+ 0.99171634 0.99626129 0.99772935 0.99857611 0.98783274 0.99528382
+ 0.82292029]
+precision =  0.6453671518114389 0.3232307133009242 [0.94126524 0.88190955 0.43363186 0.44695652 0.85308057 0.92276423
+ 0.04591837 0.35271318 0.97526697 0.98324307 0.86212361 0.5858156
+ 0.10508421]
+recall =  0.9767499226734007 0.0476426449998807 [1.         0.99976264 0.99907885 0.97164461 0.97826087 0.99889989
+ 0.81818182 0.96887797 0.99972971 0.9994824  1.         0.96495327
+ 0.99887697]
+fbeta_score =  0.724812637048967 0.2958957099879908 [0.96974408 0.9371454  0.60477306 0.61226921 0.91139241 0.95932382
+ 0.08695652 0.51715847 0.98734684 0.99129623 0.92595745 0.72903795
+ 0.19016284]
+-----------------test11---------------
+Test
+Accuracy: 0.9721625262852527 0.08217833458976613 [0.99802276 0.99909575 0.99508347 0.99230653 0.99822852 0.99964217
+ 0.99162868 0.99586864 0.99780839 0.99833943 0.99123584 0.99319456
+ 0.6876581 ]
+precision =  0.6264523597424735 0.34497139550484235 [0.87862653 0.92746463 0.53709823 0.23149394 0.81481481 0.95689655
+ 0.03553299 0.33690869 0.97593555 0.98057987 0.89607518 0.50921659
+ 0.0632371 ]
+recall =  0.9811152168138833 0.033442939060401314 [1.         0.99903241 0.99832496 0.97727273 0.96703297 1.
+ 0.875      0.97609562 0.99980994 0.99958176 1.         0.96296296
+ 0.99938446]
+fbeta_score =  0.7007459272747021 0.3217509796766404 [0.93539245 0.96191918 0.6984375  0.37431991 0.88442211 0.97797357
+ 0.06829268 0.50092006 0.9877285  0.98998964 0.9451895  0.66616428
+ 0.11894767]
+-----------------test12---------------
+Test
+Accuracy: 0.9875215109464184 0.01607395185757252 [0.99635706 0.99748911 0.9949837  0.99494684 0.99680364 0.99731625
+ 0.96818022 0.99626299 0.9976551  0.99694609 0.98559508 0.97270144
+ 0.94254214]
+precision =  0.5769977244674804 0.30677690122423323 [0.80019427 0.82147783 0.52813376 0.31495098 0.67729084 0.75980785
+ 0.00412088 0.36241218 0.97438735 0.96418396 0.84033178 0.19008264
+ 0.2635961 ]
+recall =  0.9730988046599746 0.06535518335743148 [0.99987863 0.9995205  0.9975416  0.97164461 0.98837209 1.
+ 0.75       0.97634069 0.99981073 0.99962492 0.99938348 0.96955504
+ 0.99861216]
+fbeta_score =  0.6752026621572111 0.2905380444494992 [0.88896083 0.90179537 0.69062582 0.47570569 0.80378251 0.86351228
+ 0.00819672 0.52860803 0.98693534 0.98158464 0.91298226 0.31785029
+ 0.41709483]
+-----------------test13---------------
+Test
+Accuracy: 0.9740647425947417 0.0689570345555392 [0.99968669 0.99901832 0.99334379 0.96503818 0.99884469 0.99960638
+ 0.9960554  0.99654394 0.99810061 0.99837761 0.98820568 0.99282587
+ 0.7371945 ]
+precision =  0.6238075973578531 0.35750063800398185 [0.97909531 0.9211236  0.45695939 0.06229037 0.85853659 0.95482546
+ 0.1372549  0.37013802 0.97937953 0.98076923 0.86341463 0.47331787
+ 0.07239388]
+recall =  0.9833120812412552 0.03306696240359428 [1.         0.9990251  0.99753741 0.97928437 0.99435028 1.
+ 0.875      0.97199341 0.99956663 0.99957597 0.99937265 0.96912114
+ 0.99823009]
+fbeta_score =  0.6954239692798188 0.32870017395809387 [0.98943725 0.9584941  0.62679283 0.11713031 0.92146597 0.97689076
+ 0.23728814 0.53611995 0.98937012 0.9900833  0.9264321  0.63600935
+ 0.13499744]

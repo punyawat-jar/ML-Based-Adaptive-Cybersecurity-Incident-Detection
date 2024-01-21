@@ -4,7 +4,8 @@
     {
       "label": "Run Python Script",
       "type": "shell",
-      "command": "python Code_and_model\\test.py --data cic --network cic/dataset/real_CIC.csv",
+      // "command": "python Code_and_model\\test.py --data cic --network cic/dataset/real_CIC.csv",
+      "command": "python Code_and_model\\test.py --data kdd --network kdd/dataset/real_NSL_KDD.csv",
       "group": "build",
       "presentation": {
         "reveal": "always",

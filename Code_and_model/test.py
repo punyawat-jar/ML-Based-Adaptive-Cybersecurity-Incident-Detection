@@ -16,16 +16,6 @@ from collections import Counter
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
-# from sklearn.preprocessing import MinMaxScaler
-
-# from sklearn.linear_model import LogisticRegression, Perceptron
-# from sklearn.svm import SVC
-# from sklearn.tree import DecisionTreeClassifier
-# from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier, ExtraTreesClassifier, BaggingClassifier
-# from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
-# from sklearn.neighbors import KNeighborsClassifier
-# from sklearn.naive_bayes import GaussianNB
-
 class ModelObject:
     def __init__(self, attack_type, model_name, model, weight):
         self.attack_type = attack_type
@@ -62,7 +52,7 @@ def read_model(models_loc, df, weight_data):
 
             if attack_type in file and row['model'] in file:
                 model_name = row['model']
-                print(file)
+                # print(file)
                 model = joblib.load(file)
                 weight = weight_data.get(attack_type, 0)
 
@@ -79,35 +69,47 @@ def printModel(models):
 
 def predictionModel(models, X_test, threshold):
     # Function to make predictions with a single model
-    
-    def make_prediction(model, X_test):
-
-        y_pred = model.model.predict(X_test)
-        # print(f'-- Evaluation for {model.model_name} for {model.attack_type}. The prediction is {y_pred} --')
-        return y_pred, model.weight
-
     futures = []
+
+    def make_prediction(model, X_test):
+        y_pred = model.model.predict(X_test)
+        
+        return y_pred, model.weight, model.attack_type
+
+    
     start_all = time.perf_counter()
     with concurrent.futures.ThreadPoolExecutor() as executor:
-
         for model in models:
             future = executor.submit(make_prediction, model, X_test)
             futures.append(future)
 
+    attacks_per_row = np.empty((len(X_test), 0)).tolist()
+
+    for future in futures:
+        y_pred, _, attack_type = future.result()
+        # Vectorize the appending process
+        indices = np.where(y_pred == 1)[0]
+        for i in indices:
+            attacks_per_row[i].append(attack_type)
+
+
     predictions = [future.result() for future in futures]
+
+    attack_df = pd.DataFrame({'attack': attacks_per_row})
     
-    # Integrate predictions
     final_prediction = integrate_predictions(predictions, threshold)
     end_all = time.perf_counter()
+    
     prediction_time = end_all - start_all
-    return final_prediction, prediction_time
+
+    return final_prediction, prediction_time, attack_df
 
 def integrate_predictions(predictions, threshold):
     # linear integration: w1x1 + w2x2 + ...
-    weighted_sum = np.sum([pred * weight for pred, weight in predictions], axis=0)
+    weighted_sum = np.sum([pred * weight for pred, weight, _ in predictions], axis=0)
 
     # Normalize by total weight
-    total_weight = sum(weight for _, weight in predictions)
+    total_weight = sum(weight for _, weight, _ in predictions)
     final_pred = weighted_sum / total_weight
 
     # Threshold condition to each element
@@ -120,26 +122,87 @@ def prediction(models, sequence_mode, threshold, X_test):
         print('== The model operation in sequence mode ==')
         predict = []
         pre_time = []
-        for i in tqdm(range(1,X_test.shape[0])):
-        # for i in tqdm(range(1,20)):      #Debug
-            pred, time = predictionModel(models, X_test[i-1:i], threshold)
+        attacks = pd.DataFrame()
+
+        for i in tqdm(range(0,X_test.shape[0])):
+            pred, time, attack_df = predictionModel(models, X_test[i:i+1], threshold)
             predict.extend(pred)
             pre_time.append(time)
+            attacks = pd.concat([attacks, attack_df], ignore_index=True)
             print(f'The prediction is : {pred} using {time:0.4f} seconds')
 
         predict = np.array(predict)
+        print(attacks)
+
+        attacks_MoreThanOne(attack_df)
+
         print(f'The predictioin shape :{predict.shape}')
         print(f'prediction time in mean : {np.mean(pre_time)} seconds')
-        return predict, pre_time
+        return predict, pre_time, attack_df
     
     else:
         print('== The model opeartion in prediction overall mode')
         print('Predicting...')
-        pred, time = predictionModel(models, X_test, threshold)
+        pred, time, attack_df = predictionModel(models, X_test, threshold)
+
+        print(attack_df)
+
+        attacks_MoreThanOne(attack_df)
+
         print(f'The prediction : {pred} using {time:0.4f} seconds')
-        return pred, time
+        return pred, time, attack_df
     
+def attacks_MoreThanOne(attack_df):
+    mask = attack_df['attack'].apply(lambda x: len(x) > 1)
+
+    # Filter the DataFrame based on the mask
+    filtered_df = attack_df[mask]
+
+    print(filtered_df)
+
+def checkShape(y_test, y_pred):
+    print("Shape of y_test:", y_test.shape)
+    print("Shape of y_pred:", y_pred.shape)
+
+    if y_pred.ndim > 1:
+        y_pred = y_pred.flatten()
+
+    print('----- Checking y label -----')
+    print("after Shape of y_test:", y_test.shape)
+    print("after Shape of y_pred:", y_pred.shape)
+
+    print("Data type of elements in y_test:", y_test.dtype)
+    print("Data type of elements in y_pred:", y_pred.dtype)
+
+    print('-----------------------------')
+
+def evaluation(y_test, y_pred, data_template, result_path):
+    evalu = {}
+    checkShape(y_test, y_pred)
+
+    acc = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    # Extract metrics from confusion matrix
+    TN, FP, FN, TP = conf_matrix.ravel()
+
+    evalu['accuracy'] = acc
+    evalu['f1'] = f1
+    evalu['precision'] = precision
+    evalu['recall'] = recall
+    evalu['conf_matrix'] = [conf_matrix.ravel()]
+
+    pd.DataFrame.from_dict(evalu).to_csv(f"./{result_path}/result.csv", index=False)
+
+
+    makeConfusion(conf_matrix, data_template)
+    return evalu
+
+
 def makeConfusion(conf_matrix, data_template):
+
     plt.figure()
     sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
     plt.xlabel('Predicted')
@@ -165,8 +228,6 @@ def main():
                         type=str,
                         required=True,
                         help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
-    
-
 
     parser.add_argument('--chooese_model',
                         dest='chooese_csv',
@@ -207,16 +268,19 @@ def main():
     net_file_loc = arg.net_file_loc
 
     sequence_mode = arg.sequence
-    print(sequence_mode)
     debug_mode = arg.debug
-    
+
+    #Parameter & path setting
+    os.chdir('./Code_and_model') ##Change Working Directory
+    result_path = f'./Result_{data_template}' ## Saving result path
+
     models_loc = []
-    os.chdir('./Code_and_model')
-    
+
     check_file(chooese_csv)
     check_file(net_file_loc)
-    print('-- Reading Dataset --')
+    makePath(result_path)
 
+    print('-- Reading Dataset --')
     # df = pd.concat([chunk for chunk in tqdm(pd.read_csv(net_file_loc, chunksize=1000), desc='Loading dataset')])
     df = pd.read_csv(net_file_loc, skiprows=progress_bar())
     print('-- Reading Dataset successfully --')
@@ -231,7 +295,6 @@ def main():
     label_counts = Counter(y_train)
     total_labels = len(y_train)
     label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
-    # print(label_percentages)
 
     lowest_percent_attack = min(label_percentages, key=label_percentages.get)
     threshold = label_percentages[lowest_percent_attack]
@@ -248,39 +311,16 @@ def main():
                 break
 
     models = read_model(models_loc, model_df, label_percentages)
-    # print(models)
 
-    # printModel(models)
     print(f'-- Evaluation the model with {len(models)} attacks--')
-    y_pred, time_pred = prediction(models, sequence_mode, threshold, X_test)
+    y_pred, time_pred, attack_df = prediction(models, sequence_mode, threshold, X_test)
     
-    print("Shape of y_test:", y_test.shape)
-    print("Shape of y_pred:", y_pred.shape)
-
+    evalu = evaluation(y_test, y_pred, data_template, result_path)
     
-
-    if y_pred.ndim > 1:
-        y_pred = y_pred.flatten()
-
-    print('----- Checking y label -----')
-    print("after Shape of y_test:", y_test.shape)
-    print("after Shape of y_pred:", y_pred.shape)
-
-    print("Data type of elements in y_test:", y_test.dtype)
-    print("Data type of elements in y_pred:", y_pred.dtype)
-
-    print('-----------------------------')
-    acc = accuracy_score(y_test, y_pred)
-    f1 = f1_score(y_test, y_pred)
-    precision = precision_score(y_test, y_pred)
-    recall = recall_score(y_test, y_pred)
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    # Extract metrics from confusion matrix
-    TN, FP, FN, TP = conf_matrix.ravel()
+    result_df = pd.concat([X_test.reset_index(drop=True), attack_df.reset_index(drop=True)], axis=1)
+    result_df.to_csv(f'{result_path}/attack_prediction_{data_template}.csv', index=False)
     
-    conf_matrix_path = f'.\\{data_template}'
-    makePath(conf_matrix_path)
-    print(f'Accuracy : {acc}\nF1-score : {f1}\nPrecision : {precision}\nRecall : {recall}')
+    print(f'Accuracy : {evalu["accuracy"]}\nF1-score : {evalu["f1"]}\nPrecision : {evalu["precision"]}\nRecall : {evalu["recall"]}')
 
 if __name__ == '__main__':
     main()

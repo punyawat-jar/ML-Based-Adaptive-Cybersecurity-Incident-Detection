@@ -44,9 +44,6 @@ def preprocess(df):
 
     return df
 
-
-
-
 dataset_paths = glob.glob('.\\mix_dataset\\*.csv')
 
 for dataset_path in dataset_paths:

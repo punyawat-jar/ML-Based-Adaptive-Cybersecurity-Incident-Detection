@@ -16,6 +16,8 @@ from collections import Counter
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
+from module.file_op import *
+
 class ModelObject:
     def __init__(self, attack_type, model_name, model, weight):
         self.attack_type = attack_type
@@ -29,15 +31,7 @@ def preprocess(np_array):
     np_array[np_array != 0] = 1
     return np_array
 
-def makePath(path):
-    if not os.path.exists(path):
-        os.makedirs(path)
 
-def check_file(path):
-    if os.path.isfile(path):
-        print(f'{path} exist')
-    else:
-        raise Exception(f'Error: {path} not exist')
     
 def read_model(models_loc, df, weight_data):
     print('-- Reading Trained Model --')
@@ -161,15 +155,12 @@ def attacks_MoreThanOne(attack_df):
     print(filtered_df)
 
 def checkShape(y_test, y_pred):
-    print("Shape of y_test:", y_test.shape)
-    print("Shape of y_pred:", y_pred.shape)
-
     if y_pred.ndim > 1:
         y_pred = y_pred.flatten()
 
     print('----- Checking y label -----')
-    print("after Shape of y_test:", y_test.shape)
-    print("after Shape of y_pred:", y_pred.shape)
+    print("Shape of y_test:", y_test.shape)
+    print("Shape of y_pred:", y_pred.shape)
 
     print("Data type of elements in y_test:", y_test.dtype)
     print("Data type of elements in y_pred:", y_pred.dtype)

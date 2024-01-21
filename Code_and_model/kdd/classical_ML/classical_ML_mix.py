@@ -50,33 +50,19 @@ def send_discord_message(content):
         raise ValueError(f'Request to discord returned an error {response.status_code}, the response is:\n{response.text}')
         
 models = {
-    'LogisticRegression': LogisticRegression(max_iter=10000, n_jobs=-1, C=0.1, solver='lbfgs'),  # C: Inverse of regularization strength; solver: Algorithm for optimization
-    'ExtraTrees': ExtraTreesClassifier(n_jobs=-1, n_estimators=200, max_depth=None, min_samples_split=2),  # n_estimators: Number of trees; max_depth: Maximum depth of trees
-    'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(min_samples_split=2, min_samples_leaf=1), n_jobs=-1, n_estimators=10, max_samples=1.0, max_features=1.0),  # n_estimators: Number of base estimators; max_samples: Fraction of samples for each base estimator
-    'LDA': LinearDiscriminantAnalysis(solver='eigen'),  # solver: Solver to use
-    'QDA': QuadraticDiscriminantAnalysis(reg_param=0.0),  # reg_param: Regularizes the covariance estimate
-    'DecisionTree': DecisionTreeClassifier(max_depth=None, min_samples_split=2, min_samples_leaf=1),  # max_depth: Maximum depth of tree; min_samples_split: Minimum samples for split
-    'RandomForest': RandomForestClassifier(n_jobs=-1, n_estimators=100, max_depth=None, min_samples_split=2),  # n_estimators: Number of trees; max_depth: Maximum depth of trees
-    'GradientBoosting': GradientBoostingClassifier(learning_rate=0.1, n_estimators=100, max_depth=3),  # learning_rate: Rate of learning; n_estimators: Number of boosting stages
-    'KNeighbors': KNeighborsClassifier(n_jobs=-1, n_neighbors=5, weights='uniform', algorithm='auto'),  # n_neighbors: Number of neighbors; weights: Weight function
-    'GaussianNB': GaussianNB(var_smoothing=1e-9),  # var_smoothing: Portion of largest variance of all features added to variances
-    'Perceptron': Perceptron(n_jobs=-1, alpha=0.0001, penalty=None),  # alpha: Constant for regularization; penalty: Type of regularization
-    'AdaBoost': AdaBoostClassifier(n_estimators=50, learning_rate=1.0)  # n_estimators: Maximum number of estimators; learning_rate: Weight applied to each classifier
+    'LogisticRegression': LogisticRegression(max_iter=10000, n_jobs=-1),
+    'ExtraTrees': ExtraTreesClassifier(n_jobs=-1),
+    'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
+    'LDA': LinearDiscriminantAnalysis(),
+    'QDA': QuadraticDiscriminantAnalysis(),
+    'DecisionTree': DecisionTreeClassifier(), 
+    'RandomForest': RandomForestClassifier(n_jobs=-1),
+    'GradientBoosting': GradientBoostingClassifier(),
+    'KNeighbors': KNeighborsClassifier(n_jobs=-1),
+    'GaussianNB': GaussianNB(),
+    'Perceptron': Perceptron(n_jobs=-1),
+    'AdaBoost': AdaBoostClassifier()
 }
-# models = {
-#     'LogisticRegression': LogisticRegression(max_iter=10000, n_jobs=-1),
-#     'ExtraTrees': ExtraTreesClassifier(n_jobs=-1),
-#     'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
-#     'LDA': LinearDiscriminantAnalysis(),
-#     'QDA': QuadraticDiscriminantAnalysis(),
-#     'DecisionTree': DecisionTreeClassifier(), 
-#     'RandomForest': RandomForestClassifier(n_jobs=-1),
-#     'GradientBoosting': GradientBoostingClassifier(),
-#     'KNeighbors': KNeighborsClassifier(n_jobs=-1),
-#     'GaussianNB': GaussianNB(),
-#     'Perceptron': Perceptron(n_jobs=-1),
-#     'AdaBoost': AdaBoostClassifier()
-# }
 dataset_paths = glob.glob('.\\dataset\\mix_dataset\\*.csv')
 
 # Lists to store metrics

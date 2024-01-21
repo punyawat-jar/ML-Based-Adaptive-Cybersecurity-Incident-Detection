@@ -583,3 +583,4 @@ Code_and_model/cic/dataset/mix_dataset/Web Attack- Sql Injection.csv
 Code_and_model/cic/dataset/mix_dataset/Web Attack-Brute Force.csv
 Code_and_model/cic/dataset/real_CIC.csv
 Code_and_model/cic/dataset/real_CIC_withnum_attack.csv
+Code_and_model/Result_cic/attack_prediction_cic.csv

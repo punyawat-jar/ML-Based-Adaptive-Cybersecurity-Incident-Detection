@@ -119,5 +119,5 @@ def ProcessCIC(df_loc, directory, full_network):
             send_discord_message(f'Starting {label} {i+1}/{len(labels)}', 0)
 
             temp_df = label_preprocess(temp_df, label)
-            temp_df.to_csv(f".\\{directory}\\{label}.csv", index=False)
+            temp_df.to_csv(f".\\cic\\{directory}\\{label}.csv", index=False)
             

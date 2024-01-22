@@ -17,6 +17,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
 from module.file_op import *
+from module.util import progress_bar
 
 class ModelObject:
     def __init__(self, attack_type, model_name, model, weight):
@@ -202,14 +203,7 @@ def makeConfusion(conf_matrix, data_template):
     plt.savefig(f'.\\confusion_matrix_{data_template}.png')
     plt.close()
 
-def progress_bar(*args, **kwargs):
-    bar = tqdm(*args, **kwargs)
 
-    def checker(x):
-        bar.update(1)
-        return False
-
-    return checker
 
 def main():
     

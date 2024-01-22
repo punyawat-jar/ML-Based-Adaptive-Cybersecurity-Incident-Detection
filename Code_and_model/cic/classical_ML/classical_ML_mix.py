@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import shutil
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
@@ -179,6 +180,8 @@ for dataset_path in dataset_paths:
             print(f"== CIC Model {name} saved as {model_filename} ==")
             
             results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
+            
+            shutil.move(f'{dataset_path}', f'.\\dataset\\\\mix_done\\{dataset_path}')
 
         except Exception as E:
             print(f'Error : {E}')

@@ -52,7 +52,8 @@ def main():
     os.chdir('./Code_and_model') ##Change Working Directory
     
     file_path = glob.glob(net_file_loc+'/*', recursive=True)
-    file_type = file_path[0].split('.')[0]
+    file_type = file_path[0].split('.')[-1]
+    
     if data_template.find('kdd') != -1:
         data_template = 'kdd'
     
@@ -67,14 +68,12 @@ def main():
     makePath(f'./{data_template}')
     makePath(f'./{data_template}/dataset')
 
-    for file in file_path:
-        if checkFileName(file) == 'unsupported':
-            print('Unsupported dataset type, please change into these following format : .txt, .csv, .json')
-        if data_template == 'kdd':
-            ProcessKDD()
+    
+    if data_template == 'kdd':
+        ProcessKDD()
 
-        elif data_template == 'cic':
-            ProcessCIC()
+    elif data_template == 'cic':
+        ProcessCIC(file_path)
 
 
 if __name__ == '__main__':

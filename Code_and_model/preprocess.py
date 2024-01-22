@@ -14,8 +14,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 
 from module.file_op import *
-
-
+from module.preprocess_KDD import ProcessKDD
+from module.preprocess_CIC import 
+from module.file_converter import *
 
 
 def main():
@@ -49,11 +50,9 @@ def main():
 
     #File path
     os.chdir('./Code_and_model') ##Change Working Directory
-
-   
     
     file_path = glob.glob(net_file_loc+'/*', recursive=True)
-    
+    file_type = 
     if data_template.find('kdd') != -1:
         data_template = 'kdd'
     
@@ -71,6 +70,11 @@ def main():
     for file in file_path:
         if checkFileName(file) == 'unsupported':
             print('Unsupported dataset type, please change into these following format : .txt, .csv, .json')
+        if data_template == 'kdd':
+            ProcessKDD()
+
+        elif data_template == 'cic':
+            ProcessCIC()
 
 
 if __name__ == '__main__':

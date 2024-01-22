@@ -24,8 +24,20 @@ from sklearn.naive_bayes import GaussianNB
 from joblib import dump
 os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\cic")
 botnum = 0
-bot = ['https://discord.com/api/webhooks/1162767976034996274/B6CjtQF1SzNRalG_csFx8-qJ5ODBoy5SBUelbGyl-v-QhYhwdsTfE59F-K-rXj3HyUh-',
-      'https://discord.com/api/webhooks/1162767979658887299/0TICfekiC9wjPmp-GqE5zrwU57q2RJHG2peel_KOYagUDYCjovYUfyNJmDR9jbD-WXoE']
+bot = ['https://discord.com/api/webhooks/1132920901235654676/691VuY4nCL4yTjkqJHAtG6u3oXUxRonIxulHx3i3chJO92G0Ug6XxtdIyWVqyDk4vDLW',
+      'https://discord.com/api/webhooks/1133199528284135515/uRBbJul9XFEA9YPqnvDSpZsQvSauZMzMdoBFnb8q69ILE_wVrxqxhkdDTeb-smGBmgIo']
+
+def makePath(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+def progress_bar(*args, **kwargs):
+    bar = tqdm(*args, **kwargs)
+
+    def checker(x):
+        bar.update(1)
+        return False
+
+    return checker
 
 def preprocess(df):
     
@@ -79,10 +91,11 @@ FNRs = []
 TPRs = []
 TNRs = []
 backslash = "\\"
+
 for dataset_path in dataset_paths:
     # Load and preprocess dataset
     print(f'== reading {dataset_path} ==')
-    df = pd.read_csv(dataset_path, low_memory=True)
+    df = pd.read_csv(dataset_path, low_memory=True, skiprows=progress_bar())
     
     print(f'== Preprocessing {dataset_path} ==')
     
@@ -96,6 +109,14 @@ for dataset_path in dataset_paths:
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
+    # Concatenate X_train with y_train, and X_test with y_test
+    # train_combined = pd.concat([X_train, y_train], axis=1)
+    test_combined = pd.concat([X_test, y_test], axis=1)
+
+    # Save to CSV
+    
+
+
     del df
     del X
     del y
@@ -103,7 +124,15 @@ for dataset_path in dataset_paths:
     # Train and evaluate models on the current dataset
     results = {}
     dataset_name = dataset_path.split(backslash)[-1]  # Name of the dataset
+    print(f'== saving dataset ==')
+
+    saveTrain_test = './/train_test_folder'
+    makePath(saveTrain_test)
+
+    # train_combined.to_csv(f'.//train_test_folder//train_{dataset_name}.csv', index=False)
+    test_combined.to_csv(f'.//train_test_folder//test_{dataset_name}.csv', index=False)
     
+
     for name, model in tqdm(models.items(), desc="Training Models"):
 
         try:

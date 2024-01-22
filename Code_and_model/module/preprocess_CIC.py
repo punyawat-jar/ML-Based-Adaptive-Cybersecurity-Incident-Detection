@@ -11,9 +11,9 @@ from module.discord import send_discord_message
 
 def renaming_class_label(df: pd.DataFrame):
     labels = {
-    'Web Attack ÃÂÃÂ Brute Force': 'Web Attack-Brute Force',
-    'Web Attack ÃÂÃÂ XSS': 'Web Attack-XSS',
-    'Web Attack ÃÂÃÂ Sql Injection': 'Web Attack-Sql Injection'
+    'Web Attack ÃÂÃÂÃÂÃÂ- Brute Force': 'Web Attack-Brute Force',
+    'Web Attack ÃÂÃÂÃÂÃÂ- XSS': 'Web Attack-XSS',
+    'Web Attack ÃÂÃÂÃÂÃÂ- Sql Injection': 'Web Attack-Sql Injection'
     }
 
     df['label'] = df['label'].replace(labels)

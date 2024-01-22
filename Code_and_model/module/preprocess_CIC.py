@@ -11,9 +11,9 @@ from module.discord import send_discord_message
 
 def renaming_class_label(df: pd.DataFrame):
     labels = {
-    'Web Attack ÃÂÃÂÃÂÃÂ- Brute Force': 'Web Attack-Brute Force',
-    'Web Attack ÃÂÃÂÃÂÃÂ- XSS': 'Web Attack-XSS',
-    'Web Attack ÃÂÃÂÃÂÃÂ- Sql Injection': 'Web Attack-Sql Injection'
+    'Web Attack ÃÂÃÂÃÂÃÂ Brute Force': 'Web Attack-Brute Force',
+    'Web Attack ÃÂÃÂÃÂÃÂ XSS': 'Web Attack-XSS',
+    'Web Attack ÃÂÃÂÃÂÃÂ Sql Injection': 'Web Attack-Sql Injection'
     }
 
     df['label'] = df['label'].replace(labels)
@@ -78,7 +78,8 @@ def ProcessCIC(df_loc, directory, full_network):
         
         #One-hot encode the 'destination_port_priority' column
         temp = pd.get_dummies(df['destination_port_priority'], prefix='destination_port_priority', dtype=int)
-        df = df.drop('destination_port_priority', axis=1).join(temp)
+        df = pd.concat([df.drop('destination_port_priority', axis=1), temp], axis=1)
+        
         del temp
         gc.collect()
         
@@ -98,8 +99,8 @@ def ProcessCIC(df_loc, directory, full_network):
         non_numerical_columns = df.select_dtypes(exclude=['number']).columns
         print(f'The column to drop :{non_numerical_columns}, but except "label"')
         df = df.drop(non_numerical_columns.drop(['label']), axis = 1)
-        
-        print('save CIC_IDS2017.csv')
+        print(df.shape)
+        print('Saving CIC_IDS2017.csv ...')
         df.to_csv('CIC_IDS2017.csv', index=False)
         
     else:

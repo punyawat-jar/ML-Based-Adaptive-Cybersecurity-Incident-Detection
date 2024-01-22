@@ -81,7 +81,6 @@ def main():
         ProcessKDD()
 
     elif data_template == 'cic':
-        skip = 'True'
         ProcessCIC(file_path, mix_directory, full_network)
 
 

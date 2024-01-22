@@ -17,6 +17,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
 from module.file_op import *
+from module.util import progress_bar
 
 class ModelObject:
     def __init__(self, attack_type, model_name, model, weight):
@@ -24,14 +25,6 @@ class ModelObject:
         self.model_name = model_name
         self.model = model
         self.weight = weight
-
-def preprocess(np_array):
-    print('-- Preprocessing Data --')
-    np_array[(np_array == 'normal') | (np_array == 'BENIGN')] = 0
-    np_array[np_array != 0] = 1
-    return np_array
-
-
     
 def read_model(models_loc, df, weight_data):
     print('-- Reading Trained Model --')
@@ -55,6 +48,12 @@ def read_model(models_loc, df, weight_data):
                 break
 
     return models
+
+def processAttack(np_array):
+    print('processAttack Data...')
+    np_array[(np_array == 'normal') | (np_array == 'BENIGN')] = 0
+    np_array[np_array != 0] = 1
+    return np_array
 
 def printModel(models):
     for model in models:
@@ -202,14 +201,7 @@ def makeConfusion(conf_matrix, data_template):
     plt.savefig(f'.\\confusion_matrix_{data_template}.png')
     plt.close()
 
-def progress_bar(*args, **kwargs):
-    bar = tqdm(*args, **kwargs)
 
-    def checker(x):
-        bar.update(1)
-        return False
-
-    return checker
 
 def main():
     
@@ -279,7 +271,7 @@ def main():
     y = df['label']
     _, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
     
-    preprocess(y_test)
+    processAttack(y_test)
     y_test = y_test.values
     y_test = y_test.astype(int)
 

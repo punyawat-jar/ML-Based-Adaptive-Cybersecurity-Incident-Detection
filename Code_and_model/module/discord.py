@@ -9,9 +9,6 @@ bot = ['https://discord.com/api/webhooks/1120592724123467796/KLwL2pWifliFuwOzs_A
       'https://discord.com/api/webhooks/1133199528284135515/uRBbJul9XFEA9YPqnvDSpZsQvSauZMzMdoBFnb8q69ILE_wVrxqxhkdDTeb-smGBmgIo']
 
 def send_discord_message(content, botnum):
-    if botnum < len(bot) or botnum > len(bot):
-        print('The discord bot is out of range')
-        return 0
     webhook_url = bot[botnum]
 
     data = {

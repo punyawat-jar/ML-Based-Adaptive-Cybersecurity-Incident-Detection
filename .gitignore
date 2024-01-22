@@ -275,7 +275,6 @@ Code_and_model/kdd/lstm/results/xsnoop.csv.csv
 Code_and_model/kdd/lstm/results/snmpgetattack.csv.csv
 Code_and_model/kdd/lstm/results/snmpgetattack.csv.csv
 Code_and_model/cic/classical_ML/confusion_martix/Web Attack � Brute Force.csv/.ipynb_checkpoints/Web Attack � Brute Force.csv_LogisticRegression_confusion_matrix-checkpoint.png
-<<<<<<< HEAD
 Code_and_model/kdd/dataset/mix_dataset/apache2.csv
 Code_and_model/kdd/dataset/mix_dataset/back.csv
 Code_and_model/kdd/dataset/mix_dataset/buffer_overflow.csv
@@ -447,8 +446,6 @@ Code_and_model/kdd/dataset/mix_dataset/worm.csv
 Code_and_model/kdd/dataset/mix_dataset/xlock.csv
 Code_and_model/kdd/dataset/mix_dataset/xsnoop.csv
 Code_and_model/kdd/dataset/mix_dataset/xterm.csv
-=======
->>>>>>> parent of 0128827 (evaluation_kdd_mix)
 Code_and_model/cic/dataset/label_dataset/BENIGN.csv
 Code_and_model/cic/dataset/label_dataset/Web Attack-Brute Force.csv
 Code_and_model/cic/dataset/label_dataset/Web Attack-Sql Injection.csv
@@ -590,3 +587,19 @@ Code_and_model/cic/dataset/mix_done/Bot.csv
 Code_and_model/cic/dataset/mix_done/DDoS.csv
 Code_and_model/cic/dataset/Original_dataset-notuse/Original_dataset-notuse.rar
 *.rar
+Code_and_model/CIC_IDS2017.csv
+Code_and_model/cic/mix_dataset/DoS Hulk.csv
+Code_and_model/cic/mix_dataset/Bot.csv
+Code_and_model/cic/mix_dataset/DDoS.csv
+Code_and_model/cic/mix_dataset/DoS GoldenEye.csv
+Code_and_model/cic/mix_dataset/DoS Slowhttptest.csv
+Code_and_model/cic/mix_dataset/DoS slowloris.csv
+Code_and_model/cic/mix_dataset/FTP-Patator.csv
+Code_and_model/cic/mix_dataset/Heartbleed.csv
+Code_and_model/cic/mix_dataset/Infiltration.csv
+Code_and_model/cic/mix_dataset/PortScan.csv
+Code_and_model/cic/mix_dataset/SSH-Patator.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂÃÂÃÂ Brute Force.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂÃÂÃÂ Sql Injection.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂÃÂÃÂ XSS.csv
+Code_and_model/CIC_IDS2017_new.csv

@@ -15,7 +15,7 @@ from sklearn.naive_bayes import GaussianNB
 
 from module.file_op import *
 from module.preprocess_KDD import ProcessKDD
-from module.preprocess_CIC import 
+from module.preprocess_CIC import ProcessCIC
 from module.file_converter import *
 
 
@@ -39,7 +39,11 @@ def main():
                         required=True,
                         help='The netowrk file location (.csv)')
 
-
+    parser.add_argument('--full_network',
+                        dest='full_network',
+                        type=str,
+                        help='full_network CIC-IDS2017.csv, the concat files that already processed.')
+    
     arg = parser.parse_args()
 
     data_template = arg.data_template
@@ -47,12 +51,17 @@ def main():
     model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
 
     net_file_loc = arg.net_file_loc
-
+    
+    full_network = arg.full_network
+    
+    
     #File path
     os.chdir('./Code_and_model') ##Change Working Directory
     
     file_path = glob.glob(net_file_loc+'/*', recursive=True)
-    file_type = 
+    file_type = file_path[0].split('.')[-1]
+    mix_directory = 'mix_dataset'
+    
     if data_template.find('kdd') != -1:
         data_template = 'kdd'
     
@@ -66,15 +75,14 @@ def main():
     
     makePath(f'./{data_template}')
     makePath(f'./{data_template}/dataset')
+    makePath(f'./{data_template}/{mix_directory}')
+    
+    if data_template == 'kdd':
+        ProcessKDD()
 
-    for file in file_path:
-        if checkFileName(file) == 'unsupported':
-            print('Unsupported dataset type, please change into these following format : .txt, .csv, .json')
-        if data_template == 'kdd':
-            ProcessKDD()
-
-        elif data_template == 'cic':
-            ProcessCIC()
+    elif data_template == 'cic':
+        skip = 'True'
+        ProcessCIC(file_path, mix_directory, full_network)
 
 
 if __name__ == '__main__':

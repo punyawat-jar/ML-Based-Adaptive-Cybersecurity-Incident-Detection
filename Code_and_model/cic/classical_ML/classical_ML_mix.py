@@ -80,7 +80,7 @@ models = {
     'AdaBoost': AdaBoostClassifier()  # AdaBoost does not support n_jobs
 }
 
-dataset_paths = glob.glob('.\\dataset\\mix_dataset\\*.csv')
+dataset_paths = glob.glob('.\\mix_dataset\\*.csv')
 
 # Lists to store metrics
 f1_scores = []

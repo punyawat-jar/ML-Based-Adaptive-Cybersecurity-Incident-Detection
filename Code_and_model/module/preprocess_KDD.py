@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd 
 
 from sklearn.preprocessing import MinMaxScaler
-
+from module.util import *
 def read_train():
     feature=["duration","protocol_type","service","flag","src_bytes","dst_bytes","land","wrong_fragment","urgent","hot",
           "num_failed_logins","logged_in","num_compromised","root_shell","su_attempted","num_root","num_file_creations","num_shells",
@@ -48,11 +48,7 @@ def check_column_differences(dataset1, dataset2):
 
 
 def label_preprocess(df, label):
-    print(label)
-    df.loc[df['label'] == "normal", "label"] = 0
-    df.loc[df['label'] == label, "label"] = 1
-    df.loc[(df['label'] != 0) & (df['label'] != 1), "label"] = 0
-    df['label'] = df['label'].astype('int')
+    df = changeLabel(df, label)
     
     df = pd.get_dummies(df, columns=['protocol_type', 'service', 'flag'])
     for col in df.columns:

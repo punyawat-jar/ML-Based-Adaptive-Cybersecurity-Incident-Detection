@@ -6,14 +6,14 @@ from sklearn.preprocessing import MinMaxScaler
 
 from module.file_converter import _to_utf8
 from module.file_op import *
-from module.util import progress_bar, label_preprocess
+from module.util import *
 from module.discord import send_discord_message
 
 def renaming_class_label(df: pd.DataFrame):
     labels = {
-    'Web Attack ÃÂÃÂÃÂÃÂ Brute Force': 'Web Attack-Brute Force',
-    'Web Attack ÃÂÃÂÃÂÃÂ XSS': 'Web Attack-XSS',
-    'Web Attack ÃÂÃÂÃÂÃÂ Sql Injection': 'Web Attack-Sql Injection'
+    'Web Attack ÃÂÃÂ Brute Force': 'Web Attack-Brute Force',
+    'Web Attack ÃÂÃÂ XSS': 'Web Attack-XSS',
+    'Web Attack ÃÂÃÂ Sql Injection': 'Web Attack-Sql Injection'
     }
 
     df['label'] = df['label'].replace(labels)
@@ -48,7 +48,16 @@ def concatFiles(df_loc):
     
     return df
 
-    
+def create_df(df, labels, directory):
+    for i, label in enumerate(labels):
+        if label == 'BENIGN':
+            print(f'Skip {label}')
+        else:
+            df_temp = df.copy()
+            print(f'Starting {label} {i+1}/{len(labels)}')
+            df_temp = changeLabel(df_temp, label)
+            df_temp.to_csv(f".\\cic\\{directory}\\{label}.csv", index=False)
+
 
 def ProcessCIC(df_loc, directory, full_network):
     
@@ -109,16 +118,8 @@ def ProcessCIC(df_loc, directory, full_network):
     
     labels = df.label.value_counts().index.tolist()
     
-    temp_df = df.copy()
-    
     print('Preprocessing Dataset...')
-    for i, label in enumerate(labels):
-        if label == 'BENIGN':
-            print(f'SKIP {label}')
-        else:
-            print(f'Starting {label} {i+1}/{len(labels)}')
-            send_discord_message(f'Starting {label} {i+1}/{len(labels)}', 0)
 
-            temp_df = label_preprocess(temp_df, label)
-            temp_df.to_csv(f".\\cic\\{directory}\\{label}.csv", index=False)
-            
+    create_df(df, labels, directory)
+
+    print('Preprocessing Done')

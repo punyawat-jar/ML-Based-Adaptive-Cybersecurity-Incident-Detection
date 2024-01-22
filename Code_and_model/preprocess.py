@@ -15,7 +15,7 @@ from sklearn.naive_bayes import GaussianNB
 
 from module.file_op import *
 from module.preprocess_KDD import ProcessKDD
-from module.preprocess_CIC import 
+from module.preprocess_CIC import ProcessCIC
 from module.file_converter import *
 
 
@@ -52,7 +52,7 @@ def main():
     os.chdir('./Code_and_model') ##Change Working Directory
     
     file_path = glob.glob(net_file_loc+'/*', recursive=True)
-    file_type = 
+    file_type = file_path[0].split('.')[0]
     if data_template.find('kdd') != -1:
         data_template = 'kdd'
     

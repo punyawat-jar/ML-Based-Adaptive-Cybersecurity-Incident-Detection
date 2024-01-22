@@ -589,3 +589,17 @@ Code_and_model/cic/train_test_folder/test_DDoS.csv.csv
 Code_and_model/cic/dataset/mix_done/Bot.csv
 Code_and_model/CIC_IDS2017.csv
 Code_and_model/cic/mix_dataset/DoS Hulk.csv
+Code_and_model/cic/mix_dataset/Bot.csv
+Code_and_model/cic/mix_dataset/DDoS.csv
+Code_and_model/cic/mix_dataset/DoS GoldenEye.csv
+Code_and_model/cic/mix_dataset/DoS Slowhttptest.csv
+Code_and_model/cic/mix_dataset/DoS slowloris.csv
+Code_and_model/cic/mix_dataset/FTP-Patator.csv
+Code_and_model/cic/mix_dataset/Heartbleed.csv
+Code_and_model/cic/mix_dataset/Infiltration.csv
+Code_and_model/cic/mix_dataset/PortScan.csv
+Code_and_model/cic/mix_dataset/SSH-Patator.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂÃÂÃÂ Brute Force.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂÃÂÃÂ Sql Injection.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂÃÂÃÂ XSS.csv
+Code_and_model/CIC_IDS2017_new.csv

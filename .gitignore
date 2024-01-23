@@ -617,3 +617,9 @@ Code_and_model/cic/train_test_folder/test_DoS Hulk.csv.csv
 Code_and_model/cic/train_test_folder/test_DoS Slowhttptest.csv.csv
 Code_and_model/cic/train_test_folder/test_DoS slowloris.csv.csv
 Code_and_model/cic/train_test_folder/test_FTP-Patator.csv.csv
+Code_and_model/cic/dataset/mix_done/FTP-Patator.csv
+Code_and_model/cic/dataset/mix_done/Heartbleed.csv
+Code_and_model/cic/dataset/mix_done/Infiltration.csv
+Code_and_model/cic/train_test_folder/test_Heartbleed.csv.csv
+Code_and_model/cic/train_test_folder/test_Infiltration.csv.csv
+Code_and_model/cic/train_test_folder/test_PortScan.csv.csv

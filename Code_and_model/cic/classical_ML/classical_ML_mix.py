@@ -181,12 +181,13 @@ for dataset_path in dataset_paths:
             
             results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
             
-            shutil.move(f'{dataset_path}', f'.\\dataset\\\\mix_done\\{dataset_path}')
+            
 
         except Exception as E:
             print(f'Error : {E}')
 
     # Convert results to DataFrame and save with dataset name
+    shutil.move(f'{dataset_path}', f'.\\dataset\\\\mix_done\\{dataset_name}')
     result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
     result_filename = f".\\classical_ML\\mix_training\\compare\\evaluation_results_{dataset_name}"
     result_df.to_csv(result_filename)

@@ -605,3 +605,15 @@ Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂÃÂÃÂ XSS.c
 Code_and_model/CIC_IDS2017_new.csv
 Code_and_model/cic/dataset/temp_dataset/CIC_IDS2017.csv
 Code_and_model/cic/dataset/temp_dataset/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+Code_and_model/cic/dataset/mix_done/DoS GoldenEye.csv
+Code_and_model/cic/dataset/mix_done/DoS Hulk.csv
+Code_and_model/cic/dataset/mix_done/DoS Slowhttptest.csv
+Code_and_model/cic/dataset/mix_done/DoS slowloris.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂ Brute Force.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂ Sql Injection.csv
+Code_and_model/cic/mix_dataset/Web Attack ÃÂÃÂ XSS.csv
+Code_and_model/cic/train_test_folder/test_DoS GoldenEye.csv.csv
+Code_and_model/cic/train_test_folder/test_DoS Hulk.csv.csv
+Code_and_model/cic/train_test_folder/test_DoS Slowhttptest.csv.csv
+Code_and_model/cic/train_test_folder/test_DoS slowloris.csv.csv
+Code_and_model/cic/train_test_folder/test_FTP-Patator.csv.csv

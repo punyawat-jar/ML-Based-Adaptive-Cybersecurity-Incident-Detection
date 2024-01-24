@@ -93,16 +93,10 @@ TPRs = []
 TNRs = []
 backslash = "\\"
 
-for dataset_path in dataset_paths:
+for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
     # Load and preprocess dataset
     print(f'== reading {dataset_path} ==')
     df = pd.read_csv(dataset_path, low_memory=True, skiprows=progress_bar())
-    
-    print(f'== Preprocessing {dataset_path} ==')
-    
-    # df = preprocess(df)
-    
-    print(f'== Done {dataset_path} ==')
     # Splitting data
     X = df.drop('label', axis=1)
     y = df['label']
@@ -111,7 +105,7 @@ for dataset_path in dataset_paths:
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
     # Concatenate X_train with y_train, and X_test with y_test
-    # train_combined = pd.concat([X_train, y_train], axis=1)
+    train_combined = pd.concat([X_train, y_train], axis=1)
     test_combined = pd.concat([X_test, y_test], axis=1)
 
     # Save to CSV
@@ -125,12 +119,11 @@ for dataset_path in dataset_paths:
     # Train and evaluate models on the current dataset
     results = {}
     dataset_name = dataset_path.split(backslash)[-1]  # Name of the dataset
-    print(f'== saving dataset ==')
 
     saveTrain_test = './/train_test_folder'
     makePath(saveTrain_test)
 
-    # train_combined.to_csv(f'.//train_test_folder//train_{dataset_name}.csv', index=False)
+    train_combined.to_csv(f'.//train_test_folder//train_{dataset_name}.csv', index=False)
     test_combined.to_csv(f'.//train_test_folder//test_{dataset_name}.csv', index=False)
     
 
@@ -158,13 +151,13 @@ for dataset_path in dataset_paths:
                 os.makedirs(conf_matrix_path)
                 
             # Plot and save confusion matrix
-            plt.figure()
-            sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
-            plt.xlabel('Predicted')
-            plt.ylabel('Actual')
-            plt.title('Confusion Matrix')
-            plt.savefig(f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
-            plt.close()
+            plt.figure(figsize=(10, 8))
+            sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', annot_kws={"size": 16})
+            plt.xlabel('Predicted', fontsize=14)
+            plt.ylabel('Actual', fontsize=14)
+            plt.title(f'Confusion Matrix of {dataset_name}', fontsize=18)
+            plt.tight_layout()  # Adjust the padding of the plot to fit everything
+            plt.show()
 
             # Here I assume binary classification for loss (0 or 1). Adjust if needed.
             loss = np.mean(np.abs(y_pred - y_test))

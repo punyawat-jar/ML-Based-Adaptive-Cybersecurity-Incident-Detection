@@ -623,3 +623,12 @@ Code_and_model/cic/dataset/mix_done/Infiltration.csv
 Code_and_model/cic/train_test_folder/test_Heartbleed.csv.csv
 Code_and_model/cic/train_test_folder/test_Infiltration.csv.csv
 Code_and_model/cic/train_test_folder/test_PortScan.csv.csv
+Code_and_model/cic/dataset/mix_done/PortScan.csv
+Code_and_model/cic/dataset/mix_done/SSH-Patator.csv
+Code_and_model/cic/dataset/mix_done/Web Attack ÃÂÃÂ Brute Force.csv
+Code_and_model/cic/dataset/mix_done/Web Attack ÃÂÃÂ Sql Injection.csv
+Code_and_model/cic/dataset/mix_done/Web Attack ÃÂÃÂ XSS.csv
+Code_and_model/cic/train_test_folder/test_SSH-Patator.csv.csv
+Code_and_model/cic/train_test_folder/test_Web Attack ÃÂÃÂ Brute Force.csv.csv
+Code_and_model/cic/train_test_folder/test_Web Attack ÃÂÃÂ Sql Injection.csv.csv
+Code_and_model/cic/train_test_folder/test_Web Attack ÃÂÃÂ XSS.csv.csv

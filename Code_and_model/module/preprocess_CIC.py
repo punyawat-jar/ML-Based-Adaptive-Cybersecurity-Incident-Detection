@@ -59,9 +59,9 @@ def create_df(df, labels, directory):
             df_temp.to_csv(f".\\cic\\{directory}\\{label}.csv", index=False)
 
 
-def ProcessCIC(df_loc, directory, full_network):
+def ProcessCIC(df_loc, directory, input_dataset):
     
-    if full_network is None:
+    if input_dataset is None:
         col_list = []
         #Concat the files in dataset
         df = concatFiles(df_loc)
@@ -114,7 +114,7 @@ def ProcessCIC(df_loc, directory, full_network):
         
     else:
         print('Reading Dataset from user input...')
-        df = pd.read_csv(f'{full_network}', skiprows=progress_bar())
+        df = pd.read_csv(f'{input_dataset}', skiprows=progress_bar())
     
     labels = df.label.value_counts().index.tolist()
     

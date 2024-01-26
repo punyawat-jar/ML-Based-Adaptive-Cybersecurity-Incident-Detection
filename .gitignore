@@ -633,3 +633,16 @@ Code_and_model/cic/train_test_folder/test_Web Attack ÃÂÃÂ Brute Forc
 Code_and_model/cic/train_test_folder/test_Web Attack ÃÂÃÂ Sql Injection.csv.csv
 Code_and_model/cic/train_test_folder/test_Web Attack ÃÂÃÂ XSS.csv.csv
 Code_and_model/cic/train_test_folder/train_Bot.csv.csv
+Code_and_model/cic/train_test_folder/train_DDoS.csv.csv
+Code_and_model/cic/train_test_folder/train_DoS GoldenEye.csv.csv
+Code_and_model/cic/train_test_folder/train_DoS Hulk.csv.csv
+Code_and_model/cic/train_test_folder/train_DoS Slowhttptest.csv.csv
+Code_and_model/cic/train_test_folder/train_DoS slowloris.csv.csv
+Code_and_model/cic/train_test_folder/train_FTP-Patator.csv.csv
+Code_and_model/cic/train_test_folder/train_Heartbleed.csv.csv
+Code_and_model/cic/train_test_folder/train_Infiltration.csv.csv
+Code_and_model/cic/train_test_folder/train_PortScan.csv.csv
+Code_and_model/cic/train_test_folder/train_SSH-Patator.csv.csv
+Code_and_model/cic/train_test_folder/train_Web Attack ÃÂÃÂ Brute Force.csv.csv
+Code_and_model/cic/train_test_folder/train_Web Attack ÃÂÃÂ Sql Injection.csv.csv
+Code_and_model/cic/train_test_folder/train_Web Attack ÃÂÃÂ XSS.csv.csv

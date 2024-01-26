@@ -157,7 +157,9 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             plt.ylabel('Actual', fontsize=14)
             plt.title(f'Confusion Matrix of {dataset_name}', fontsize=18)
             plt.tight_layout()  # Adjust the padding of the plot to fit everything
-            plt.show()
+            plt.savefig(f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
+            plt.close()
+            # plt.show()
 
             # Here I assume binary classification for loss (0 or 1). Adjust if needed.
             loss = np.mean(np.abs(y_pred - y_test))

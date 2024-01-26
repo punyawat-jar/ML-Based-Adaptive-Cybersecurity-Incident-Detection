@@ -4,7 +4,7 @@ os.environ['OPENBLAS_NUM_THREADS'] = '1'
 import glob
 import requests
 import json
-
+from tqdm import tqdm
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -31,6 +31,9 @@ def processlabel(df):
     df.loc[df['label'] != 0, 'label'] = 1
     df['label'] = df['label'].astype('int')
     return df
+def makePath(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 def preprocess(df):
     scaler = MinMaxScaler()
@@ -75,12 +78,12 @@ FNRs = []
 TPRs = []
 TNRs = []
 backslash = "\\"
-
+main_df = pd.read_csv('./KDD.csv')
 X_main = main_df.drop('label', axis=1)
 y_main = main_df['label']
 
 # Split the main dataset
-X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y)
+X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
 
 # Get the indices of the training and testing sets
 train_index = X_train_main.index
@@ -94,18 +97,25 @@ makePath(train_dir)
 makePath(test_dir)
 
 
-for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
-    print(f"== reading training data: {train_path} ==")
+for train_path in tqdm(dataset_paths, desc="Dataset paths"):
+    print(f"== reading : {train_path} ==")
     df = pd.read_csv(train_path)
 
     X = df.drop('label', axis=1)
-    
     y = df['label']
     print(y.value_counts())
     results = {}
     
-    dataset_name = dataset_path.split(backslash)[-1]  # Name of the dataset
+    dataset_name = train_path.split(backslash)[-1]  # Name of the dataset
     
+    sub_X_train = X.loc[train_index]
+    sub_y_train = y.loc[train_index]
+    sub_X_test = X.loc[test_index]
+    sub_y_test = y.loc[test_index]
+    
+    # Concatenate X_train with y_train, and X_test with y_test
+    train_combined = pd.concat([sub_X_train, sub_y_train], axis=1)
+    test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
     #To be debugged, deleted if the same
     #======
     train_combined.to_csv(f'.//{train_dir}//train_{dataset_name}.csv', index=False)
@@ -117,24 +127,28 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             # send_discord_message(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
             print(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
             
-            model.fit(X_train, y_train)
-            y_pred = model.predict(X_test)
+            model.fit(sub_X_train, sub_y_train)
+            y_pred = model.predict(sub_X_test)
     
-            accuracy = accuracy_score(y_test, y_pred)
-            f1 = f1_score(y_test, y_pred, zero_division = 1)
-            precision = precision_score(y_test, y_pred, zero_division = 1)
-            recall = recall_score(y_test, y_pred, zero_division = 1)
-            conf_matrix = confusion_matrix(y_test, y_pred, , labels=model.classes_)
+            accuracy = accuracy_score(sub_y_test, y_pred)
+            f1 = f1_score(sub_y_test, y_pred, zero_division = 1)
+            precision = precision_score(sub_y_test, y_pred, zero_division = 1)
+            recall = recall_score(sub_y_test, y_pred, zero_division = 1)
+            conf_matrix = confusion_matrix(sub_y_test, y_pred, labels=model.classes_)
             
             print(conf_matrix)
             conf_matrix_path = f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}"
             if not os.path.exists(conf_matrix_path):
                 os.makedirs(conf_matrix_path)
             
-            # Plot and save confusion matrix
-            cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_, cmap='Blues')
-            cm_dis.figure_.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png")
-            
+            # Your existing code for confusion matrix
+            cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_)
+            fig, ax = plt.subplots()
+            cm_dis.plot(ax=ax)
+            fig.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png")
+
+            # Close the figure
+            plt.close(fig)
             # plt.figure()
             # sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
             # plt.xlabel('Predicted')
@@ -143,7 +157,7 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             # plt.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_confusion_matrix.png")
             # plt.close()
     
-            loss = np.mean(np.abs(y_pred - y_test))
+            loss = np.mean(np.abs(y_pred - sub_y_test))
             print(f"== Done Training: {train_path.split(backslash)[-1]} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==")
             models_save_path = f".\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}"
             if not os.path.exists(models_save_path):

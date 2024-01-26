@@ -20,8 +20,6 @@ def creating_weight_file(path):
         print(f'Weight file not exist, creating file at {path}')
         return False
         
-        
-
 def checkFileName(paths):
     path_list = []
     for path in paths:

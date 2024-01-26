@@ -51,6 +51,11 @@ def preprocess(df):
 
     return df
 
+def makePath(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
 def send_discord_message(content):
     webhook_url = bot[botnum]
 
@@ -99,7 +104,7 @@ X_main = main_df.drop('label', axis=1)
 y_main = main_df['label']
 
 # Split the main dataset
-X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y)
+X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
 
 # Get the indices of the training and testing sets
 train_index = X_train_main.index
@@ -150,14 +155,14 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             send_discord_message(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
             print(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
             
-            model.fit(X_train, y_train)
-            y_pred = model.predict(X_test)
+            model.fit(sub_X_train, sub_y_train)
+            y_pred = model.predict(sub_X_test)
 
-            accuracy = accuracy_score(y_test, y_pred)
-            f1 = f1_score(y_test, y_pred)
-            precision = precision_score(y_test, y_pred)
-            recall = recall_score(y_test, y_pred)
-            conf_matrix = confusion_matrix(y_test, y_pred, labels=model.classes_)
+            accuracy = accuracy_score(sub_y_test, y_pred)
+            f1 = f1_score(sub_y_test, y_pred)
+            precision = precision_score(sub_y_test, y_pred)
+            recall = recall_score(sub_y_test, y_pred)
+            conf_matrix = confusion_matrix(sub_y_test, y_pred, labels=model.classes_)
 
             # Extract metrics from confusion matrix
             TN, FP, FN, TP = conf_matrix.ravel()
@@ -168,8 +173,15 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
                 os.makedirs(conf_matrix_path)
                 
             # Plot and save confusion matrix
-            cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_, cmap='Blues')
-            cm_dis.figure_.savefig(f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
+            # Your existing code for confusion matrix
+            cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_)
+            fig, ax = plt.subplots()
+            cm_dis.plot(ax=ax)
+            fig.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png")
+
+            # Close the figure
+            plt.close(fig)
+            
             # plt.figure(figsize=(10, 8))
             # sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', annot_kws={"size": 16})
             # plt.xlabel('Predicted', fontsize=14)
@@ -181,7 +193,7 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             # plt.show()
 
             # Here I assume binary classification for loss (0 or 1). Adjust if needed.
-            loss = np.mean(np.abs(y_pred - y_test))
+            loss = np.mean(np.abs(y_pred - sub_y_test))
             send_discord_message(f'== CIC Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
             print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
             models_save_path = f".\\classical_ML\\mix_training\\model\\{dataset_name}"

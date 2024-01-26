@@ -49,10 +49,6 @@ def check_column_differences(dataset1, dataset2):
     return columns_only_in_dataset1, columns_only_in_dataset2
 
 
-def label_preprocess(df, label):
-
-            
-    return df
 
 def column_manage(df):
     df.drop(['difficulty'],axis=1,inplace=True)
@@ -89,6 +85,7 @@ def ProcessKDD(file_path, mix_directory, input_dataset):
             df = pd.concat(data, ignore_index=True)
             df = column_manage(df)
             labels = df.label.value_counts().index.tolist()
+            df.to_csv('./kdd/KDD.csv', index=False)
             print(f'Shape of dataset : {df.shape}')
             
         for i, label in tqdm(enumerate(labels)):

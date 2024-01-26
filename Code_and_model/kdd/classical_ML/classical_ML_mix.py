@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay
 
 from sklearn.linear_model import LogisticRegression, Perceptron
 from sklearn.svm import SVC
@@ -76,24 +76,47 @@ TPRs = []
 TNRs = []
 backslash = "\\"
 
-datasets = {train_path.split(backslash)[-1]: (train_path, train_path) for train_path in dataset_paths}
+X_main = main_df.drop('label', axis=1)
+y_main = main_df['label']
 
-for dataset_name, (train_path, _) in datasets.items():
+# Split the main dataset
+X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y)
+
+# Get the indices of the training and testing sets
+train_index = X_train_main.index
+test_index = X_test_main.index
+
+saveTrain_test = './/train_test_folder'
+train_dir = './train_test_folder/train_kdd'
+test_dir ='./train_test_folder/test_kdd'
+makePath(saveTrain_test)
+makePath(train_dir)
+makePath(test_dir)
+
+
+for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
     print(f"== reading training data: {train_path} ==")
     df = pd.read_csv(train_path)
-    # df = processlabel(df)
-    
+
     X = df.drop('label', axis=1)
-    # train_df = preprocess(X)
     
     y = df['label']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.3, stratify=y)
     print(y.value_counts())
     results = {}
     
-    for name, model in models.items():
+    dataset_name = dataset_path.split(backslash)[-1]  # Name of the dataset
+    
+    #To be debugged, deleted if the same
+    #======
+    train_combined.to_csv(f'.//{train_dir}//train_{dataset_name}.csv', index=False)
+    test_combined.to_csv(f'.//{test_dir}//test_{dataset_name}.csv', index=False)
+    #======
+
+    for name, model in tqdm(models.items(), desc="Training KDD Models"):
         try:
-            print(f"== Training: {train_path.split(backslash)[-1]} with model: {name} ==")
+            # send_discord_message(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
+            print(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
+            
             model.fit(X_train, y_train)
             y_pred = model.predict(X_test)
     
@@ -101,23 +124,24 @@ for dataset_name, (train_path, _) in datasets.items():
             f1 = f1_score(y_test, y_pred, zero_division = 1)
             precision = precision_score(y_test, y_pred, zero_division = 1)
             recall = recall_score(y_test, y_pred, zero_division = 1)
-            conf_matrix = confusion_matrix(y_test, y_pred)
-            if conf_matrix.size == 1:
-                TN, FP, FN, TP = 0, 0, 0, conf_matrix[0][0]
-            else:
-                TN, FP, FN, TP = conf_matrix.ravel()
+            conf_matrix = confusion_matrix(y_test, y_pred, , labels=model.classes_)
             
+            print(conf_matrix)
             conf_matrix_path = f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}"
             if not os.path.exists(conf_matrix_path):
                 os.makedirs(conf_matrix_path)
-                
-            plt.figure()
-            sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
-            plt.xlabel('Predicted')
-            plt.ylabel('Actual')
-            plt.title('Confusion Matrix')
-            plt.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_confusion_matrix.png")
-            plt.close()
+            
+            # Plot and save confusion matrix
+            cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_, cmap='Blues')
+            cm_dis.figure_.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png")
+            
+            # plt.figure()
+            # sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
+            # plt.xlabel('Predicted')
+            # plt.ylabel('Actual')
+            # plt.title('Confusion Matrix')
+            # plt.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_confusion_matrix.png")
+            # plt.close()
     
             loss = np.mean(np.abs(y_pred - y_test))
             print(f"== Done Training: {train_path.split(backslash)[-1]} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==")

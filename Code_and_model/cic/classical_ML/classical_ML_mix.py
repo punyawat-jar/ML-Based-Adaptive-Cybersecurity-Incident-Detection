@@ -12,7 +12,7 @@ import seaborn as sns
 import shutil
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay
 
 from tqdm import tqdm
 from sklearn.linear_model import LogisticRegression, Perceptron
@@ -95,8 +95,6 @@ backslash = "\\"
 
 main_df = pd.read_csv('./cic/CICIDS2017.csv', low_memory=False, skiprows=progress_bar(), stratify=y)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
 X_main = main_df.drop('label', axis=1)
 y_main = main_df['label']
 
@@ -108,8 +106,8 @@ train_index = X_train_main.index
 test_index = X_test_main.index
 
 saveTrain_test = './/train_test_folder'
-train_dir = './train_test_folder/train'
-test_dir ='./train_test_folder/test'
+train_dir = './train_test_folder/train_cic'
+test_dir ='./train_test_folder/test_cic'
 makePath(saveTrain_test)
 makePath(train_dir)
 makePath(test_dir)
@@ -146,7 +144,7 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
     test_combined.to_csv(f'.//{test_dir}//test_{dataset_name}.csv', index=False)
     #======
 
-    for name, model in tqdm(models.items(), desc="Training Models"):
+    for name, model in tqdm(models.items(), desc="Training CIC Models"):
 
         try:
             send_discord_message(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
@@ -159,7 +157,7 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             f1 = f1_score(y_test, y_pred)
             precision = precision_score(y_test, y_pred)
             recall = recall_score(y_test, y_pred)
-            conf_matrix = confusion_matrix(y_test, y_pred)
+            conf_matrix = confusion_matrix(y_test, y_pred, labels=model.classes_)
 
             # Extract metrics from confusion matrix
             TN, FP, FN, TP = conf_matrix.ravel()
@@ -170,14 +168,16 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
                 os.makedirs(conf_matrix_path)
                 
             # Plot and save confusion matrix
-            plt.figure(figsize=(10, 8))
-            sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', annot_kws={"size": 16})
-            plt.xlabel('Predicted', fontsize=14)
-            plt.ylabel('Actual', fontsize=14)
-            plt.title(f'Confusion Matrix of {dataset_name}', fontsize=18)
-            plt.tight_layout()  # Adjust the padding of the plot to fit everything
-            plt.savefig(f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
-            plt.close()
+            cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_, cmap='Blues')
+            cm_dis.figure_.savefig(f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
+            # plt.figure(figsize=(10, 8))
+            # sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', annot_kws={"size": 16})
+            # plt.xlabel('Predicted', fontsize=14)
+            # plt.ylabel('Actual', fontsize=14)
+            # plt.title(f'Confusion Matrix of {dataset_name}', fontsize=18)
+            # plt.tight_layout()  # Adjust the padding of the plot to fit everything
+            # plt.savefig(f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
+            # plt.close()
             # plt.show()
 
             # Here I assume binary classification for loss (0 or 1). Adjust if needed.

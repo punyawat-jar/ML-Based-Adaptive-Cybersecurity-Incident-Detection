@@ -93,6 +93,8 @@ TPRs = []
 TNRs = []
 backslash = "\\"
 
+main_df = pd.read_csv('CICIDS2017.csv', low_memory=True, skiprows=progress_bar())
+
 for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
     # Load and preprocess dataset
     print(f'== reading {dataset_path} ==')

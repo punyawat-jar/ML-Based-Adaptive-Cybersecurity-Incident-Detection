@@ -1,5 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
 def progress_bar(*args, **kwargs):
     from tqdm import tqdm
     bar = tqdm(*args, **kwargs)
@@ -24,4 +26,16 @@ def scaler(df):
     scaler = MinMaxScaler()
     for col in df.columns:
         df[col] = scaler.fit_transform(df[col].values.reshape(-1, 1)).ravel()
+    return df
+
+
+def splitdata_train_test(df):
+    
+    X = df.drop('label', axis=1)
+    y = df['label']
+    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+    
+    
+    
     return df

@@ -55,8 +55,7 @@ def concatFiles(df_loc):
 
 def create_df(df, labels, directory):
     for i, label in enumerate(labels):
-        if not label.startswith('')
-        # if label == 'BENIGN':
+        if label == 'BENIGN':
             print(f'Skip {label}')
         else:
             df_temp = df.copy()
@@ -116,12 +115,13 @@ def ProcessCIC(df_loc, directory, input_dataset):
         df = df.drop(non_numerical_columns.drop(['label']), axis = 1)
         print(df.shape)
         print('Saving CIC_IDS2017.csv ...')
-        df.to_csv('CIC_IDS2017.csv', index=False)
+        df.to_csv('./cic/CIC_IDS2017.csv', index=False)
         
     else:
         print('Reading Dataset from user input...')
         df = pd.read_csv(f'{input_dataset}', skiprows=progress_bar())
     
+    df = splitdata_train_test(df)
     labels = df.label.value_counts().index.tolist()
     
     print('Preprocessing Dataset...')

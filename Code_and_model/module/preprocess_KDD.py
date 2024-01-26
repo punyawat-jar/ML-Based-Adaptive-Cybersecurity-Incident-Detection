@@ -50,13 +50,8 @@ def check_column_differences(dataset1, dataset2):
 
 
 def label_preprocess(df, label):
-    df = changeLabel(df, label)
-    for col in df.columns:
-        if df[col].dtype == 'bool':
-            df[col] = df[col].astype(int)
-        
-    scaler = MinMaxScaler()
-    df[df.columns] = scaler.fit_transform(df[df.columns])
+
+            
     return df
 
 def column_manage(df):
@@ -102,7 +97,13 @@ def ProcessKDD(file_path, mix_directory, input_dataset):
                 continue
             df_temp = df.copy()
             print(f'Starting {label} {i+1}/{len(labels)}')
-            df_temp = label_preprocess(df_temp, label)
+            
+            df_temp = changeLabel(df_temp, label)
+    
+            for col in df.columns:
+                if df[col].dtype == 'bool':
+                    df[col] = df[col].astype(int)
+                    
             df_temp.to_csv(f".\\kdd\\{mix_directory}\\{label}.csv", index=False)
 
         print('Preprocessing KDD Done')

@@ -81,7 +81,6 @@ def main():
         
         if data_template == 'kdd':
             ProcessKDD(file_path, mix_directory, input_dataset)
-            
 
         elif data_template == 'cic':
             ProcessCIC(file_path, mix_directory, input_dataset)

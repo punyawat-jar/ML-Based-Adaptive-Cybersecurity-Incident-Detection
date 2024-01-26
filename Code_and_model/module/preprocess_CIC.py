@@ -2,7 +2,8 @@ import numpy as np
 import glob
 import pandas as pd 
 import gc
-from sklearn.preprocessing import MinMaxScaler
+
+
 
 from module.file_converter import _to_utf8
 from module.file_op import *

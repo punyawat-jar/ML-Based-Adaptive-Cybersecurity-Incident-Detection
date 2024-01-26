@@ -6,7 +6,9 @@ import glob
 import joblib
 import concurrent.futures
 import time
-
+import traceback
+import sys
+import json
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -252,58 +254,72 @@ def main():
 
     sequence_mode = arg.sequence
     debug_mode = arg.debug
+    try:
+        #Parameter & path setting
+        os.chdir('./Code_and_model') ##Change Working Directory
+        result_path = f'./Result_{data_template}' ## Saving result path
+        weight_path = f'{result_path}/weight.json'
+        models_loc = []
 
-    #Parameter & path setting
-    os.chdir('./Code_and_model') ##Change Working Directory
-    result_path = f'./Result_{data_template}' ## Saving result path
+        check_file(chooese_csv)
+        check_file(net_file_loc)
+        makePath(result_path)
 
-    models_loc = []
+        print('-- Reading Dataset --')
+        # df = pd.concat([chunk for chunk in tqdm(pd.read_csv(net_file_loc, chunksize=1000), desc='Loading dataset')])
+        df = pd.read_csv(net_file_loc, skiprows=progress_bar())
+        print('-- Reading Dataset successfully --')
+        X = df.drop('label', axis=1)
+        y = df['label']
+        _, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+        
+        processAttack(y_test)
+        y_test = y_test.values
+        y_test = y_test.astype(int)
+        
+        
+        #Reading Weight from file, if exist. if not calculated from the dataset (Default)
+        CheckWegihtFileCreated = creating_weight_file(weight_path)
+        
+        if not CheckWegihtFileCreated:
+            label_counts = Counter(y_train)
+            total_labels = len(y_train)
+            label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
+            
+            with open(weight_path, "w") as jsonfile: 
+                json.dump(label_percentages, jsonfile)
+        else:
+            with open(weight_path) as jsonfile:
+                label_percentages = json.load(jsonfile)
+            
+        lowest_percent_attack = min(label_percentages, key=label_percentages.get)
+        threshold = label_percentages[lowest_percent_attack]
 
-    check_file(chooese_csv)
-    check_file(net_file_loc)
-    makePath(result_path)
+        model_df = pd.read_csv(chooese_csv)[['attack', 'model']]
+        model_df = model_df[model_df['attack'] != 'normal.csv']
+        
+        files = glob.glob(model_loc+'/*.csv/**', recursive=True)
 
-    print('-- Reading Dataset --')
-    # df = pd.concat([chunk for chunk in tqdm(pd.read_csv(net_file_loc, chunksize=1000), desc='Loading dataset')])
-    df = pd.read_csv(net_file_loc, skiprows=progress_bar())
-    print('-- Reading Dataset successfully --')
-    X = df.drop('label', axis=1)
-    y = df['label']
-    _, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
-    
-    processAttack(y_test)
-    y_test = y_test.values
-    y_test = y_test.astype(int)
+        for file in files:
+            for _, row in model_df.iterrows():
+                if row['attack'] in file and row['model'] in file:
+                    models_loc.append(file)
+                    break
 
-    label_counts = Counter(y_train)
-    total_labels = len(y_train)
-    label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
+        models = read_model(models_loc, model_df, label_percentages)
 
-    lowest_percent_attack = min(label_percentages, key=label_percentages.get)
-    threshold = label_percentages[lowest_percent_attack]
-
-    model_df = pd.read_csv(chooese_csv)[['attack', 'model']]
-    model_df = model_df[model_df['attack'] != 'normal.csv']
-    
-    files = glob.glob(model_loc+'/*.csv/**', recursive=True)
-
-    for file in files:
-        for _, row in model_df.iterrows():
-            if row['attack'] in file and row['model'] in file:
-                models_loc.append(file)
-                break
-
-    models = read_model(models_loc, model_df, label_percentages)
-
-    print(f'-- Evaluation the model with {len(models)} attacks--')
-    y_pred, time_pred, attack_df = prediction(models, sequence_mode, threshold, X_test)
-    
-    evalu = evaluation(y_test, y_pred, data_template, result_path)
-    
-    result_df = pd.concat([X_test.reset_index(drop=True), attack_df.reset_index(drop=True)], axis=1)
-    result_df.to_csv(f'{result_path}/attack_prediction_{data_template}.csv', index=False)
-    
-    print(f'Accuracy : {evalu["accuracy"]}\nF1-score : {evalu["f1"]}\nPrecision : {evalu["precision"]}\nRecall : {evalu["recall"]}')
-
+        print(f'-- Evaluation the model with {len(models)} attacks--')
+        y_pred, time_pred, attack_df = prediction(models, sequence_mode, threshold, X_test)
+        
+        evalu = evaluation(y_test, y_pred, data_template, result_path)
+        
+        result_df = pd.concat([X_test.reset_index(drop=True), attack_df.reset_index(drop=True)], axis=1)
+        result_df.to_csv(f'{result_path}/attack_prediction_{data_template}.csv', index=False)
+        
+        print(f'Accuracy : {evalu["accuracy"]}\nF1-score : {evalu["f1"]}\nPrecision : {evalu["precision"]}\nRecall : {evalu["recall"]}')
+    except Exception as E:
+        print(E)
+        traceback.print_exc()
+        sys.exit(1)
 if __name__ == '__main__':
     main()

@@ -175,8 +175,6 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             print(f"== CIC Model {name} saved as {model_filename} ==")
             
             results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
-            
-            
 
         except Exception as E:
             print(f'Error : {E}')

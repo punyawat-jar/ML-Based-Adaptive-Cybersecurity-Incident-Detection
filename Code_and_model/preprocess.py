@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import argparse
 import glob
+import sys
+import traceback
 
 from tqdm import tqdm
 from sklearn.linear_model import LogisticRegression, Perceptron
@@ -20,69 +22,74 @@ from module.file_converter import *
 
 
 def main():
-    
-    parser = argparse.ArgumentParser(description='Testing code')
-    parser.add_argument('--data',
-                        dest='data_template',
-                        type=str,
-                        required=True,
-                        help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
+    try:
+        parser = argparse.ArgumentParser(description='Testing code')
+        parser.add_argument('--data',
+                            dest='data_template',
+                            type=str,
+                            required=True,
+                            help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
 
-    parser.add_argument('--model',
-                        dest='model_loc',
-                        type=str,
-                        help='The trained models loaction.')
-    
-    parser.add_argument('--network',
-                        dest='net_file_loc',
-                        type=str,
-                        required=True,
-                        help='The netowrk file location (.csv)')
+        parser.add_argument('--model',
+                            dest='model_loc',
+                            type=str,
+                            help='The trained models loaction.')
+        
+        parser.add_argument('--network',
+                            dest='net_file_loc',
+                            type=str,
+                            required=True,
+                            help='The netowrk file location (.csv)')
 
-    parser.add_argument('--full_network',
-                        dest='full_network',
-                        type=str,
-                        help='full_network CIC-IDS2017.csv, the concat files that already processed.')
-    
-    arg = parser.parse_args()
+        parser.add_argument('--input_dataset',
+                            dest='input_dataset',
+                            type=str,
+                            help='input_dataset CIC-IDS2017.csv or KDD.csv, the concat files that already processed.')
+        
+        arg = parser.parse_args()
 
-    data_template = arg.data_template
+        data_template = arg.data_template
 
-    model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
+        model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
 
-    net_file_loc = arg.net_file_loc
-    
-    full_network = arg.full_network
-    
-    
-    #File path
-    os.chdir('./Code_and_model') ##Change Working Directory
-    
-    file_path = glob.glob(net_file_loc+'/*', recursive=True)
-    file_type = file_path[0].split('.')[-1]
-    mix_directory = 'mix_dataset'
-    
-    if data_template.find('kdd') != -1:
-        data_template = 'kdd'
-    
-    elif data_template.find('cic') != -1:
-        data_template = 'cic'
+        net_file_loc = arg.net_file_loc
+        
+        input_dataset = arg.input_dataset
+        
+        
+        #File path
+        os.chdir('./Code_and_model') ##Change Working Directory
+        
+        file_path = glob.glob(net_file_loc+'/*', recursive=True)
+        file_type = file_path[0].split('.')[-1]
+        mix_directory = 'mix_dataset'
+        
+        if data_template.find('kdd') != -1:
+            data_template = 'kdd'
+        
+        elif data_template.find('cic') != -1:
+            data_template = 'cic'
 
-    else:
-        ## In cases the it is not the default dataset (NSL-KDD, CIC-IDS2017). Please implements the data_template after this line.
-        print('Please enter the default dataset or implements the training dataset besed on your peference.')
-        return 0
-    
-    makePath(f'./{data_template}')
-    makePath(f'./{data_template}/dataset')
-    makePath(f'./{data_template}/{mix_directory}')
-    
-    if data_template == 'kdd':
-        ProcessKDD()
+        else:
+            ## In cases the it is not the default dataset (NSL-KDD, CIC-IDS2017). Please implements the data_template after this line.
+            print('Please enter the default dataset or implements the training dataset besed on your peference.')
+            return 0
+        
+        makePath(f'./{data_template}')
+        makePath(f'./{data_template}/dataset')
+        makePath(f'./{data_template}/{mix_directory}')
+        
+        if data_template == 'kdd':
+            ProcessKDD(file_path, mix_directory, input_dataset)
+            
 
-    elif data_template == 'cic':
-        ProcessCIC(file_path, mix_directory, full_network)
-
+        elif data_template == 'cic':
+            ProcessCIC(file_path, mix_directory, input_dataset)
+            
+    except Exception as E:
+        print(E)
+        traceback.print_exc()
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()

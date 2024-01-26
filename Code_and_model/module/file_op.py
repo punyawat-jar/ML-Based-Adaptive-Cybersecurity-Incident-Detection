@@ -10,13 +10,17 @@ def check_file(path):
     else:
         raise Exception(f'Error: {path} not exist')
     
-def checkFileName(path):
-    if path.endswith('.txt'):
-        return 'txt'
-    elif path.endswith('.csv'):
-        return 'csv'
-    elif path.endswith('.json'):
-        return '.json'
-    else:
-        return 'unsupported'
+def checkFileName(paths):
+    path_list = []
+    for path in paths:
+        path_list.append(path.split('.')[-1])
     
+    first_item = path_list[0]
+    
+    for item in path_list:
+        if first_item != item:
+            return False, first_item
+    return True, first_item
+
+def list_of_file_contain(text, list):
+    return [filename for filename in list if text in filename.lower()]

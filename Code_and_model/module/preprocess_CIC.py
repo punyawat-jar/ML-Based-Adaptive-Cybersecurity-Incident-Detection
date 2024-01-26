@@ -55,7 +55,8 @@ def concatFiles(df_loc):
 
 def create_df(df, labels, directory):
     for i, label in enumerate(labels):
-        if label == 'BENIGN':
+        if not label.startswith('')
+        # if label == 'BENIGN':
             print(f'Skip {label}')
         else:
             df_temp = df.copy()

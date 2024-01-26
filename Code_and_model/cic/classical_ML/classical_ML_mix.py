@@ -93,26 +93,44 @@ TPRs = []
 TNRs = []
 backslash = "\\"
 
-main_df = pd.read_csv('CICIDS2017.csv', low_memory=True, skiprows=progress_bar())
+main_df = pd.read_csv('./cic/CICIDS2017.csv', low_memory=False, skiprows=progress_bar(), stratify=y)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+X_main = main_df.drop('label', axis=1)
+y_main = main_df['label']
+
+# Split the main dataset
+X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y)
+
+# Get the indices of the training and testing sets
+train_index = X_train_main.index
+test_index = X_test_main.index
+
+saveTrain_test = './/train_test_folder'
+train_dir = './train_test_folder/train'
+test_dir ='./train_test_folder/test'
+makePath(saveTrain_test)
+makePath(train_dir)
+makePath(test_dir)
+
 
 for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
     # Load and preprocess dataset
     print(f'== reading {dataset_path} ==')
-    df = pd.read_csv(dataset_path, low_memory=True, skiprows=progress_bar())
+    df = pd.read_csv(dataset_path, low_memory=False, skiprows=progress_bar())
     # Splitting data
     X = df.drop('label', axis=1)
     y = df['label']
 
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-    # Concatenate X_train with y_train, and X_test with y_test
-    train_combined = pd.concat([X_train, y_train], axis=1)
-    test_combined = pd.concat([X_test, y_test], axis=1)
-
-    # Save to CSV
+    sub_X_train = X.loc[train_index]
+    sub_y_train = y.loc[train_index]
+    sub_X_test = X.loc[test_index]
+    sub_y_test = y.loc[test_index]
     
-
+    # Concatenate X_train with y_train, and X_test with y_test
+    train_combined = pd.concat([sub_X_train, sub_y_train], axis=1)
+    test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
 
     del df
     del X
@@ -122,12 +140,11 @@ for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
     results = {}
     dataset_name = dataset_path.split(backslash)[-1]  # Name of the dataset
 
-    saveTrain_test = './/train_test_folder'
-    makePath(saveTrain_test)
-
-    train_combined.to_csv(f'.//train_test_folder//train_{dataset_name}.csv', index=False)
-    test_combined.to_csv(f'.//train_test_folder//test_{dataset_name}.csv', index=False)
-    
+    #To be debugged, deleted if the same
+    #======
+    train_combined.to_csv(f'.//{train_dir}//train_{dataset_name}.csv', index=False)
+    test_combined.to_csv(f'.//{test_dir}//test_{dataset_name}.csv', index=False)
+    #======
 
     for name, model in tqdm(models.items(), desc="Training Models"):
 

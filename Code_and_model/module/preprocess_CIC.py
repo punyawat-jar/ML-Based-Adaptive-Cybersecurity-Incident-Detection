@@ -41,7 +41,7 @@ def concatFiles(df_loc):
 
     _to_utf8(file_paths) if all(keyword in file_paths for keyword in ['Thursday', 'Morning']) else None
     print('Reading CIC-IDS2017 data...')
-    df_list = [pd.read_csv(file, skiprows=progress_bar()) for file in file_paths]
+    df_list = [pd.read_csv(file, low_memory=False, skiprows=progress_bar()) for file in file_paths]
     
     df = pd.concat(df_list, ignore_index=True)
     
@@ -121,10 +121,9 @@ def ProcessCIC(df_loc, directory, input_dataset):
     else:
         print('Reading Dataset from user input...')
         df = pd.read_csv(f'{input_dataset}', skiprows=progress_bar())
-    
-    df = splitdata_train_test(df)
+        
+        
     labels = df.label.value_counts().index.tolist()
-    
     print('Preprocessing Dataset...')
 
     create_df(df, labels, directory)

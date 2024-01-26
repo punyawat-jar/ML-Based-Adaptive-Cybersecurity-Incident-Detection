@@ -55,6 +55,7 @@ def concatFiles(df_loc):
 
 def create_df(df, labels, directory):
     for i, label in enumerate(labels):
+        # if not label.startswith('Web Attack'):
         if label == 'BENIGN':
             print(f'Skip {label}')
         else:

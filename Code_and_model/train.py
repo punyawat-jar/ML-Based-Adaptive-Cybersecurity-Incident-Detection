@@ -15,18 +15,24 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 import matplotlib.pyplot as plt
 
 from module.model import getModel
-from module.util import progress_bar
+from module.util import progress_bar, check_data_template
 from module.file_op import *
 from module.discord import *
+
+# This train.py file will train each model separately
 
 def main():
     try:
         parser = argparse.ArgumentParser(description='Training code')
-        parser.add_argument('--')
-        
-        
+        parser.add_argument('--data',
+                    dest='data_template',
+                    type=str,
+                    required=True,
+                    help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
+
         arg = parser.parse_args()
         
+        data_template = arg.data_template
         
         #File path
         os.chdir('./Code_and_model') ##Change Working Directory
@@ -43,25 +49,31 @@ def main():
         FNRs = []
         TPRs = []
         TNRs = []
+
+        check_data_template(data_template)
         
-        main_df = pd.read_csv('./cic/CICIDS2017.csv', low_memory=False, skiprows=progress_bar(), stratify=y)
+        if data_template == 'cic':
+            full_data = './cic/CICIDS2017.csv'
+        elif data_template == 'kdd':
+            full_data = './kdd/KDD.csv'
+        else:
+            raise Exception('The dataset template is not regcognize (cic or kdd)'
+                            )
+        main_df = pd.read_csv(full_data, low_memory=False, skiprows=progress_bar(), stratify=y)
 
         X_main = main_df.drop('label', axis=1)
         y_main = main_df['label']
 
         # Split the main dataset
-        X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
+        X_train_main, X_test_main, _, _ = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
 
         # Get the indices of the training and testing sets
         train_index = X_train_main.index
         test_index = X_test_main.index
 
         saveTrain_test = './/train_test_folder'
-        train_dir = './train_test_folder/train_cic'
-        test_dir ='./train_test_folder/test_cic'
-        makePath(saveTrain_test)
-        makePath(train_dir)
-        makePath(test_dir)
+        train_test_folder = [f'.{data_template}/train_test_folder/train_{data_template}',
+                            f'.{data_template}/train_test_folder/test_{data_template}']
     
         
         for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
@@ -93,8 +105,8 @@ def main():
 
             #To be debugged, deleted if the same
             #======
-            train_combined.to_csv(f'.//{train_dir}//train_{dataset_name}.csv', index=False)
-            test_combined.to_csv(f'.//{test_dir}//test_{dataset_name}.csv', index=False)
+            train_combined.to_csv(f'.//{train_test_folder[0]}//train_{dataset_name}.csv', index=False)
+            test_combined.to_csv(f'.//{train_test_folder[1]}//test_{dataset_name}.csv', index=False)
             #======
 
             for name, model in tqdm(models.items(), desc="Training CIC Models"):
@@ -114,7 +126,7 @@ def main():
                 # Extract metrics from confusion matrix
                 TN, FP, FN, TP = conf_matrix.ravel()
                 
-                conf_matrix_path = f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}'
+                conf_matrix_path = f'{data_template}/Training/confusion_martix/{dataset_name}'
 
                 if not os.path.exists(conf_matrix_path):
                     os.makedirs(conf_matrix_path)
@@ -124,7 +136,7 @@ def main():
                 cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_)
                 fig, ax = plt.subplots()
                 cm_dis.plot(ax=ax)
-                fig.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png")
+                fig.savefig(f'{data_template}/Training/confusion_martix/{dataset_name}/{dataset_name}_{name}_confusion_matrix.png')
 
                 plt.close(fig)
                 
@@ -132,7 +144,10 @@ def main():
                 loss = np.mean(np.abs(y_pred - sub_y_test))
                 send_discord_message(f'== CIC Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
                 print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
-                models_save_path = f".\\classical_ML\\mix_training\\model\\{dataset_name}"
+                
+                models_save_path = f'{data_template}/Training/model/{dataset_name}'
+                
+                
                 if not os.path.exists(models_save_path):
                     os.makedirs(models_save_path)
 

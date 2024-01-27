@@ -254,6 +254,7 @@ def main():
 
     sequence_mode = arg.sequence
     debug_mode = arg.debug
+    
     try:
         #Parameter & path setting
         os.chdir('./Code_and_model') ##Change Working Directory
@@ -266,11 +267,13 @@ def main():
         makePath(result_path)
 
         print('-- Reading Dataset --')
-        # df = pd.concat([chunk for chunk in tqdm(pd.read_csv(net_file_loc, chunksize=1000), desc='Loading dataset')])
+
         df = pd.read_csv(net_file_loc, skiprows=progress_bar())
         print('-- Reading Dataset successfully --')
+        
         X = df.drop('label', axis=1)
         y = df['label']
+        
         _, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
         
         processAttack(y_test)

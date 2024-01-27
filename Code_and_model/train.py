@@ -126,19 +126,8 @@ def main():
                 cm_dis.plot(ax=ax)
                 fig.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png")
 
-                # Close the figure
                 plt.close(fig)
                 
-                # plt.figure(figsize=(10, 8))
-                # sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', annot_kws={"size": 16})
-                # plt.xlabel('Predicted', fontsize=14)
-                # plt.ylabel('Actual', fontsize=14)
-                # plt.title(f'Confusion Matrix of {dataset_name}', fontsize=18)
-                # plt.tight_layout()  # Adjust the padding of the plot to fit everything
-                # plt.savefig(f'.\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png')
-                # plt.close()
-                # plt.show()
-
                 # Here I assume binary classification for loss (0 or 1). Adjust if needed.
                 loss = np.mean(np.abs(y_pred - sub_y_test))
                 send_discord_message(f'== CIC Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')

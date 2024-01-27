@@ -701,3 +701,91 @@ Code_and_model/cic/mix_dataset/Web Attack-XSS.csv
 Code_and_model/cic/mix_dataset/Web Attack-Brute Force.csv
 Code_and_model/cic/mix_dataset/Web Attack-Sql Injection.csv
 Code_and_model/cic/mix_dataset/Web Attack-XSS.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_xterm.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_xsnoop.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_xlock.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_worm.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_warezmaster.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_warezclient.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_udpstorm.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_teardrop.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_sqlattack.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_spy.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_snmpguess.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_snmpgetattack.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_smurf.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_sendmail.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_satan.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_saint.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_rootkit.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_ps.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_processtable.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_portsweep.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_pod.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_phf.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_perl.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_normal.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_nmap.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_neptune.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_named.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_multihop.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_mscan.csv.csv
+Code_and_model/kdd/train_test_folder/train_kdd/train_main.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_xterm.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_xsnoop.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_xlock.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_worm.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_warezmaster.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_warezclient.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_udpstorm.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_teardrop.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_sqlattack.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_spy.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_snmpguess.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_snmpgetattack.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_smurf.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_sendmail.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_satan.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_saint.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_rootkit.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_ps.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_processtable.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_portsweep.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_pod.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_phf.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_perl.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_normal.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_nmap.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_neptune.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_named.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_multihop.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_mscan.csv.csv
+Code_and_model/kdd/train_test_folder/test_kdd/test_main.csv
+Code_and_model/cic/train_test_folder/test_cic/test_Bot.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_DDoS.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_DoS GoldenEye.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_DoS Hulk.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_DoS Slowhttptest.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_DoS slowloris.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_FTP-Patator.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_Heartbleed.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_Infiltration.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_PortScan.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_SSH-Patator.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_Web Attack-Brute Force.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_Web Attack-Sql Injection.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_Web Attack-XSS.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_Bot.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_DDoS.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_DoS GoldenEye.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_DoS Hulk.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_DoS Slowhttptest.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_DoS slowloris.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_FTP-Patator.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_Heartbleed.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_Infiltration.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_PortScan.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_SSH-Patator.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-Brute Force.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-Sql Injection.csv.csv
+Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-XSS.csv.csv

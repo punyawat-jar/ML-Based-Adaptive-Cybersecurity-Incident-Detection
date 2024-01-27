@@ -85,6 +85,11 @@ y_main = main_df['label']
 # Split the main dataset
 X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
 
+main_train_combined = pd.concat([X_train_main, y_train_main], axis=1)
+main_test_combined = pd.concat([X_test_main, y_test_main], axis=1)
+
+
+
 # Get the indices of the training and testing sets
 train_index = X_train_main.index
 test_index = X_test_main.index
@@ -96,6 +101,8 @@ makePath(saveTrain_test)
 makePath(train_dir)
 makePath(test_dir)
 
+main_train_combined.to_csv(f'.//{train_dir}//train_main.csv', index=False)
+main_test_combined.to_csv(f'.//{test_dir}//test_main.csv', index=False)
 
 for train_path in tqdm(dataset_paths, desc="Dataset paths"):
     print(f"== reading : {train_path} ==")

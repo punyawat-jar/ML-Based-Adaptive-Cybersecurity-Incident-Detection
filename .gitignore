@@ -789,3 +789,5 @@ Code_and_model/cic/train_test_folder/train_cic/train_SSH-Patator.csv.csv
 Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-Brute Force.csv.csv
 Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-Sql Injection.csv.csv
 Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-XSS.csv.csv
+Code_and_model/cic/train_test_folder/test_cic/test_main.csv
+Code_and_model/cic/train_test_folder/train_cic/train_main.csv

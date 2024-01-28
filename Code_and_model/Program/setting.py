@@ -32,7 +32,7 @@ def main():
     makePath(train_test_folder)
     makePath(training_result_path)
     makePath(f'./{data_template}')
-    makePath(f'./{data_template}/dataset')
+    makePath(f'./{data_template}/dataset/putDataset')
     makePath(f'./{data_template}/mix_dataset')
     makePath(result_path)
     

@@ -38,7 +38,6 @@ def main():
         parser.add_argument('--network',
                             dest='net_file_loc',
                             type=str,
-                            required=True,
                             help='The netowrk file location (.csv)')
 
         parser.add_argument('--input_dataset',
@@ -52,15 +51,16 @@ def main():
 
         model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
 
-        net_file_loc = arg.net_file_loc
+        net_file_loc = arg.net_file_loc if arg.net_file_loc is not None else f'./{data_template}/dataset/putDataset/'
         
-        input_dataset = arg.input_dataset
+        input_dataset = arg.input_dataset 
         
         
         #File path
-        os.chdir('./Code_and_model') ##Change Working Directory
+        os.chdir('./Code_and_model/Program') ##Change Working Directory
         
         file_path = glob.glob(net_file_loc+'/*', recursive=True)
+        print(f'Data Path : {net_file_loc}')
         file_type = file_path[0].split('.')[-1]
         mix_directory = 'mix_dataset'
         

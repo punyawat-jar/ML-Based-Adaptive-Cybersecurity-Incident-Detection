@@ -57,37 +57,41 @@ def column_manage(df):
 
 def ProcessKDD(file_path, mix_directory, input_dataset):
     try:
-        data = []
+        if inputdataset is None:
+            data = []
+            
+            Same_fileName, file_type = checkFileName(file_path)
+            
+            if Same_fileName != True:          ## Check if file name different
+                raise Exception('All the file must be in the same type')
+            
+            if len(file_path) != 2 and input_dataset is None:             ## Check if only train and test dataset
+                raise Exception('Please make sure there only train+, test+ dataset, if you improvise your own dataset please preprocess and load ')
+            elif input_dataset is not None:
+                df = pd.read_csv(input_dataset)
+            else:
+                train_files = list_of_file_contain('train', file_path)
+                test_files = list_of_file_contain('test', file_path)
+                
+                if file_type == 'txt':             ## .txt file must be Train+.txt
+                    data.append(read_train(train_files[0]))
+                    data.append(read_test(test_files[0]))
+                    
+                    data[0], data[1] = align_columns(data[0], data[1], data[0].columns)
+                    
+                elif file_type == 'csv':
+                    data[0] = pd.read_csv(train_files)
+                    data[1] = pd.read_csv(test_files)
+                    
+                df = pd.concat(data, ignore_index=True)
+                df = column_manage(df)
+                labels = df.label.value_counts().index.tolist()
+                df.to_csv('./kdd/KDD.csv', index=False)
+                print(f'Shape of dataset : {df.shape}')
         
-        Same_fileName, file_type = checkFileName(file_path)
-        
-        if Same_fileName != True:          ## Check if file name different
-            raise Exception('All the file must be in the same type')
-        
-        if len(file_path) != 2 and input_dataset is None:             ## Check if only train and test dataset
-            raise Exception('Please make sure there only train+, test+ dataset, if you improvise your own dataset please preprocess and load ')
-        elif input_dataset is not None:
-            df = pd.read_csv(input_dataset)
         else:
-            train_files = list_of_file_contain('train', file_path)
-            test_files = list_of_file_contain('test', file_path)
-            
-            if file_type == 'txt':             ## .txt file must be Train+.txt
-                data.append(read_train(train_files[0]))
-                data.append(read_test(test_files[0]))
-                
-                data[0], data[1] = align_columns(data[0], data[1], data[0].columns)
-                
-            elif file_type == 'csv':
-                data[0] = pd.read_csv(train_files)
-                data[1] = pd.read_csv(test_files)
-                
-            df = pd.concat(data, ignore_index=True)
-            df = column_manage(df)
-            labels = df.label.value_counts().index.tolist()
-            df.to_csv('./kdd/KDD.csv', index=False)
-            print(f'Shape of dataset : {df.shape}')
-            
+            df = pd.read_csv(input_dataset)            
+        
         for i, label in tqdm(enumerate(labels)):
             if label == 'normal':
                 print(f'Skip {label}')
@@ -96,15 +100,13 @@ def ProcessKDD(file_path, mix_directory, input_dataset):
             print(f'Starting {label} {i+1}/{len(labels)}')
             
             df_temp = changeLabel(df_temp, label)
-    
+
             for col in df.columns:
                 if df[col].dtype == 'bool':
                     df[col] = df[col].astype(int)
                     
             df_temp.to_csv(f".\\kdd\\{mix_directory}\\{label}.csv", index=False)
-
         print('Preprocessing KDD Done')
-            
     except Exception as E:
         print(E)
         traceback.print_exc()

@@ -30,12 +30,13 @@ def scaler(df):
 
 
 def check_data_template(data_template):
-    if data_template.find('kdd') != -1:
+    if 'kdd' in data_template.lower():
         data_template = 'kdd'
     
-    elif data_template.find('cic') != -1:
+    elif 'cic' in data_template.lower():
         data_template = 'cic'
 
     else:
         ## In cases the it is not the default dataset (NSL-KDD, CIC-IDS2017). Please implements the data_template after this line.
         raise Exception('Please enter the default dataset or implements the training dataset besed on your dataset')
+    return data_template

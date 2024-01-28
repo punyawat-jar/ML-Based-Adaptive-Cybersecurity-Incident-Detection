@@ -791,3 +791,13 @@ Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-Sql Injection.cs
 Code_and_model/cic/train_test_folder/train_cic/train_Web Attack-XSS.csv.csv
 Code_and_model/cic/train_test_folder/test_cic/test_main.csv
 Code_and_model/cic/train_test_folder/train_cic/train_main.csv
+Code_and_model/Program/cic/dataset/cic-data/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+Code_and_model/Program/cic/dataset/cic-data/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+Code_and_model/Program/cic/dataset/cic-data/Friday-WorkingHours-Morning.pcap_ISCX.csv
+Code_and_model/Program/cic/dataset/cic-data/Monday-WorkingHours.pcap_ISCX.csv
+Code_and_model/Program/cic/dataset/cic-data/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+Code_and_model/Program/cic/dataset/cic-data/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+Code_and_model/Program/cic/dataset/cic-data/Tuesday-WorkingHours.pcap_ISCX.csv
+Code_and_model/Program/cic/dataset/cic-data/Wednesday-workingHours.pcap_ISCX.csv
+Code_and_model/Program/kdd/dataset/kdd-data/KDDTest+.txt
+Code_and_model/Program/kdd/dataset/kdd-data/KDDTrain+.txt

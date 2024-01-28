@@ -19,7 +19,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
 from module.file_op import *
-from module.util import progress_bar
+from module.util import progress_bar, check_data_template
 
 class ModelObject:
     def __init__(self, attack_type, model_name, model, weight):
@@ -254,23 +254,26 @@ def main():
 
     sequence_mode = arg.sequence
     debug_mode = arg.debug
+    
     try:
         #Parameter & path setting
         os.chdir('./Code_and_model') ##Change Working Directory
-        result_path = f'./Result_{data_template}' ## Saving result path
-        weight_path = f'{result_path}/weight.json'
+        result_path = f'.{data_template}/Result' ## Saving result path
+        weight_path = f'.{data_template}/weight.json'
         models_loc = []
 
         check_file(chooese_csv)
         check_file(net_file_loc)
-        makePath(result_path)
-
+        check_data_template(data_template)
+        
         print('-- Reading Dataset --')
-        # df = pd.concat([chunk for chunk in tqdm(pd.read_csv(net_file_loc, chunksize=1000), desc='Loading dataset')])
+
         df = pd.read_csv(net_file_loc, skiprows=progress_bar())
         print('-- Reading Dataset successfully --')
+        
         X = df.drop('label', axis=1)
         y = df['label']
+        
         _, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
         
         processAttack(y_test)

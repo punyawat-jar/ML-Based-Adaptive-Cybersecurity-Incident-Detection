@@ -2,8 +2,13 @@ import os
 import pandas as pd
 
 def makePath(path):
-    if not os.path.exists(path):
-        os.makedirs(path)
+    if isinstance(path, list):
+        for ipath in path:
+            if not os.path.exists(ipath):
+                os.makedirs(ipath)
+    else:
+        if not os.path.exists(path):
+            os.makedirs(path)
 
 def check_file(path):
     if os.path.isfile(path):

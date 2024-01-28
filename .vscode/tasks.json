@@ -4,9 +4,9 @@
     {
       "label": "Run Python Script",
       "type": "shell",
-      // "command": "python Code_and_model\\test.py --data cic --network cic/dataset/real_CIC.csv",
-      // "command": "python Code_and_model\\test.py --data kdd --network kdd/dataset/real_NSL_KDD.csv",
-      "command": "python Code_and_model\\preprocess.py --data kdd --network kdd\\dataset\\kdd_original_txt",
+      // "command": "python Code_and_model\\test.py --data cic --network cic/train_test_folder",
+      "command": "python Code_and_model\\test.py --data kdd --network kdd/train_test_folder/",
+      // "command": "python Code_and_model\\preprocess.py --data kdd --network kdd\\dataset\\kdd_original_txt",
       // "command": "python Code_and_model\\preprocess.py --data cic --network cic\\dataset\\Original_dataset-notuse",
       "group": "build",
       "presentation": {

@@ -19,7 +19,7 @@ from module.file_op import *
 from module.preprocess_KDD import ProcessKDD
 from module.preprocess_CIC import ProcessCIC
 from module.file_converter import *
-
+from module.util import *
 
 def main():
     try:
@@ -64,16 +64,9 @@ def main():
         file_type = file_path[0].split('.')[-1]
         mix_directory = 'mix_dataset'
         
-        if data_template.find('kdd') != -1:
-            data_template = 'kdd'
+        check_data_template(data_template)
         
-        elif data_template.find('cic') != -1:
-            data_template = 'cic'
 
-        else:
-            ## In cases the it is not the default dataset (NSL-KDD, CIC-IDS2017). Please implements the data_template after this line.
-            print('Please enter the default dataset or implements the training dataset besed on your peference.')
-            return 0
         
         makePath(f'./{data_template}')
         makePath(f'./{data_template}/dataset')

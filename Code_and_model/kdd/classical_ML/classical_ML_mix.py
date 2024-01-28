@@ -125,8 +125,8 @@ for train_path in tqdm(dataset_paths, desc="Dataset paths"):
     test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
     #To be debugged, deleted if the same
     #======
-    train_combined.to_csv(f'.//{train_dir}//train_{dataset_name}.csv', index=False)
-    test_combined.to_csv(f'.//{test_dir}//test_{dataset_name}.csv', index=False)
+    train_combined.to_csv(f'{train_dir}//train_{dataset_name}.csv', index=False)
+    test_combined.to_csv(f'{test_dir}//test_{dataset_name}.csv', index=False)
     #======
 
     for name, model in tqdm(models.items(), desc="Training KDD Models"):

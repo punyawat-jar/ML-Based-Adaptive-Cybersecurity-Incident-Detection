@@ -19,6 +19,36 @@ from module.util import progress_bar, check_data_template
 from module.file_op import *
 from module.discord import *
 
+class joblib_model:
+    def __init__(self, model, weight):
+        self.model = joblib.load(model)
+        self.weight = weight
+
+
+def best_model_for_attack(model_folder):
+    bestmodel = {'attack': [], 'model': [], 'accuracy': [], 'f1': []}
+    for model in model_folder:
+        modelname = model.split('_')[-1]
+        df = pd.read_csv(model).sort_values(['f1', 'accuracy'], ascending=[False, False])
+
+        # Check if the DataFrame is empty
+        if df.empty:
+            # Handle the empty DataFrame case (e.g., append None or default values)
+            bestmodel['attack'].append(modelname)
+            bestmodel['model'].append(None)
+            bestmodel['accuracy'].append(None)
+            bestmodel['f1'].append(None)
+        else:
+            bestmodel['attack'].append(modelname)
+            bestmodel['model'].append(df.iloc[0].iloc[0])
+            bestmodel['accuracy'].append(df.iloc[0]['accuracy'])
+            bestmodel['f1'].append(df.iloc[0]['f1'])
+
+    return pd.DataFrame(data=bestmodel)
+    
+
+
+
 # This train.py file will train each model separately
 
 def main():
@@ -109,10 +139,10 @@ def main():
             test_combined.to_csv(f'.//{train_test_folder[1]}//test_{dataset_name}.csv', index=False)
             #======
 
-            for name, model in tqdm(models.items(), desc="Training CIC Models"):
+            for name, model in tqdm(models.items(), desc=f"Training {data_template} Models"):
 
-                send_discord_message(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
-                print(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
+                send_discord_message(f'== Mix {data_template} Training: {dataset_name} with model: {name} ==')
+                print(f'== Mix {data_template} Training: {dataset_name} with model: {name} ==')
                 
                 model.fit(sub_X_train, sub_y_train)
                 y_pred = model.predict(sub_X_test)
@@ -142,7 +172,7 @@ def main():
                 
                 # Here I assume binary classification for loss (0 or 1). Adjust if needed.
                 loss = np.mean(np.abs(y_pred - sub_y_test))
-                send_discord_message(f'== CIC Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
+                send_discord_message(f'== {data_template} Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
                 print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
                 
                 models_save_path = f'{data_template}/Training/model/{dataset_name}'
@@ -152,22 +182,26 @@ def main():
                     os.makedirs(models_save_path)
 
                 # Save the trained model
-                model_filename =  f".\\classical_ML\\mix_training\\model\\{dataset_name}\\{dataset_name}_{name}_model.joblib"
+                model_filename =  f".{data_template}/Training/model/{dataset_name}/{dataset_name}_{name}_model.joblib"
                 dump(model, model_filename)
-                print(f"== CIC Model {name} saved as {model_filename} ==")
+                print(f"== {data_template} Model {name} saved as {model_filename} ==")
                 
                 results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
 
 
                 # Convert results to DataFrame and save with dataset name
-                shutil.move(f'{dataset_path}', f'.\\dataset\\\\mix_done\\{dataset_name}')
+                # shutil.move(f'{dataset_path}', f'./dataset\\\\mix_done\\{dataset_name}')
                 result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-                result_filename = f".\\classical_ML\\mix_training\\compare\\evaluation_results_{dataset_name}"
+                result_filename = f".{data_template}/Training/compare/evaluation_results_{dataset_name}"
                 result_df.to_csv(result_filename)
                 gc.collect()
             # send_discord_message('== @everyone All training and evaluation is done ==')
-            print('== @everyone All training and evaluation is done ==')
+            print('== All training and evaluation is done ==')
 
+        #Assemble the results
+        compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
+        compare_df = best_model_for_attack(compare_data)
+        compare_df.to_csv(f'.{data_template}/model.csv')
         
     except Exception as E:
         print(E)

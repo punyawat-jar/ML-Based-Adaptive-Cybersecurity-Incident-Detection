@@ -53,8 +53,6 @@ def main():
 
         data_template = arg.data_template
 
-        model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
-
         net_file_loc = arg.net_file_loc if arg.net_file_loc is not None else f'./{data_template}/dataset/InputDataset/'
         
         input_dataset = arg.input_dataset 
@@ -72,9 +70,7 @@ def main():
         
         if not file_path:
             raise Exception('The dataset path is contain no files')
-        
-        file_type = file_path[0].split('.')[-1]
-        
+
         check_data_template(data_template)
         
 

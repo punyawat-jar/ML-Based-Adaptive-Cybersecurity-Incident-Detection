@@ -953,3 +953,5 @@ Code_and_model/Program/cic/dataset/InputDataset/Friday-WorkingHours-Morning.pcap
 Code_and_model/Program/cic/dataset/InputDataset/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
 Code_and_model/Program/cic/dataset/InputDataset/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
 Code_and_model/Program/cic/CIC_IDS2017.csv
+Code_and_model/Program/cic/train_test_folder/test_cic/test.csv
+Code_and_model/Program/cic/train_test_folder/train_cic/train.csv

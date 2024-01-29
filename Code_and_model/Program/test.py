@@ -204,6 +204,11 @@ def makeConfusion(conf_matrix, data_template):
     plt.close()
 
 
+def check_train_test_index(df_train, df_test):
+    train_index = df_train.index
+    test_index = df_test.index
+    
+    return train_index, test_index
 
 def main():
     
@@ -227,7 +232,6 @@ def main():
     parser.add_argument('--network',
                         dest='net_file_loc',
                         type=str,
-                        required=True,
                         help='The netowrk file location (.csv)')
 
     parser.add_argument('--sequence_mode',
@@ -257,19 +261,33 @@ def main():
     
     try:
         #Parameter & path setting
-        os.chdir('./Code_and_model') ##Change Working Directory
-        result_path = f'.{data_template}/Result' ## Saving result path
+        os.chdir('./Code_and_model/Program') ##Change Working Directory
+        
+        result_path = f'.{data_template}/Result'
         weight_path = f'.{data_template}/weight.json'
         models_loc = []
-
         check_file(chooese_csv)
         check_file(net_file_loc)
-        check_data_template(data_template)
+        data_template = check_data_template(data_template)
         
+        if net_file_loc is not None:
+            net_file_loc = arg.net_file_loc
+        elif data_template == 'cic':
+            net_file_loc = './cic/CIC_IDS2017.csv'
+        elif data_template == 'kdd':
+            net_file_loc = './kdd/KDD.csv'
+        else:
+            raise Exception('The Dataset is not found.')
+            
         print('-- Reading Dataset --')
-
         df = pd.read_csv(net_file_loc, skiprows=progress_bar())
         print('-- Reading Dataset successfully --')
+        
+        df_train = glob.glob(f'{data_template}/train_test_folder/train_{data_template}/*.csv')[0]
+        df_test = glob.glob(f'{data_template}/train_test_folder/test_{data_template}/*.csv')[0]
+        train_index, test_index = check_train_test_index(df_train, df_test)
+        
+        
         
         X = df.drop('label', axis=1)
         y = df['label']

@@ -25,15 +25,15 @@ def main():
                          f'{data_template}/train_test_folder/test_{data_template}']
     result_path = f'{data_template}/Result'
     
-    training_result_path = [f'{data_template}/Training/confusion_martix',
+    training_result_path = [f'{data_template}/Training/confusion_matrix',
                             f'{data_template}/Training/model',
                             f'{data_template}/Training/compare']
     
     makePath(train_test_folder)
     makePath(training_result_path)
     makePath(f'./{data_template}')
-    makePath(f'./{data_template}/dataset/putDataset')
-    makePath(f'./{data_template}/mix_dataset')
+    makePath(f'./{data_template}/dataset/InputDataset')
+    makePath(f'./{data_template}/dataset/mix_dataset')
     makePath(result_path)
     
 if __name__ == '__main__':

@@ -6,14 +6,7 @@ import glob
 import sys
 import traceback
 
-from tqdm import tqdm
-from sklearn.linear_model import LogisticRegression, Perceptron
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier, ExtraTreesClassifier, BaggingClassifier
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB
+from multiprocessing import cpu_count
 
 from module.file_op import *
 from module.preprocess_KDD import ProcessKDD
@@ -45,24 +38,42 @@ def main():
                             type=str,
                             help='input_dataset CIC-IDS2017.csv or KDD.csv, the concat files that already processed.')
         
+        parser.add_argument('--usingMultiprocess',
+                            dest='multiCPU',
+                            action=argparse.BooleanOptionalAction,
+                            help='multiCPU is for using all the process.')
+        
+        parser.add_argument('--n_Process',
+                            dest='num_processes',
+                            type=str,
+                            help='num_processes is the number of process by user, default setting is all process (cpu_count()).')
+        
+        
         arg = parser.parse_args()
 
         data_template = arg.data_template
 
         model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
 
-        net_file_loc = arg.net_file_loc if arg.net_file_loc is not None else f'./{data_template}/dataset/putDataset/'
+        net_file_loc = arg.net_file_loc if arg.net_file_loc is not None else f'./{data_template}/dataset/InputDataset/'
         
         input_dataset = arg.input_dataset 
         
+        multiCPU = arg.multiCPU
+        
+        num_processes = int(arg.num_processes) if arg.num_processes is not None else cpu_count()
         
         #File path
         os.chdir('./Code_and_model/Program') ##Change Working Directory
-        
+        print(os.getcwd())
         file_path = glob.glob(net_file_loc+'/*', recursive=True)
         print(f'Data Path : {net_file_loc}')
+        print(f'file_path : {file_path}')
+        
+        if not file_path:
+            raise Exception('The dataset path is contain no files')
+        
         file_type = file_path[0].split('.')[-1]
-        mix_directory = 'mix_dataset'
         
         check_data_template(data_template)
         
@@ -70,13 +81,13 @@ def main():
         
         makePath(f'./{data_template}')
         makePath(f'./{data_template}/dataset')
-        makePath(f'./{data_template}/{mix_directory}')
+        makePath(f'./{data_template}/dataset/mix_dataset')
         
         if data_template == 'kdd':
-            ProcessKDD(file_path, mix_directory, input_dataset)
+            ProcessKDD(file_path, input_dataset, multiCPU, num_processes)
 
         elif data_template == 'cic':
-            ProcessCIC(file_path, mix_directory, input_dataset)
+            ProcessCIC(file_path, input_dataset, multiCPU, num_processes)
             
     except Exception as E:
         print(E)

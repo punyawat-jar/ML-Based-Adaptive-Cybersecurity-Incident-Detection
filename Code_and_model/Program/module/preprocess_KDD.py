@@ -1,4 +1,5 @@
 import numpy as np
+from multiprocessing import Pool, cpu_count
 import pandas as pd 
 import sys
 import traceback
@@ -55,9 +56,31 @@ def column_manage(df):
     df = pd.get_dummies(df, columns=['protocol_type', 'service', 'flag'], dtype='int')
     return df
 
-def ProcessKDD(file_path, mix_directory, input_dataset):
+
+def process_label(args):
+    label, index, mix_directory, df_template, total_labels = args  
+    if label == 'normal':
+        print(f'Skip {label}')
+        return None
+    
+    df_temp = df_template.copy() 
+    # print(f'Starting {label} {index+1}/{total_labels}') 
+    
+    df_temp = changeLabel(df_temp, label)
+
+    
+    for col in df_temp.columns:
+        if df_temp[col].dtype == 'bool':
+            df_temp[col] = df_temp[col].astype(int)
+    
+   
+    df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
+    
+
+def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
     try:
-        if inputdataset is None:
+        mix_directory = './dataset/mix_dataset'
+        if input_dataset is None:
             data = []
             
             Same_fileName, file_type = checkFileName(file_path)
@@ -85,28 +108,44 @@ def ProcessKDD(file_path, mix_directory, input_dataset):
                     
                 df = pd.concat(data, ignore_index=True)
                 df = column_manage(df)
-                labels = df.label.value_counts().index.tolist()
                 df.to_csv('./kdd/KDD.csv', index=False)
                 print(f'Shape of dataset : {df.shape}')
         
         else:
-            df = pd.read_csv(input_dataset)            
+            df = pd.read_csv(input_dataset)      
+                  
+        labels = df.label.value_counts().index.tolist()
         
-        for i, label in tqdm(enumerate(labels)):
-            if label == 'normal':
-                print(f'Skip {label}')
-                continue
-            df_temp = df.copy()
-            print(f'Starting {label} {i+1}/{len(labels)}')
-            
-            df_temp = changeLabel(df_temp, label)
+        if multiCPU:
+            print(f'Using Multiprocessing with : {num_processes}')
+            df_template = df.copy()
 
-            for col in df.columns:
-                if df[col].dtype == 'bool':
-                    df[col] = df[col].astype(int)
-                    
-            df_temp.to_csv(f".\\kdd\\{mix_directory}\\{label}.csv", index=False)
-        print('Preprocessing KDD Done')
+            args_list = [(label, index, mix_directory, df_template, len(labels)) for index, label in enumerate(labels)]
+
+            with Pool(processes=num_processes) as pool:
+                list(tqdm(pool.imap_unordered(process_label, args_list), total=len(args_list)))
+
+            print('Preprocessing KDD Done')
+        
+        else:
+            print('Using single CPU')
+            for i, label in tqdm(enumerate(labels)):
+                if label == 'normal':
+                    print(f'Skip {label}')
+                    continue
+                df_temp = df.copy()
+                print(f'Starting {label} {i+1}/{len(labels)}')
+                
+                df_temp = changeLabel(df_temp, label)
+
+                for col in df.columns:
+                    if df[col].dtype == 'bool':
+                        df[col] = df[col].astype(int)
+                        
+                df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
+            print('Preprocessing KDD Done')
+        
+        
     except Exception as E:
         print(E)
         traceback.print_exc()

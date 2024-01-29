@@ -9,16 +9,16 @@ from sklearn.naive_bayes import GaussianNB
 
 def getModel():
     models = {
-        'LogisticRegression': LogisticRegression(max_iter=10000, n_jobs=-1),
-        'ExtraTrees': ExtraTreesClassifier(n_jobs=-1),
+        'LogisticRegression': LogisticRegression(max_iter=10000),
+        'ExtraTrees': ExtraTreesClassifier(),
         'LDA': LinearDiscriminantAnalysis(),
         'QDA': QuadraticDiscriminantAnalysis(),
         'DecisionTree': DecisionTreeClassifier(),
-        'RandomForest': RandomForestClassifier(n_jobs=-1),
+        'RandomForest': RandomForestClassifier(),
         'GradientBoosting': GradientBoostingClassifier(),
-        'KNeighbors': KNeighborsClassifier(n_jobs=-1),
+        'KNeighbors': KNeighborsClassifier(),
         'GaussianNB': GaussianNB(),
-        'Perceptron': Perceptron(n_jobs=-1),
+        'Perceptron': Perceptron(),
         'AdaBoost': AdaBoostClassifier()
     }
     

@@ -207,8 +207,22 @@ def makeConfusion(conf_matrix, data_template):
 def check_train_test_index(df_train, df_test):
     train_index = df_train.index
     test_index = df_test.index
-    
     return train_index, test_index
+
+def getDataset(arg, data_template):
+    if net_file_loc is not None:
+        net_file_loc = arg.net_file_loc
+    elif data_template == 'cic':
+        net_file_loc = './cic/CIC_IDS2017.csv'
+    elif data_template == 'kdd':
+        net_file_loc = './kdd/KDD.csv'
+    else:
+        raise Exception('The Dataset is not found.')
+    
+    print('-- Reading Dataset --')
+    df = pd.read_csv(net_file_loc, skiprows=progress_bar())
+    print('-- Reading Dataset successfully --')
+    return df
 
 def main():
     
@@ -270,29 +284,20 @@ def main():
         check_file(net_file_loc)
         data_template = check_data_template(data_template)
         
-        if net_file_loc is not None:
-            net_file_loc = arg.net_file_loc
-        elif data_template == 'cic':
-            net_file_loc = './cic/CIC_IDS2017.csv'
-        elif data_template == 'kdd':
-            net_file_loc = './kdd/KDD.csv'
-        else:
-            raise Exception('The Dataset is not found.')
-            
-        print('-- Reading Dataset --')
-        df = pd.read_csv(net_file_loc, skiprows=progress_bar())
-        print('-- Reading Dataset successfully --')
+        df = getDataset(arg, data_template)
+
         
         df_train = glob.glob(f'{data_template}/train_test_folder/train_{data_template}/*.csv')[0]
         df_test = glob.glob(f'{data_template}/train_test_folder/test_{data_template}/*.csv')[0]
+        
         train_index, test_index = check_train_test_index(df_train, df_test)
         
         
+        X_train = df.loc[train_index].drop('label', axis=1)
+        X_test = df.loc[test_index].drop('label', axis=1)
         
-        X = df.drop('label', axis=1)
-        y = df['label']
-        
-        _, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+        y_train = df['label'].loc[train_index]
+        y_test = df['label'].loc[test_index]
         
         processAttack(y_test)
         y_test = y_test.values

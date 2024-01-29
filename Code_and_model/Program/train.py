@@ -24,6 +24,7 @@ from module.discord import *
 import warnings
 
 warnings.filterwarnings('ignore', category=FutureWarning)
+warnings.filterwarnings('ignore', category=UserWarning)
 class joblib_model:
     def __init__(self, model, weight):
         self.model = joblib.load(model)
@@ -197,7 +198,13 @@ def main():
 
         train_test_folder = [f'{data_template}/train_test_folder/train_{data_template}',
                             f'{data_template}/train_test_folder/test_{data_template}']
-    
+        
+        #To be debugged, deleted if the same
+        #======
+        X_train_main.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
+        X_test_main.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
+        
+        #======
         print(f'Using Multiprocessing with : {num_processes}')
         
         for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
@@ -213,9 +220,9 @@ def main():
             sub_X_test = X.loc[test_index]
             sub_y_test = y.loc[test_index]
             
-            # Concatenate X_train with y_train, and X_test with y_test
-            train_combined = pd.concat([sub_X_train, sub_y_train], axis=1)
-            test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
+            # # Concatenate X_train with y_train, and X_test with y_test
+            # train_combined = pd.concat([sub_X_train, sub_y_train], axis=1)
+            # test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
             
             del df
             del X
@@ -224,18 +231,11 @@ def main():
             # Train and evaluate models on the current dataset
             results = {}
             
-            dataset_name = dataset_path.split('\\')[-1]  # Name of the dataset
-
-            #To be debugged, deleted if the same
-            #======
-            train_combined.to_csv(f'.//{train_test_folder[0]}//train_{dataset_name}.csv', index=False)
-            test_combined.to_csv(f'.//{train_test_folder[1]}//test_{dataset_name}.csv', index=False)
-            #======
-
+            dataset_name = dataset_path.split('\\')[-1]
+            dataset_name = dataset_name.split('.')[0]
+            print(f'dataset_name : {dataset_name}')
             if multiCPU:
                 # multiprocessing pool
-                
-                
                 args_list = [
                                 (name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test)
                                 for name, model in models.items()

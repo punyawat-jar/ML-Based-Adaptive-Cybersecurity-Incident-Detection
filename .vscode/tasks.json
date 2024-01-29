@@ -8,7 +8,7 @@
       // "command": "python Code_and_model\\Program\\test.py --data kdd --network kdd/train_test_folder/",
       // "command": "python Code_and_model\\Program\\preprocess.py --data kdd --network kdd\\dataset\\kdd_original_txt",
       // "command": "python Code_and_model\\Program\\preprocess.py --data cic --n_Process 4 --input_dataset cic\\CIC_IDS2017.csv --usingMultiprocess",
-      "command": "python Code_and_model\\Program\\train.py --data kdd",
+      "command": "python Code_and_model\\Program\\test.py --data kdd",
 
       "group": "build",
       "presentation": {

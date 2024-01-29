@@ -5,9 +5,11 @@ def makePath(path):
     if isinstance(path, list):
         for ipath in path:
             if not os.path.exists(ipath):
+                print(f'Creating : {ipath}')
                 os.makedirs(ipath)
     else:
         if not os.path.exists(path):
+            print(f'Creating : {path}')
             os.makedirs(path)
 
 def check_file(path):

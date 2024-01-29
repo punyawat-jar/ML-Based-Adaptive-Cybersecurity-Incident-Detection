@@ -36,5 +36,6 @@ def main():
     makePath(f'./{data_template}/dataset/mix_dataset')
     makePath(result_path)
     
+    print('Create Multimodel folder completed')
 if __name__ == '__main__':
     main()

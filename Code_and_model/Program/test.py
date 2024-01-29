@@ -279,6 +279,8 @@ def main():
         
         result_path = f'.{data_template}/Result'
         weight_path = f'.{data_template}/weight.json'
+        model_loc = f'{data_template}/Training/model'
+        
         models_loc = []
         check_file(chooese_csv)
         check_file(net_file_loc)
@@ -300,9 +302,8 @@ def main():
         y_test = df['label'].loc[test_index]
         
         processAttack(y_test)
-        y_test = y_test.values
-        y_test = y_test.astype(int)
         
+        y_test = y_test.values.astype(int)
         
         #Reading Weight from file, if exist. if not calculated from the dataset (Default)
         CheckWegihtFileCreated = creating_weight_file(weight_path)
@@ -324,7 +325,7 @@ def main():
         model_df = pd.read_csv(chooese_csv)[['attack', 'model']]
         model_df = model_df[model_df['attack'] != 'normal.csv']
         
-        files = glob.glob(model_loc+'/*.csv/**', recursive=True)
+        files = glob.glob(model_loc+'/**', recursive=True)
 
         for file in files:
             for _, row in model_df.iterrows():

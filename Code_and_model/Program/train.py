@@ -189,7 +189,7 @@ def main():
         y_main = main_df['label']
 
         # Split the main dataset
-        X_train_main, X_test_main, _, _ = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
+        X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
 
         # Get the indices of the training and testing sets
         train_index = X_train_main.index
@@ -203,7 +203,7 @@ def main():
         for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
             # Load and preprocess dataset
             print(f'== reading {dataset_path} ==')
-            df = pd.read_csv(dataset_path, low_memory=False, skiprows=progress_bar())
+            df = pd.read_csv(dataset_path, skiprows=progress_bar())
             # Splitting data
             X = df.drop('label', axis=1)
             y = df['label']

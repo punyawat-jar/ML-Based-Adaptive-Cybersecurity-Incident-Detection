@@ -134,13 +134,15 @@ def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
             df = df.drop(non_numerical_columns.drop(['label']), axis = 1)
             print(df.shape)
             print('Saving CIC_IDS2017.csv ...')
+            df = scaler(df)
             df.to_csv('./cic/CIC_IDS2017.csv', index=False)
             
         else:
             print('Reading Dataset from user input...')
             df = pd.read_csv(f'{input_dataset}', skiprows=progress_bar())
             
-        df = scaler(df)
+            
+        
         labels = df.label.value_counts().index.tolist()
         print('Preprocessing Dataset...')
 

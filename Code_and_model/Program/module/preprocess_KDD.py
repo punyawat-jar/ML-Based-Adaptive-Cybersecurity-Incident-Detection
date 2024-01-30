@@ -108,13 +108,13 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
                     
                 df = pd.concat(data, ignore_index=True)
                 df = column_manage(df)
+                df = scaler(df)
                 df.to_csv('./kdd/KDD.csv', index=False)
                 print(f'Shape of dataset : {df.shape}')
         
         else:
-            df = pd.read_csv(input_dataset)      
-        
-        df = scaler(df)
+            df = pd.read_csv(input_dataset)
+    
         labels = df.label.value_counts().index.tolist()
         
         if multiCPU:

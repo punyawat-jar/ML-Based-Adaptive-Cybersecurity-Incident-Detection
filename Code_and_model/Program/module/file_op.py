@@ -10,7 +10,7 @@ def makePath(path):
     else:
         if not os.path.exists(path):
             print(f'Creating : {path}')
-            os.makedirs(pathexist_ok=True)
+            os.makedirs(path, exist_ok=True)
 
 def check_file(path):
     if os.path.isfile(path):

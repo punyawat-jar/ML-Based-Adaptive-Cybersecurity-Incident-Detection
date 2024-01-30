@@ -18,7 +18,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 import matplotlib.pyplot as plt
 
 from module.model import getModel
-from module.util import progress_bar, check_data_template, scaler
+from module.util import progress_bar, check_data_template
 from module.file_op import *
 from module.discord import *
 import warnings
@@ -205,8 +205,6 @@ def main():
             raise Exception('The dataset template is not regcognize (cic or kdd)'
                             )
         main_df = pd.read_csv(full_data, low_memory=False, skiprows=progress_bar())
-
-        main_df = scaler(main_df)
         
         X_main = main_df.drop('label', axis=1)
         y_main = main_df['label']

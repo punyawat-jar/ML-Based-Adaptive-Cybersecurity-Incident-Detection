@@ -5,11 +5,12 @@
       "label": "Run Python Script",
       "type": "shell",
 
-      "command": "python Code_and_model\\Program\\train.py --data kdd --multiProcess",
-      // "command": "python Code_and_model\\Program\\preprocess.py --data kdd --multiProcess --network ./kdd/dataset/InputDataset",
-      // "command": "python Code_and_model\\Program\\preprocess.py --data cic --n_Process 4 --input_dataset cic\\CIC_IDS2017.csv --usingMultiprocess",
+      // "command": "python Code_and_model\\Program\\train.py --data kdd --multiProcess",
+      // "command": "python Code_and_model\\Program\\preprocess.py --data kdd --multiProcess",
       // "command": "python Code_and_model\\Program\\test.py --data kdd",
-
+      // "command": "python Code_and_model\\Program\\preprocess.py --data cic --n_Process 4 --multiProcess",
+      "command": "python Code_and_model\\Program\\preprocess.py --data cic --n_Process 4 --multiProcess && python Code_and_model\\Program\\train.py --data kdd --n_Process 4 --multiProcess && python Code_and_model\\Program\\test.py --data cic",
+      
       "group": "build",
       "presentation": {
         "reveal": "always",

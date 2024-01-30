@@ -18,7 +18,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 import matplotlib.pyplot as plt
 
 from module.model import getModel
-from module.util import progress_bar, check_data_template
+from module.util import progress_bar, check_data_template, scaler
 from module.file_op import *
 from module.discord import *
 import warnings
@@ -32,64 +32,84 @@ class joblib_model:
 
 
 def best_model_for_attack(model_folder):
-    bestmodel = {'attack': [], 'model': [], 'accuracy': [], 'f1': []}
+    bestmodel = {
+        'attack': [],
+        'model': [],
+        'accuracy': [],
+        'f1': [],
+        'precision': [],
+        'recall': []
+    }
+    
     for model in model_folder:
-        modelname = model.split('_')[-1]
+        modelname = model.split('_')[-1].split('.')[0]
         df = pd.read_csv(model).sort_values(['f1', 'accuracy'], ascending=[False, False])
 
         # Check if the DataFrame is empty
         if df.empty:
-            # Handle the empty DataFrame case (e.g., append None or default values)
             bestmodel['attack'].append(modelname)
             bestmodel['model'].append(None)
             bestmodel['accuracy'].append(None)
             bestmodel['f1'].append(None)
+            bestmodel['precision'].append(None)
+            bestmodel['recall'].append(None)
         else:
             bestmodel['attack'].append(modelname)
             bestmodel['model'].append(df.iloc[0].iloc[0])
             bestmodel['accuracy'].append(df.iloc[0]['accuracy'])
             bestmodel['f1'].append(df.iloc[0]['f1'])
+            bestmodel['precision'].append(df.iloc[0]['precision'])
+            bestmodel['recall'].append(df.iloc[0]['recall'])
 
     return pd.DataFrame(data=bestmodel)
     
 
 def train_and_evaluate_Multiprocess(args):
-    name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test = args
-    
-    # send_discord_message(f'== Mix {data_template} Training: {dataset_name} with model: {name} ==')
-    # print(f'== Mix {data_template} Training: {dataset_name} with model: {name} ==')
-    
-    model.fit(sub_X_train, sub_y_train)
-    y_pred = model.predict(sub_X_test)
-
-    accuracy = accuracy_score(sub_y_test, y_pred)
-    f1 = f1_score(sub_y_test, y_pred, zero_division=0)
-    precision = precision_score(sub_y_test, y_pred, zero_division=0)
-    recall = recall_score(sub_y_test, y_pred, zero_division=0)
-    conf_matrix = confusion_matrix(sub_y_test, y_pred, labels=model.classes_)
-    
-    conf_matrix_path = f'{data_template}/Training/confusion_matrix/{dataset_name}'
-    if not os.path.exists(conf_matrix_path):
-        os.makedirs(conf_matrix_path)
+    try:
+        name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test = args
         
-    cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_)
-    fig, ax = plt.subplots()
-    cm_dis.plot(ax=ax)
-    fig.savefig(f'{conf_matrix_path}/{dataset_name}_{name}_confusion_matrix.png')
-    plt.close(fig)
-    
-    loss = np.mean(np.abs(y_pred - sub_y_test))
-    # send_discord_message(f'== {data_template} Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
-    # print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
-    
-    models_save_path = f'{data_template}/Training/model/{dataset_name}'
-    
-    if not os.path.exists(models_save_path):
-        os.makedirs(models_save_path)
+        # send_discord_message(f'== Mix {data_template} Training: {dataset_name} with model: {name} ==')
+        # print(f'== Mix {data_template} Training: {dataset_name} with model: {name} ==')
+        
+        model.fit(sub_X_train, sub_y_train)
+        y_pred = model.predict(sub_X_test)
 
-    model_filename = f"{models_save_path}/{dataset_name}_{name}_model.joblib"
-    dump(model, model_filename)
-    # print(f"== {data_template} Model {name} saved as {model_filename} ==")
+        accuracy = accuracy_score(sub_y_test, y_pred)
+        f1 = f1_score(sub_y_test, y_pred, zero_division=0)
+        precision = precision_score(sub_y_test, y_pred, zero_division=0)
+        recall = recall_score(sub_y_test, y_pred, zero_division=0)
+        conf_matrix = confusion_matrix(sub_y_test, y_pred, labels=model.classes_)
+        
+        conf_matrix_path = f'{data_template}/Training/confusion_matrix/{dataset_name}'
+        if not os.path.exists(conf_matrix_path):
+            os.makedirs(conf_matrix_path)
+            
+        cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=model.classes_)
+        fig, ax = plt.subplots()
+        cm_dis.plot(ax=ax)
+        fig.savefig(f'{conf_matrix_path}/{dataset_name}_{name}_confusion_matrix.png')
+        plt.close(fig)
+        
+        loss = np.mean(np.abs(y_pred - sub_y_test))
+        # send_discord_message(f'== {data_template} Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
+        # print(f'== Done Training: {dataset_name} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==')
+        
+        models_save_path = f'{data_template}/Training/model/{dataset_name}'
+        
+        if not os.path.exists(models_save_path):
+            os.makedirs(models_save_path)
+
+        model_filename = f"{models_save_path}/{dataset_name}_{name}_model.joblib"
+        dump(model, model_filename)
+        # print(f"== {data_template} Model {name} saved as {model_filename} ==")
+    
+    except ValueError as ve:
+        if "covariance is ill defined" in str(ve):
+            print("Skipping due to ill-defined covariance for dataset:", dataset_name)
+            # Consider logging this error or handling it in a way that marks this dataset/model as skipped
+            return None  # or return some indication of failure/skipping for this task
+        else:
+            raise
     
     return {name: [accuracy, loss, f1, precision, recall, conf_matrix]}
 
@@ -129,7 +149,7 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         
 
         model_filename =  f"{data_template}/Training/model/{dataset_name}/{dataset_name}_{name}_model.joblib"
-        dump(model, model_filename)
+        dump(model, model_filename) 
         # print(f"== {data_template} Model {name} saved as {model_filename} ==")
         
         results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
@@ -151,7 +171,7 @@ def main():
                     required=True,
                     help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
         
-        parser.add_argument('--usingMultiprocess',
+        parser.add_argument('--multiProcess',
                             dest='multiCPU',
                             action=argparse.BooleanOptionalAction,
                             help='multiCPU is for using all the process.')
@@ -186,6 +206,8 @@ def main():
                             )
         main_df = pd.read_csv(full_data, low_memory=False, skiprows=progress_bar())
 
+        main_df = scaler(main_df)
+        
         X_main = main_df.drop('label', axis=1)
         y_main = main_df['label']
 
@@ -199,85 +221,101 @@ def main():
         train_test_folder = [f'{data_template}/train_test_folder/train_{data_template}',
                             f'{data_template}/train_test_folder/test_{data_template}']
         
-        #To be debugged, deleted if the same
-        #======
-        X_train_main.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
-        X_test_main.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
+        train_combined = pd.concat([X_train_main, y_train_main], axis=1)
+        test_combined = pd.concat([X_test_main, y_test_main], axis=1)
         
-        #======
+        train_combined.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
+        test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
+        
+
         print(f'Using Multiprocessing with : {num_processes}')
-        
-        for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
-            # Load and preprocess dataset
-            print(f'== reading {dataset_path} ==')
-            df = pd.read_csv(dataset_path, skiprows=progress_bar())
-            # Splitting data
-            X = df.drop('label', axis=1)
-            y = df['label']
-
-            sub_X_train = X.loc[train_index]
-            sub_y_train = y.loc[train_index]
-            sub_X_test = X.loc[test_index]
-            sub_y_test = y.loc[test_index]
-            
-            # # Concatenate X_train with y_train, and X_test with y_test
-            # train_combined = pd.concat([sub_X_train, sub_y_train], axis=1)
-            # test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
-            
-            del df
-            del X
-            del y
-            gc.collect()
-            # Train and evaluate models on the current dataset
-            results = {}
-            
-            dataset_name = dataset_path.split('\\')[-1]
-            dataset_name = dataset_name.split('.')[0]
-            print(f'dataset_name : {dataset_name}')
-            if multiCPU:
-                # multiprocessing pool
-                args_list = [
-                                (name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test)
-                                for name, model in models.items()
-                            ]
-                with Pool(processes=num_processes) as pool:
-                    results = pool.map(train_and_evaluate_Multiprocess, tqdm(args_list, desc=f"Training {data_template} Models"))
-
-                combined_results = {}
-                for result in results:
-                    combined_results.update(result)
-
-                result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-                result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
-                result_df.to_csv(result_filename)
-
-                gc.collect()
+        try:
+            for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
                 
-            else:
-                print('Using single CPU')
-                data = [sub_X_train, sub_X_test, sub_y_train, sub_y_test]
-                train_and_evaluation_singleprocess(models, data_template, data, dataset_name, results)
+                print(f'== reading {dataset_path} ==')
+                df = pd.read_csv(dataset_path, skiprows=progress_bar())
+                # Splitting data
+                X = df.drop('label', axis=1)
+                y = df['label']
+
+                sub_X_train = X.loc[train_index]
+                sub_y_train = y.loc[train_index]
+                sub_X_test = X.loc[test_index]
+                sub_y_test = y.loc[test_index]
+                
+                # # Concatenate X_train with y_train, and X_test with y_test
+                # train_combined = pd.concat([sub_X_train, sub_y_train], axis=1)
+                # test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
+                
+                del df
+                del X
+                del y
                 gc.collect()
-            print('== All training and evaluation is done ==')
-            
+                # Train and evaluate models on the current dataset
+                results = {}
+                
+                dataset_name = dataset_path.split('\\')[-1]
+                dataset_name = dataset_name.split('.')[0]
+                print(f'dataset_name : {dataset_name}')
+                if multiCPU:
+                    # multiprocessing pool
+                    args_list = [
+                                    (name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test)
+                                    for name, model in models.items()
+                                ]
+                    combined_results = {}
+                    
+                    with Pool(processes=num_processes) as pool:
+                        results = pool.map(train_and_evaluate_Multiprocess, tqdm(args_list, desc=f"Training {data_template} Models"))
+
+                        for result, arg in zip(results, args_list):
+                            if result is not None:
+                                # Unpack your args to get the model name and dataset name
+                                name, _, _, dataset_name, _, _, _, _ = arg
+                                combined_results[f"{dataset_name}_{name}"] = result
+                            else:
+                                # Log or print that this task was skipped
+                                _, _, _, dataset_name, _, _, _, _ = arg
+                                print(f"Skipped model for dataset: {dataset_name} due to ill-defined covariance.")
+
+                    for result in results:
+                        if result is not None:
+                            for model_name, metrics in result.items():
+                                combined_results[model_name] = {
+                                    'accuracy': metrics[0],
+                                    'loss': metrics[1],
+                                    'f1': metrics[2],
+                                    'precision': metrics[3],
+                                    'recall': metrics[4],
+                                    'confusion_matrix': metrics[5],  # Note that this will store the array in the DataFrame, which may not be what you want
+                                }
+                    
+                    result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
+                    result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
+                    result_df.to_csv(result_filename)
+
+                    gc.collect()
+                    
+                else:
+                    print('Using single CPU')
+                    data = [sub_X_train, sub_X_test, sub_y_train, sub_y_test]
+                    train_and_evaluation_singleprocess(models, data_template, data, dataset_name, results)
+                    gc.collect()
+                
+        except ValueError as ve:
+            if "covariance is ill defined" in str(ve):
+                traceback.print_exc()
+                print("Skipping due to ill-defined covariance.")
+                
+        print('== All training and evaluation is done ==')
         #Assemble the results
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
         compare_df = best_model_for_attack(compare_data)
         compare_df.to_csv(f'{data_template}/model.csv')
-    
-    except ValueError as ve:
-        if "covariance is ill defined" in str(ve):
-            print("Skipping due to ill-defined covariance.")
-
-        else:
-            traceback.print_exc()
-            sys.exit(1)
-
-    
+        
     except Exception as E:
-        print(E)
+        print("An unexpected error occurred:", E)
         traceback.print_exc()
-        sys.exit(1)
 
 
 

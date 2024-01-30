@@ -15,6 +15,7 @@ def getModel():
         'QDA': QuadraticDiscriminantAnalysis(),
         'DecisionTree': DecisionTreeClassifier(),
         'RandomForest': RandomForestClassifier(),
+        'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
         'GradientBoosting': GradientBoostingClassifier(),
         'KNeighbors': KNeighborsClassifier(),
         'GaussianNB': GaussianNB(),

@@ -38,7 +38,7 @@ def main():
                             type=str,
                             help='input_dataset CIC-IDS2017.csv or KDD.csv, the concat files that already processed.')
         
-        parser.add_argument('--usingMultiprocess',
+        parser.add_argument('--multiProcess',
                             dest='multiCPU',
                             action=argparse.BooleanOptionalAction,
                             help='multiCPU is for using all the process.')

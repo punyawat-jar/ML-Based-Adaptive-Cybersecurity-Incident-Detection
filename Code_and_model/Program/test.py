@@ -19,7 +19,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
 from module.file_op import *
-from module.util import progress_bar, check_data_template
+from module.util import progress_bar, check_data_template, scaler
 
 class ModelObject:
     def __init__(self, attack_type, model_name, model, weight):
@@ -44,7 +44,6 @@ def read_model(models_loc, df, weight_data):
                 # print(file)
                 model = joblib.load(file)
                 weight = weight_data.get(attack_type, 0)
-
                 model_object = ModelObject(attack_type, model_name, model, weight)
                 models.append(model_object)
                 break
@@ -105,6 +104,7 @@ def integrate_predictions(predictions, threshold):
 
     # Normalize by total weight
     total_weight = sum(weight for _, weight, _ in predictions)
+    
     final_pred = weighted_sum / total_weight
 
     # Threshold condition to each element
@@ -140,7 +140,7 @@ def prediction(models, sequence_mode, threshold, X_test):
         print('Predicting...')
         pred, time, attack_df = predictionModel(models, X_test, threshold)
 
-        print(attack_df)
+        # print(attack_df)
 
         attacks_MoreThanOne(attack_df)
 
@@ -153,7 +153,7 @@ def attacks_MoreThanOne(attack_df):
     # Filter the DataFrame based on the mask
     filtered_df = attack_df[mask]
 
-    print(filtered_df)
+    # print(filtered_df)
 
 def checkShape(y_test, y_pred):
     if y_pred.ndim > 1:
@@ -177,8 +177,6 @@ def evaluation(y_test, y_pred, data_template, result_path):
     precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
     conf_matrix = confusion_matrix(y_test, y_pred)
-    # Extract metrics from confusion matrix
-    TN, FP, FN, TP = conf_matrix.ravel()
 
     evalu['accuracy'] = acc
     evalu['f1'] = f1
@@ -200,16 +198,10 @@ def makeConfusion(conf_matrix, data_template):
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
     plt.title('Confusion Matrix')
-    plt.savefig(f'.\\confusion_matrix_{data_template}.png')
+    plt.savefig(f'./confusion_matrix_{data_template}.png')
     plt.close()
 
-
-def check_train_test_index(df_train, df_test):
-    train_index = df_train.index
-    test_index = df_test.index
-    return train_index, test_index
-
-def getDataset(arg, data_template):
+def getDataset(arg, data_template, net_file_loc):
     if net_file_loc is not None:
         net_file_loc = arg.net_file_loc
     elif data_template == 'cic':
@@ -221,7 +213,9 @@ def getDataset(arg, data_template):
     
     print('-- Reading Dataset --')
     df = pd.read_csv(net_file_loc, skiprows=progress_bar())
+    df = scaler(df)
     print('-- Reading Dataset successfully --')
+    
     return df
 
 def main():
@@ -266,7 +260,7 @@ def main():
 
     chooese_csv = arg.chooese_csv if arg.chooese_csv is not None else f'./{data_template}/model.csv'
 
-    model_loc =  arg.model_loc if arg.model_loc is not None else f'./{data_template}/model'
+    model_loc =  arg.model_loc if arg.model_loc is not None else f'{data_template}/Training/model'
 
     net_file_loc = arg.net_file_loc
 
@@ -275,31 +269,29 @@ def main():
     
     try:
         #Parameter & path setting
+        models_loc = []
         os.chdir('./Code_and_model/Program') ##Change Working Directory
         
-        result_path = f'.{data_template}/Result'
-        weight_path = f'.{data_template}/weight.json'
-        model_loc = f'{data_template}/Training/model'
+        result_path = f'{data_template}/Result'
+        weight_path = f'{data_template}/weight.json'
         
-        models_loc = []
         check_file(chooese_csv)
-        check_file(net_file_loc)
-        data_template = check_data_template(data_template)
         
-        df = getDataset(arg, data_template)
+        data_template = check_data_template(data_template)
+        df = getDataset(arg, data_template, net_file_loc)
 
         
-        df_train = glob.glob(f'{data_template}/train_test_folder/train_{data_template}/*.csv')[0]
-        df_test = glob.glob(f'{data_template}/train_test_folder/test_{data_template}/*.csv')[0]
+        df_train = pd.read_csv(glob.glob(f'{data_template}/train_test_folder/train_{data_template}/*')[0], skiprows=progress_bar())
+        df_test = pd.read_csv(glob.glob(f'{data_template}/train_test_folder/test_{data_template}/*')[0], skiprows=progress_bar())
         
-        train_index, test_index = check_train_test_index(df_train, df_test)
+        # train_index, test_index = check_train_test_index(df_train, df_test)
         
         
-        X_train = df.loc[train_index].drop('label', axis=1)
-        X_test = df.loc[test_index].drop('label', axis=1)
+        X_train = df_train.drop(['label', 'Unnamed: 0'], axis=1)
+        X_test = df_test.drop(['label', 'Unnamed: 0'], axis=1)
         
-        y_train = df['label'].loc[train_index]
-        y_test = df['label'].loc[test_index]
+        y_train = df_train['label']
+        y_test = df_test['label']
         
         processAttack(y_test)
         
@@ -308,7 +300,7 @@ def main():
         #Reading Weight from file, if exist. if not calculated from the dataset (Default)
         CheckWegihtFileCreated = creating_weight_file(weight_path)
         
-        if not CheckWegihtFileCreated:
+        if CheckWegihtFileCreated == False:
             label_counts = Counter(y_train)
             total_labels = len(y_train)
             label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
@@ -318,7 +310,6 @@ def main():
         else:
             with open(weight_path) as jsonfile:
                 label_percentages = json.load(jsonfile)
-            
         lowest_percent_attack = min(label_percentages, key=label_percentages.get)
         threshold = label_percentages[lowest_percent_attack]
 
@@ -330,6 +321,7 @@ def main():
         for file in files:
             for _, row in model_df.iterrows():
                 if row['attack'] in file and row['model'] in file:
+                    print(f'model file = {file}')
                     models_loc.append(file)
                     break
 
@@ -337,11 +329,18 @@ def main():
 
         print(f'-- Evaluation the model with {len(models)} attacks--')
         y_pred, time_pred, attack_df = prediction(models, sequence_mode, threshold, X_test)
+        print(y_test)
+        print(y_pred)
+        y_pred_df = pd.DataFrame(y_pred, columns=['Prediction'])
         
+
         evalu = evaluation(y_test, y_pred, data_template, result_path)
         
-        result_df = pd.concat([X_test.reset_index(drop=True), attack_df.reset_index(drop=True)], axis=1)
-        result_df.to_csv(f'{result_path}/attack_prediction_{data_template}.csv', index=False)
+        result_df = pd.concat([X_test, attack_df], axis=1)
+        
+        y_pred_df.index = result_df.index
+        result_df = pd.concat([result_df, y_pred_df], axis=1)
+        result_df.to_csv(f'{result_path}/attack_prediction_{data_template}.csv', index = True)
         
         print(f'Accuracy : {evalu["accuracy"]}\nF1-score : {evalu["f1"]}\nPrecision : {evalu["precision"]}\nRecall : {evalu["recall"]}')
     except Exception as E:

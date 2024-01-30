@@ -6,11 +6,11 @@ def makePath(path):
         for ipath in path:
             if not os.path.exists(ipath):
                 print(f'Creating : {ipath}')
-                os.makedirs(ipath)
+                os.makedirs(ipath, exist_ok=True)
     else:
         if not os.path.exists(path):
             print(f'Creating : {path}')
-            os.makedirs(path)
+            os.makedirs(pathexist_ok=True)
 
 def check_file(path):
     if os.path.isfile(path):

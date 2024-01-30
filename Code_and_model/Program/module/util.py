@@ -25,7 +25,8 @@ def changeLabel(df, label):
 def scaler(df):
     scaler = MinMaxScaler()
     for col in df.columns:
-        df[col] = scaler.fit_transform(df[col].values.reshape(-1, 1)).ravel()
+        if col != 'label':
+            df[col] = scaler.fit_transform(df[col].values.reshape(-1, 1)).ravel()
     return df
 
 

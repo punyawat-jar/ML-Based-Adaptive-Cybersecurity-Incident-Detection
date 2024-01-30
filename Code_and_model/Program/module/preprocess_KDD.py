@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 import traceback
 from sklearn.preprocessing import MinMaxScaler
-from module.util import changeLabel
+from module.util import *
 from module.file_op import *
 from tqdm import tqdm
 def read_train(path):
@@ -113,7 +113,8 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
         
         else:
             df = pd.read_csv(input_dataset)      
-                  
+        
+        df = scaler(df)
         labels = df.label.value_counts().index.tolist()
         
         if multiCPU:

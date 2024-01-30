@@ -140,7 +140,7 @@ def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
             print('Reading Dataset from user input...')
             df = pd.read_csv(f'{input_dataset}', skiprows=progress_bar())
             
-            
+        df = scaler(df)
         labels = df.label.value_counts().index.tolist()
         print('Preprocessing Dataset...')
 

@@ -1,9 +1,4 @@
 @echo off
-python .\Code_and_model\Program\train.py --data kdd --usingMultiprocess
-
-if %ERRORLEVEL% == 0 (
-    python Code_and_model\Program\train.py --data cic --usingMultiprocess --n_Process 2
-) else (
-    echo First script failed, second script not run.
-)
-pause
+python Code_and_model\Program\train.py --data cic --n_Process 2 --multiProcess
+if %errorlevel% neq 0 exit /b %errorlevel%
+python Code_and_model\Program\test.py --data cic

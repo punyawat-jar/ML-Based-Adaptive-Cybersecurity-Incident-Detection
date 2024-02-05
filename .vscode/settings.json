@@ -1,5 +1,5 @@
 {
     "python.analysis.autoImportCompletions": false,
     "python.analysis.typeCheckingMode": "off",
-    "python.pythonPath": "F:\\Anaconda3\\envs\\ML_Project\\python"
+    "python.pythonPath": "C:\\anaconda\\envs\\DL-py310-cu112-cudnn81\\python.exe"
 }

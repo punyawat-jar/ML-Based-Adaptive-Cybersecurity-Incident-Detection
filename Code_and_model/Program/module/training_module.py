@@ -7,6 +7,7 @@ from joblib import dump
 
 import numpy as np
 
+from tensorflow.keras.callbacks import Callback, ModelCheckpoint, EarlyStopping
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
@@ -139,3 +140,29 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}"
         result_df.to_csv(result_filename)
         gc.collect()
+        
+def training_DL(models, data_template, data, dataset_name, results, epochs, val_dataset):
+    for name, model in models.items():
+        
+        models_save_path = f'{data_template}/Training/model/{dataset_name}'
+        conf_matrix_path = f'{data_template}/Training/confusion_martix/{dataset_name}'
+        checkpoint_path = f'{data_template}/Training/checkpoint/{dataset_name}'
+        
+        makePath(models_save_path)
+        makePath(conf_matrix_path)
+        makePath(checkpoint_path)
+        
+        earlyStopping = EarlyStopping(monitor='val_loss', patience=1, verbose=0, mode='min')
+        best_model = ModelCheckpoint(checkpoint_path, save_best_only=True, monitor='val_loss', mode='min')
+        
+        model.fit(X, y, epochs=100, verbose=0)
+        model.save(f'./{data_template}/model/{model.name}.h5')
+        
+        history = model.fit(
+            data,
+            epochs=epochs,
+            callbacks=[best_model, earlyStopping],
+            validation_data=val_dataset,
+            validation_steps=validation_steps
+        )
+        

@@ -9,9 +9,12 @@ from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
 
 from sklearn.model_selection import train_test_split
+import tensorflow as tf
+
+from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
 
 
-from module.model import getModel
+from module.model import getModel, sequential_models
 from module.util import progress_bar, check_data_template
 from module.file_op import *
 from module.discord import *
@@ -21,11 +24,6 @@ from module.training_module import *
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=UserWarning)
 
-
-
-
-        
-        
 # This train.py file will train each model separately
 
 def main():
@@ -54,10 +52,12 @@ def main():
         data_template = arg.data_template
         multiCPU = arg.multiCPU
         
+        window_size = 512
+        batch_size = 128
+        epochs = 20
         #File path
         os.chdir('./Code_and_model/Program') ##Change Working Directory
     
-        models = getModel()
         
         dataset_paths = glob.glob(f'{data_template}/dataset/mix_dataset/*.csv')
         
@@ -70,15 +70,17 @@ def main():
         else:
             raise Exception('The dataset template is not regcognize (cic or kdd)'
                             )
+            
+        ## Process data for ML training
         main_df = pd.read_csv(full_data, low_memory=False, skiprows=progress_bar())
         
         X_main = main_df.drop('label', axis=1)
         y_main = main_df['label']
-
-        # Split the main dataset
+        n_features = X_main.shape[1]
+        
         X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
 
-        # Get the indices of the training and testing sets
+        
         train_index = X_train_main.index
         test_index = X_test_main.index
 
@@ -91,7 +93,13 @@ def main():
         train_combined.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
         test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
         
-
+        
+        models = getModel()
+        
+        sequence_models = sequential_models(window_size, n_features)
+        
+        
+        ## ML model Training
         print(f'Using Multiprocessing with : {num_processes}')
         try:
             for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
@@ -106,7 +114,6 @@ def main():
                 sub_X_test = X.loc[test_index]
                 sub_y_test = y.loc[test_index]
 
-                
                 del df
                 del X
                 del y
@@ -117,6 +124,8 @@ def main():
                 dataset_name = dataset_path.split('\\')[-1]
                 dataset_name = dataset_name.split('.')[0]
                 print(f'dataset_name : {dataset_name}')
+                
+                
                 if multiCPU:
                     # multiprocessing pool
                     args_list = [
@@ -134,7 +143,6 @@ def main():
                                 name, _, _, dataset_name, _, _, _, _ = arg
                                 combined_results[f"{dataset_name}_{name}"] = result
                             else:
-                                # Log or print that this task was skipped
                                 _, _, _, dataset_name, _, _, _, _ = arg
                                 print(f"Skipped model for dataset: {dataset_name} due to ill-defined covariance.")
 
@@ -166,7 +174,35 @@ def main():
             if "covariance is ill defined" in str(ve):
                 traceback.print_exc()
                 print("Skipping due to ill-defined covariance.")
+        
+        ## DL model Training
+        try:
+            print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+            
+            for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
+                print(f'== reading {dataset_path} ==')
+                df = pd.read_csv(dataset_path, skiprows=progress_bar())
+                X = df.drop('label', axis=1)
+                y = df['label']
+                results = {}
                 
+                dataset_name = dataset_path.split('\\')[-1]
+                dataset_name = dataset_name.split('.')[0]
+                print(f'dataset_name : {dataset_name}')
+                
+                Data = TimeseriesGenerator(df, length=window_size, sampling_rate=1, batch_size=batch_size)
+
+                training_DL(sequence_models, data_template, Data, dataset_name, results, epochs),
+
+                
+
+                
+                
+                
+                
+                
+        except ValueError as ve:
+            print(ve)
         print('== All training and evaluation is done ==')
         #Assemble the results
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')

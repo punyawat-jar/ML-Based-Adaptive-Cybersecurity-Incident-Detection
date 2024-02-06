@@ -11,7 +11,7 @@ from multiprocessing import Pool, cpu_count
 from sklearn.model_selection import train_test_split
 
 
-from module.model import getModel, sequential_models
+from module.model import getModel
 from module.util import progress_bar, check_data_template
 from module.file_op import *
 from module.discord import *
@@ -49,9 +49,6 @@ def main():
         data_template = arg.data_template
         multiCPU = arg.multiCPU
         
-        window_size = 512
-        batch_size = 128
-        epochs = 20
         #File path
         os.chdir('./Code_and_model/Program') ##Change Working Directory
     
@@ -90,10 +87,8 @@ def main():
         train_combined.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
         test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
         
-        
         models = getModel()
         
-        sequence_models = sequential_models(window_size, n_features)
         
         
         ## ML model Training

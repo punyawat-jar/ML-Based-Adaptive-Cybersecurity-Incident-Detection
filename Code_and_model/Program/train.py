@@ -9,9 +9,6 @@ from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
 
 from sklearn.model_selection import train_test_split
-import tensorflow as tf
-
-from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
 
 
 from module.model import getModel, sequential_models
@@ -175,34 +172,7 @@ def main():
                 traceback.print_exc()
                 print("Skipping due to ill-defined covariance.")
         
-        ## DL model Training
-        try:
-            print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-            
-            for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
-                print(f'== reading {dataset_path} ==')
-                df = pd.read_csv(dataset_path, skiprows=progress_bar())
-                X = df.drop('label', axis=1)
-                y = df['label']
-                results = {}
-                
-                dataset_name = dataset_path.split('\\')[-1]
-                dataset_name = dataset_name.split('.')[0]
-                print(f'dataset_name : {dataset_name}')
-                
-                Data = TimeseriesGenerator(df, length=window_size, sampling_rate=1, batch_size=batch_size)
 
-                training_DL(sequence_models, data_template, Data, dataset_name, results, epochs),
-
-                
-
-                
-                
-                
-                
-                
-        except ValueError as ve:
-            print(ve)
         print('== All training and evaluation is done ==')
         #Assemble the results
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')

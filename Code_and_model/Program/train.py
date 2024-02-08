@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 
 import tensorflow as tf
 
-from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
+
 
 from module.model import getModel, sequential_models
 from module.util import progress_bar, check_data_template
@@ -26,9 +26,7 @@ warnings.filterwarnings('ignore', category=UserWarning)
 
 # This train.py file will train each model separately
 
-window_size = 512
-batch_size = 128
-epochs = 20
+
 
 def main():
     try:
@@ -58,7 +56,12 @@ def main():
         
         #File path
         os.chdir('./Code_and_model/Program') ##Change Working Directory
-    
+        
+        window_size = 512
+        batch_size = 128
+        epochs = 20
+        
+        DL_args = [window_size, batch_size, epochs]
         
         dataset_paths = glob.glob(f'{data_template}/dataset/mix_dataset/*.csv')
         
@@ -69,8 +72,7 @@ def main():
         elif data_template == 'kdd':
             full_data = './kdd/KDD.csv'
         else:
-            raise Exception('The dataset template is not regcognize (cic or kdd)'
-                            )
+            raise Exception('The dataset template is not regcognize (cic or kdd)')
             
         ## Process data for ML training
         main_df = pd.read_csv(full_data, low_memory=False, skiprows=progress_bar())
@@ -185,7 +187,11 @@ def main():
         
         try:
             print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-
+            
+            train_index = pd.read_csv(f'./{data_template}/train_test_folder/train_{data_template}/train.csv')['Unnamed: 0']
+            test_index = pd.read_csv(f'./{data_template}/train_test_folder/train_{data_template}/test.csv')['Unnamed: 0']
+            train_test_index = [train_index, test_index]
+            
             for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
                 print(f'== reading {dataset_path} ==')
                 df = pd.read_csv(dataset_path, skiprows=progress_bar())
@@ -196,9 +202,7 @@ def main():
                 dataset_name = dataset_name.split('.')[0]
                 print(f'dataset_name : {dataset_name}')
 
-                Data = TimeseriesGenerator(df, length=window_size, sampling_rate=1, batch_size=batch_size)
-
-                training_DL(sequence_models, data_template, Data, dataset_name, results, epochs, df)
+                training_DL(sequence_models, data_template, dataset_name, results, df, DL_args, train_test_index)
                 
         except ValueError as ve:
             print(ve)

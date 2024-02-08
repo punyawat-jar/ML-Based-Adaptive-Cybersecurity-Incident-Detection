@@ -7,7 +7,9 @@ from joblib import dump
 
 import numpy as np
 
+from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
 from tensorflow.keras.callbacks import Callback, ModelCheckpoint, EarlyStopping
+
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay
 from tqdm import tqdm
 import matplotlib.pyplot as plt
@@ -142,7 +144,7 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         result_df.to_csv(result_filename)
         gc.collect()
         
-def rearrange_sequences_linear_chunked(generator, df_index, batch_size, window_size, chunk_size=100):
+def rearrange_sequences(generator, df_index, batch_size, window_size, chunk_size=100):
     num_batches = len(generator)
     
     rearranged_data = []  # This will store the final results
@@ -161,13 +163,18 @@ def rearrange_sequences_linear_chunked(generator, df_index, batch_size, window_s
 
     return rearranged_data
 
-def training_DL(models, data_template, data, dataset_name, results, epochs, df):
+def training_DL(models, data_template, dataset_name, results, df, DL_args, train_test_index):
+    
     X = df.drop('label', axis=1)
     y = df['label']
     
-    Data = TimeseriesGenerator(X, y, length=window_size, sampling_rate=1, batch_size=batch_size)
+    window_size, batch_size, epochs = DL_args
     
-    rearranged_data = rearrange_sequences_linear_chunked(Data, df['Unnamed: 0'], batch_size, window_size, chunk_size=50)
+    Data = TimeseriesGenerator(X, y, length=window_size, sampling_rate=1, batch_size=batch_size)
+    train_index, test_index = train_test_index
+    
+    train_Data = rearrange_sequences(Data, train_index, batch_size, window_size, chunk_size=50)
+    test_data =  rearrange_sequences(Data, test_index, batch_size, window_size, chunk_size=50)
     
     for name, model in models.items():
         models_save_path = f'{data_template}/Training/model/{dataset_name}'
@@ -185,11 +192,11 @@ def training_DL(models, data_template, data, dataset_name, results, epochs, df):
         model.save(f'./{data_template}/model/{model.name}.h5')
 
         history = model.fit(
-            data,
+            train_Data,
             epochs=epochs,
             callbacks=[best_model, earlyStopping],
-            validation_data=val_dataset,
-            validation_steps=validation_steps
+            validation_data=test_data,
+            validation_steps=test_data
         )
         
         results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]

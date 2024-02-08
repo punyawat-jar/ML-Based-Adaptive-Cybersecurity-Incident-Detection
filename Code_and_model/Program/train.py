@@ -10,8 +10,11 @@ from multiprocessing import Pool, cpu_count
 
 from sklearn.model_selection import train_test_split
 
+import tensorflow as tf
 
-from module.model import getModel
+from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
+
+from module.model import getModel, sequential_models
 from module.util import progress_bar, check_data_template
 from module.file_op import *
 from module.discord import *
@@ -22,6 +25,10 @@ warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=UserWarning)
 
 # This train.py file will train each model separately
+
+window_size = 512
+batch_size = 128
+epochs = 20
 
 def main():
     try:
@@ -88,7 +95,7 @@ def main():
         test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
         
         models = getModel()
-        
+        sequence_models = sequential_models(window_size, n_features)
         
         
         ## ML model Training
@@ -173,6 +180,28 @@ def main():
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
         compare_df = best_model_for_attack(compare_data)
         compare_df.to_csv(f'{data_template}/model.csv')
+        
+        ## DL model Training
+        
+        try:
+            print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+
+            for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
+                print(f'== reading {dataset_path} ==')
+                df = pd.read_csv(dataset_path, skiprows=progress_bar())
+                
+                results = {}
+
+                dataset_name = dataset_path.split('\\')[-1]
+                dataset_name = dataset_name.split('.')[0]
+                print(f'dataset_name : {dataset_name}')
+
+                Data = TimeseriesGenerator(df, length=window_size, sampling_rate=1, batch_size=batch_size)
+
+                training_DL(sequence_models, data_template, Data, dataset_name, results, epochs, df)
+                
+        except ValueError as ve:
+            print(ve)
         
     except Exception as E:
         print("An unexpected error occurred:", E)

@@ -9,6 +9,7 @@ import numpy as np
 
 from tensorflow.keras.callbacks import Callback, ModelCheckpoint, EarlyStopping
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 
@@ -141,4 +142,59 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         result_df.to_csv(result_filename)
         gc.collect()
         
+def rearrange_sequences_linear_chunked(generator, df_index, batch_size, window_size, chunk_size=100):
+    num_batches = len(generator)
+    
+    rearranged_data = []  # This will store the final results
+
+    for chunk_start in tqdm(range(0, num_batches, chunk_size), desc="Processing chunks"):
+        chunk_end = min(chunk_start + chunk_size, num_batches)
+        for i in range(chunk_start, chunk_end):
+            batch_x, batch_y = generator[i]  # Access each batch from the generator
+
+            for j in range(batch_x.shape[0]):  # Process each sequence in the batch
+                sequence_start_index = i * batch_size + j
+                original_indices = df_index[sequence_start_index: sequence_start_index + window_size].tolist()
+                rearranged_data.append((batch_x[j], batch_y[j], original_indices))
         
+        gc.collect()  # Suggest to the garbage collector to release unreferenced memory
+
+    return rearranged_data
+
+def training_DL(models, data_template, data, dataset_name, results, epochs, df):
+    X = df.drop('label', axis=1)
+    y = df['label']
+    
+    Data = TimeseriesGenerator(X, y, length=window_size, sampling_rate=1, batch_size=batch_size)
+    
+    rearranged_data = rearrange_sequences_linear_chunked(Data, df['Unnamed: 0'], batch_size, window_size, chunk_size=50)
+    
+    for name, model in models.items():
+        models_save_path = f'{data_template}/Training/model/{dataset_name}'
+        conf_matrix_path = f'{data_template}/Training/confusion_martix/{dataset_name}'
+        checkpoint_path = f'{data_template}/Training/checkpoint/{dataset_name}'
+
+        makePath(models_save_path)
+        makePath(conf_matrix_path)
+        makePath(checkpoint_path)
+
+        earlyStopping = EarlyStopping(monitor='val_loss', patience=1, verbose=0, mode='min')
+        best_model = ModelCheckpoint(checkpoint_path, save_best_only=True, monitor='val_loss', mode='min')
+
+        model.fit(X, y, epochs, verbose=0)
+        model.save(f'./{data_template}/model/{model.name}.h5')
+
+        history = model.fit(
+            data,
+            epochs=epochs,
+            callbacks=[best_model, earlyStopping],
+            validation_data=val_dataset,
+            validation_steps=validation_steps
+        )
+        
+        results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
+        
+        result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
+        result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}"
+        result_df.to_csv(result_filename)
+        gc.collect()

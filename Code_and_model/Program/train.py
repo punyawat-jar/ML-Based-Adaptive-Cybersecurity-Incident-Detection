@@ -140,7 +140,6 @@ def main():
 
                         for result, arg in zip(results, args_list):
                             if result is not None:
-                                # Unpack your args to get the model name and dataset name
                                 name, _, _, dataset_name, _, _, _, _ = arg
                                 combined_results[f"{dataset_name}_{name}"] = result
                             else:
@@ -156,7 +155,7 @@ def main():
                                     'f1': metrics[2],
                                     'precision': metrics[3],
                                     'recall': metrics[4],
-                                    'confusion_matrix': metrics[5],  # Note that this will store the array in the DataFrame, which may not be what you want
+                                    'confusion_matrix': metrics[5],
                                 }
                     
                     result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
@@ -179,9 +178,7 @@ def main():
 
         print('== All training and evaluation is done ==')
         #Assemble the results
-        compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
-        compare_df = best_model_for_attack(compare_data)
-        compare_df.to_csv(f'{data_template}/model.csv')
+
         
         ## DL model Training
         
@@ -206,6 +203,10 @@ def main():
                 
         except ValueError as ve:
             print(ve)
+
+        compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
+        compare_df = best_model_for_attack(compare_data)
+        compare_df.to_csv(f'{data_template}/model.csv')
         
     except Exception as E:
         print("An unexpected error occurred:", E)

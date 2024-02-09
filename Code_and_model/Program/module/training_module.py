@@ -188,7 +188,6 @@ def training_DL(models, data_template, dataset_name, results, df, DL_args, train
         earlyStopping = EarlyStopping(monitor='val_loss', patience=1, verbose=0, mode='min')
         best_model = ModelCheckpoint(checkpoint_path, save_best_only=True, monitor='val_loss', mode='min')
 
-        model.fit(X, y, epochs, verbose=0)
         model.save(f'./{data_template}/model/{model.name}.h5')
 
         history = model.fit(
@@ -198,8 +197,40 @@ def training_DL(models, data_template, dataset_name, results, df, DL_args, train
             validation_data=test_data,
             validation_steps=test_data
         )
+
+        # Collect all true labels and predictions
+        y_true, y_pred = [], []
+        for X_batch, y_batch, _ in test_data:  # Assuming test_data is a list of tuples
+            y_batch_pred = model.predict(X_batch)
+            # Convert predictions to labels if necessary, e.g., using argmax for categorical outputs
+            y_batch_pred_labels = np.argmax(y_batch_pred, axis=1)
+            y_true.extend(y_batch)
+            y_pred.extend(y_batch_pred_labels)
         
-        results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
+        # Convert lists to numpy arrays for metric calculations
+        y_true = np.array(y_true)
+        y_pred = np.array(y_pred)
+
+        # Compute metrics
+        f1 = f1_score(y_true, y_pred, average='binary')  # Adjust 'average' as needed
+        precision = precision_score(y_true, y_pred, average='binary')
+        recall = recall_score(y_true, y_pred, average='binary')
+
+        conf_matrix = confusion_matrix(y_true, y_pred)
+
+
+        cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix)
+        fig, ax = plt.subplots()
+        cm_dis.plot(ax=ax)
+        fig.savefig(f'{data_template}/Training/confusion_martix/{dataset_name}/{dataset_name}_{name}_confusion_matrix.png')
+
+        plt.close(fig)
+
+        val_acc = history.history['val_accuracy']
+        val_loss=history.history['val_loss']
+
+
+        results[name] = [val_acc, val_loss, f1, precision, recall, conf_matrix]
         
         result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
         result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}"

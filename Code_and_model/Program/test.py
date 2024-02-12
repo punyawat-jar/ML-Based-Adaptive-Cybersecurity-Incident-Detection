@@ -129,6 +129,7 @@ def main():
                     models_loc.append(file)
                     break
 
+                    
         models = read_model(models_loc, model_df, label_percentages)
 
         print(f'-- Evaluation the model with {len(models)} attacks--')

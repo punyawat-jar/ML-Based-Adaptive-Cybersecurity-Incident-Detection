@@ -12,9 +12,10 @@ import seaborn as sns
 
 from tqdm.auto import tqdm
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
-
+from keras.models import load_model
 from module.file_op import *
 from module.util import progress_bar, scaler
+from module.model import sequential_models
 
 class ModelObject:
     def __init__(self, attack_type, model_name, model, weight):
@@ -36,12 +37,20 @@ def read_model(models_loc, df, weight_data):
 
             if attack_type in file and row['model'] in file:
                 model_name = row['model']
-                # print(file)
-                model = joblib.load(file)
-                weight = weight_data.get(attack_type, 0)
-                model_object = ModelObject(attack_type, model_name, model, weight)
-                models.append(model_object)
-                break
+                
+                if file.endswith('.joblib'):
+                    model = joblib.load(file)
+                    weight = weight_data.get(attack_type, 0)
+                    model_object = ModelObject(attack_type, model_name, model, weight)
+                    models.append(model_object)
+                    break
+                
+                elif file.endswith('.h5'):
+                    model = load_model(file)
+                    weight = weight_data.get(attack_type, 0)
+                    model_object = ModelObject(attack_type, model_name, model, weight)
+                    models.append(model_object)
+                    break
 
     return models
 
@@ -124,7 +133,7 @@ def prediction(models, sequence_mode, threshold, X_test):
         predict = np.array(predict)
         print(attacks)
 
-        attacks_MoreThanOne(attack_df)
+        # attacks_MoreThanOne(attack_df)
 
         print(f'The predictioin shape :{predict.shape}')
         print(f'prediction time in mean : {np.mean(pre_time)} seconds')
@@ -137,18 +146,18 @@ def prediction(models, sequence_mode, threshold, X_test):
 
         # print(attack_df)
 
-        attacks_MoreThanOne(attack_df)
+        # attacks_MoreThanOne(attack_df)
 
         print(f'The prediction : {pred} using {time:0.4f} seconds')
         return pred, time, attack_df
     
-def attacks_MoreThanOne(attack_df):
-    mask = attack_df['attack'].apply(lambda x: len(x) > 1)
+# def attacks_MoreThanOne(attack_df):
+#     mask = attack_df['attack'].apply(lambda x: len(x) > 1)
 
-    # Filter the DataFrame based on the mask
-    filtered_df = attack_df[mask]
+#     # Filter the DataFrame based on the mask
+#     filtered_df = attack_df[mask]
 
-    # print(filtered_df)
+#     # print(filtered_df)
 
 def checkShape(y_test, y_pred):
     if y_pred.ndim > 1:

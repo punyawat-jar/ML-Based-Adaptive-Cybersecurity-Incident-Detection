@@ -40,7 +40,7 @@ def sequential_models(window_size, n_features):
     return models
 
 def lstm(window_size, n_features):
-    model = Sequential()
+    model = Sequential(name='LSTM')
     model.add(LSTM(512, input_shape=(window_size, n_features), return_sequences=True))
     model.add(Dropout(0.2))
     model.add(LSTM(512, return_sequences=True))

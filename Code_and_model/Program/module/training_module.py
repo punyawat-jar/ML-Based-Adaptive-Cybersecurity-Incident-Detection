@@ -65,10 +65,22 @@ def best_model_for_attack(model_folder):
 
     return pd.DataFrame(data=bestmodel)
     
+def save_model(model, path, args):
+    name, model, dataset_name = args
+    model_filename = f"{path}/{dataset_name}_{name}_model.joblib"
+    dump(model, model_filename)
+
 
 def train_and_evaluate_Multiprocess(args):
     try:
         name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test = args
+        
+        models_save_path = f'{data_template}/Training/model/{dataset_name}'
+        conf_matrix_path = f'{data_template}/Training/confusion_martix/{dataset_name}'
+        makePath(models_save_path)
+        makePath(conf_matrix_path)
+        
+        saving_args = [name, model, dataset_name]
         
         model.fit(sub_X_train, sub_y_train)
         y_pred = model.predict(sub_X_test)
@@ -91,20 +103,12 @@ def train_and_evaluate_Multiprocess(args):
         
         loss = np.mean(np.abs(y_pred - sub_y_test))
         
-        models_save_path = f'{data_template}/Training/model/{dataset_name}'
-        
-        if not os.path.exists(models_save_path):
-            os.makedirs(models_save_path)
+        save_model(model, models_save_path, saving_args)
 
-        model_filename = f"{models_save_path}/{dataset_name}_{name}_model.joblib"
-        dump(model, model_filename)
-    
     except ValueError as ve:
         if "covariance is ill defined" in str(ve):
             print("Skipping due to ill-defined covariance for dataset:", dataset_name)
             return None
-        else:
-            raise
     
     return {name: [accuracy, loss, f1, precision, recall, conf_matrix]}
 
@@ -117,6 +121,7 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         makePath(models_save_path)
         makePath(conf_matrix_path)
         
+        saving_args = [name, model, dataset_name]
         
         model.fit(sub_X_train, sub_y_train)
         y_pred = model.predict(sub_X_test)
@@ -136,16 +141,14 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         plt.close(fig)
         
         loss = np.mean(np.abs(y_pred - sub_y_test))
-        
-
-        model_filename =  f"{data_template}/Training/model/{dataset_name}/{dataset_name}_{name}_model.joblib"
-        dump(model, model_filename) 
-
+    
         results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
         
         result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
         result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}"
         result_df.to_csv(result_filename)
+        
+        save_model(model, models_save_path, saving_args)
         gc.collect()
 
 
@@ -220,7 +223,7 @@ def training_DL(models, data_template, dataset_name, df, DL_args, train_test_df,
         log_dir = os.path.join(data_template, "Training", "logs", dataset_name, datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
         tensorboard_callback = TensorBoard(log_dir=log_dir)
         print(f'Saving log path at: {log_dir}')
-        model.save(f'{data_template}/Training/model/{dataset_name}/{model.name}.h5')
+        model.save(f'{data_template}/Training/model/{dataset_name}/{dataset_name}_{model.name}_model.h5')
         
         print(f"X_train shape: {X_train.shape}")
         print(f"y_train shape: {y_train.shape}")
@@ -244,7 +247,7 @@ def training_DL(models, data_template, dataset_name, df, DL_args, train_test_df,
         )
 
         # Load the best model for evaluation
-        model.load_weights(f'{data_template}/Training/model/{dataset_name}/{model.name}.h5')
+        model.load_weights(f'{data_template}/Training/model/{dataset_name}/{dataset_name}_{model.name}_model.h5')
 
         # Evaluation on test data
         y_true, y_pred = [], []

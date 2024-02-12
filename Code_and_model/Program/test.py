@@ -103,8 +103,9 @@ def main():
         CheckWegihtFileCreated = creating_weight_file(weight_path)
         
         if CheckWegihtFileCreated == False:
-            label_counts = Counter(y_train)
-            total_labels = len(y_train)
+            filtered_labels = [label for label in y_train if label not in ('normal', 'BENIGN')]
+            label_counts = Counter(filtered_labels)
+            total_labels = len(filtered_labels)
             label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
             
             with open(weight_path, "w") as jsonfile: 
@@ -112,6 +113,7 @@ def main():
         else:
             with open(weight_path) as jsonfile:
                 label_percentages = json.load(jsonfile)
+                
         lowest_percent_attack = min(label_percentages, key=label_percentages.get)
         threshold = label_percentages[lowest_percent_attack]
 

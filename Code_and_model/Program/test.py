@@ -48,7 +48,6 @@ def main():
     parser.add_argument('--sequence_mode',
                         dest='sequence',
                         action='store_true',
-                        
                         help='The sequence mode show the network in sequence with the prediction of each attack')
     
     parser.add_argument('--debug',

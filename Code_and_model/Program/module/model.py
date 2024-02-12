@@ -34,24 +34,24 @@ def getModel():
 def sequential_models(window_size, n_features):
 
     models = {
-        'LSTM' : LSTM(window_size, n_features)
+        'LSTM' : lstm(window_size, n_features)
     }
 
     return models
 
-def LSTM(window_size, n_features):
+def lstm(window_size, n_features):
     model = Sequential()
-    model.add(LSTM(units=512, activation='tanh', input_shape=(window_size, n_features), return_sequences=True))
+    model.add(LSTM(512, input_shape=(window_size, n_features), return_sequences=True))
     model.add(Dropout(0.2))
-    model.add(LSTM(units=512, activation='tanh', return_sequences=True))
+    model.add(LSTM(512, return_sequences=True))
     model.add(Dropout(0.2))
-    model.add(LSTM(units=256, activation='tanh', return_sequences=True))
+    model.add(LSTM(256, return_sequences=True))
     model.add(Dropout(0.2))
-    model.add(LSTM(units=128, activation='tanh', return_sequences=True))
+    model.add(LSTM(128, return_sequences=True))
     model.add(Dropout(0.2))
-    model.add(LSTM(units=64, activation='tanh'))
+    model.add(LSTM(64))
     model.add(Dropout(0.2))
-    model.add(Dense(units=1, activation='sigmoid'))
+    model.add(Dense(1, activation='sigmoid'))
 
     # Compile the model
     optimizer = RMSprop(learning_rate=0.0001)

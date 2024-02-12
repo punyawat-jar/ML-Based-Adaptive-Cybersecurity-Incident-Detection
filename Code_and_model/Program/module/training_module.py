@@ -4,7 +4,7 @@ import gc
 
 import joblib
 from joblib import dump
-
+import datetime
 import numpy as np
 
 from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
@@ -14,6 +14,10 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
+from tensorflow.keras.callbacks import TensorBoard
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout
+from tensorflow.keras.optimizers import RMSprop
 
 from module.file_op import *
 from module.discord import *
@@ -143,73 +147,129 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}"
         result_df.to_csv(result_filename)
         gc.collect()
-        
-def rearrange_sequences(generator, df_index, batch_size, window_size, chunk_size=100):
-    num_batches = len(generator)
+
+
+
+def process_data(Data, train_index, test_index, window_size):
+    def rearrange_sequences(generator, index, window_size):
+        rearranged_data = []
+
+        for idx in tqdm(index, desc="Processing sequences"):
+            if idx >= window_size - 1:  # Ensure index has enough preceding samples for a full sequence
+                sequence_end = idx + 1  # Sequence ends at the current index (inclusive)
+                sequence_start = sequence_end - window_size  # Sequence starts 'window_size' samples before the end
+
+                batch_x = generator.data[sequence_start:sequence_end]  # Extract feature sequence
+                batch_y = generator.targets[idx]  # Corresponding label
+
+                rearranged_data.append((batch_x, batch_y))
+
+        return rearranged_data
+    # Process training data
+    print('Training data processing...')
+    train_data = rearrange_sequences(Data, train_index, window_size)
+    gc.collect()
     
-    rearranged_data = []  # This will store the final results
-
-    for chunk_start in tqdm(range(0, num_batches, chunk_size), desc="Processing chunks"):
-        chunk_end = min(chunk_start + chunk_size, num_batches)
-        for i in range(chunk_start, chunk_end):
-            batch_x, batch_y = generator[i]  # Access each batch from the generator
-
-            for j in range(batch_x.shape[0]):  # Process each sequence in the batch
-                sequence_start_index = i * batch_size + j
-                original_indices = df_index[sequence_start_index: sequence_start_index + window_size].tolist()
-                rearranged_data.append((batch_x[j], batch_y[j], original_indices))
-        
-        gc.collect()  # Suggest to the garbage collector to release unreferenced memory
-
-    return rearranged_data
-
-def training_DL(models, data_template, dataset_name, results, df, DL_args, train_test_index):
+    print('Testing data processing...')
+    test_data = rearrange_sequences(Data, test_index, window_size)
+    del rearrange_sequences
+    gc.collect()
+    return train_data, test_data
     
+def separate_features_labels(data, window_size):
+    features = np.array([item[0] for item in data], dtype=np.float32)  # item[0] is each sequence
+    labels = np.array([item[1] for item in data], dtype=np.float32)  # item[1] is the corresponding label
+
+    # Ensure features are reshaped to (number_of_sequences, window_size, number_of_features_per_timestep)
+    features = features.reshape(-1, window_size, features.shape[-1])
+
+    return features, labels
+
+    
+def training_DL(models, data_template, dataset_name, df, DL_args, train_test_df, train_test_index):
+    results = {}
     X = df.drop('label', axis=1)
     y = df['label']
     
     window_size, batch_size, epochs = DL_args
     
-    Data = TimeseriesGenerator(X, y, length=window_size, sampling_rate=1, batch_size=batch_size)
+    Data = TimeseriesGenerator(X, y, length=window_size, sampling_rate=1)
+    print(f'Data type {type(Data)}')
     train_index, test_index = train_test_index
+    print(train_index)
+    print(test_index)
+    print('Processing Training data...')
     
-    train_Data = rearrange_sequences(Data, train_index, batch_size, window_size, chunk_size=50)
-    test_data =  rearrange_sequences(Data, test_index, batch_size, window_size, chunk_size=50)
+    train_data, test_data = process_data(Data, train_index, test_index, window_size)
+    gc.collect()
+    X_train, y_train = separate_features_labels(train_data, window_size)
+    X_test, y_test = separate_features_labels(test_data, window_size)
     
     for name, model in models.items():
         models_save_path = f'{data_template}/Training/model/{dataset_name}'
-        conf_matrix_path = f'{data_template}/Training/confusion_martix/{dataset_name}'
+        conf_matrix_path = f'{data_template}/Training/confusion_matrix/{dataset_name}'
         checkpoint_path = f'{data_template}/Training/checkpoint/{dataset_name}'
 
         makePath(models_save_path)
         makePath(conf_matrix_path)
         makePath(checkpoint_path)
 
-        earlyStopping = EarlyStopping(monitor='val_loss', patience=1, verbose=0, mode='min')
-        best_model = ModelCheckpoint(checkpoint_path, save_best_only=True, monitor='val_loss', mode='min')
+        earlyStopping = EarlyStopping(monitor='loss', patience=2, verbose=0, mode='min')
+        best_model = ModelCheckpoint(checkpoint_path, save_best_only=True, monitor='loss', mode='min')
 
-        model.save(f'./{data_template}/model/{model.name}.h5')
+        log_dir = os.path.join(data_template, "Training", "logs", dataset_name, datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+        tensorboard_callback = TensorBoard(log_dir=log_dir)
+        print(f'Saving log path at: {log_dir}')
+        model.save(f'{data_template}/Training/model/{dataset_name}/{model.name}.h5')
+        
+        print(f"X_train shape: {X_train.shape}")
+        print(f"y_train shape: {y_train.shape}")
+        print(f"X_test shape: {X_test.shape}")
+        print(f"y_test shape: {y_test.shape}")
 
+        print(model.summary())
+        steps_per_epoch = np.ceil(len(X_train) / batch_size)
+        validation_steps = np.ceil(len(X_test) / batch_size)
+        
+        print(f'Steps per epoch: {steps_per_epoch}, vali: {validation_steps}')
         history = model.fit(
-            train_Data,
+            x=X_train, 
+            y=y_train,
             epochs=epochs,
-            callbacks=[best_model, earlyStopping],
-            validation_data=test_data,
-            validation_steps=test_data
+            steps_per_epoch=len(X_train) // batch_size,
+            verbose=1,
+            callbacks=[best_model, earlyStopping, tensorboard_callback],
+            validation_data=(X_test, y_test),
+            validation_steps=len(X_test) // batch_size
         )
 
-        # Collect all true labels and predictions
+        # Load the best model for evaluation
+        model.load_weights(f'{data_template}/Training/model/{dataset_name}/{model.name}.h5')
+
+        # Evaluation on test data
         y_true, y_pred = [], []
-        for X_batch, y_batch, _ in test_data:  # Assuming test_data is a list of tuples
-            y_batch_pred = model.predict(X_batch)
-            # Convert predictions to labels if necessary, e.g., using argmax for categorical outputs
+        for i in range(0, len(test_index), batch_size):
+            batch_indices = test_index[i:i + batch_size]
+            batch_x, batch_y = [], []
+
+            for idx in batch_indices:
+                sequence_start = idx - window_size + 1
+                sequence_end = idx + 1
+
+                if sequence_start >= 0 and sequence_end <= len(Data.data):
+                    x_sequence = Data.data[sequence_start:sequence_end]
+                    y_sequence = Data.targets[idx]
+
+                    batch_x.append(x_sequence)
+                    batch_y.append(y_sequence)
+
+            batch_x = np.array(batch_x)
+            y_batch_pred = model.predict(batch_x)
             y_batch_pred_labels = np.argmax(y_batch_pred, axis=1)
-            y_true.extend(y_batch)
+
+            y_true.extend(batch_y)
             y_pred.extend(y_batch_pred_labels)
-        
-        # Convert lists to numpy arrays for metric calculations
-        y_true = np.array(y_true)
-        y_pred = np.array(y_pred)
+
 
         # Compute metrics
         f1 = f1_score(y_true, y_pred, average='binary')  # Adjust 'average' as needed
@@ -218,21 +278,21 @@ def training_DL(models, data_template, dataset_name, results, df, DL_args, train
 
         conf_matrix = confusion_matrix(y_true, y_pred)
 
-
+        
         cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix)
         fig, ax = plt.subplots()
         cm_dis.plot(ax=ax)
-        fig.savefig(f'{data_template}/Training/confusion_martix/{dataset_name}/{dataset_name}_{name}_confusion_matrix.png')
+        fig.savefig(f'{data_template}/Training/confusion_matrix/{dataset_name}/{dataset_name}_{name}_confusion_matrix.png')
 
         plt.close(fig)
 
         val_acc = history.history['val_accuracy']
         val_loss=history.history['val_loss']
 
-
+        print(f'Finished Training {dataset_name} with : F1: {f1}, Acc: {val_acc}, Loss: {val_loss}')
         results[name] = [val_acc, val_loss, f1, precision, recall, conf_matrix]
         
         result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-        result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}"
+        result_filename = f"./{data_template}/Training/compare/evaluation_results_{dataset_name}"
         result_df.to_csv(result_filename)
         gc.collect()

@@ -47,19 +47,24 @@ def main():
                             type=str,
                             help='num_processes is the number of process by user, default setting is all process (cpu_count()).')
         
+        parser.add_argument('--model',
+                            dest='model_type',
+                            type=str,
+                            help='The model type of training (please enter ML or DL), default setting is ML.')
+        
         arg = parser.parse_args()
         
         num_processes = int(arg.num_processes) if arg.num_processes is not None else cpu_count()
-        
+        model_type = arg.model_type if arg.model_type is not None else 'ML'
         data_template = arg.data_template
         multiCPU = arg.multiCPU
         
         #File path
         os.chdir('./Code_and_model/Program') ##Change Working Directory
         
-        window_size = 512
-        batch_size = 128
-        epochs = 20
+        window_size = 128
+        batch_size = 32
+        epochs = 10
         
         DL_args = [window_size, batch_size, epochs]
         
@@ -99,111 +104,110 @@ def main():
         models = getModel()
         sequence_models = sequential_models(window_size, n_features)
         
-        
-        ## ML model Training
-        print(f'Using Multiprocessing with : {num_processes}')
-        try:
-            for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
-                
-                print(f'== reading {dataset_path} ==')
-                df = pd.read_csv(dataset_path, skiprows=progress_bar())
-                X = df.drop('label', axis=1)
-                y = df['label']
-
-                sub_X_train = X.loc[train_index]
-                sub_y_train = y.loc[train_index]
-                sub_X_test = X.loc[test_index]
-                sub_y_test = y.loc[test_index]
-
-                del df
-                del X
-                del y
-                gc.collect()
-                # Train and evaluate models on the current dataset
-                results = {}
-                
-                dataset_name = dataset_path.split('\\')[-1]
-                dataset_name = dataset_name.split('.')[0]
-                print(f'dataset_name : {dataset_name}')
-                
-                
-                if multiCPU:
-                    # multiprocessing pool
-                    args_list = [
-                                    (name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test)
-                                    for name, model in models.items()
-                                ]
-                    combined_results = {}
+        if model_type == 'ML':
+            ## ML model Training
+            print(f'Using Multiprocessing with : {num_processes}')
+            try:
+                for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
                     
-                    with Pool(processes=num_processes) as pool:
-                        results = pool.map(train_and_evaluate_Multiprocess, tqdm(args_list, desc=f"Training {data_template} Models"))
+                    print(f'== reading {dataset_path} ==')
+                    df = pd.read_csv(dataset_path, skiprows=progress_bar())
+                    X = df.drop('label', axis=1)
+                    y = df['label']
 
-                        for result, arg in zip(results, args_list):
+                    sub_X_train = X.loc[train_index]
+                    sub_y_train = y.loc[train_index]
+                    sub_X_test = X.loc[test_index]
+                    sub_y_test = y.loc[test_index]
+
+                    del df
+                    del X
+                    del y
+                    gc.collect()
+                    # Train and evaluate models on the current dataset
+                    results = {}
+                    
+                    dataset_name = dataset_path.split('\\')[-1]
+                    dataset_name = dataset_name.split('.')[0]
+                    print(f'dataset_name : {dataset_name}')
+                    
+                    
+                    if multiCPU:
+                        # multiprocessing pool
+                        args_list = [
+                                        (name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test)
+                                        for name, model in models.items()
+                                    ]
+                        combined_results = {}
+                        
+                        with Pool(processes=num_processes) as pool:
+                            results = pool.map(train_and_evaluate_Multiprocess, tqdm(args_list, desc=f"Training {data_template} Models"))
+
+                            for result, arg in zip(results, args_list):
+                                if result is not None:
+                                    name, _, _, dataset_name, _, _, _, _ = arg
+                                    combined_results[f"{dataset_name}_{name}"] = result
+                                else:
+                                    _, _, _, dataset_name, _, _, _, _ = arg
+                                    print(f"Skipped model for dataset: {dataset_name} due to ill-defined covariance.")
+
+                        for result in results:
                             if result is not None:
-                                name, _, _, dataset_name, _, _, _, _ = arg
-                                combined_results[f"{dataset_name}_{name}"] = result
-                            else:
-                                _, _, _, dataset_name, _, _, _, _ = arg
-                                print(f"Skipped model for dataset: {dataset_name} due to ill-defined covariance.")
+                                for model_name, metrics in result.items():
+                                    combined_results[model_name] = {
+                                        'accuracy': metrics[0],
+                                        'loss': metrics[1],
+                                        'f1': metrics[2],
+                                        'precision': metrics[3],
+                                        'recall': metrics[4],
+                                        'confusion_matrix': metrics[5],
+                                    }
+                        
+                        result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
+                        result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
+                        result_df.to_csv(result_filename)
 
-                    for result in results:
-                        if result is not None:
-                            for model_name, metrics in result.items():
-                                combined_results[model_name] = {
-                                    'accuracy': metrics[0],
-                                    'loss': metrics[1],
-                                    'f1': metrics[2],
-                                    'precision': metrics[3],
-                                    'recall': metrics[4],
-                                    'confusion_matrix': metrics[5],
-                                }
+                        gc.collect()
+                        
+                    else:
+                        print('Using single CPU')
+                        data = [sub_X_train, sub_X_test, sub_y_train, sub_y_test]
+                        train_and_evaluation_singleprocess(models, data_template, data, dataset_name, results)
+                        gc.collect()
                     
-                    result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-                    result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
-                    result_df.to_csv(result_filename)
+            except ValueError as ve:
+                if "covariance is ill defined" in str(ve):
+                    traceback.print_exc()
+                    print("Skipping due to ill-defined covariance.")
+            
 
-                    gc.collect()
+            print('== All training and evaluation is done ==')
+            #Assemble the results
+
+        elif model_type == 'DL':
+            ## DL model Training
+            
+            try:
+                print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+                
+                dfTrain = pd.read_csv(f'./{data_template}/train_test_folder/train_{data_template}/train.csv')
+                dfTest = pd.read_csv(f'./{data_template}/train_test_folder/test_{data_template}/test.csv')
+                train_test_index = [dfTrain['Unnamed: 0'], dfTest['Unnamed: 0']]
+                train_test_df = [dfTrain, dfTest]
+                for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
+                    print(f'== reading {dataset_path} ==')
+                    df = pd.read_csv(dataset_path, skiprows=progress_bar())
+                    dataset_name = dataset_path.split('\\')[-1]
+                    dataset_name = dataset_name.split('.')[0]
+                    print(f'dataset_name : {dataset_name}')
+
+                    training_DL(sequence_models, data_template, dataset_name, df, DL_args, train_test_df, train_test_index)
                     
-                else:
-                    print('Using single CPU')
-                    data = [sub_X_train, sub_X_test, sub_y_train, sub_y_test]
-                    train_and_evaluation_singleprocess(models, data_template, data, dataset_name, results)
-                    gc.collect()
-                
-        except ValueError as ve:
-            if "covariance is ill defined" in str(ve):
-                traceback.print_exc()
-                print("Skipping due to ill-defined covariance.")
+            except ValueError as ve:
+                print(ve)
+        else:
+            raise Exception('The model type is not regcognize (ML or DL)')
         
-
-        print('== All training and evaluation is done ==')
-        #Assemble the results
-
-        
-        ## DL model Training
-        
-        try:
-            print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-            
-            train_index = pd.read_csv(f'./{data_template}/train_test_folder/train_{data_template}/train.csv')['Unnamed: 0']
-            test_index = pd.read_csv(f'./{data_template}/train_test_folder/train_{data_template}/test.csv')['Unnamed: 0']
-            train_test_index = [train_index, test_index]
-            
-            for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
-                print(f'== reading {dataset_path} ==')
-                df = pd.read_csv(dataset_path, skiprows=progress_bar())
-                
-                results = {}
-
-                dataset_name = dataset_path.split('\\')[-1]
-                dataset_name = dataset_name.split('.')[0]
-                print(f'dataset_name : {dataset_name}')
-
-                training_DL(sequence_models, data_template, dataset_name, results, df, DL_args, train_test_index)
-                
-        except ValueError as ve:
-            print(ve)
-
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
         compare_df = best_model_for_attack(compare_data)
         compare_df.to_csv(f'{data_template}/model.csv')

@@ -73,7 +73,6 @@ def main():
         #Parameter & path setting
         models_loc = []
         weight_decimal = 3 # decimal position (e.g. 0.001)
-        # os.chdir('./Code_and_model/Program') ##Change Working Directory
         
         result_path = f'{data_template}/Result'
         weight_path = f'{data_template}/weight.json'
@@ -81,22 +80,20 @@ def main():
         check_file(chooese_csv)
         
         data_template = check_data_template(data_template)
-        df = getDataset(arg, data_template, net_file_loc)
+        # df = getDataset(arg, data_template, net_file_loc)
 
         
         df_train = pd.read_csv(glob.glob(f'{data_template}/train_test_folder/train_{data_template}/*')[0], skiprows=progress_bar())
         df_test = pd.read_csv(glob.glob(f'{data_template}/train_test_folder/test_{data_template}/*')[0], skiprows=progress_bar())
         
-        # train_index, test_index = check_train_test_index(df_train, df_test)
+        test_labels = df_test['label'].copy()
+        df_test = processAttack(df_test)
         
-        
-        X_train = df_train.drop(['label', 'Unnamed: 0'], axis=1)
+        # X_train = df_train.drop(['label', 'Unnamed: 0'], axis=1)
         X_test = df_test.drop(['label', 'Unnamed: 0'], axis=1)
         
         y_train = df_train['label']
         y_test = df_test['label']
-        
-        processAttack(y_test)
         
         y_test = y_test.values.astype(int)
         
@@ -108,12 +105,10 @@ def main():
             label_counts = Counter(filtered_labels)
             total_labels = len(filtered_labels)
             label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
-
             label_percentages = process_Largest_remainder_method(label_percentages, weight_decimal, weight_path)
         else:
             with open(weight_path) as jsonfile:
                 label_percentages = json.load(jsonfile)
-
         lowest_percent_attack = min(label_percentages, key=label_percentages.get)
         threshold = label_percentages[lowest_percent_attack]
 
@@ -145,8 +140,16 @@ def main():
         y_pred_df.index = result_df.index
         result_df = pd.concat([result_df, y_pred_df], axis=1)
         result_df.to_csv(f'{result_path}/attack_prediction_{data_template}.csv', index = True)
+        attack_labels = result_df['attack']
         
+    
+        precision, recall, f1_score, accuracy = classification_evaluation(test_labels, attack_labels)
+        print('Evaluation by binary classification')
         print(f'Accuracy : {evalu["accuracy"]}\nF1-score : {evalu["f1"]}\nPrecision : {evalu["precision"]}\nRecall : {evalu["recall"]}')
+        
+        print('Evaluation by multiclass classification')
+        print(f'Accuracy : {accuracy}\nF1-score : {f1_score}\nPrecision : {precision}\nRecall : {recall}')
+        
     except Exception as E:
         print(E)
         traceback.print_exc()

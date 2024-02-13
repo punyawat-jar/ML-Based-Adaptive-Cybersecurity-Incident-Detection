@@ -44,31 +44,35 @@ def best_model_for_attack(model_folder):            ## If the model's evaluation
         'precision': [],
         'recall': []
     }
+    
+    model_priority = list(getModel().keys())
+    
+    for model in model_folder:
+        modelname = model.split('_')[-1].split('.')[0]
+        df = pd.read_csv(model)
+        
+        df['f1'] = pd.to_numeric(df['f1'], errors='coerce')
+        df['accuracy'] = pd.to_numeric(df['accuracy'], errors='coerce')
+        
+        
+        
+        df['f1'] = np.floor(df['f1'] * 1000) / 1000
+        df['accuracy'] = np.floor(df['accuracy'] * 1000) / 1000
 
-    model_priority = list(getModel().keys())  # Assuming getModel() returns a dict with model names as keys
-
-    for model_path in model_folder:
-        model_name = model_path.split('_')[-1].split('.')[0]
-        df = pd.read_csv(model_path).sort_values(by=['f1', 'accuracy'], ascending=[False, False])
+        df.sort_values(['f1', 'accuracy'], ascending=[False, False], inplace=True)
 
         if df.empty:
-            append_default_values(bestmodel, model_name)
+            append_default_values(bestmodel, modelname)
         else:
             if len(df) > 1 and df.iloc[0]['f1'] == df.iloc[1]['f1'] and df.iloc[0]['accuracy'] == df.iloc[1]['accuracy']:
                 top_models = df[(df['f1'] == df.iloc[0]['f1']) & (df['accuracy'] == df.iloc[0]['accuracy'])]
                 selected_model = select_model_based_on_priority(top_models, model_priority)
             else:
                 selected_model = df.iloc[0]
-
-            append_model_data(bestmodel, model_name, selected_model)
+            
+            append_model_data(bestmodel, modelname, selected_model)
 
     return pd.DataFrame(data=bestmodel)
-
-def select_model_based_on_priority(top_models, model_priority):
-    # Sort top_models based on the order in model_priority
-    top_models['priority'] = top_models['model'].apply(lambda x: model_priority.index(x) if x in model_priority else len(model_priority))
-    top_models.sort_values(by='priority', inplace=True)
-    return top_models.iloc[0]
 
 def append_default_values(bestmodel, modelname):
     bestmodel['attack'].append(modelname)
@@ -80,7 +84,7 @@ def append_default_values(bestmodel, modelname):
     
 def append_model_data(bestmodel, modelname, selected_model):
     bestmodel['attack'].append(modelname)
-    bestmodel['model'].append(selected_model['model'])
+    bestmodel['model'].append(selected_model['Unnamed: 0'])
     bestmodel['accuracy'].append(selected_model['accuracy'])
     bestmodel['f1'].append(selected_model['f1'])
     bestmodel['precision'].append(selected_model['precision'])
@@ -88,8 +92,8 @@ def append_model_data(bestmodel, modelname, selected_model):
 
 def select_model_based_on_priority(top_models, model_priority):
     for priority_model in model_priority:
-        if priority_model in top_models['model'].values:
-            return top_models[top_models['model'] == priority_model].iloc[0]
+        if priority_model in top_models['Unnamed: 0'].values:
+            return top_models[top_models['Unnamed: 0'] == priority_model].iloc[0]
     return top_models.iloc[0]
 
 
@@ -179,23 +183,21 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         save_model(model, models_save_path, saving_args)
         gc.collect()
 
-def update_evaluation_results(result_df, dataset_name, data_template):
-    result_df.columns = ["model"] + list(result_df.columns[1:])
-    
+def update_evaluation_results(result_df, data_template, dataset_name):
     result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
     
     if os.path.exists(result_filename):
-        existing_df = pd.read_csv(result_filename, header=0)
-        if existing_df.columns[0] != 'model':
-            existing_df.rename(columns={existing_df.columns[0]: "model"}, inplace=True)
+        existing_df = pd.read_csv(result_filename, index_col=0)
         
-        for model in result_df['model']:
-            for metric in ['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix']:
-                existing_df.loc[existing_df['model'] == model, metric] = result_df.loc[result_df['model'] == model, metric].values[0]
+        for model in result_df.index:
+            if model in existing_df.index:
+                existing_df.loc[model] = result_df.loc[model]
+            else:
+                existing_df = pd.concat([existing_df, result_df.loc[[model]]])
         
-        existing_df.to_csv(result_filename, index=False)
+        existing_df.to_csv(result_filename)
     else:
-        result_df.to_csv(result_filename, index=False)
+        result_df.to_csv(result_filename)
     
 
 

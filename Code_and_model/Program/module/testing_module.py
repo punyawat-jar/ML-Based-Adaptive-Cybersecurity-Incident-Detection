@@ -58,11 +58,14 @@ def read_model(models_loc, df, weight_data):
 
     return models
 
-def processAttack(np_array):
+def processAttack(df):
     print('processAttack Data...')
-    np_array[(np_array == 'normal') | (np_array == 'BENIGN')] = 0
-    np_array[np_array != 0] = 1
-    return np_array
+    # np_array[(np_array == 'normal') | (np_array == 'BENIGN')] = 0
+    # np_array[np_array != 0] = 1
+    df.loc[df['label'].isin(['normal', 'BENIGN']), 'label'] = 0
+    # Replace all other values with 1
+    df.loc[df['label'] != 0, 'label'] = 1
+    return df
 
 def printModel(models):
     for model in models:
@@ -77,8 +80,6 @@ def predictionModel(models, X_test, threshold):
         y_pred = model.model.predict(X_test)
         
         return y_pred, model.weight, model.attack_type
-
-    
     start_all = time.perf_counter()
     with concurrent.futures.ThreadPoolExecutor() as executor:
         for model in models:
@@ -120,6 +121,57 @@ def integrate_predictions(predictions, threshold):
     
     return final_pred
 
+def predictionModel(models, X_test, threshold):
+    # Function to make predictions with a single model
+    futures = []
+
+    def make_prediction(model, X_test):
+        y_pred = model.model.predict(X_test)
+
+        return y_pred, model.weight, model.attack_type
+
+
+    start_all = time.perf_counter()
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        for model in models:
+            future = executor.submit(make_prediction, model, X_test)
+            futures.append(future)
+
+    attacks_per_row = np.empty((len(X_test), 0)).tolist()
+
+    for future in futures:
+        y_pred, _, attack_type = future.result()
+        # Vectorize the appending process
+        indices = np.where(y_pred == 1)[0]
+        for i in indices:
+            attacks_per_row[i].append(attack_type)
+
+
+    predictions = [future.result() for future in futures]
+
+    attack_df = pd.DataFrame({'attack': attacks_per_row})
+
+    final_prediction = integrate_predictions(predictions, threshold)
+    end_all = time.perf_counter()
+
+    prediction_time = end_all - start_all
+
+    return final_prediction, prediction_time, attack_df
+
+def integrate_predictions(predictions, threshold):
+    # linear integration: w1x1 + w2x2 + ...
+    weighted_sum = np.sum([pred * weight for pred, weight, _ in predictions], axis=0)
+
+    # Normalize by total weight
+    total_weight = sum(weight for _, weight, _ in predictions)
+
+    final_pred = weighted_sum / total_weight
+
+    # Threshold condition to each element
+    final_pred = np.where(final_pred >= threshold, 1, 0)
+
+    return final_pred
+
 def prediction(models, sequence_mode, threshold, X_test):
     if sequence_mode == True:           #Sequence mode is to check the prediction for each element.
         print('== The model operation in sequence mode ==')
@@ -142,7 +194,7 @@ def prediction(models, sequence_mode, threshold, X_test):
         print(f'The predictioin shape :{predict.shape}')
         print(f'prediction time in mean : {np.mean(pre_time)} seconds')
         return predict, pre_time, attack_df
-    
+
     else:
         print('== The model opeartion in prediction overall mode')
         print('Predicting...')
@@ -154,6 +206,7 @@ def prediction(models, sequence_mode, threshold, X_test):
 
         print(f'The prediction : {pred} using {time:0.4f} seconds')
         return pred, time, attack_df
+
     
 # def attacks_MoreThanOne(attack_df):
 #     mask = attack_df['attack'].apply(lambda x: len(x) > 1)
@@ -232,7 +285,6 @@ def process_Largest_remainder_method(label_percentages, decimal, weight_path):
     label_percentages_fractional = {key: ((value - int(value))*(10**decimal)) - int((value - int(value))*(10**decimal)) for key, value in label_percentages.items()}
     
     ishundred = round(100 - sum(label_percentages_rounded.values()),decimal)
-
     if ishundred != 0:
         if ishundred < 0:   ## if the sum is over 100, will -- 0.001 each. From least weight of weight cut to most.
             sort_Ascending = dict(sorted(label_percentages_fractional.items(), key=lambda item: (item[1], item[0])))
@@ -252,7 +304,39 @@ def process_Largest_remainder_method(label_percentages, decimal, weight_path):
                 if ishundred == 0:
                     break
                 
-        with open(weight_path, "w") as jsonfile:
-            json.dump(label_percentages_rounded, jsonfile)
+    with open(weight_path, "w") as jsonfile:
+        json.dump(label_percentages_rounded, jsonfile)
 
-        return label_percentages_rounded
+    return label_percentages_rounded
+
+def classification_evaluation(test_labels, attack_labels):
+    true_positives = 0
+    false_positives = 0
+    false_negatives = 0
+    true_negatives = 0
+
+    # Iterate through all the labels and predictions
+    for true_label, predictions in zip(test_labels, attack_labels):
+        if isinstance(predictions, set):
+            predictions = list(predictions)  # Convert set to list if necessary
+        
+        if not predictions:  # Treat empty predictions as 'normal'
+            predictions = ['normal']
+
+        if true_label in predictions:
+            true_positives += 1  # True label is among the predictions
+            false_positives += len(predictions) - 1  # Other predictions are considered false positives
+        else:
+            false_negatives += 1  # True label was not predicted
+            false_positives += len(predictions)  # All predictions are considered false positives
+
+        # Assuming 'normal' is the negative class
+        if 'normal' in predictions and true_label == 'normal':
+            true_negatives += 1  # Correctly predicted normal
+
+    precision = true_positives / (true_positives + false_positives) if true_positives + false_positives > 0 else 0
+    recall = true_positives / (true_positives + false_negatives) if true_positives + false_negatives > 0 else 0
+    f1 = 2 * (precision * recall) / (precision + recall) if precision + recall > 0 else 0
+    accuracy = (true_positives + true_negatives) / (true_positives + true_negatives + false_positives + false_negatives)
+
+    return accuracy, f1, precision, recall

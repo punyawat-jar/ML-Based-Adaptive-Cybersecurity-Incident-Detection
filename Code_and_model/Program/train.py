@@ -167,7 +167,7 @@ def main():
                         result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
                         # result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
                         # result_df.to_csv(result_filename)
-                        update_evaluation_results(result_df, dataset_name, data_template)
+                        update_evaluation_results(result_df, data_template, dataset_name)
                         gc.collect()
                         
                     else:
@@ -206,9 +206,12 @@ def main():
                     
             except ValueError as ve:
                 print(ve)
+        elif (len(models)) == 0 or (len(sequence_models) == 0):
+            print('The model.py got no model to train...')
         else:
             raise Exception('The model type is not regcognize (ML or DL)')
         
+        print('Bestmodel calculation...')
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
         compare_df = best_model_for_attack(compare_data)
         compare_df.to_csv(f'{data_template}/model.csv')

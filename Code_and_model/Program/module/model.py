@@ -13,18 +13,18 @@ from tensorflow.keras.optimizers import RMSprop
 
 def getModel():
     models = {
-        # 'LogisticRegression': LogisticRegression(max_iter=10000),
-        # 'ExtraTrees': ExtraTreesClassifier(),
-        # 'LDA': LinearDiscriminantAnalysis(),
-        # 'QDA': QuadraticDiscriminantAnalysis(),
-        # 'DecisionTree': DecisionTreeClassifier(),
-        # 'RandomForest': RandomForestClassifier(),
-        # 'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
-        # 'GradientBoosting': GradientBoostingClassifier(),
-        # 'KNeighbors': KNeighborsClassifier(),
-        # 'GaussianNB': GaussianNB(),
-        # 'Perceptron': Perceptron(),
-        # 'AdaBoost': AdaBoostClassifier()
+        'LogisticRegression': LogisticRegression(max_iter=10000),
+        'ExtraTrees': ExtraTreesClassifier(),
+        'LDA': LinearDiscriminantAnalysis(),
+        'QDA': QuadraticDiscriminantAnalysis(),
+        'DecisionTree': DecisionTreeClassifier(),
+        'RandomForest': RandomForestClassifier(),
+        'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
+        'GradientBoosting': GradientBoostingClassifier(),
+        'KNeighbors': KNeighborsClassifier(),
+        'GaussianNB': GaussianNB(),
+        'Perceptron': Perceptron(),
+        'AdaBoost': AdaBoostClassifier()
     }
     
     return models
@@ -34,7 +34,7 @@ def getModel():
 def sequential_models(window_size, n_features):
 
     models = {
-        # 'LSTM' : lstm(window_size, n_features)
+        'LSTM' : lstm(window_size, n_features)
     }
 
     return models

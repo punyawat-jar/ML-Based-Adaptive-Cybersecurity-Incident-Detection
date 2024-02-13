@@ -60,7 +60,7 @@ def main():
         multiCPU = arg.multiCPU
         
         #File path
-        os.chdir('./Code_and_model/Program') ##Change Working Directory
+        # os.chdir('./Code_and_model/Program') ##Change Working Directory
         
         window_size = 128
         batch_size = 32
@@ -164,9 +164,9 @@ def main():
                                     }
                         
                         result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-                        result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
-                        result_df.to_csv(result_filename)
-
+                        # result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
+                        # result_df.to_csv(result_filename)
+                        update_evaluation_results(result_df, data_template, dataset_name)
                         gc.collect()
                         
                     else:

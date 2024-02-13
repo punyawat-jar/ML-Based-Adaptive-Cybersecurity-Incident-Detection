@@ -174,7 +174,29 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         save_model(model, models_save_path, saving_args)
         gc.collect()
 
+def update_evaluation_results(result_df, data_template, dataset_name):
+    result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
 
+    if os.path.exists(result_filename):
+
+        existing_df = pd.read_csv(result_filename)
+        
+        for index, row in result_df.iterrows():
+            model_name = row[0]
+            if model_name in existing_df.iloc[:,0].values:
+
+                existing_df.loc[existing_df.iloc[:,0] == model_name, existing_df.columns] = row.values
+            else:
+
+                existing_df = pd.concat([existing_df, pd.DataFrame([row.values], columns=existing_df.columns)], ignore_index=True)
+        
+
+        existing_df.to_csv(result_filename, index=False)
+    else:
+
+        result_df.to_csv(result_filename, index=False)
+    
+    
 
 
     
@@ -285,6 +307,6 @@ def training_DL(models, data_template, dataset_name, df, DL_args, train_test_df,
         results[name] = [val_acc, val_loss, f1, precision, recall, conf_matrix]
         
         result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-        result_filename = f"./{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
-        result_df.to_csv(result_filename)
+        update_evaluation_results(result_df, data_template, dataset_name)
+        
         gc.collect()

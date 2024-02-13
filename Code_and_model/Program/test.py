@@ -72,6 +72,7 @@ def main():
     try:
         #Parameter & path setting
         models_loc = []
+        weight_decimal = 3 # decimal position (e.g. 0.001)
         os.chdir('./Code_and_model/Program') ##Change Working Directory
         
         result_path = f'{data_template}/Result'
@@ -107,13 +108,12 @@ def main():
             label_counts = Counter(filtered_labels)
             total_labels = len(filtered_labels)
             label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
-            
-            with open(weight_path, "w") as jsonfile: 
-                json.dump(label_percentages, jsonfile)
+
+            label_percentages = process_Largest_remainder_method(label_percentages, weight_decimal, weight_path)
         else:
             with open(weight_path) as jsonfile:
                 label_percentages = json.load(jsonfile)
-                
+
         lowest_percent_attack = min(label_percentages, key=label_percentages.get)
         threshold = label_percentages[lowest_percent_attack]
 

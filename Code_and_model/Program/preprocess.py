@@ -74,7 +74,6 @@ def main():
         check_data_template(data_template)
         
 
-        
         makePath(f'./{data_template}')
         makePath(f'./{data_template}/dataset')
         makePath(f'./{data_template}/dataset/mix_dataset')

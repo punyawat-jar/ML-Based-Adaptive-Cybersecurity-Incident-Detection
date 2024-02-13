@@ -10,6 +10,10 @@ import time
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from collections import Counter
+import json
+
+
 from tqdm.auto import tqdm
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 from keras.models import load_model
@@ -221,3 +225,34 @@ def getDataset(arg, data_template, net_file_loc):
     print('-- Reading Dataset successfully --')
     
     return df
+
+    
+def process_Largest_remainder_method(label_percentages, decimal, weight_path):
+    label_percentages_rounded = {key: round(value, decimal) for key, value in label_percentages.items()}
+    label_percentages_fractional = {key: ((value - int(value))*(10**decimal)) - int((value - int(value))*(10**decimal)) for key, value in label_percentages.items()}
+    
+    ishundred = round(100 - sum(label_percentages_rounded.values()),decimal)
+
+    if ishundred != 0:
+        if ishundred < 0:   ## if the sum is over 100, will -- 0.001 each. From least weight of weight cut to most.
+            sort_Ascending = dict(sorted(label_percentages_fractional.items(), key=lambda item: (item[1], item[0])))
+            for label, _ in sort_Ascending.items():
+                label_percentages_rounded[label] -= (10**-decimal)
+                ishundred += (10**-decimal)
+
+                if ishundred == 0:
+                    break
+        else:               ## if the sum is less than 100, will ++ 0.001 each. From most weight of weight cut to least.
+            sort_Decending = dict(sorted(label_percentages_fractional.items(), key=lambda item: (-item[1], item[0])))
+            
+            for label, _ in sort_Decending.items():
+                label_percentages_rounded[label] += (10**-decimal)
+                ishundred -= (10**-decimal)
+
+                if ishundred == 0:
+                    break
+                
+        with open(weight_path, "w") as jsonfile:
+            json.dump(label_percentages_rounded, jsonfile)
+
+        return label_percentages_rounded

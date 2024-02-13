@@ -139,8 +139,13 @@ class SliderWindow:
         self.canvas.yview_scroll(int(-1*(event.delta/120)), "units")
 
     def save_data(self):
+        print('Saving Data...')
+        for i, key in enumerate(self.keys):
+            self.data[key] = self.slider_values[i]
+        
         with open(f'./{self.data_template}/weight.json', 'w') as file:
             json.dump(self.data, file, indent=4)
+        
         self.root.quit()
 
     def setup_buttons(self):
@@ -170,7 +175,9 @@ def main():
         check_file(f'./{data_template}/weight.json')
 
         root = tk.Tk()
-        root.geometry("600x400")
+        root.geometry("800x900")
+        root.resizable(False,True)
+
         app = SliderWindow(root, data_template)
         root.mainloop()
 

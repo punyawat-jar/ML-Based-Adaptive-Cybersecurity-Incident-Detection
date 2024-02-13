@@ -99,7 +99,7 @@ def train_and_evaluate_Multiprocess(args):
         name, model, data_template, dataset_name, sub_X_train, sub_y_train, sub_X_test, sub_y_test = args
         
         models_save_path = f'{data_template}/Training/model/{dataset_name}'
-        conf_matrix_path = f'{data_template}/Training/confusion_martix/{dataset_name}'
+        conf_matrix_path = f'{data_template}/Training/confusion_matrix/{dataset_name}'
         makePath(models_save_path)
         makePath(conf_matrix_path)
         
@@ -140,7 +140,7 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         sub_X_train, sub_X_test, sub_y_train, sub_y_test = data
         
         models_save_path = f'{data_template}/Training/model/{dataset_name}'
-        conf_matrix_path = f'{data_template}/Training/confusion_martix/{dataset_name}'
+        conf_matrix_path = f'{data_template}/Training/confusion_matrix/{dataset_name}'
         makePath(models_save_path)
         makePath(conf_matrix_path)
         
@@ -159,7 +159,7 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         cm_dis = ConfusionMatrixDisplay(confusion_matrix=conf_matrix)
         fig, ax = plt.subplots()
         cm_dis.plot(ax=ax)
-        fig.savefig(f'{data_template}/Training/confusion_martix/{dataset_name}/{dataset_name}_{name}_confusion_matrix.png')
+        fig.savefig(f'{data_template}/Training/confusion_matrix/{dataset_name}/{dataset_name}_{name}_confusion_matrix.png')
 
         plt.close(fig)
         
@@ -174,28 +174,29 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         save_model(model, models_save_path, saving_args)
         gc.collect()
 
-def update_evaluation_results(result_df, data_template, dataset_name):
+def update_evaluation_results(result_df, dataset_name, data_template):
+    
+    result_df.rename(columns={result_df.columns[0]: "model"}, inplace=True)
+    # Construct the file path
     result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
-
+    
+    # Check if the file exists
     if os.path.exists(result_filename):
-
+        # Read the existing data
         existing_df = pd.read_csv(result_filename)
         
-        for index, row in result_df.iterrows():
-            model_name = row[0]
-            if model_name in existing_df.iloc[:,0].values:
-
-                existing_df.loc[existing_df.iloc[:,0] == model_name, existing_df.columns] = row.values
-            else:
-
-                existing_df = pd.concat([existing_df, pd.DataFrame([row.values], columns=existing_df.columns)], ignore_index=True)
+        # Update existing DataFrame with new values from result_df based on the "model" column
+        for model in result_df['model']:
+            for metric in ['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix']:
+                existing_df.loc[existing_df['model'] == model, metric] = result_df.loc[result_df['model'] == model, metric].values[0]
         
-
+        # Save the updated DataFrame back to CSV
         existing_df.to_csv(result_filename, index=False)
     else:
-
+        # If the file doesn't exist, save result_df as a new CSV file
         result_df.to_csv(result_filename, index=False)
-    
+
+    print("Evaluation results updated successfully!")
     
 
 

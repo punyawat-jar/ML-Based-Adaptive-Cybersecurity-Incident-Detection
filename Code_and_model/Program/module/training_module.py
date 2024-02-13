@@ -21,6 +21,7 @@ from tensorflow.keras.optimizers import RMSprop
 
 from module.file_op import *
 from module.discord import *
+from module.model import getModel
 import warnings
 
 warnings.filterwarnings('ignore', category=FutureWarning)
@@ -33,7 +34,7 @@ class joblib_model:
         self.model = joblib.load(model)
         self.weight = weight
 
-def best_model_for_attack(model_folder):
+def best_model_for_attack(model_folder):            ## If the model's evaluation f1 and acc are equal, then use the priority model from user input 
     bestmodel = {
         'attack': [],
         'model': [],
@@ -43,28 +44,49 @@ def best_model_for_attack(model_folder):
         'recall': []
     }
     
+    model_priority = list(getModel().keys())
+    
     for model in model_folder:
         modelname = model.split('_')[-1].split('.')[0]
         df = pd.read_csv(model).sort_values(['f1', 'accuracy'], ascending=[False, False])
 
-        # Check if the DataFrame is empty
         if df.empty:
-            bestmodel['attack'].append(modelname)
-            bestmodel['model'].append(None)
-            bestmodel['accuracy'].append(None)
-            bestmodel['f1'].append(None)
-            bestmodel['precision'].append(None)
-            bestmodel['recall'].append(None)
+            append_default_values(bestmodel, modelname)
         else:
-            bestmodel['attack'].append(modelname)
-            bestmodel['model'].append(df.iloc[0].iloc[0])
-            bestmodel['accuracy'].append(df.iloc[0]['accuracy'])
-            bestmodel['f1'].append(df.iloc[0]['f1'])
-            bestmodel['precision'].append(df.iloc[0]['precision'])
-            bestmodel['recall'].append(df.iloc[0]['recall'])
+            if len(df) > 1 and df.iloc[0]['f1'] == df.iloc[1]['f1'] and df.iloc[0]['accuracy'] == df.iloc[1]['accuracy']:
+                
+                top_models = df[(df['f1'] == df.iloc[0]['f1']) & (df['accuracy'] == df.iloc[0]['accuracy'])]
+                selected_model = select_model_based_on_priority(top_models, model_priority)
+            else:
+                selected_model = df.iloc[0]
+            
+            append_model_data(bestmodel, modelname, selected_model)
 
     return pd.DataFrame(data=bestmodel)
+
+def append_default_values(bestmodel, modelname):
+    bestmodel['attack'].append(modelname)
+    bestmodel['model'].append(None)
+    bestmodel['accuracy'].append(None)
+    bestmodel['f1'].append(None)
+    bestmodel['precision'].append(None)
+    bestmodel['recall'].append(None)
     
+def append_model_data(bestmodel, modelname, selected_model):
+    bestmodel['attack'].append(modelname)
+    bestmodel['model'].append(selected_model['model'])
+    bestmodel['accuracy'].append(selected_model['accuracy'])
+    bestmodel['f1'].append(selected_model['f1'])
+    bestmodel['precision'].append(selected_model['precision'])
+    bestmodel['recall'].append(selected_model['recall'])
+
+def select_model_based_on_priority(top_models, model_priority):
+    for priority_model in model_priority:
+        if priority_model in top_models['model'].values:
+            return top_models[top_models['model'] == priority_model].iloc[0]
+    return top_models.iloc[0]
+
+
 def save_model(model, path, args):
     name, model, dataset_name = args
     model_filename = f"{path}/{dataset_name}_{name}_model.joblib"

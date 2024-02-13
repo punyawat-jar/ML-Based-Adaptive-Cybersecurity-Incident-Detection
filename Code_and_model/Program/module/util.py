@@ -1,9 +1,11 @@
 import pandas as pd
+import gc
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
+from tqdm import tqdm
+import numpy as np
 
 def progress_bar(*args, **kwargs):
-    from tqdm import tqdm
     bar = tqdm(*args, **kwargs)
 
     def checker(x):
@@ -41,3 +43,37 @@ def check_data_template(data_template):
         ## In cases the it is not the default dataset (NSL-KDD, CIC-IDS2017). Please implements the data_template after this line.
         raise Exception('Please enter the default dataset or implements the training dataset besed on your dataset')
     return data_template
+
+
+def process_data(Data, train_index, test_index, window_size):
+    def rearrange_sequences(generator, index, window_size):
+        rearranged_data = []
+
+        for idx in tqdm(index, desc="Processing sequences"):
+            if idx >= window_size - 1:
+                sequence_end = idx + 1
+                sequence_start = sequence_end - window_size 
+                
+                batch_x = generator.data[sequence_start:sequence_end]
+                batch_y = generator.targets[idx] 
+
+                rearranged_data.append((batch_x, batch_y))
+
+        return rearranged_data
+    # Process training data
+    print('Training data processing...')
+    train_data = rearrange_sequences(Data, train_index, window_size)
+    gc.collect()
+    
+    print('Testing data processing...')
+    test_data = rearrange_sequences(Data, test_index, window_size)
+    del rearrange_sequences
+    gc.collect()
+    return train_data, test_data
+    
+def separate_features_labels(data, window_size):
+    features = np.array([item[0] for item in data], dtype=np.float32)
+    labels = np.array([item[1] for item in data], dtype=np.float32) 
+    features = features.reshape(-1, window_size, features.shape[-1])
+
+    return features, labels

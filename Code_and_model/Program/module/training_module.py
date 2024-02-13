@@ -22,6 +22,7 @@ from tensorflow.keras.optimizers import RMSprop
 from module.file_op import *
 from module.discord import *
 from module.model import getModel
+from module.util import *
 import warnings
 
 warnings.filterwarnings('ignore', category=FutureWarning)
@@ -175,40 +176,6 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
 
 
 
-def process_data(Data, train_index, test_index, window_size):
-    def rearrange_sequences(generator, index, window_size):
-        rearranged_data = []
-
-        for idx in tqdm(index, desc="Processing sequences"):
-            if idx >= window_size - 1:  # Ensure index has enough preceding samples for a full sequence
-                sequence_end = idx + 1  # Sequence ends at the current index (inclusive)
-                sequence_start = sequence_end - window_size  # Sequence starts 'window_size' samples before the end
-
-                batch_x = generator.data[sequence_start:sequence_end]  # Extract feature sequence
-                batch_y = generator.targets[idx]  # Corresponding label
-
-                rearranged_data.append((batch_x, batch_y))
-
-        return rearranged_data
-    # Process training data
-    print('Training data processing...')
-    train_data = rearrange_sequences(Data, train_index, window_size)
-    gc.collect()
-    
-    print('Testing data processing...')
-    test_data = rearrange_sequences(Data, test_index, window_size)
-    del rearrange_sequences
-    gc.collect()
-    return train_data, test_data
-    
-def separate_features_labels(data, window_size):
-    features = np.array([item[0] for item in data], dtype=np.float32)  # item[0] is each sequence
-    labels = np.array([item[1] for item in data], dtype=np.float32)  # item[1] is the corresponding label
-
-    # Ensure features are reshaped to (number_of_sequences, window_size, number_of_features_per_timestep)
-    features = features.reshape(-1, window_size, features.shape[-1])
-
-    return features, labels
 
     
 def training_DL(models, data_template, dataset_name, df, DL_args, train_test_df, train_test_index):

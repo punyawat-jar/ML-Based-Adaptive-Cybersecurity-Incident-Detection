@@ -44,26 +44,31 @@ def best_model_for_attack(model_folder):            ## If the model's evaluation
         'precision': [],
         'recall': []
     }
-    
-    model_priority = list(getModel().keys())
-    
-    for model in model_folder:
-        modelname = model.split('_')[-1].split('.')[0]
-        df = pd.read_csv(model).sort_values(['f1', 'accuracy'], ascending=[False, False])
+
+    model_priority = list(getModel().keys())  # Assuming getModel() returns a dict with model names as keys
+
+    for model_path in model_folder:
+        model_name = model_path.split('_')[-1].split('.')[0]
+        df = pd.read_csv(model_path).sort_values(by=['f1', 'accuracy'], ascending=[False, False])
 
         if df.empty:
-            append_default_values(bestmodel, modelname)
+            append_default_values(bestmodel, model_name)
         else:
             if len(df) > 1 and df.iloc[0]['f1'] == df.iloc[1]['f1'] and df.iloc[0]['accuracy'] == df.iloc[1]['accuracy']:
-                
                 top_models = df[(df['f1'] == df.iloc[0]['f1']) & (df['accuracy'] == df.iloc[0]['accuracy'])]
                 selected_model = select_model_based_on_priority(top_models, model_priority)
             else:
                 selected_model = df.iloc[0]
-            
-            append_model_data(bestmodel, modelname, selected_model)
+
+            append_model_data(bestmodel, model_name, selected_model)
 
     return pd.DataFrame(data=bestmodel)
+
+def select_model_based_on_priority(top_models, model_priority):
+    # Sort top_models based on the order in model_priority
+    top_models['priority'] = top_models['model'].apply(lambda x: model_priority.index(x) if x in model_priority else len(model_priority))
+    top_models.sort_values(by='priority', inplace=True)
+    return top_models.iloc[0]
 
 def append_default_values(bestmodel, modelname):
     bestmodel['attack'].append(modelname)
@@ -175,28 +180,22 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         gc.collect()
 
 def update_evaluation_results(result_df, dataset_name, data_template):
+    result_df.columns = ["model"] + list(result_df.columns[1:])
     
-    result_df.rename(columns={result_df.columns[0]: "model"}, inplace=True)
-    # Construct the file path
     result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
     
-    # Check if the file exists
     if os.path.exists(result_filename):
-        # Read the existing data
-        existing_df = pd.read_csv(result_filename)
+        existing_df = pd.read_csv(result_filename, header=0)
+        if existing_df.columns[0] != 'model':
+            existing_df.rename(columns={existing_df.columns[0]: "model"}, inplace=True)
         
-        # Update existing DataFrame with new values from result_df based on the "model" column
         for model in result_df['model']:
             for metric in ['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix']:
                 existing_df.loc[existing_df['model'] == model, metric] = result_df.loc[result_df['model'] == model, metric].values[0]
         
-        # Save the updated DataFrame back to CSV
         existing_df.to_csv(result_filename, index=False)
     else:
-        # If the file doesn't exist, save result_df as a new CSV file
         result_df.to_csv(result_filename, index=False)
-
-    print("Evaluation results updated successfully!")
     
 
 

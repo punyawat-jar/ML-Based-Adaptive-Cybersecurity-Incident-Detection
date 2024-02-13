@@ -30,7 +30,7 @@ def main():
                         required=True,
                         help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
 
-    parser.add_argument('--chooese_model',
+    parser.add_argument('--chooese_model_file',
                         dest='chooese_csv',
                         type=str,
                         help="The csv file's location for input an integration's models. The csv file must contains attack column which match with model column.")
@@ -73,7 +73,7 @@ def main():
         #Parameter & path setting
         models_loc = []
         weight_decimal = 3 # decimal position (e.g. 0.001)
-        os.chdir('./Code_and_model/Program') ##Change Working Directory
+        # os.chdir('./Code_and_model/Program') ##Change Working Directory
         
         result_path = f'{data_template}/Result'
         weight_path = f'{data_template}/weight.json'

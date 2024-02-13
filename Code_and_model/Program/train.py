@@ -104,7 +104,8 @@ def main():
         models = getModel()
         sequence_models = sequential_models(window_size, n_features)
         
-        if model_type == 'ML':
+        
+        if model_type == 'ML' and len(models) != 0:
             ## ML model Training
             print(f'Using Multiprocessing with : {num_processes}')
             try:
@@ -184,7 +185,7 @@ def main():
             print('== All training and evaluation is done ==')
             #Assemble the results
 
-        elif model_type == 'DL':
+        elif model_type == 'DL' and len(sequence_models) != 0:
             ## DL model Training
             
             try:

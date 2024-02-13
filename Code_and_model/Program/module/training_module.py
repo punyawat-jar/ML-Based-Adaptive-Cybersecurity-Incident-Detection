@@ -285,6 +285,6 @@ def training_DL(models, data_template, dataset_name, df, DL_args, train_test_df,
         results[name] = [val_acc, val_loss, f1, precision, recall, conf_matrix]
         
         result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-        result_filename = f"./{data_template}/Training/compare/evaluation_results_{dataset_name}"
+        result_filename = f"./{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
         result_df.to_csv(result_filename)
         gc.collect()

@@ -1,3 +1,0 @@
-,accuracy,loss,f1,precision,recall,confusion_matrix
-LSTM,[0.9953718185424805],[0.03201475739479065],0.0,0.0,0.0,"[[44304     0]
- [  206     0]]"

@@ -1,7 +1,7 @@
 # Machine Learning Based Adaptive Cybersecurity Incident Detection
 
 ## To train your data
-For running the program with your data's format, you need to preprocess the data based on your criteria. The data will be trained with the scikit-learn machine learning models. 
+For running the program with your data's format, you need to preprocess the data based on your criteria. The data will be trained with the scikit-learn machine learning models. We use python version 3.10.13 to train and evaluate the Multimodel.
 
 ## How to use (By demo)
 To setting the conda environment, the requirements will be contained in `requirements.txt`, which you can use `pip` to install packages.

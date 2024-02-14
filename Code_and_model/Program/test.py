@@ -30,44 +30,44 @@ def main():
                         required=True,
                         help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
 
-    parser.add_argument('--chooese_model_file',
-                        dest='chooese_csv',
-                        type=str,
-                        help="The csv file's location for input an integration's models. The csv file must contains attack column which match with model column.")
+    # parser.add_argument('--chooese_model_file',
+    #                     dest='chooese_csv',
+    #                     type=str,
+    #                     help="The csv file's location for input an integration's models. The csv file must contains attack column which match with model column.")
     
-    parser.add_argument('--model',
-                        dest='model_loc',
-                        type=str,
-                        help='The trained models loaction.')
+    # parser.add_argument('--model',
+    #                     dest='model_loc',
+    #                     type=str,
+    #                     help='The trained models loaction.')
     
-    parser.add_argument('--network',
-                        dest='net_file_loc',
-                        type=str,
-                        help='The netowrk file location (.csv)')
+    # parser.add_argument('--network',
+    #                     dest='net_file_loc',
+    #                     type=str,
+    #                     help='The netowrk file location (.csv)')
 
     parser.add_argument('--sequence_mode',
                         dest='sequence',
                         action='store_true',
                         help='The sequence mode show the network in sequence with the prediction of each attack')
     
-    parser.add_argument('--debug',
-                        dest='debug',
-                        type=bool,
-                        default=True,
-                        help='The debug model show the list of the prediction categories that might be an attack of the model.')
+    # parser.add_argument('--debug',
+    #                     dest='debug',
+    #                     type=bool,
+    #                     default=True,
+    #                     help='The debug model show the list of the prediction categories that might be an attack of the model.')
 
     arg = parser.parse_args()
 
     data_template = arg.data_template
 
-    chooese_csv = arg.chooese_csv if arg.chooese_csv is not None else f'./{data_template}/model.csv'
+    chooese_csv = f'./{data_template}/model.csv'
 
-    model_loc =  arg.model_loc if arg.model_loc is not None else f'{data_template}/Training/model'
+    model_loc =  f'{data_template}/Training/model'
 
-    net_file_loc = arg.net_file_loc
+    # net_file_loc = arg.net_file_loc
 
     sequence_mode = arg.sequence
-    debug_mode = arg.debug
+    # debug_mode = arg.debug
     
     try:
         #Parameter & path setting

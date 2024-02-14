@@ -94,18 +94,18 @@ def main():
 
         train_test_folder = [f'{data_template}/train_test_folder/train_{data_template}',
                             f'{data_template}/train_test_folder/test_{data_template}']
-        
+        print('Processing Training Dataset...')
         train_combined = pd.concat([X_train_main, y_train_main], axis=1)
         test_combined = pd.concat([X_test_main, y_test_main], axis=1)
         
         train_combined.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
         test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
         
-        models = getModel()
-        sequence_models = sequential_models(window_size, n_features)
         
-        if model_type == 'ML':
+        
+        if model_type == 'ML' and len(getModel()) != 0:
             ## ML model Training
+            models = getModel()
             print(f'Using Multiprocessing with : {num_processes}')
             try:
                 for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
@@ -164,9 +164,9 @@ def main():
                                     }
                         
                         result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
-                        result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
-                        result_df.to_csv(result_filename)
-
+                        # result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
+                        # result_df.to_csv(result_filename)
+                        update_evaluation_results(result_df, data_template, dataset_name)
                         gc.collect()
                         
                     else:
@@ -184,8 +184,9 @@ def main():
             print('== All training and evaluation is done ==')
             #Assemble the results
 
-        elif model_type == 'DL':
+        elif model_type == 'DL' and len(sequential_models(window_size, n_features)) != 0:
             ## DL model Training
+            sequence_models = sequential_models(window_size, n_features)
             
             try:
                 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
@@ -205,9 +206,12 @@ def main():
                     
             except ValueError as ve:
                 print(ve)
+        elif (len(models)) == 0 or (len(sequence_models) == 0):
+            print('The model.py got no model to train...')
         else:
             raise Exception('The model type is not regcognize (ML or DL)')
         
+        print('Bestmodel calculation...')
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
         compare_df = best_model_for_attack(compare_data)
         compare_df.to_csv(f'{data_template}/model.csv')

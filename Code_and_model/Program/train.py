@@ -94,19 +94,18 @@ def main():
 
         train_test_folder = [f'{data_template}/train_test_folder/train_{data_template}',
                             f'{data_template}/train_test_folder/test_{data_template}']
-        
+        print('Processing Training Dataset...')
         train_combined = pd.concat([X_train_main, y_train_main], axis=1)
         test_combined = pd.concat([X_test_main, y_test_main], axis=1)
         
         train_combined.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
         test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
         
-        models = getModel()
-        sequence_models = sequential_models(window_size, n_features)
         
         
-        if model_type == 'ML' and len(models) != 0:
+        if model_type == 'ML' and len(getModel()) != 0:
             ## ML model Training
+            models = getModel()
             print(f'Using Multiprocessing with : {num_processes}')
             try:
                 for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):
@@ -185,8 +184,9 @@ def main():
             print('== All training and evaluation is done ==')
             #Assemble the results
 
-        elif model_type == 'DL' and len(sequence_models) != 0:
+        elif model_type == 'DL' and len(sequential_models(window_size, n_features)) != 0:
             ## DL model Training
+            sequence_models = sequential_models(window_size, n_features)
             
             try:
                 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))

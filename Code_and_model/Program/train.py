@@ -103,7 +103,9 @@ def main():
         
         
         
-        if model_type == 'ML' and len(getModel()) != 0:
+        
+        if model_type == 'ML':
+            models = getModel()
             ## ML model Training
             models = getModel()
             print(f'Using Multiprocessing with : {num_processes}')
@@ -187,7 +189,6 @@ def main():
         elif model_type == 'DL' and len(sequential_models(window_size, n_features)) != 0:
             ## DL model Training
             sequence_models = sequential_models(window_size, n_features)
-            
             try:
                 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
                 

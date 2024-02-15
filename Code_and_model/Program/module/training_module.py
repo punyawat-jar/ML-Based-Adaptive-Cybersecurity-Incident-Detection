@@ -18,6 +18,7 @@ from tensorflow.keras.callbacks import TensorBoard
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.optimizers import RMSprop
+from sklearn.model_selection import KFold, cross_val_score
 
 from module.file_op import *
 from module.discord import *
@@ -42,7 +43,8 @@ def best_model_for_attack(model_folder):            ## If the model's evaluation
         'accuracy': [],
         'f1': [],
         'precision': [],
-        'recall': []
+        'recall': [],
+        'cv_score_mean': []
     }
     
     model_priority = list(getModel().keys())
@@ -53,23 +55,24 @@ def best_model_for_attack(model_folder):            ## If the model's evaluation
         
         df['f1'] = pd.to_numeric(df['f1'], errors='coerce')
         df['accuracy'] = pd.to_numeric(df['accuracy'], errors='coerce')
-        
+        df['cv_score_mean'] = pd.to_numeric(df['cv_score_mean'], errors='coerce')
         
         
         df['f1'] = np.floor(df['f1'] * 1000) / 1000
         df['accuracy'] = np.floor(df['accuracy'] * 1000) / 1000
+        df['cv_score_mean'] = np.floor(df['cv_score_mean'] * 1000) / 1000
 
-        df.sort_values(['f1', 'accuracy'], ascending=[False, False], inplace=True)
+        df.sort_values(['f1', 'accuracy', 'cv_score_mean'], ascending=[False, False, False], inplace=True)
 
         if df.empty:
             append_default_values(bestmodel, modelname)
         else:
-            if len(df) > 1 and df.iloc[0]['f1'] == df.iloc[1]['f1'] and df.iloc[0]['accuracy'] == df.iloc[1]['accuracy']:
-                top_models = df[(df['f1'] == df.iloc[0]['f1']) & (df['accuracy'] == df.iloc[0]['accuracy'])]
+            if (len(df) > 1) and (df.iloc[0]['f1'] == df.iloc[1]['f1']) and (df.iloc[0]['accuracy'] == df.iloc[1]['accuracy']) and (df.iloc[0]['cv_score_mean'] == df.iloc[1]['cv_score_mean']):
+                top_models = df[(df['f1'] == df.iloc[0]['f1']) & (df['accuracy'] == df.iloc[0]['accuracy']) & (df['cv_score_mean'] == df.iloc[0]['cv_score_mean'])]
                 selected_model = select_model_based_on_priority(top_models, model_priority)
             else:
                 selected_model = df.iloc[0]
-            
+
             append_model_data(bestmodel, modelname, selected_model)
 
     return pd.DataFrame(data=bestmodel)
@@ -81,6 +84,7 @@ def append_default_values(bestmodel, modelname):
     bestmodel['f1'].append(None)
     bestmodel['precision'].append(None)
     bestmodel['recall'].append(None)
+    bestmodel['cv_score_mean'].append(None)
     
 def append_model_data(bestmodel, modelname, selected_model):
     bestmodel['attack'].append(modelname)
@@ -89,6 +93,7 @@ def append_model_data(bestmodel, modelname, selected_model):
     bestmodel['f1'].append(selected_model['f1'])
     bestmodel['precision'].append(selected_model['precision'])
     bestmodel['recall'].append(selected_model['recall'])
+    bestmodel['cv_score_mean'].append(selected_model['cv_score_mean'])
 
 def select_model_based_on_priority(top_models, model_priority):
     for priority_model in model_priority:
@@ -114,6 +119,11 @@ def train_and_evaluate_Multiprocess(args):
         
         saving_args = [name, model, dataset_name]
         
+        #Cross Validation
+        k_folds = KFold(n_splits = 10)
+        CV_scores = cross_val_score(model, sub_X_train, sub_y_train, cv = k_folds)
+        
+        #Training
         model.fit(sub_X_train, sub_y_train)
         y_pred = model.predict(sub_X_test)
 
@@ -142,7 +152,7 @@ def train_and_evaluate_Multiprocess(args):
             print("Skipping due to ill-defined covariance for dataset:", dataset_name)
             return None
     
-    return {name: [accuracy, loss, f1, precision, recall, conf_matrix]}
+    return {name: [accuracy, loss, f1, precision, recall, conf_matrix, CV_scores.mean()]}
 
 def train_and_evaluation_singleprocess(models, data_template, data, dataset_name, results):
     for name, model in models.items():
@@ -155,6 +165,12 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         
         saving_args = [name, model, dataset_name]
         
+        print('Cross Validation...')
+        
+        k_folds = KFold(n_splits = 10)
+        CV_scores = cross_val_score(model, sub_X_train, sub_y_train, cv = k_folds)
+        
+        print('Training...')
         model.fit(sub_X_train, sub_y_train)
         y_pred = model.predict(sub_X_test)
 
@@ -174,9 +190,9 @@ def train_and_evaluation_singleprocess(models, data_template, data, dataset_name
         
         loss = np.mean(np.abs(y_pred - sub_y_test))
     
-        results[name] = [accuracy, loss, f1, precision, recall, conf_matrix]
+        results[name] = [accuracy, loss, f1, precision, recall, conf_matrix, CV_scores.mean()]
         
-        result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
+        result_df = pd.DataFrame.from_dict(results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix', 'cv_score_mean'])
         result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}"
         result_df.to_csv(result_filename)
         

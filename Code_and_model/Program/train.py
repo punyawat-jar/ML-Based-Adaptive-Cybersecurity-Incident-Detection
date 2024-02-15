@@ -161,9 +161,10 @@ def main():
                                         'precision': metrics[3],
                                         'recall': metrics[4],
                                         'confusion_matrix': metrics[5],
+                                        'cv_score_mean': metrics[6]
                                     }
                         
-                        result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix'])
+                        result_df = pd.DataFrame.from_dict(combined_results, orient='index', columns=['accuracy', 'loss', 'f1', 'precision', 'recall', 'confusion_matrix', 'cv_score_mean'])
                         # result_filename = f"{data_template}/Training/compare/evaluation_results_{dataset_name}.csv"
                         # result_df.to_csv(result_filename)
                         update_evaluation_results(result_df, data_template, dataset_name)

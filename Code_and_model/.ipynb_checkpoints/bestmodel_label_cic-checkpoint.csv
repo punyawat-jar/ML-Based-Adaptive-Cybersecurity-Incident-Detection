@@ -1,0 +1,15 @@
+,attack,model,accuracy,f1
+0,Bot.csv,DecisionTree,0.9999286544673588,0.9699223449633598
+1,DDoS.csv,DecisionTree,0.9999987953778166,0.9999916851118602
+2,DoS GoldenEye.csv,ExtraTrees,0.9999974052029832,0.9987036556909514
+3,DoS Hulk.csv,DecisionTree,0.9997940936427524,0.998972337087433
+4,DoS Slowhttptest.csv,DecisionTree,0.9999943050445916,0.9991660980971876
+5,DoS slowloris.csv,DecisionTree,0.9999979294876672,0.9997100608872136
+6,FTP-Patator.csv,ExtraTrees,0.9999746698486162,0.9974108322324968
+7,Heartbleed.csv,ExtraTrees,1.0,1.0
+8,Infiltration.csv,ExtraTrees,1.0,1.0
+9,PortScan.csv,DecisionTree,0.9994443048298852,0.9965107515096556
+10,SSH-Patator.csv,DecisionTree,1.0,1.0
+11,Web Attack-Brute Force.csv,DecisionTree,1.0,1.0
+12,Web Attack-Sql Injection.csv,DecisionTree,1.0,1.0
+13,Web Attack-XSS.csv,DecisionTree,1.0,1.0

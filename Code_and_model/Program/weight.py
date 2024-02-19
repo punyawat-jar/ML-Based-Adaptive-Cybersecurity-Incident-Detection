@@ -6,7 +6,7 @@ import platform
 import functools
 
 from module.file_op import check_file
-
+from module.testing_module import *
 class SliderWindow:
     def __init__(self, root, data_template):
         self.root = root
@@ -209,8 +209,11 @@ class SliderWindow:
 
     def save_data(self):
         print('Saving Data...')
+        
         for i, key in enumerate(self.keys):
             self.data[key] = self.slider_values[i]
+        
+        self.data = process_Largest_remainder_method(self.data, 3)
         
         with open(f'./{self.data_template}/weight.json', 'w') as file:
             json.dump(self.data, file, indent=4)

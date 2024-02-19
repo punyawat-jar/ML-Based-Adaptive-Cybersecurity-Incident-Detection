@@ -30,32 +30,11 @@ def main():
                         required=True,
                         help='The data struture. The default data structures is cic (CICIDS2017) and kdd (NSL-KDD). (*Require)')
 
-    # parser.add_argument('--chooese_model_file',
-    #                     dest='chooese_csv',
-    #                     type=str,
-    #                     help="The csv file's location for input an integration's models. The csv file must contains attack column which match with model column.")
-    
-    # parser.add_argument('--model',
-    #                     dest='model_loc',
-    #                     type=str,
-    #                     help='The trained models loaction.')
-    
-    # parser.add_argument('--network',
-    #                     dest='net_file_loc',
-    #                     type=str,
-    #                     help='The netowrk file location (.csv)')
-
     parser.add_argument('--sequence_mode',
                         dest='sequence',
                         action='store_true',
                         help='The sequence mode show the network in sequence with the prediction of each attack')
     
-    # parser.add_argument('--debug',
-    #                     dest='debug',
-    #                     type=bool,
-    #                     default=True,
-    #                     help='The debug model show the list of the prediction categories that might be an attack of the model.')
-
     arg = parser.parse_args()
 
     data_template = arg.data_template
@@ -100,18 +79,20 @@ def main():
         #Reading Weight from file, if exist. if not calculated from the dataset (Default)
         CheckWegihtFileCreated = creating_weight_file(weight_path)
         
-        if CheckWegihtFileCreated == False:
-            filtered_labels = [label for label in y_train if label not in ('normal', 'BENIGN')]
-            label_counts = Counter(filtered_labels)
-            total_labels = len(filtered_labels)
-            label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
-            label_percentages = process_Largest_remainder_method(label_percentages, weight_decimal, weight_path)
-        else:
+        og_attack_percent = read_attack_percent(y_train, weight_decimal)
+        
+        if CheckWegihtFileCreated == True:
+            print('Loading weight files')
             with open(weight_path) as jsonfile:
                 label_percentages = json.load(jsonfile)
-        lowest_percent_attack = min(label_percentages, key=label_percentages.get)
-        threshold = label_percentages[lowest_percent_attack]
-
+        else:
+            label_percentages = og_attack_percent
+            if weight_path is not None:
+                with open(weight_path, "w") as jsonfile:
+                    json.dump(label_percentages, jsonfile)
+        lowest_percent_attack = min(og_attack_percent, key=og_attack_percent.get)
+        threshold = og_attack_percent[lowest_percent_attack]
+        print(f'threshold = {threshold}')
         model_df = pd.read_csv(chooese_csv)[['attack', 'model']]
         model_df = model_df[model_df['attack'] != 'normal.csv']
         
@@ -120,7 +101,7 @@ def main():
         for file in files:
             for _, row in model_df.iterrows():
                 if row['attack'] in file and row['model'] in file:
-                    print(f'model file = {file}')
+                    print(f'Reading model:  {file}')
                     models_loc.append(file)
                     break
 
@@ -149,6 +130,19 @@ def main():
         
         print('Evaluation by multiclass classification')
         print(f'Accuracy : {accuracy}\nF1-score : {f1_score}\nPrecision : {precision}\nRecall : {recall}')
+        
+        print('Default attack percentage:')
+        print(f'test label : {test_labels}')
+        print(read_attack_percent(test_labels, weight_decimal))
+        
+        print('Adaptive tuning attack percentage:')
+        y_detect_bi = y_test & y_pred
+        
+        y_detect_mul = calculate_adaptive(test_labels, y_detect_bi, data_template)
+        print(read_attack_percent(y_detect_mul, weight_decimal))
+        
+        
+        
         
     except Exception as E:
         print(E)

@@ -279,8 +279,26 @@ def getDataset(arg, data_template, net_file_loc):
     
     return df
 
+def read_attack_percent(y, weight_decimal, weight_path = None):
+    filtered_labels = [label for label in y if label not in ('normal', 'BENIGN')]
+    label_counts = Counter(filtered_labels)
+    total_labels = len(filtered_labels)
+    label_percentages = {label: (count / total_labels) * 100 for label, count in label_counts.items()}
+    label_percentages = process_Largest_remainder_method(label_percentages, weight_decimal, weight_path)
+    return label_percentages
+
+def calculate_adaptive(test_labels, y_detect_bi, data_template):
+    # print(f'test_labels1 : {test_labels}')
+    for i, j in enumerate(y_detect_bi):
+        if j == 0:
+            if data_template == 'cic':
+                test_labels.iloc[i] = 'BENIGN'
+            else:
+                test_labels.iloc[i] = 'normal'
+    return test_labels
     
-def process_Largest_remainder_method(label_percentages, decimal, weight_path):
+    
+def process_Largest_remainder_method(label_percentages, decimal, weight_path = None):
     label_percentages_rounded = {key: round(value, decimal) for key, value in label_percentages.items()}
     label_percentages_fractional = {key: ((value - int(value))*(10**decimal)) - int((value - int(value))*(10**decimal)) for key, value in label_percentages.items()}
     
@@ -303,9 +321,7 @@ def process_Largest_remainder_method(label_percentages, decimal, weight_path):
 
                 if ishundred == 0:
                     break
-                
-    with open(weight_path, "w") as jsonfile:
-        json.dump(label_percentages_rounded, jsonfile)
+    
 
     return label_percentages_rounded
 
@@ -315,24 +331,22 @@ def classification_evaluation(test_labels, attack_labels):
     false_negatives = 0
     true_negatives = 0
 
-    # Iterate through all the labels and predictions
     for true_label, predictions in zip(test_labels, attack_labels):
         if isinstance(predictions, set):
-            predictions = list(predictions)  # Convert set to list if necessary
+            predictions = list(predictions)
         
-        if not predictions:  # Treat empty predictions as 'normal'
+        if not predictions:
             predictions = ['normal']
 
-        if true_label in predictions:
-            true_positives += 1  # True label is among the predictions
-            false_positives += len(predictions) - 1  # Other predictions are considered false positives
-        else:
-            false_negatives += 1  # True label was not predicted
-            false_positives += len(predictions)  # All predictions are considered false positives
+        if true_label in predictions: #If there's a true prediction in list
+            true_positives += 1                     #If there's a true prediction.
+            false_positives += len(predictions) - 1 #If there're other prediction, False.
+        else:                         #If there's no true prediction in list
+            false_negatives += 1                    #If prediction is false.
+            false_positives += len(predictions)     #If there're other prediction, False.
 
-        # Assuming 'normal' is the negative class
-        if 'normal' in predictions and true_label == 'normal':
-            true_negatives += 1  # Correctly predicted normal
+        if 'normal' in predictions and true_label == 'normal': # Correctly predicted normal
+            true_negatives += 1  
 
     precision = true_positives / (true_positives + false_positives) if true_positives + false_positives > 0 else 0
     recall = true_positives / (true_positives + false_negatives) if true_positives + false_negatives > 0 else 0

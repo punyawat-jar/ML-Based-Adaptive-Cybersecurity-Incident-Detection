@@ -1,0 +1,7 @@
+{
+    "Web Attack-Brute Force": 69.903,
+    "Web Attack-XSS": 28.964,
+    "Web Attack-Sql Injection": 0.809,
+    "PortScan": 0.162,
+    "DoS GoldenEye": 0.162
+}

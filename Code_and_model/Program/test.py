@@ -1,24 +1,13 @@
-import os
+
 import pandas as pd
-import numpy as np
 import argparse
 import glob
-import joblib
-import concurrent.futures
-import time
 import traceback
 import sys
 import json
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from tqdm.auto import tqdm
-from collections import Counter
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
-
 from module.file_op import *
-from module.util import progress_bar, check_data_template, scaler
+from module.util import progress_bar, check_data_template
 from module.testing_module import *
 
 def main():
@@ -55,11 +44,12 @@ def main():
         
         result_path = f'{data_template}/Result'
         weight_path = f'{data_template}/weight.json'
+        attack_percent_path = f'{data_template}/Result/attack_percent.json'
+        threshold_path = f'{data_template}/Result/threshold.json'
         
         check_file(chooese_csv)
         
         data_template = check_data_template(data_template)
-        # df = getDataset(arg, data_template, net_file_loc)
 
         
         df_train = pd.read_csv(glob.glob(f'{data_template}/train_test_folder/train_{data_template}/*')[0], skiprows=progress_bar())
@@ -88,10 +78,12 @@ def main():
         else:
             label_percentages = og_attack_percent
             if weight_path is not None:
-                with open(weight_path, "w") as jsonfile:
-                    json.dump(label_percentages, jsonfile)
+                writingJson(label_percentages, weight_path)
         lowest_percent_attack = min(og_attack_percent, key=og_attack_percent.get)
         threshold = og_attack_percent[lowest_percent_attack]
+        
+        writingJson({'threshold': threshold}, threshold_path)
+        
         print(f'threshold = {threshold}')
         model_df = pd.read_csv(chooese_csv)[['attack', 'model']]
         model_df = model_df[model_df['attack'] != 'normal.csv']
@@ -132,17 +124,17 @@ def main():
         print(f'Accuracy : {accuracy}\nF1-score : {f1_score}\nPrecision : {precision}\nRecall : {recall}')
         
         print('Default attack percentage:')
-        print(f'test label : {test_labels}')
         print(read_attack_percent(test_labels, weight_decimal))
         
         print('Adaptive tuning attack percentage:')
         y_detect_bi = y_test & y_pred
         
         y_detect_mul = calculate_adaptive(test_labels, y_detect_bi, data_template)
-        print(read_attack_percent(y_detect_mul, weight_decimal))
+        attack_percent = read_attack_percent(y_detect_mul, weight_decimal)
+        print(attack_percent)
         
-        
-        
+
+        writingJson(attack_percent, attack_percent_path)
         
     except Exception as E:
         print(E)

@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import json
 
 def makePath(path):
     if isinstance(path, list):
@@ -42,3 +43,7 @@ def checkFileName(paths):
 def list_of_file_contain(text, list):
     return [filename for filename in list if text in filename.lower()]
 
+def writingJson(data, path):
+    with open(path, 'w') as file:
+        json.dump(data, file)
+    print(f'Writing Json : {path}')

@@ -1,1 +1,16 @@
-{"PortScan": 28.533, "DoS Hulk": 41.348, "DDoS": 23.003, "DoS Slowhttptest": 0.989, "DoS GoldenEye": 1.849, "SSH-Patator": 1.06, "DoS slowloris": 1.041, "FTP-Patator": 1.426, "Web Attack-Brute Force": 0.271, "Web Attack-XSS": 0.117, "Bot": 0.351, "Heartbleed": 0.002, "Infiltration": 0.006, "Web Attack-Sql Injection": 0.004}
+{
+    "PortScan": 0.0,
+    "DoS Hulk": 27.917,
+    "DDoS": 7.061,
+    "DoS Slowhttptest": 19.032,
+    "DoS GoldenEye": 30.145,
+    "SSH-Patator": 0.0,
+    "DoS slowloris": 15.845,
+    "FTP-Patator": 0.0,
+    "Web Attack-Brute Force": 0.0,
+    "Web Attack-XSS": 0.0,
+    "Bot": 0.0,
+    "Heartbleed": 0.0,
+    "Infiltration": 0.0,
+    "Web Attack-Sql Injection": 0.0
+}

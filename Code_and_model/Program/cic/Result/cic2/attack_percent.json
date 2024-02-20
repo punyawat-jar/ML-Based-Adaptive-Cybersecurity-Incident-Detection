@@ -1,0 +1,9 @@
+{
+    "DDoS": 33.752,
+    "DoS Hulk": 60.588,
+    "DoS GoldenEye": 2.703,
+    "DoS slowloris": 1.5219999999999998,
+    "DoS Slowhttptest": 1.43,
+    "PortScan": 0.004,
+    "Web Attack-Sql Injection": 0.001
+}

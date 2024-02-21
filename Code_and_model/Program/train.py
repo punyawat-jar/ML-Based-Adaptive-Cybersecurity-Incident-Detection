@@ -215,7 +215,7 @@ def main():
         print('Bestmodel calculation...')
         compare_data = glob.glob(f'./{data_template}/Training/compare/*.csv')
         compare_df = best_model_for_attack(compare_data)
-        compare_df.to_csv(f'{data_template}/model.csv')
+        compare_df.to_csv(f'{data_template}/model.csv', index=False)
         
     except Exception as E:
         print("An unexpected error occurred:", E)

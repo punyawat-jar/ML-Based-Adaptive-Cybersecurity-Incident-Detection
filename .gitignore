@@ -958,3 +958,18 @@ Code_and_model/Program/cic/train_test_folder/train_cic/train.csv
 Code_and_model/Program/cic/Result/attack_prediction_cic.csv
 Code_and_model/Program/cic/Result/cic1/attack_prediction_cic.csv
 Code_and_model/Program/cic/Result/cic2/attack_prediction_cic.csv
+Code_and_model/cic/dataset/mix_dataset/Web Attack-XSS.csv
+Code_and_model/cic/dataset/normal_dataset/Bot.csv
+Code_and_model/cic/dataset/normal_dataset/DDoS.csv
+Code_and_model/cic/dataset/normal_dataset/DoS GoldenEye.csv
+Code_and_model/cic/dataset/normal_dataset/DoS Hulk.csv
+Code_and_model/cic/dataset/normal_dataset/DoS Slowhttptest.csv
+Code_and_model/cic/dataset/normal_dataset/DoS slowloris.csv
+Code_and_model/cic/dataset/normal_dataset/FTP-Patator.csv
+Code_and_model/cic/dataset/normal_dataset/Heartbleed.csv
+Code_and_model/cic/dataset/normal_dataset/Infiltration.csv
+Code_and_model/cic/dataset/normal_dataset/PortScan.csv
+Code_and_model/cic/dataset/normal_dataset/SSH-Patator.csv
+Code_and_model/cic/dataset/normal_dataset/Web Attack-Brute Force.csv
+Code_and_model/cic/dataset/normal_dataset/Web Attack-Sql Injection.csv
+Code_and_model/cic/dataset/normal_dataset/Web Attack-XSS.csv

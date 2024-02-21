@@ -78,21 +78,10 @@ FNRs = []
 TPRs = []
 TNRs = []
 backslash = "\\"
-main_df = pd.read_csv('./KDD.csv')
-X_main = main_df.drop('label', axis=1)
-y_main = main_df['label']
 
-# Split the main dataset
-X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
+train_indices = pd.read_csv('../Program\\kdd\\train_test_folder\\train_kdd\\train.csv')['Unnamed: 0']
+test_indices = pd.read_csv('../Program\\kdd\\train_test_folder\\test_kdd\\test.csv')['Unnamed: 0']
 
-main_train_combined = pd.concat([X_train_main, y_train_main], axis=1)
-main_test_combined = pd.concat([X_test_main, y_test_main], axis=1)
-
-
-
-# Get the indices of the training and testing sets
-train_index = X_train_main.index
-test_index = X_test_main.index
 
 saveTrain_test = './/train_test_folder'
 train_dir = './train_test_folder/train_kdd'
@@ -101,8 +90,8 @@ makePath(saveTrain_test)
 makePath(train_dir)
 makePath(test_dir)
 
-main_train_combined.to_csv(f'.//{train_dir}//train_main.csv', index=False)
-main_test_combined.to_csv(f'.//{test_dir}//test_main.csv', index=False)
+
+
 
 for train_path in tqdm(dataset_paths, desc="Dataset paths"):
     print(f"== reading : {train_path} ==")
@@ -110,25 +99,15 @@ for train_path in tqdm(dataset_paths, desc="Dataset paths"):
 
     X = df.drop('label', axis=1)
     y = df['label']
+    
+    sub_X_train, sub_X_test = X.loc[train_indices], X.loc[test_indices]
+    sub_y_train, sub_y_test = y.loc[train_indices], y.loc[test_indices]
+        
     print(y.value_counts())
     results = {}
     
     dataset_name = train_path.split(backslash)[-1]  # Name of the dataset
     
-    sub_X_train = X.loc[train_index]
-    sub_y_train = y.loc[train_index]
-    sub_X_test = X.loc[test_index]
-    sub_y_test = y.loc[test_index]
-    
-    # Concatenate X_train with y_train, and X_test with y_test
-    train_combined = pd.concat([sub_X_train, sub_y_train], axis=1)
-    test_combined = pd.concat([sub_X_test, sub_y_test], axis=1)
-    #To be debugged, deleted if the same
-    #======
-    train_combined.to_csv(f'{train_dir}//train_{dataset_name}.csv', index=False)
-    test_combined.to_csv(f'{test_dir}//test_{dataset_name}.csv', index=False)
-    #======
-
     for name, model in tqdm(models.items(), desc="Training KDD Models"):
         try:
             # send_discord_message(f'== Mix CIC Training: {dataset_name} with model: {name} ==')
@@ -153,17 +132,8 @@ for train_path in tqdm(dataset_paths, desc="Dataset paths"):
             fig, ax = plt.subplots()
             cm_dis.plot(ax=ax)
             fig.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{dataset_name}\\{dataset_name}_{name}_confusion_matrix.png")
-
-            # Close the figure
             plt.close(fig)
-            # plt.figure()
-            # sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues')
-            # plt.xlabel('Predicted')
-            # plt.ylabel('Actual')
-            # plt.title('Confusion Matrix')
-            # plt.savefig(f".\\classical_ML\\mix_training\\confusion_martix\\{train_path.split(backslash)[-1]}\\{train_path.split(backslash)[-1]}_{name}_confusion_matrix.png")
-            # plt.close()
-    
+
             loss = np.mean(np.abs(y_pred - sub_y_test))
             print(f"== Done Training: {train_path.split(backslash)[-1]} with model: {name}, acc: {accuracy}, loss: {loss}, f1: {f1} ==")
             models_save_path = f".\\classical_ML\\mix_training\\model\\{train_path.split(backslash)[-1]}"
@@ -182,5 +152,4 @@ for train_path in tqdm(dataset_paths, desc="Dataset paths"):
     result_filename = f".\\classical_ML\\mix_training\\compare\\evaluation_results_{train_path.split(backslash)[-1]}"
     result_df.to_csv(result_filename)
     
-# send_discord_message('== @everyone All training and evaluation in KDD is done ==')
 print('== @everyone All training and evaluation is done ==')

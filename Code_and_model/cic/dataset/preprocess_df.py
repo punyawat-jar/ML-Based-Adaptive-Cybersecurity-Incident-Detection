@@ -60,7 +60,7 @@ def create_df(labels):
         send_discord_message(f'Done {label}')
         print(f'Done {label}')
 
-df = pd.read_csv('.\\Original_dataset-notuse\\CIC_IDS2017.csv')
+df = pd.read_csv('CIC_IDS2017.csv')
 # df = df.drop(['timestamp'], axis =1)
 labels = df.label.value_counts().index.tolist()
 

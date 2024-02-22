@@ -973,3 +973,4 @@ Code_and_model/cic/dataset/normal_dataset/SSH-Patator.csv
 Code_and_model/cic/dataset/normal_dataset/Web Attack-Brute Force.csv
 Code_and_model/cic/dataset/normal_dataset/Web Attack-Sql Injection.csv
 Code_and_model/cic/dataset/normal_dataset/Web Attack-XSS.csv
+Code_and_model/cic/dataset/mix_dataset/Web Attack-Sql Injection.csv

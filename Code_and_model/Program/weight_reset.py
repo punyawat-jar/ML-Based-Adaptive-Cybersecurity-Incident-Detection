@@ -42,9 +42,10 @@ def main():
     lowest_percent_attack = min(og_attack_percent, key=og_attack_percent.get)
     threshold = og_attack_percent[lowest_percent_attack]
     
+    print('---- Resetting Weight and Threshold values ----')
     writingJson(og_attack_percent, weight_path)
     writingJson({'threshold': threshold}, threshold_path)
-
+    print('---- Done Weight and Threshold values ----')
 
 if __name__ == '__main__':
     main()

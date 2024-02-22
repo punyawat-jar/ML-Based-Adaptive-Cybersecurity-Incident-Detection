@@ -59,8 +59,6 @@ def train_classical():
 
 
     dataset_paths = glob.glob('.\\dataset\\normal_dataset\\*.csv')
-    train_indices = pd.read_csv('../Program\\cic\\train_test_folder\\train_cic\\train.csv')['Unnamed: 0']
-    test_indices = pd.read_csv('../Program\\cic\\train_test_folder\\test_cic\\test.csv')['Unnamed: 0']
 
     # Lists to store metrics
     backslash = "\\"
@@ -74,8 +72,7 @@ def train_classical():
         y = df['label']
 
 
-        X_train, X_test = X.loc[train_indices], X.loc[test_indices]
-        y_train, y_test = y.loc[train_indices], y.loc[test_indices]
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify= y)
 
         del df
         del X
@@ -141,11 +138,6 @@ def train_classical():
     # send_discord_message('== @everyone All training and evaluation is done ==')
     print('== All training and evaluation is done ==')
     
-
-def main():
-    train_classical()
-    
-    
     
 if __name__ == '__main__':
-    main()
+    train_classical()

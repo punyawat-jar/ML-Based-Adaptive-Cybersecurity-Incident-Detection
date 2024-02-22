@@ -22,18 +22,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from joblib import dump
 
-def processlabel(df):
-    df.loc[df['label'] == 'normal', 'label'] = 0
-    df.loc[df['label'] != 0, 'label'] = 1
-    df['label'] = df['label'].astype('int')
-    return df
 
-def preprocess(df):
-    scaler = MinMaxScaler()
-    df[df.columns] = scaler.fit_transform(df[df.columns])
-    return df
-
-def main():
+def train_classical():
 
     os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\kdd")
 
@@ -43,11 +33,11 @@ def main():
         'Bagging': BaggingClassifier(estimator=DecisionTreeClassifier(), n_jobs=-1),
         'LDA': LinearDiscriminantAnalysis(),
         'QDA': QuadraticDiscriminantAnalysis(),
-        'DecisionTree': DecisionTreeClassifier(),  
+        'DecisionTree': DecisionTreeClassifier(),
         'RandomForest': RandomForestClassifier(n_jobs=-1),
         'GradientBoosting': GradientBoostingClassifier(),
         'KNeighbors': KNeighborsClassifier(n_jobs=-1),
-        'GaussianNB': GaussianNB(), 
+        'GaussianNB': GaussianNB(),
         'Perceptron': Perceptron(n_jobs=-1),
         'AdaBoost': AdaBoostClassifier()
     }
@@ -57,21 +47,16 @@ def main():
     backslash = "\\"
     datasets = {train_path.split(backslash)[-1]: (train_path, train_path) for train_path in dataset_paths}
 
-    train_indices = pd.read_csv('../Program\\kdd\\train_test_folder\\train_kdd\\train.csv')['Unnamed: 0']
-    test_indices = pd.read_csv('../Program\\kdd\\train_test_folder\\test_kdd\\test.csv')['Unnamed: 0']
-    print(train_indices)
+    
+    
     for dataset_name, (train_path, _) in datasets.items():
         print(f"== reading training data: {train_path} ==")
         df = pd.read_csv(train_path)
-        df = processlabel(df)
         
         X = df.drop('label', axis=1)
-        train_df = preprocess(X)
-        
         y = df['label']
         
-        X_train, X_test = X.loc[train_indices], X.loc[test_indices]
-        y_train, y_test = y.loc[train_indices], y.loc[test_indices]
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify= y)
         
         print(y.value_counts())
         results = {}
@@ -124,4 +109,4 @@ def main():
     print('== @everyone All training and evaluation is done ==')
     
 if __name__ == '__main__':
-    main()
+    train_classical()

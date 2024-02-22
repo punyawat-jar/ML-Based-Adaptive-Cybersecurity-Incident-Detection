@@ -2,9 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 import json
 import argparse
-import platform
-import functools
-import glob
+
+import subprocess
+import sys
 
 from module.file_op import check_file
 from module.testing_module import *
@@ -22,14 +22,32 @@ class SliderWindow:
         self.load_data()
         self.create_sliders_and_entries()
         self.setup_buttons()
-
+        
     def setup_main_frame(self):
         self.main_frame = tk.Frame(self.root)
         self.main_frame.pack(fill=tk.BOTH, expand=True)
 
     def setup_threshold_label(self):
-        self.threshold_label = tk.Label(self.main_frame, text=f"Threshold: {self.threshold}", font=(12))
-        self.threshold_label.pack(pady=(5, 5))
+        self.threshold_frame = tk.Frame(self.main_frame)
+        self.threshold_frame.pack(fill=tk.X, pady=10)
+
+        # Inner frame to hold the label and entry, centered within threshold_frame
+        inner_frame = tk.Frame(self.threshold_frame)
+        inner_frame.pack(anchor='center')
+
+        tk.Label(inner_frame, text="Threshold:", font=(12)).pack(side=tk.LEFT)
+        
+        val = (self.root.register(self.validate_threshold), '%P')  # Validation command
+        self.threshold_entry = tk.Entry(inner_frame, font=(12), validate="key", validatecommand=val)
+        self.threshold_entry.pack(side=tk.LEFT, padx=10)
+        self.threshold_entry.insert(0, str(self.threshold))
+            
+    def validate_threshold(self, P):
+        if P == "" or (P.replace('.', '', 1).isdigit() and 0 <= float(P) <= 100):
+            return True
+        else:
+            self.root.bell()
+            return False
     
     def setup_scrollable_area(self):
         self.canvas = tk.Canvas(self.main_frame)
@@ -197,7 +215,21 @@ class SliderWindow:
 
     def save_data(self):
         print('Saving Data...')
-        
+        try:
+            new_threshold = float(self.threshold_entry.get())
+            # Validate the new threshold value
+            if 0 <= new_threshold <= 100:
+                threshold_data = {'threshold': new_threshold}
+                with open(f'./{self.data_template}/Result/threshold.json', 'w') as file:
+                    json.dump(threshold_data, file, indent=4)
+                print('Threshold saved successfully.')
+            else:
+                print("Invalid threshold value. Please enter a number between 0 and 100.")
+                self.root.bell()  # Alert the user to the error
+        except ValueError:
+            print("Invalid input for threshold. Please enter a valid number.")
+            self.root.bell()  
+            return  # Exit the function without attempting to save other data
         for i, key in enumerate(self.keys):
             self.data[key] = self.slider_values[i]
         
@@ -205,7 +237,14 @@ class SliderWindow:
         
         with open(f'./{self.data_template}/weight.json', 'w') as file:
             json.dump(self.data, file, indent=4)
+            
+        new_threshold = float(self.threshold_entry.get())
+        threshold_data = {'threshold': new_threshold}
         
+        with open(f'./{self.data_template}/Result/threshold.json', 'w') as file:
+            json.dump(threshold_data, file, indent=4)
+
+        print('Threshold and data saved successfully.')
         self.root.quit()
 
     def setup_buttons(self):
@@ -214,10 +253,22 @@ class SliderWindow:
 
         self.ok_button = tk.Button(self.buttons_frame, text="OK", command=self.save_data)
         self.ok_button.pack(side="left", expand=True, fill=tk.X)
-
+        
+        self.reset_button = tk.Button(self.buttons_frame, text="Reset Weights", command=self.reset_weights)
+        self.reset_button.pack(side="right", expand=True, fill=tk.X)
+        
         self.cancel_button = tk.Button(self.buttons_frame, text="Cancel", command=self.root.quit)
         self.cancel_button.pack(side="right", expand=True, fill=tk.X)
+        
+    def reset_weights(self):
+        # Run the weight_reset.py script
+        subprocess.run([sys.executable, './weight_reset.py', '--data', self.data_template])
 
+        # Close the current application window
+        self.root.destroy()
+
+        # Restart the main application
+        subprocess.run([sys.executable, 'weight.py', '--data', self.data_template])
 
 def main():
     try:

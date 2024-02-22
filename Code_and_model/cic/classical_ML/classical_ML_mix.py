@@ -43,7 +43,7 @@ def makePath(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
-def main():
+def train_mixed():
     os.chdir("C:\\Users\\Kotani Lab\\Desktop\\ML_senior_project\\ML-Based-Adaptive-Cybersecurity-Incident-Detection\\Code_and_model\\cic")
 
     models = {
@@ -83,8 +83,7 @@ def main():
         X = df.drop('label', axis=1)
         y = df['label']
 
-        sub_X_train, sub_X_test = X.loc[train_indices], X.loc[test_indices]
-        sub_y_train, sub_y_test = y.loc[train_indices], y.loc[test_indices]
+        sub_X_train, sub_X_test, sub_y_train, sub_y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify= y)
 
         del df
         del X
@@ -147,4 +146,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    train_mixed()

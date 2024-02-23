@@ -133,17 +133,17 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
             for i, label in tqdm(enumerate(labels)):
                 if label == 'normal':
                     print(f'Skip {label}')
-                    continue
-                df_temp = df.copy()
-                print(f'Starting {label} {i+1}/{len(labels)}')
-                
-                df_temp = changeLabel(df_temp, label)
+                else:
+                    df_temp = df.copy()
+                    print(f'Starting {label} {i+1}/{len(labels)}')
+                    
+                    df_temp = changeLabel(df_temp, label)
 
-                for col in df.columns:
-                    if df[col].dtype == 'bool':
-                        df[col] = df[col].astype(int)
-                        
-                df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
+                    for col in df.columns:
+                        if df[col].dtype == 'bool':
+                            df[col] = df[col].astype(int)
+                            
+                    df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
             print('Preprocessing KDD Done')
         
         

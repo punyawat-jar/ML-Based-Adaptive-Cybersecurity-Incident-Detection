@@ -54,8 +54,6 @@ def best_model_for_attack(model_folder):            ## If the model's evaluation
         df['f1'] = pd.to_numeric(df['f1'], errors='coerce')
         df['accuracy'] = pd.to_numeric(df['accuracy'], errors='coerce')
         
-        
-        
         df['f1'] = np.floor(df['f1'] * 1000) / 1000
         df['accuracy'] = np.floor(df['accuracy'] * 1000) / 1000
 

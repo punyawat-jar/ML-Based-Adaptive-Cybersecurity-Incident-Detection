@@ -61,23 +61,21 @@ def create_df_single_process(df, labels, directory):
     for i, label in enumerate(labels):
         if label == 'BENIGN':
             print(f'Skip {label}')
-            return
-
-        df_temp = df.copy()
-        print(f'Starting {label} {i+1}/{len(labels)}')
-        df_temp = changeLabel(df_temp, label)
-        df_temp.to_csv(f"./cic/{directory}/{label}.csv", index=False)
+        else:
+            df_temp = df.copy()
+            print(f'Starting {label} {i+1}/{len(labels)}')
+            df_temp = changeLabel(df_temp, label)
+            df_temp.to_csv(f"./cic/{directory}/{label}.csv", index=False)
 
 
 def create_df_multiprocess(args):
-    label, index, total_labels, df_template, directory = args
+    label, _, _, df_template, directory = args
     
     if label == 'BENIGN':
         print(f'Skip {label}')
         return
     
     df_temp = df_template.copy()
-    # print(f'Starting {label} {index+1}/{total_labels}')
     df_temp = changeLabel(df_temp, label)
     output_path = os.path.join("./cic", directory, f"{label}.csv")
     df_temp.to_csv(output_path, index=False)

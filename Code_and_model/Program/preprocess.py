@@ -62,7 +62,6 @@ def main():
         num_processes = int(arg.num_processes) if arg.num_processes is not None else cpu_count()
         
         #File path
-        os.chdir('./Code_and_model/Program') ##Change Working Directory
         print(os.getcwd())
         file_path = glob.glob(net_file_loc+'/*', recursive=True)
         print(f'Data Path : {net_file_loc}')

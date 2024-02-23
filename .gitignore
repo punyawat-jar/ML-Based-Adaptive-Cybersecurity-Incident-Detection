@@ -974,3 +974,57 @@ Code_and_model/cic/dataset/normal_dataset/Web Attack-Brute Force.csv
 Code_and_model/cic/dataset/normal_dataset/Web Attack-Sql Injection.csv
 Code_and_model/cic/dataset/normal_dataset/Web Attack-XSS.csv
 Code_and_model/cic/dataset/mix_dataset/Web Attack-Sql Injection.csv
+Code_and_model/compare_mix_normal/Program/cic/CIC_IDS2017.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Friday-WorkingHours-Morning.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Monday-WorkingHours.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Tuesday-WorkingHours.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Wednesday-workingHours.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Bot.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DDoS.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS GoldenEye.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS Hulk.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS Slowhttptest.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS slowloris.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/FTP-Patator.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Heartbleed.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Infiltration.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/PortScan.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/SSH-Patator.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Web Attack-Brute Force.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Web Attack-Sql Injection.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Web Attack-XSS.csv
+Code_and_model/compare_mix_normal/Program/cic/Result/cic1/attack_prediction_cic.csv
+Code_and_model/compare_mix_normal/Program/cic/Result/cic2/attack_prediction_cic.csv
+Code_and_model/compare_mix_normal/Program/cic/train_test_folder/test_cic/test.csv
+Code_and_model/compare_mix_normal/Program/cic/train_test_folder/train_cic/train.csv
+Code_and_model/compare_mix_normal/Program/cic/CIC_IDS2017.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Friday-WorkingHours-Morning.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Monday-WorkingHours.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Tuesday-WorkingHours.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/InputDataset/Wednesday-workingHours.pcap_ISCX.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Bot.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DDoS.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS GoldenEye.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS Hulk.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS Slowhttptest.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/DoS slowloris.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/FTP-Patator.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Heartbleed.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Infiltration.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/PortScan.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/SSH-Patator.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Web Attack-Brute Force.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Web Attack-Sql Injection.csv
+Code_and_model/compare_mix_normal/Program/cic/dataset/mix_dataset/Web Attack-XSS.csv
+Code_and_model/compare_mix_normal/Program/cic/Result/cic1/attack_prediction_cic.csv
+Code_and_model/compare_mix_normal/Program/cic/Result/cic2/attack_prediction_cic.csv
+Code_and_model/compare_mix_normal/Program/cic/train_test_folder/test_cic/test.csv
+Code_and_model/compare_mix_normal/Program/cic/train_test_folder/train_cic/train.csv

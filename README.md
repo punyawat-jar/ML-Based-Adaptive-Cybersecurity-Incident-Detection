@@ -26,9 +26,9 @@ python setting.py --data cic
 ```
 
 ### Input Dataset
-The data's format folder will be created. In this state, you can put the dataset (based on the data's format) in the `./dataset/InputDataset/`. The NSL-KDD dataset provided the `Train+.txt` and `Test+.txt` for training and evaluation. You can put both files in this location. In addition, the program also accept the `.csv` format for this data's format, in case that the files need to be preprocessed separately.
+The data's format folder will be created. In this state, you can put the dataset (based on the data's format) in the `./dataset/InputDataset/`. The NSL-KDD dataset provided the `Train+.txt` and `Test+.txt` for training and evaluation, which you can download [here](https://drive.google.com/drive/folders/1hv6hIJobDL3sDOftqieC8CACUt6uLcjU?usp=share_link) You can put both files in this location. In addition, the program also accept the `.csv` format for this data's format, in case that the files need to be preprocessed separately.
 
-As well as the CIC-IDS2017, the original dataset provided `.csv` files of 7 days attacks. You can input all the files in the location according to the data's format folder.
+As well as the CIC-IDS2017, the original dataset provided `.csv` files of 7 days attacks. You can input all the files in the location according to the data's format folder, which you can download [here](https://drive.google.com/drive/folders/18dUb7JCzX-v4VIMpQ2gsToqEb2nWU8Qm?usp=share_link)
 
 ### Process the Input dataset
 After input the files in the folder, the preprocessing is needed. The `preprocess.py` will split the dataset that contain all attack labels to a dataset that specifically contain only one label. Therefore, the amount of the split dataset will following the amount of attack label of the input dataset. Moreover, in case you already have the preprocessed dataset, you can use the input argrument `--network` to located the concated dataset.

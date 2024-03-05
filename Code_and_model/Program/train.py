@@ -107,7 +107,6 @@ def main():
         if model_type == 'ML':
             models = getModel()
             ## ML model Training
-            models = getModel()
             print(f'Using Multiprocessing with : {num_processes}')
             try:
                 for dataset_path in tqdm(dataset_paths, desc="Dataset paths"):

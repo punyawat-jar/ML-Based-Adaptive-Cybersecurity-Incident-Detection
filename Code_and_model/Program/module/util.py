@@ -17,7 +17,10 @@ def progress_bar(*args, **kwargs):
 def changeLabel(df, label):
     df.loc[df['label'].isin(["normal", "BENIGN"]), "label"] = 0
     df.loc[df['label'] == label, "label"] = 1
-    df.loc[(df['label'] != 0) & (df['label'] != 1), "label"] = 0
+    
+    rows_to_drop = df.loc[(df['label'] != 0) & (df['label'] != 1)].index
+    
+    df = df.drop(rows_to_drop)
     
     df['label'] = df['label'].astype('int')
     df = scaler(df)

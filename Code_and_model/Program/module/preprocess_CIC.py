@@ -6,13 +6,13 @@ import gc
 
 from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
+
 import sys
 import traceback
 
 from module.file_converter import _to_utf8
 from module.file_op import *
 from module.util import *
-from module.discord import send_discord_message
 
 def renaming_class_label(df: pd.DataFrame):
     def labels(label):
@@ -160,14 +160,15 @@ def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
             args_test = [(label, test_df_directory, df_test, 'cic') for label in labels_test]
             
             with Pool(processes=num_processes) as pool:
-                list(tqdm(pool.imap_unordered(process_labels, args_train), total=len(args_train)))
+                tqdm(pool.imap_unordered(process_labels, args_train), total=len(args_train))
                 
             with Pool(processes=num_processes) as pool:
-                list(tqdm(pool.imap_unordered(process_labels, args_test), total=len(args_test)))
+                tqdm(pool.imap_unordered(process_labels, args_test), total=len(args_test))
 
         else:
             print('Using single CPU')
-            create_df_single_process(train_combined, labels, train_df_directory)
+            create_df_single_process(train_combined, labels_train, train_df_directory)
+            create_df_single_process(test_combined, labels_test, test_df_directory)
         print('Preprocessing Done')
     except Exception as E:
         print(E)

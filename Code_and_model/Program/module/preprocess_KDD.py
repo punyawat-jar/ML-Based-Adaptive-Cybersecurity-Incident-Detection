@@ -58,13 +58,12 @@ def column_manage(df):
 
 
 def process_label(args):
-    label, index, mix_directory, df_template, total_labels = args  
+    label, _, mix_directory, df_template, _ = args  
     if label == 'normal':
         print(f'Skip {label}')
         return None
     
-    df_temp = df_template.copy() 
-    # print(f'Starting {label} {index+1}/{total_labels}') 
+    df_temp = df_template.copy()
     
     df_temp = changeLabel(df_temp, label)
 

@@ -139,21 +139,22 @@ def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
             print('Reading Dataset from user input...')
             df = pd.read_csv(f'{input_dataset}', skiprows=progress_bar())
             
-            
         
-        labels = df.label.value_counts().index.tolist()
+        train_combined, test_combined = split_train_test(df)
+        
+        labels = train_combined.label.value_counts().index.tolist()
         print('Preprocessing Dataset...')
 
 
         if multiCPU:
             print(f'Using Multiprocessing with : {num_processes}')
-            args_list = [(label, index, len(labels), df, directory) for index, label in enumerate(labels)]
+            args_list = [(label, index, len(labels), train_combined, directory) for index, label in enumerate(labels)]
             with Pool(processes=num_processes) as pool:
                 for _ in tqdm(pool.imap_unordered(create_df_multiprocess, args_list), total=len(args_list)):
                     pass 
         else:
             print('Using single CPU')
-            create_df_single_process(df, labels, directory)
+            create_df_single_process(train_combined, labels, directory)
         print('Preprocessing Done')
     except Exception as E:
         print(E)

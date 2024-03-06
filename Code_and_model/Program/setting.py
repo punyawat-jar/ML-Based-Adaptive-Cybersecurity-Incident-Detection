@@ -33,7 +33,7 @@ def main():
     makePath(training_result_path)
     makePath(f'./{data_template}')
     makePath(f'./{data_template}/dataset/InputDataset')
-    makePath(f'./{data_template}/dataset/mix_dataset')
+    makePath(f'./{data_template}/dataset/train_dataset')
     makePath(result_path)
     
     print('Create Multimodel folder completed')

@@ -83,29 +83,14 @@ def main():
         main_df = pd.read_csv(full_data, low_memory=False, skiprows=progress_bar())
         
         X_main = main_df.drop('label', axis=1)
-        y_main = main_df['label']
+        # y_main = main_df['label']
         n_features = X_main.shape[1]
-        
-        X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
-
-        
-        train_index = X_train_main.index
-        test_index = X_test_main.index
-
-        train_test_folder = [f'{data_template}/train_test_folder/train_{data_template}',
-                            f'{data_template}/train_test_folder/test_{data_template}']
-        print('Processing Training Dataset...')
-        train_combined = pd.concat([X_train_main, y_train_main], axis=1)
-        test_combined = pd.concat([X_test_main, y_test_main], axis=1)
-        
-        train_combined.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
-        test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
-        
         
         
         
         if model_type == 'ML':
             models = getModel()
+            
             ## ML model Training
             print(f'Using Multiprocessing with : {num_processes}')
             try:
@@ -115,11 +100,6 @@ def main():
                     df = pd.read_csv(dataset_path, skiprows=progress_bar())
                     X = df.drop('label', axis=1)
                     y = df['label']
-
-                    sub_X_train = X.loc[train_index]
-                    sub_y_train = y.loc[train_index]
-                    sub_X_test = X.loc[test_index]
-                    sub_y_test = y.loc[test_index]
 
                     del df
                     del X

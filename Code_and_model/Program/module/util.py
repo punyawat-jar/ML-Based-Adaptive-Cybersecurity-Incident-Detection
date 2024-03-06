@@ -80,3 +80,22 @@ def separate_features_labels(data, window_size):
     features = features.reshape(-1, window_size, features.shape[-1])
 
     return features, labels
+
+def split_train_test(df):
+    X_main = df.drop('label', axis=1)
+    y_main = df['label']
+    n_features = X_main.shape[1]
+    
+    X_train_main, X_test_main, y_train_main, y_test_main = train_test_split(X_main, y_main, test_size=0.3, random_state=42, stratify=y_main)
+    
+    print('Processing Training Dataset...')
+    train_combined = pd.concat([X_train_main, y_train_main], axis=1)
+    test_combined = pd.concat([X_test_main, y_test_main], axis=1)
+    
+    train_test_folder = [f'kdd/train_test_folder/train_kdd',
+                        f'kdd/train_test_folder/test_kdd']
+    
+    train_combined.to_csv(f'.//{train_test_folder[0]}//train.csv', index=True)
+    test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
+    
+    return train_combined, test_combined

@@ -63,7 +63,7 @@ def process_label(args):
         print(f'Skip {label}')
         return None
     
-    df_temp = df_template.copy()
+    df_temp = df_template.copy() 
     
     df_temp = changeLabel(df_temp, label)
 
@@ -113,12 +113,17 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
         
         else:
             df = pd.read_csv(input_dataset)
-    
-        labels = df.label.value_counts().index.tolist()
+
+
+        
+        train_combined, _ = split_train_test(df)
+        
+        
+        labels = train_combined.label.value_counts().index.tolist()
         
         if multiCPU:
             print(f'Using Multiprocessing with : {num_processes}')
-            df_template = df.copy()
+            df_template = train_combined.copy()
 
             args_list = [(label, index, mix_directory, df_template, len(labels)) for index, label in enumerate(labels)]
 
@@ -133,14 +138,14 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
                 if label == 'normal':
                     print(f'Skip {label}')
                 else:
-                    df_temp = df.copy()
+                    df_temp = train_combined.copy()
                     print(f'Starting {label} {i+1}/{len(labels)}')
                     
                     df_temp = changeLabel(df_temp, label)
 
-                    for col in df.columns:
-                        if df[col].dtype == 'bool':
-                            df[col] = df[col].astype(int)
+                    for col in train_combined.columns:
+                        if train_combined[col].dtype == 'bool':
+                            train_combined[col] = train_combined[col].astype(int)
                             
                     df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
             print('Preprocessing KDD Done')

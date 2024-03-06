@@ -5,6 +5,9 @@ from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 import numpy as np
 
+import sys
+import traceback
+
 def progress_bar(*args, **kwargs):
     bar = tqdm(*args, **kwargs)
 
@@ -99,3 +102,38 @@ def split_train_test(df):
     test_combined.to_csv(f'.//{train_test_folder[1]}//test.csv', index=True)
     
     return train_combined, test_combined
+
+
+
+def process_labels(args):
+    try:
+        
+        label, mix_directory, df, template = args
+        
+        if label in ['normal', 'BENIGN']:
+            print(f'Skip {label}')
+            return None
+        
+        df_temp = df.copy() 
+        df_temp = changeLabel(df_temp, label)
+        
+        for col in df_temp.columns:
+            if df_temp[col].dtype == 'bool':
+                df_temp[col] = df_temp[col].astype(int)
+        
+        if template == 'kdd':
+            output_path = f"./kdd/{mix_directory}/{label}.csv"
+        
+        elif template == 'cic':
+            output_path = f"./kdd/{mix_directory}/{label}.csv"
+        
+        else:
+            raise Exception('Please implements your own data output...')
+            ## Need implements here, if used other data ....
+        
+        df_temp.to_csv(output_path, index=False)
+        
+    except Exception as E:
+        print(E)
+        traceback.print_exc()
+        sys.exit(1)

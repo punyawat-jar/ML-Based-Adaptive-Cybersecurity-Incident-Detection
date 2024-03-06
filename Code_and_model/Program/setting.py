@@ -34,6 +34,7 @@ def main():
     makePath(f'./{data_template}')
     makePath(f'./{data_template}/dataset/InputDataset')
     makePath(f'./{data_template}/dataset/train_dataset')
+    makePath(f'./{data_template}/dataset/test_dataset')
     makePath(result_path)
     
     print('Create Multimodel folder completed')

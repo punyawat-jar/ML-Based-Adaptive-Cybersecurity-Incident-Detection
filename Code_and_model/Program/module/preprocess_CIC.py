@@ -82,7 +82,9 @@ def create_df_multiprocess(args):
 
 def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
     try:
-        directory = './dataset/mix_dataset'
+        train_df_directory = './dataset/train_dataset'
+        test_df_directory = './dataset/test_dataset'
+        
         if input_dataset is None:
             col_list = []
             #Concat the files in dataset
@@ -142,19 +144,30 @@ def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
         
         train_combined, test_combined = split_train_test(df)
         
-        labels = train_combined.label.value_counts().index.tolist()
+        labels_train = train_combined.label.value_counts().index.tolist()
+        labels_test = test_combined.label.value_counts().index.tolist()
+        
         print('Preprocessing Dataset...')
 
 
         if multiCPU:
             print(f'Using Multiprocessing with : {num_processes}')
-            args_list = [(label, index, len(labels), train_combined, directory) for index, label in enumerate(labels)]
+            
+            df_train = train_combined.copy()
+            df_test = test_combined.copy()
+            
+            args_train = [(label, train_df_directory, df_train, 'cic') for label in labels_train]
+            args_test = [(label, test_df_directory, df_test, 'cic') for label in labels_test]
+            
             with Pool(processes=num_processes) as pool:
-                for _ in tqdm(pool.imap_unordered(create_df_multiprocess, args_list), total=len(args_list)):
-                    pass 
+                list(tqdm(pool.imap_unordered(process_labels, args_train), total=len(args_train)))
+                
+            with Pool(processes=num_processes) as pool:
+                list(tqdm(pool.imap_unordered(process_labels, args_test), total=len(args_test)))
+
         else:
             print('Using single CPU')
-            create_df_single_process(train_combined, labels, directory)
+            create_df_single_process(train_combined, labels, train_df_directory)
         print('Preprocessing Done')
     except Exception as E:
         print(E)

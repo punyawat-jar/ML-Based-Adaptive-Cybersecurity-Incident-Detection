@@ -57,28 +57,13 @@ def column_manage(df):
     return df
 
 
-def process_label(args):
-    label, _, mix_directory, df_template, _ = args  
-    if label == 'normal':
-        print(f'Skip {label}')
-        return None
-    
-    df_temp = df_template.copy() 
-    
-    df_temp = changeLabel(df_temp, label)
 
-    
-    for col in df_temp.columns:
-        if df_temp[col].dtype == 'bool':
-            df_temp[col] = df_temp[col].astype(int)
-    
-   
-    df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
-    
 
 def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
     try:
-        mix_directory = './dataset/mix_dataset'
+        train_df_directory = './dataset/train_dataset'
+        test_df_directory = './dataset/test_dataset'
+        
         if input_dataset is None:
             data = []
             
@@ -116,30 +101,37 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
 
 
         
-        train_combined, _ = split_train_test(df)
+        train_combined, test_combined = split_train_test(df)
         
         
-        labels = train_combined.label.value_counts().index.tolist()
+        labels_train = train_combined.label.value_counts().index.tolist()
+        labels_test = test_combined.label.value_counts().index.tolist()
         
         if multiCPU:
             print(f'Using Multiprocessing with : {num_processes}')
-            df_template = train_combined.copy()
-
-            args_list = [(label, index, mix_directory, df_template, len(labels)) for index, label in enumerate(labels)]
-
+            df_train = train_combined.copy()
+            df_test = test_combined.copy()
+            
+            args_train = [(label, train_df_directory, df_train, 'kdd') for label in labels_train]
+            args_test = [(label, test_df_directory, df_test, 'kdd') for label in labels_test]
+            
             with Pool(processes=num_processes) as pool:
-                list(tqdm(pool.imap_unordered(process_label, args_list), total=len(args_list)))
-
+                list(tqdm(pool.imap_unordered(process_labels, args_train), total=len(args_train)))
+            
+            
+            with Pool(processes=num_processes) as pool:
+                list(tqdm(pool.imap_unordered(process_labels, args_test), total=len(args_test)))
+                
             print('Preprocessing KDD Done')
         
         else:
             print('Using single CPU')
-            for i, label in tqdm(enumerate(labels)):
+            for i, label in tqdm(enumerate(labels_train)):
                 if label == 'normal':
                     print(f'Skip {label}')
                 else:
                     df_temp = train_combined.copy()
-                    print(f'Starting {label} {i+1}/{len(labels)}')
+                    print(f'Starting {label} {i+1}/{len(labels_train)}')
                     
                     df_temp = changeLabel(df_temp, label)
 
@@ -147,7 +139,23 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
                         if train_combined[col].dtype == 'bool':
                             train_combined[col] = train_combined[col].astype(int)
                             
-                    df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
+                    df_temp.to_csv(f"./kdd/{train_df_directory}/{label}.csv", index=False)
+                    
+            for i, label in tqdm(enumerate(args_test)):
+                if label == 'normal':
+                    print(f'Skip {labels_test}')
+                else:
+                    df_temp = test_combined.copy()
+                    print(f'Starting {labels_test} {i+1}/{len(labels_test)}')
+                    
+                    df_temp = changeLabel(df_temp, label)
+
+                    for col in test_combined.columns:
+                        if test_combined[col].dtype == 'bool':
+                            test_combined[col] = test_combined[col].astype(int)
+                            
+                    df_temp.to_csv(f"./kdd/{test_df_directory}/{label}.csv", index=False)
+            
             print('Preprocessing KDD Done')
         
         

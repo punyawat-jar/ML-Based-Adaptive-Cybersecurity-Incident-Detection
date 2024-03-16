@@ -172,49 +172,45 @@ def integrate_predictions(predictions, threshold):
 
     return final_pred
 
-def prediction(models, sequence_mode, threshold, X_test):
+def prediction(models, sequence_mode, threshold, X_test, sequence_length=1, step_size=10000):
     if sequence_mode == True:           #Sequence mode is to check the prediction for each element.
         print('== The model operation in sequence mode ==')
         predict = []
         pre_time = []
         attacks = pd.DataFrame()
+        step_size = max(1, min(step_size, sequence_length))
+        
+        if sequence_length > X_test.shape[0]:
+            sequence_length = X_test.shape[0]
+        
+        
+        for i in tqdm(range(0, X_test.shape[0], step_size)):
+            if i + sequence_length > X_test.shape[0]:
+                sequence = X_test[i:]
+            else:
+                # Otherwise, use a sequence of length sequence_length
+                sequence = X_test[i:i + sequence_length]
 
-        for i in tqdm(range(0,X_test.shape[0])):
-            pred, time, attack_df = predictionModel(models, X_test[i:i+1], threshold)
+            pred, time, attack_df = predictionModel(models, sequence, threshold)
+            
             predict.extend(pred)
             pre_time.append(time)
             attacks = pd.concat([attacks, attack_df], ignore_index=True)
-            print(f'The prediction is : {pred} using {time:0.4f} seconds')
+            print(f'The prediction is : {pred} (amount : {pred.shape[0]}) using {time:0.4f} seconds. \nUsing {(time/pred.shape[0]):0.4f} seconds per each network data flow')
 
         predict = np.array(predict)
-        print(attacks)
-
-        # attacks_MoreThanOne(attack_df)
-
-        print(f'The predictioin shape :{predict.shape}')
         print(f'prediction time in mean : {np.mean(pre_time)} seconds')
-        return predict, pre_time, attack_df
+        return predict, attacks
 
     else:
         print('== The model opeartion in prediction overall mode')
         print('Predicting...')
         pred, time, attack_df = predictionModel(models, X_test, threshold)
 
-        # print(attack_df)
+        print(f'The prediction is : {pred} (amount : {pred.shape[0]}) using {time:0.4f} seconds. \nUsing {(time/pred.shape[0]):0.4f} seconds per each network data flow')
+        return pred, attack_df
 
-        # attacks_MoreThanOne(attack_df)
 
-        print(f'The prediction : {pred} using {time:0.4f} seconds')
-        return pred, time, attack_df
-
-    
-# def attacks_MoreThanOne(attack_df):
-#     mask = attack_df['attack'].apply(lambda x: len(x) > 1)
-
-#     # Filter the DataFrame based on the mask
-#     filtered_df = attack_df[mask]
-
-#     # print(filtered_df)
 
 def checkShape(y_test, y_pred):
     if y_pred.ndim > 1:
@@ -332,16 +328,19 @@ def classification_evaluation(test_labels, attack_labels):
     true_negatives = 0
 
     for true_label, predictions in zip(test_labels, attack_labels):
-        if isinstance(predictions, set):
+        if predictions is np.nan:
+            predictions = ['normal']
+        elif isinstance(predictions, set):
             predictions = list(predictions)
         
-        if not predictions:
+        elif not predictions:
             predictions = ['normal']
 
-        if true_label in predictions: #If there's a true prediction in list
+        if true_label in predictions:               #If there's a true prediction in list
             true_positives += 1                     #If there's a true prediction.
             false_positives += len(predictions) - 1 #If there're other prediction, False.
-        else:                         #If there's no true prediction in list
+            
+        else:                                       #If there's no true prediction in list
             false_negatives += 1                    #If prediction is false.
             false_positives += len(predictions)     #If there're other prediction, False.
 

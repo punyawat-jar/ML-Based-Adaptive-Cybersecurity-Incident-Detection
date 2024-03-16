@@ -22,7 +22,17 @@ def main():
     parser.add_argument('--sequence_mode',
                         dest='sequence',
                         action='store_true',
-                        help='The sequence mode show the network in sequence with the prediction of each attack')
+                        help='The sequence mode show the network in sequence with the prediction of each attack.')
+    
+    parser.add_argument('--sequence_length',
+                        dest='sequence_length',
+                        type=str,
+                        help='The sequence length is the amount of data to input to the model.')
+    
+    parser.add_argument('--step_size',
+                        dest='step_size',
+                        type=str,
+                        help='The sequence step size is the stepping data of each window.')
     
     arg = parser.parse_args()
 
@@ -31,11 +41,12 @@ def main():
     chooese_csv = f'./{data_template}/model.csv'
 
     model_loc =  f'{data_template}/Training/model'
-
-    # net_file_loc = arg.net_file_loc
+    
+    sequence_length = int(arg.sequence_length) if arg.sequence_length is not None else 1
+    
+    step_size = int(arg.step_size) if arg.step_size is not None else sequence_length
 
     sequence_mode = arg.sequence
-    # debug_mode = arg.debug
     
     try:
         #Parameter & path setting
@@ -100,9 +111,7 @@ def main():
         models = read_model(models_loc, model_df, label_percentages)
 
         print(f'-- Evaluation the model with {len(models)} attacks--')
-        y_pred, time_pred, attack_df = prediction(models, sequence_mode, threshold, X_test)
-        print(y_test)
-        print(y_pred)
+        y_pred, attack_df = prediction(models, sequence_mode, threshold, X_test, sequence_length, step_size)
         y_pred_df = pd.DataFrame(y_pred, columns=['Prediction'])
         
 
@@ -115,7 +124,6 @@ def main():
         result_df.to_csv(f'{result_path}/attack_prediction_{data_template}.csv', index = True)
         attack_labels = result_df['attack']
         
-    
         precision, recall, f1_score, accuracy = classification_evaluation(test_labels, attack_labels)
         print('Evaluation by binary classification')
         print(f'Accuracy : {evalu["accuracy"]}\nF1-score : {evalu["f1"]}\nPrecision : {evalu["precision"]}\nRecall : {evalu["recall"]}')

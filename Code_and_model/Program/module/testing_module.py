@@ -60,8 +60,6 @@ def read_model(models_loc, df, weight_data):
 
 def processAttack(df):
     print('processAttack Data...')
-    # np_array[(np_array == 'normal') | (np_array == 'BENIGN')] = 0
-    # np_array[np_array != 0] = 1
     df.loc[df['label'].isin(['normal', 'BENIGN']), 'label'] = 0
     # Replace all other values with 1
     df.loc[df['label'] != 0, 'label'] = 1
@@ -284,7 +282,6 @@ def read_attack_percent(y, weight_decimal, weight_path = None):
     return label_percentages
 
 def calculate_adaptive(test_labels, y_detect_bi, data_template):
-    # print(f'test_labels1 : {test_labels}')
     for i, j in enumerate(y_detect_bi):
         if j == 0:
             if data_template == 'cic':

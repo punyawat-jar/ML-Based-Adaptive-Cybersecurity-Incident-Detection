@@ -69,7 +69,6 @@ def main():
         test_labels = df_test['label'].copy()
         df_test = processAttack(df_test)
         
-        # X_train = df_train.drop(['label', 'Unnamed: 0'], axis=1)
         X_test = df_test.drop(['label', 'Unnamed: 0'], axis=1)
         
         y_train = df_train['label']
@@ -78,6 +77,8 @@ def main():
         y_test = y_test.values.astype(int)
         
         #Reading Weight from file, if exist. if not calculated from the dataset (Default)
+        #Note that if the model are retrian (the random data is not the same), the weight.json must be deleted by user before run test.py code.
+        
         CheckWegihtFileCreated = creating_weight_file(weight_path)
         
         og_attack_percent = read_attack_percent(y_train, weight_decimal)

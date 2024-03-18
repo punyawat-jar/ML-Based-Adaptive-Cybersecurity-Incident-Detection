@@ -81,17 +81,18 @@ def main():
         
         CheckWegihtFileCreated = check_and_return_file(weight_path)
         
-        og_attack_percent = read_attack_percent(y_train, weight_decimal)
-        
         if CheckWegihtFileCreated == True:
             print('Loading weight files')
+            
             with open(weight_path) as jsonfile:
                 label_percentages = json.load(jsonfile)
+            check_weight_sum(label_percentages, weight_decimal)
             
             with open(threshold_path) as jsonfile:
                 threshold = json.load(jsonfile).get('threshold')
             
         else:
+            og_attack_percent = read_attack_percent(y_train, weight_decimal)
             label_percentages = og_attack_percent
             if weight_path is not None:
                 writingJson(label_percentages, weight_path)

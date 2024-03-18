@@ -293,7 +293,12 @@ def calculate_adaptive(test_labels, y_detect_bi, data_template):
                 test_labels.iloc[i] = 'normal'
     return test_labels
     
-    
+def check_weight_sum(label_percentages, weight_decimal):
+    total_sum = round(sum(label_percentages.values()), weight_decimal)
+    print(f'total_sum : {total_sum}')
+    if total_sum != 100.0:
+        raise ValueError(f"The sum of the weights is {total_sum}, which does not equal 100. Run weight.py and select reset weight or run weight_reset.py to reset weight.")
+
 def process_Largest_remainder_method(label_percentages, decimal, weight_path = None):
     label_percentages_rounded = {key: round(value, decimal) for key, value in label_percentages.items()}
     label_percentages_fractional = {key: ((value - int(value))*(10**decimal)) - int((value - int(value))*(10**decimal)) for key, value in label_percentages.items()}

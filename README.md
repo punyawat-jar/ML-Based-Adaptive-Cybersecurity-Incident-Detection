@@ -76,5 +76,19 @@ or to run the cic dataset:
 python test.py --data cic
 ```
 
+### Weight Tuning
+To adjust the weight, you can run `weight.py` to tune the weight of each model. The default weight of models are setting based on the ratio amount of the attack in the training dataset and the default threshold is setting by the lowest attack ratio. After running, the UI will pop up. You can tune the weight for each attack and the threshold of the prediction. The weights must be sum to 100 (if not the error will occure). To reset the weight, press weight reset button or run `weight_reset.py`.
+
+To run the kdd dataset:
+```
+python weight.py --data kdd
+```
+
+or to run the cic dataset:
+```
+python weight.py --data cic
+```
+
+
 ## License
 This project is licensed under the terms of the MIT license. See the LICENSE file for details.

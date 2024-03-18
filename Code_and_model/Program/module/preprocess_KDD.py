@@ -57,24 +57,24 @@ def column_manage(df):
     return df
 
 
-def process_label(args):
-    label, index, mix_directory, df_template, total_labels = args  
-    if label == 'normal':
-        print(f'Skip {label}')
-        return None
+# def process_label(args):
+#     label, index, mix_directory, df_template, total_labels = args  
+#     if label == 'normal':
+#         print(f'Skip {label}')
+#         return None
     
-    df_temp = df_template.copy() 
-    # print(f'Starting {label} {index+1}/{total_labels}') 
+#     df_temp = df_template.copy() 
+#     # print(f'Starting {label} {index+1}/{total_labels}') 
     
-    df_temp = changeLabel(df_temp, label)
+#     df_temp = changeLabel(df_temp, label)
 
     
-    for col in df_temp.columns:
-        if df_temp[col].dtype == 'bool':
-            df_temp[col] = df_temp[col].astype(int)
+#     for col in df_temp.columns:
+#         if df_temp[col].dtype == 'bool':
+#             df_temp[col] = df_temp[col].astype(int)
     
    
-    df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
+#     df_temp.to_csv(f"./kdd/{mix_directory}/{label}.csv", index=False)
     
 
 def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
@@ -121,10 +121,10 @@ def ProcessKDD(file_path, input_dataset, multiCPU, num_processes=cpu_count()):
             print(f'Using Multiprocessing with : {num_processes}')
             df_template = df.copy()
 
-            args_list = [(label, index, mix_directory, df_template, len(labels)) for index, label in enumerate(labels)]
+            args_list = [(label, mix_directory, df_template, 'kdd') for label in labels]
 
             with Pool(processes=num_processes) as pool:
-                list(tqdm(pool.imap_unordered(process_label, args_list), total=len(args_list)))
+                list(tqdm(pool.imap_unordered(process_labels, args_list), total=len(args_list)))
 
             print('Preprocessing KDD Done')
         

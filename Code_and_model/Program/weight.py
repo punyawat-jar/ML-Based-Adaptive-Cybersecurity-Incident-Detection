@@ -261,13 +261,13 @@ class SliderWindow:
         self.cancel_button.pack(side="right", expand=True, fill=tk.X)
         
     def reset_weights(self):
-        # Run the weight_reset.py script
+        # Run the weight_reset.py
         subprocess.run([sys.executable, './weight_reset.py', '--data', self.data_template])
 
-        # Close the current application window
+        # Close window
         self.root.destroy()
 
-        # Restart the main application
+        # Restart
         subprocess.run([sys.executable, 'weight.py', '--data', self.data_template])
 
 def main():
@@ -287,8 +287,11 @@ def main():
         weight_path = f'./{data_template}/weight.json'
         threshold_path = f'./{data_template}/Result/threshold.json'
         
-        check_file(weight_path)
-        check_file(threshold_path)
+        isweight = creating_weight_file(weight_path)
+        isthresh = creating_weight_file(threshold_path)
+        
+        if isweight == False or isthresh == False:
+            subprocess.run([sys.executable, 'weight.py', '--data', data_template])
         
         with open(threshold_path) as jsonfile:
             threshold = json.load(jsonfile).get('threshold')

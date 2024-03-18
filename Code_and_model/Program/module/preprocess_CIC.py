@@ -68,21 +68,21 @@ def create_df_single_process(df, labels, directory):
             df_temp.to_csv(f"./cic/{directory}/{label}.csv", index=False)
 
 
-def create_df_multiprocess(args):
-    label, _, _, df_template, directory = args
+# def create_df_multiprocess(args):
+#     label, _, _, df_template, directory = args
     
-    if label == 'BENIGN':
-        print(f'Skip {label}')
-        return
+#     if label == 'BENIGN':
+#         print(f'Skip {label}')
+#         return
     
-    df_temp = df_template.copy()
-    df_temp = changeLabel(df_temp, label)
-    output_path = os.path.join("./cic", directory, f"{label}.csv")
-    df_temp.to_csv(output_path, index=False)
+#     df_temp = df_template.copy()
+#     df_temp = changeLabel(df_temp, label)
+#     output_path = os.path.join("./cic", directory, f"{label}.csv")
+#     df_temp.to_csv(output_path, index=False)
 
 def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
     try:
-        directory = './dataset/mix_dataset'
+        mix_directory = './dataset/mix_dataset'
         if input_dataset is None:
             col_list = []
             #Concat the files in dataset
@@ -147,13 +147,14 @@ def ProcessCIC(df_loc, input_dataset, multiCPU, num_processes=cpu_count()):
 
         if multiCPU:
             print(f'Using Multiprocessing with : {num_processes}')
-            args_list = [(label, index, len(labels), df, directory) for index, label in enumerate(labels)]
+            args_list = [(label, mix_directory, df, 'cic') for label in labels]
+            
             with Pool(processes=num_processes) as pool:
-                for _ in tqdm(pool.imap_unordered(create_df_multiprocess, args_list), total=len(args_list)):
+                for _ in tqdm(pool.imap_unordered(process_labels, args_list), total=len(args_list)):
                     pass 
         else:
             print('Using single CPU')
-            create_df_single_process(df, labels, directory)
+            create_df_single_process(df, labels, mix_directory)
         print('Preprocessing Done')
     except Exception as E:
         print(E)

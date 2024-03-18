@@ -20,12 +20,12 @@ def check_file(path):
         raise Exception(f'Error: {path} not exist')
 
 def creating_weight_file(path):
-    print('Checking weight file...')
+    print('Checking file...')
     if os.path.isfile(path):
-        print(f'Weight file exist at {path}')
+        print(f'File exist at {path}')
         return True
     else:
-        print(f'Weight file not exist, creating file at {path}')
+        print(f'File not exist, creating file at {path}')
         return False
         
 def checkFileName(paths):

@@ -19,7 +19,7 @@ def check_file(path):
     else:
         raise Exception(f'Error: {path} not exist')
 
-def creating_weight_file(path):
+def check_and_return_file(path):
     print('Checking file...')
     if os.path.isfile(path):
         print(f'File exist at {path}')

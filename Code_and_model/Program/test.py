@@ -79,7 +79,7 @@ def main():
         #Reading Weight from file, if exist. if not calculated from the dataset (Default)
         #Note that if the model are retrian (the random data is not the same), the weight.json must be deleted by user before run test.py code.
         
-        CheckWegihtFileCreated = creating_weight_file(weight_path)
+        CheckWegihtFileCreated = check_and_return_file(weight_path)
         
         og_attack_percent = read_attack_percent(y_train, weight_decimal)
         
@@ -87,15 +87,20 @@ def main():
             print('Loading weight files')
             with open(weight_path) as jsonfile:
                 label_percentages = json.load(jsonfile)
+            
+            with open(threshold_path) as jsonfile:
+                threshold = json.load(jsonfile).get('threshold')
+            
         else:
             label_percentages = og_attack_percent
             if weight_path is not None:
                 writingJson(label_percentages, weight_path)
-        lowest_percent_attack = min(og_attack_percent, key=og_attack_percent.get)
-        threshold = og_attack_percent[lowest_percent_attack]
-        
-        writingJson({'threshold': threshold}, threshold_path)
-        
+                
+            lowest_percent_attack = min(og_attack_percent, key=og_attack_percent.get)
+            threshold = og_attack_percent[lowest_percent_attack]
+            writingJson({'threshold': threshold}, threshold_path)
+            
+
         print(f'threshold = {threshold}')
         model_df = pd.read_csv(chooese_csv)[['attack', 'model']]
         model_df = model_df[model_df['attack'] != 'normal.csv']

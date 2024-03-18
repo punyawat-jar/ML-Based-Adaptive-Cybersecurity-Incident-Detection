@@ -287,8 +287,8 @@ def main():
         weight_path = f'./{data_template}/weight.json'
         threshold_path = f'./{data_template}/Result/threshold.json'
         
-        isweight = creating_weight_file(weight_path)
-        isthresh = creating_weight_file(threshold_path)
+        isweight = check_and_return_file(weight_path)
+        isthresh = check_and_return_file(threshold_path)
         
         if isweight == False or isthresh == False:
             subprocess.run([sys.executable, 'weight.py', '--data', data_template])

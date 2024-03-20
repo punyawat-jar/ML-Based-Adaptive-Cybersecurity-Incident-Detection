@@ -138,8 +138,8 @@ def main():
         print('Evaluation by multiclass classification')
         print(f'Accuracy : {accuracy}\nF1-score : {f1_score}\nPrecision : {precision}\nRecall : {recall}')
         
-        print('Default attack percentage:')
-        print(read_attack_percent(test_labels, weight_decimal))
+        # print('Default attack percentage:')
+        # print(read_attack_percent(test_labels, weight_decimal))
         
         print('Adaptive tuning attack percentage:')
         y_detect_bi = y_test & y_pred
